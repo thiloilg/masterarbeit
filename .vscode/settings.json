@@ -1,4 +1,11 @@
 {
-    "latex-workshop.latex.outDir": "%DIR%/build",
-  }
-  
+  "latex-workshop.latex.outDir": "%DIR%/build",
+  "vsicons.associations.folders": [
+    {
+      "icon": "include",
+      "extensions": ["snippets"],
+      "format": "FileFormat.svg",
+      "disabled": false
+    },
+  ]
+}

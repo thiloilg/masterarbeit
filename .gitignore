@@ -1,2 +1,5 @@
 # latex compilation folder
 aux
+
+# os
+.DS_Store
