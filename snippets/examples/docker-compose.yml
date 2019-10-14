@@ -1,0 +1,70 @@
+version: '3.7'
+
+services:
+  traefik:
+    image: traefik:v2.0
+    ports:
+      - 80:80
+      - 443:443
+    command:
+      - --api=true
+      - --providers.docker=true
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --certificatesresolvers.secure.acme.httpchallenge=true
+      - --certificatesresolvers.secure.acme.httpchallenge.entrypoint=web
+      - --certificatesresolvers.secure.acme.email=${MAIL_ADDRESS}
+      - --certificatesresolvers.secure.acme.storage=/root/acme.json
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/acme.json:/root/acme.json
+    labels:
+      - traefik.http.routers.traefik.service=api@internal
+      - traefik.http.routers.traefik.rule=Host(`monitor.blicc.org`)
+      - traefik.http.routers.traefik.tls.certresolver=secure
+      - traefik.http.routers.detour.rule=hostregexp(`{host:[a-z-.]+}`)
+      - traefik.http.routers.detour.entrypoints=web
+      - traefik.http.routers.detour.middlewares=redirect-to-https
+      - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
+      - traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https
+  db:
+    image: registry.thiloilg.com/repo/blicc/db:latest
+    restart: always
+    labels:
+      - traefik.enable=false
+  api:
+    image: registry.thiloilg.com/repo/blicc/api:latest
+    volumes:
+      - /root/rsa.pem:/root/certs/rsa.pem
+      - /root/rsa_pub.pem:/root/certs/rsa_pub.pem
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - MAIL_ADDRESS=${MAIL_ADDRESS}
+      - MAIL_PASSWORD=${MAIL_PASSWORD}
+      - MAIL_HOST=${MAIL_HOST}
+    labels:
+      - traefik.http.routers.api.rule=Host(`api.blicc.org`)
+      - traefik.http.routers.api.tls.certresolver=secure
+  delivery:
+    image: registry.thiloilg.com/repo/blicc/delivery:latest
+    volumes:
+      - /root/rsa_pub.pem:/root/certs/rsa_pub.pem
+    restart: always
+    depends_on:
+      - api
+    labels:
+      - traefik.http.routers.delivery.rule=Host(`delivery.blicc.org`)
+      - traefik.http.routers.delivery.tls.certresolver=secure
+      - traefik.http.routers.delivery.middlewares=sslheader
+  app:
+    image: registry.thiloilg.com/repo/blicc/app:latest
+    restart: always
+    depends_on:
+      - api
+      - db
+      - delivery
+    labels:
+      - traefik.http.routers.app.rule=Host(`blicc.org`,`www.blicc.org`)
+      - traefik.http.routers.app.tls.certresolver=secure
