@@ -1,5 +1,27 @@
 {
   "latex-workshop.latex.outDir": "%DIR%/build",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "pdflatex",
+      "tools": [
+        "pdflatex"
+      ]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+          "--shell-escape", // if you want to have the shell-escape flag
+          "-synctex=1",
+          "-interaction=nonstopmode",
+          "-output-directory=%OUTDIR%",
+          "-file-line-error",
+          "%DOC%"
+      ]
+    }
+  ],
   "vsicons.associations.folders": [
     {
       "icon": "include",
