@@ -1,5 +1,5 @@
 # latex compilation folder
-aux
+build
 
 # os
 .DS_Store
