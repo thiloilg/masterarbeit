@@ -7,8 +7,22 @@
 
 \usepackage[]{graphicx}
 
-\usepackage[automark]{scrpage2}
+\usepackage[automark]{scrlayer-scrpage}
 \pagestyle{scrheadings}
 \clearscrheadfoot
-\ifoot[]{\Author}
+\automark[chapter]{section}
+\chead{}
+\setlength{\headheight}{16mm}
+\ohead[]{\headmark}
+
 \ofoot[]{\pagemark}
+
+\usepackage{geometry}
+\geometry{paper=a4paper,left=35mm,right=35mm,top=30mm}
+
+\graphicspath{{img/}}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{array}

@@ -1,14 +1,22 @@
-\documentclass[11pt]{scrbook}
+\documentclass[
+    11pt,
+    a4paper,
+    twoside,
+    titlepage,
+    numbers=endperiod
+]{scrbook}
+
 \input{Globals}
 \input{Packages}
 
-\title{Agiles Dashboardingtool zur Datenvisualisierung in einer Microservice-Infrastruktur}
-\author{Thilo Ilg}
-\date{\today{}, Berlin}
+\title{\Titel}
+\author{\Author}
+\date{\Datum, \Ort}
 
 \begin{document}
 
-\maketitle
+\include{Deckblatt}
+
 \tableofcontents
 
 \include{docs/EinleitendeWorte}
