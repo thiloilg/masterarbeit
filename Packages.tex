@@ -1,13 +1,21 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
+\DeclareUnicodeCharacter{0374}{\"u}
+\DeclareUnicodeCharacter{0334}{\"U}
+\DeclareUnicodeCharacter{0366}{\"o}
+\DeclareUnicodeCharacter{0326}{\"O}
+\DeclareUnicodeCharacter{0344}{\"a}
+\DeclareUnicodeCharacter{0304}{\"A}
+\DeclareUnicodeCharacter{0337}{\ss{}}
+
 \usepackage[ngerman]{babel}
-\usepackage[]{amsmath,amssymb,amstext}
+\usepackage{amsmath,amssymb,amstext}
 
 \usepackage{geometry}
 \geometry{paper=a4paper,left=35mm,right=35mm, top=40mm}
 
-\usepackage[]{graphicx}
+\usepackage{graphicx}
 
 \graphicspath{{img/}}
 
@@ -39,9 +47,5 @@ hyperref=true,
 ]{biblatex}
 
 \addbibresource{bib/literatur.bib}
-
-\usepackage{nomencl}
-\makeindex
-\makenomenclature
 
 \usepackage[]{acronym}
