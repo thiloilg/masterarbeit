@@ -35,6 +35,10 @@
 \AfterPackage{float}{\renewcommand\newfloat[3]{}}
 \usepackage[outputdir=build]{minted}
 
+\newenvironment{quellcode}{\captionsetup{type=listing}}{}
+\SetupFloatingEnvironment{listing}{name=Quellcode}
+\renewcommand{\listlistingname}{Quellcodeverzeicnis}
+
 \usepackage[
     bookmarks,
     bookmarksopen=true,
