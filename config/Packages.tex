@@ -1,5 +1,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{scrhack}
 
 \DeclareUnicodeCharacter{0374}{\"u}
 \DeclareUnicodeCharacter{0334}{\"U}
@@ -24,7 +25,14 @@
 
 \setkomafont{sectioning}{\rmfamily\textbf}
 
-\usepackage{csquotes}
+\usepackage{listings}
+\usepackage{caption,newfloat,scrlfile}
+
+\DeclareFloatingEnvironment{listing}{}
+\captionsetup[listing]{position=above,labelfont=bf}
+
+\AfterPackage{float}{\renewcommand\newfloat[3]{}}
+\usepackage[outputdir=build]{minted}
 
 \usepackage[
     bookmarks,
@@ -48,4 +56,5 @@ hyperref=true,
 
 \addbibresource{bib/literatur.bib}
 
+\usepackage{csquotes}
 \usepackage[]{acronym}
