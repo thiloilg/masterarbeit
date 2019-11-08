@@ -35,10 +35,11 @@
     linktocpage
 ]{hyperref}
 
-%% in der Präambel:
-\usepackage[backend=biber, %% Hilfsprogramm "biber" (statt "biblatex" oder "bibtex")
-natbib=true, %% Bereitstellen von natbib-kompatiblen Zitierkommandos
+\usepackage[backend=biber,
+natbib=true,
 hyperref=true,
 ]{biblatex}
  
-\addbibresource{bib/literatur.bib} %% Einbinden der bib-Datei
+\addbibresource{bib/literatur.bib}
+
+\usepackage[intoc]{nomencl}
