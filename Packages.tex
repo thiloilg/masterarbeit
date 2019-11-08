@@ -16,7 +16,6 @@
 
 \setkomafont{sectioning}{\rmfamily\textbf}
 
-%% BibLaTeX:
 \usepackage{csquotes}
 
 \usepackage[
@@ -36,10 +35,11 @@
 ]{hyperref}
 
 \usepackage[backend=biber,
-natbib=true,
 hyperref=true,
 ]{biblatex}
- 
+
 \addbibresource{bib/literatur.bib}
 
-\usepackage[intoc]{nomencl}
+\usepackage{nomencl}
+\makeindex
+\makenomenclature

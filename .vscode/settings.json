@@ -5,6 +5,7 @@
       "name": "pdflatex",
       "tools": [
         "pdflatex",
+        "nomencl",
         "biber",
         "pdflatex"
       ]
@@ -21,6 +22,17 @@
           "-output-directory=%OUTDIR%",
           "-file-line-error",
           "%DOC%"
+      ]
+    },
+    {
+      "name": "nomencl",
+      "command": "makeindex",
+      "args": [
+          "build/%DOCFILE%.nlo",
+          "-s",
+          "nomencl.ist",
+          "-o",
+          "build/%DOCFILE%.nls"
       ]
     },
     {
