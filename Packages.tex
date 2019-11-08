@@ -1,5 +1,4 @@
-\usepackage[]{ucs}
-\usepackage[utf8x]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
 \usepackage[ngerman]{babel}
@@ -14,3 +13,34 @@
 
 \usepackage{setspace}
 \onehalfspacing
+
+\setkomafont{sectioning}{\rmfamily\textbf}
+
+%% BibLaTeX:
+\usepackage{csquotes}
+
+\usepackage[
+    bookmarks,
+    bookmarksopen=true,
+    colorlinks=true,
+    linkcolor=black,
+    anchorcolor=black,
+    citecolor=black,
+    filecolor=black,
+    menucolor=black,
+    urlcolor=black,
+    plainpages=false,
+    pdfpagelabels,
+    hypertexnames=false,
+    linktocpage
+]{hyperref}
+
+%% in der Präambel:
+\usepackage[backend=biber, %% Hilfsprogramm "biber" (statt "biblatex" oder "bibtex")
+natbib=true, %% Bereitstellen von natbib-kompatiblen Zitierkommandos
+hyperref=true,
+]{biblatex}
+ 
+\addbibresource{bib/literatur.bib} %% Einbinden der bib-Datei
+
+\newcommand{\Zitat}[2][\empty]{\ifthenelse{\equal{#1}{\empty}}{\citep{#2}}{\citep[#1]{#2}}}

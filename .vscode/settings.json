@@ -4,6 +4,8 @@
     {
       "name": "pdflatex",
       "tools": [
+        "pdflatex",
+        "biber",
         "pdflatex"
       ]
     }
@@ -19,6 +21,14 @@
           "-output-directory=%OUTDIR%",
           "-file-line-error",
           "%DOC%"
+      ]
+    },
+    {
+      "name": "biber",
+      "command": "biber",
+      "args": [
+          "-output-directory=%OUTDIR%",
+          "%DOCFILE%"
       ]
     }
   ],
