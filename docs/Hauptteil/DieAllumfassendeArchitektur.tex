@@ -28,14 +28,28 @@
 
 \section{Der richtige Umgang mit Umgebungsvariablen}
 
-\section{Die Gesundheit deiner Services}
+\section{Die Gesundheit der Services}
+In Microservice-Infrastrukturen sind die einzelnen Services eng miteinander verküpft
+und voneinander abhängig. Um die Verfügbarkeit sicherzustellen, werden auf
+Serviceebene Healthcheckendpunkte bereitgestellt. Diese spiegeln den aktuellen
+Gesundheitszustand des jeweiligen Dienstes wieder. Ein Healthcheckendpunkt
+ist speziell dann nützlich, wenn ein Dienst oder ein Verfahren von einem anderen
+abhängig ist. So ist beispielsweise die Backendapi von der Datenbank
+abhängig. Andererseits ist der Frontenddiesnt sowie das Apitestverfahren
+in der Buildpipeline von der Backendapi abhängig. 
+
+\begin{listing}
+    \label{lst:healthcheck}
+    \inputminted{sh}{snippets/sh/healthcheck.sh}
+    \caption{Healthcheckbeispiel in Docker}
+\end{listing}
 
 \section{Die Unabhängigkeit des Betriebssystems}
 \subsection{Multistage Builds}
 
 \section{Wer automatisiert, gewinnt auf lange Zeit}
 
-\chapter{Die Qualitätssicherung}
+\chapter{Die integrierte Qualitätssicherung}
 
 \section{Die testgetriebene Entwicklung}
 
@@ -108,7 +122,7 @@ Wenn Sie bei der Abkürzung CD immernoch an eine Compact Disc denken, muss ich S
 \section{Whitelist statt Blacklist}
 \section{One verification route}
 
-\chapter{Die Details}
+\chapter{Die Implementierungsdetails}
 
 \section{Singleton, das Anti-Pattern}
 \section{Was sind PWAs?}
