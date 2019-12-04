@@ -1,4 +1,7 @@
-\chapter{Auswertung vorhandener Produkte}
+\chapter{Die allumfassende Architektur}
+\label{chap:die-allumfassende-architektur}
+
+\section{Auswertung vorhandener Produkte}
 % Qlik, Tableau, Grafana => Vergleichem
 
 \section{Workflow of a Data Scientist}
@@ -7,17 +10,26 @@
 \section{Mögliche Veranschaulichungen von Daten}
 % Aktuelle Modelle: Measures and Dimensions
 
-\chapter{Die allumfassende Architektur}
-\label{chap:die-allumfassende-architektur}
-
 \section{Mircoservices}
 
 \subsection{Microfrontend}
 Domain Driven Development also in Frontend.
 
+Aufteilung in Module, die während der laufzeit geladen werden.
+Seite 171 in Buch (Eberhardt Wolff Microservices) befasst sich mit dem
+Thema, wenn auch nicht auf das dynamische Laden eingegangen wird.
+"Das Deployment der SPA ist meistens nur als vollständige Anwendung möglich."
+Neuer Ansatz für unabhängiges Deployment!
+
 \section{Die Aufteilung der Logik}
 \label{sec:die-aufteilung-der-logic}
 Separation of Concerns, etwa Trennung der Zuständigkeiten
+
+\section{DieDatenstruktur}
+Da die Daten und deren Beziehungen von Anwendungsfall zu Anwendungsfall
+variieren, gilt es eine klar definierte Datenstruktur zu finden, die
+die gängigsten Anwendungsfälle abdecken kann. 
+
 
 \section{Das Design des Datenflusses}
 \label{sec:das-design-des-datenflusses}
