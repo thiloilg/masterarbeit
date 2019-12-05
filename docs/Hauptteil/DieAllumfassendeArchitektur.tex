@@ -44,10 +44,27 @@ Problem: Steigende Komplexität der Anwendung.
 Separation of Concerns, etwa Trennung der Zuständigkeiten
 
 \section{Die Datenstruktur}
+Die Softwarearchitektur sollte so flexibel wie möglich mit unterschiedlichen Datenstrukturen
+umgehen können. Dennoch benötigt es eine klar definierte Schnittstelle zu den Plugins,
+welche für die Datenvisualisierung verantwortlich sind. Aber wie sollte nun eine solche flexible 
+und dennoch klar definierte Datenstruktur aussehen?
+
+Schauen wir uns zuerst einmal die bereits existierenden Lösungen verwandter Anwendungen an. Drei der
+wohl bekanntesten Business Intelligence Lösungen im Bereich der Datenvisualisierung sind Qlik Sense
+von Qliktech, Tableau Public von Tablea Software und PowerBI von Microsoft. In der Business Intelligence
+Welt werden Mengen von Elementen oft in Maße (Measures) und Dimensionen (Dimensions) unterteilt. Unter Maße versteht
+man numerische Elemente einer Menge, Dimensionen hingegen stellen kategorische Elemente dar. Ein Maß
+ist beispielsweise die Anzahl verkaufter Produkte, eine Dimension das Land, in welchem die Produkte verkauft worden
+sind. Bei einem Balkendiagram kann demnach die Länge der Balken die Anzahl der verkauften Produkte
+widerspiegeln. Ein Balken representiert das Land, in dem das Produkt verkauft wurde.
+
+
+
 Die Abbildung von Mehrdimenstionaler Daten in einer eindimensionalen Welt.
 
 % zwei möglich eoperationen nötig, alle beziehungen in einer tabelle darstellen,
 % zeilen unendliche Teilmengen hinzufügen und die Sortieren
+% List processing???
 
 Da die Daten und deren Beziehungen von Anwendungsfall zu Anwendungsfall
 variieren, gilt es eine klar definierte Datenstruktur zu finden, die
@@ -58,6 +75,9 @@ die gängigsten Anwendungsfälle abdecken kann.
 % many to many to many relations???
 
 
+
+In Tableau und Qlik Sense hat man die Möglichkeit, aus einer ausklappbaren Auswahl an der Seite der
+Anwendung, Maße und Dimensionen durch Drag and Drop verschiedenen Diagrammen zuzuordnen. 
 
 \section{Das Design des Datenflusses}
 \label{sec:das-design-des-datenflusses}
