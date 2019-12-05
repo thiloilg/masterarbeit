@@ -1,0 +1,39 @@
+\chapter{Der Durchstich}
+
+\section{DevOps ist dein bester Freund}
+
+\section{Die Unabhängigkeit gegenüber einzelner Unternehmen}
+\subsection{Der eigene Gitlab Server}
+
+\section{Wie richte ich meine Pipeline ein?}
+
+\section{Der richtige Umgang mit Umgebungsvariablen}
+
+\section{Das besähen der Datenbank}
+%% Database seeding admin account etc.
+%% Probleme with extra route to initialize administration account!!!
+%% Problem initializing with trivial password since a lot of provider forget to update
+%% also known as Populating a Database
+%% Problem Typeorm auto sync
+%% Neccessary also for as fixtures, a basic setup for running tests
+
+\section{Die Gesundheit der Services}
+In Microservice-Infrastrukturen sind die einzelnen Services eng miteinander verküpft
+und voneinander abhängig. Um die Verfügbarkeit sicherzustellen, werden auf
+Serviceebene Healthcheckendpunkte bereitgestellt. Diese spiegeln den aktuellen
+Gesundheitszustand des jeweiligen Dienstes wieder. Ein Healthcheckendpunkt
+ist speziell dann nützlich, wenn ein Dienst oder ein Verfahren von einem anderen
+abhängig ist. So ist beispielsweise die Backendapi von der Datenbank
+abhängig. Andererseits ist der Frontenddiesnt sowie das Apitestverfahren
+in der Buildpipeline von der Backendapi abhängig. 
+
+\begin{listing}
+    \label{lst:healthcheck}
+    \inputminted{sh}{snippets/sh/healthcheck.sh}
+    \caption{Healthcheckbeispiel in Docker}
+\end{listing}
+
+\section{Die Unabhängigkeit des Betriebssystems}
+\subsection{Multistage Builds}
+
+\section{Wer automatisiert, gewinnt auf lange Zeit}

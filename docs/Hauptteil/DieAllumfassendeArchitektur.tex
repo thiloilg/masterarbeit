@@ -37,12 +37,13 @@ Weniger bis garkeine Abhängigkeit von Implementierungsdetails
 Problem: Steigende Komplexität der Anwendung.
 
 \section{Die Schnittstellengestaltung}
+% sehr wichtig, abstraktion
 
 \section{Die Aufteilung der Logik}
 \label{sec:die-aufteilung-der-logic}
 Separation of Concerns, etwa Trennung der Zuständigkeiten
 
-\section{DieDatenstruktur}
+\section{Die Datenstruktur}
 Da die Daten und deren Beziehungen von Anwendungsfall zu Anwendungsfall
 variieren, gilt es eine klar definierte Datenstruktur zu finden, die
 die gängigsten Anwendungsfälle abdecken kann. 
@@ -56,8 +57,6 @@ die gängigsten Anwendungsfälle abdecken kann.
 
 \section{Die Definition der Schnittstellen}
 \label{sec:die-definition-der-schnittstellen}
-
-\section{Die Frage der Dokumentation}
 
 \section{Die Wahl der Technologien}
 
@@ -73,183 +72,6 @@ Dan Abramov Representational components vs container components => actual view a
 \subsection{Das stetige Aktualisieren der ausgelieferten Software}
 Probleme: cookies verändern sich, serviceworker verändert sich, neue Felder in der Datenbank
 Frontend und Backend etc, also allen verschiedenen Services
-
-\chapter{Der Durchstich}
-
-\section{DevOps ist dein bester Freund}
-
-\section{Die Unabhängigkeit gegenüber einzelner Unternehmen}
-\subsection{Der eigene Gitlab Server}
-
-\section{Wie richte ich meine Pipeline ein?}
-
-\section{Der richtige Umgang mit Umgebungsvariablen}
-
-\section{Das besähen der Datenbank}
-%% Database seeding admin account etc.
-%% Probleme with extra route to initialize administration account!!!
-%% Problem initializing with trivial password since a lot of provider forget to update
-%% also known as Populating a Database
-%% Problem Typeorm auto sync
-%% Neccessary also for as fixtures, a basic setup for running tests
-
-\section{Die Gesundheit der Services}
-In Microservice-Infrastrukturen sind die einzelnen Services eng miteinander verküpft
-und voneinander abhängig. Um die Verfügbarkeit sicherzustellen, werden auf
-Serviceebene Healthcheckendpunkte bereitgestellt. Diese spiegeln den aktuellen
-Gesundheitszustand des jeweiligen Dienstes wieder. Ein Healthcheckendpunkt
-ist speziell dann nützlich, wenn ein Dienst oder ein Verfahren von einem anderen
-abhängig ist. So ist beispielsweise die Backendapi von der Datenbank
-abhängig. Andererseits ist der Frontenddiesnt sowie das Apitestverfahren
-in der Buildpipeline von der Backendapi abhängig. 
-
-\begin{listing}
-    \label{lst:healthcheck}
-    \inputminted{sh}{snippets/sh/healthcheck.sh}
-    \caption{Healthcheckbeispiel in Docker}
-\end{listing}
-
-\section{Die Unabhängigkeit des Betriebssystems}
-\subsection{Multistage Builds}
-
-\section{Wer automatisiert, gewinnt auf lange Zeit}
-
-\chapter{Die integrierte Qualitätssicherung}
-
-\section{Die testgetriebene Entwicklung}
-
-Finster war's, der Mond schien helle auf die grünbeschneite Flur, als
-ein Wagen blitzesschnelle langsam um die runde Ecke fuhr. Drinnen
-saßen stehend Leute schweigend ins Gespräch vertieft, als ein
-totgeschossner Hase auf dem Wasser Schlittschuh lief und ein
-blondgelockter Knabe mit kohlrabenschwarzem Haar auf die grüne Bank
-sich setzte, die gelb angestrichen war.
-Finster war's, der Mond schien helle auf die grünbeschneite Flur, als
-ein Wagen blitzesschnelle langsam um die runde Ecke fuhr. Drinnen
-saßen stehend Leute schweigend ins Gespräch vertieft, als ein
-totgeschossner Hase auf dem Wasser Schlittschuh lief und ein
-blondgelockter Knabe mit kohlrabenschwarzem Haar auf die grüne Bank
-sich setzte, die gelb angestrichen war.
-
-\section{CI, CD und nochmal CD}
-\label{sec:ci-cd-und-nochmal-cd}
-
-
-Finster war's, der Mond schien helle auf die grünbeschneite Flur, als
-ein Wagen blitzesschnelle langsam um die runde Ecke fuhr. Drinnen
-saßen stehend Leute schweigend ins Gespräch vertieft, als ein
-totgeschossner Hase auf dem Wasser Schlittschuh lief und ein
-blondgelockter Knabe mit kohlrabenschwarzem Haar auf die grüne Bank
-sich setzte, die gelb angestrichen war.
-Finster war's, der Mond schien helle auf die grünbeschneite Flur, als
-ein Wagen blitzesschnelle langsam um die runde Ecke fuhr. Drinnen
-saßen stehend Leute schweigend ins Gespräch vertieft, als ein
-totgeschossner Hase auf dem Wasser Schlittschuh lief und ein
-blondgelockter Knabe mit kohlrabenschwarzem Haar auf die grüne Bank
-sich setzte, die gelb angestrichen war.
-
-
-\subsection{Continuous Delivery}
-\label{subsec:continuous-delivery}
-Wenn Sie bei der Abkürzung CD immernoch an eine Compact Disc denken, muss ich Sie leider enttäuschen. Jene ist ein veralteter optischer Speicher, welcher heutzutage nur noch in Computermuseen oder Rückdeckeln diverser wissenschaftlicher Arbeiten zu finden ist. Aber darum geht es hier garnicht. Was ich damit meine, ist Continuous Delivery, zu deutsch stetige Softwareauslieferung.
-
-
-\section{Die Zentrierung service-relevanter Einstellungen}
-% extrahierung von theme colors etc.
-
-\section{Was für Tests gibt es, und wenn ja, wieviele?}
-
-\section{Usability Tests mit realen Nutzern}
-7 Dialogprinzipien achten!
-\section{SCRUM im Alleingang}
-
-\section{Zwing dich zu deinem Glück}
-
-\subsection{Die Einrichtung von Githooks}
-\section{Testing Stages}
-
-\section{Die Projektstruktur}
-
-\section{Die Arbeitsablaufoptimierung}
-
-\section{Die standige Reduzierung von Abhängigkeiten}
-
-\section{Das allseits beliebte Refactoring}
-
-\section{Wann ist Performance wichtig?}
-
-\section{MVP}
-
-\chapter{Die Sicherheit}
-\section{JWT}
-\section{SSO}
-\section{Two-factor Auth}
-\section{Two-Way Validation}
-\section{Die Rechteverwaltung}
-\section{Whitelist statt Blacklist}
-\section{One verification route}
-
-\chapter{Die Implementierungsdetails}
-
-\section{Slugs oder Ids}
-
-\subsection{GraphQL oder Rest}
-Vor und Nachteile, fields und Batch Processing
-
-\subsubsection{Batchprocessing}
-
-\subsubsection{Der Felderfilter}
-
-\section{Singleton, das Anti-Pattern}
-\section{Was sind PWAs?}
-
-\subsection{Risiken für Unternehmen}
-
-\subsection{Die Bestandteilanalyse}
-
-\section{Die Auswahl mehrerer Sprachen}
-
-\section{Responsive Design}
-
-\section{Datenvisualisierung}
-Exploratory vs explanatory visualization
-
-\section{Der Service Worker}
-Ein Service Worker ist ein in JavaScript geschriebener,
-eventbasierter Proxy, welcher in einem separaten Thread im Browser
-läuft und an eine spezifische Origin gekoppelt ist. Er hat
-die Möglichkeit Anfragen zwischen der im Browser ausgeführten
-Anwendung und dem Server abzufangen und zu verarbeiten.
-
-\subsection{Die wahl der Zwischenspeicherstrategie}
-Cache Only
-Network Only
-Cache First
-Network First
-Cache then Network
-Stale while Revalidate
-Generic Fallback
-
-\section{Lazy loading JS from the server}
-% laoding plugins on runtime
-
-\section{Batch Requests}
-
-\section{Filter specific fields}
-
-\chapter{Die Feature Requests}
-
-für eine solide Softwarearchitektur
-
-Finster war's, der Mond schien helle auf die grünbeschneite Flur, als
-ein Wagen blitzesschnelle langsam um die runde Ecke fuhr. Drinnen
-saßen stehend Leute schweigend ins Gespräch vertieft, als ein
-totgeschossner Hase auf dem Wasser Schlittschuh lief und ein
-blondgelockter Knabe mit kohlrabenschwarzem Haar auf die grüne Bank
-sich setzte, die gelb angestrichen war.
-
-\section{Was versteht man unter CD?}
-\label{sec:was-versteht-man-unter-cd}
 
 
 \begin{listing}
@@ -277,7 +99,3 @@ sich setzte, die gelb angestrichen war.
     \includegraphics[scale=0.2]{img/HTW}
     \caption{Beispiel}
 \end{figure}
-
-\chapter{Die Warting}
-\section{Wartung der CI Tests}
-%% automatisiertes clean up von container images
