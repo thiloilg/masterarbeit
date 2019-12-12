@@ -168,6 +168,12 @@ eine Baumstruktur zu iterieren, um die Anordnung der Diagramme in einem Dashboar
 darzustellen ist ansich nicht das Problem. Vielmehr sollte die Einstellungslogik klar
 von der der Anordnung getrennt werden.  
 
+\begin{listing}
+    \label{lst:HelloJSX}
+    \caption{Altes Beispiel der Diagrammanordnung eines Dashboards }
+    \inputminted{jsx}{snippets/json/OldArrangement.json}
+\end{listing}
+
 Ein möglicher Lösungsansätz ist das getrennte speichern der Einstellungen jedes
 einzelnen Diagramms in der Datenbank. Findet der Algorithmus beim iterieren durch
 die Baumstruktur so ein Diagramm, fragt er anhand der dort gespeicherten 
@@ -196,7 +202,6 @@ Durch die Verwendung des useContext Hooks konnten
 so nun auch funktionale Komponenten die Context API, eine eigene Zustandsverwaltung von React implementieren.
 Um die Komplexität der Applikation so gering wie möglich zu halten, entschied ich mich
 primär zur Zustandsverwaltung die Context API zu verwenden.
-
 
 
 

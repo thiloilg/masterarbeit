@@ -1,0 +1,26 @@
+{
+  "row": [
+    {
+      "col": "12",
+      "row": [
+        {
+          "col": "6",
+          "row": [
+            {
+              "id": "b4c12429-8968-4b62-a437-eb94b2e1660f",
+              "settings": {},
+              "col": "6",
+              "type": "essentials/PieChart"
+            },
+            {
+              "id": "38cd5664-a3f8-41c9-8f59-9744a7e734b6",
+              "type": "essentials/BarChart",
+              "settings": {},
+              "col": "6"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
