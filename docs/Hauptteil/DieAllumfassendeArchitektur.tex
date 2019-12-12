@@ -140,3 +140,64 @@ Frontend und Backend etc, also allen verschiedenen Services
 
 \section{Horizontale Skalierung ermöglichen}
 % stateless backend, no sessions etc.
+
+\section{Die Zustandsverwaltung im Frontend}
+Anfangs habe ich die Zustandsverwaltung der Dashboards im Frontend wie
+folgt entworfen. Ein großes JavaScript Object beinhaltet eine Baumstruktur
+von verschiedenen Diagrammen. Je nach Anordnung befindet sich als Kindknoten
+ein Array von weiteren Kindknoten oder ein Diagramm. Jedes Diagram speichert
+die Art des Diagramms sowie Einstellungen des Diagramm Containers sowie des
+Diagramms. Die Diagramme sind ausgelagerte Plugins mit einer definierten
+Schnittstelle. Sie können eigene Einstellungen speichern. Beispiele dafür
+können eine kategorische Auswahl in einem Diagramm sein, die für den Benutzer
+relevant ist. Ein Benutzer will beispielsweise nur Ausfallstatistiken einer
+bestimmten Schicht beobachten. Um nicht jedes mal die gleichen Einstellungen
+durchzuführen, hat er so die möglichkeit jede zu persistieren. Außerdem sollte
+die Komponente, welche so ein Diagramm Plugin beinhaltet, nur bestimmte Daten
+in einer besimmten Form weiterreichen. Diese Einstellungen gilt es auch zu speichern.
+Anfangs speicherte ich die Einstellungen direkt innerhalb des großen JavaScript Objekts.
+Ein rekursiv implementierter Algorithmis iterierte durch das ganze Objekt und lud so 
+je nach Einstellung das passende Diagramm und dessen Einstellungsparameter. Ein Problem,
+was sich erst nach geraumer Zeit entwickelte, war die Anzahl der Aktualisierungen
+der graphischen Benutzeroberfläche. Bei jeder noch so kleinen Einstellungsaktualisierung,
+renderte das ganze Dashboard komplett neu. Da die Diagramme agil in der Laufzeit aus dem
+Redis Zwischenspeicher und Später aus dem Browser Cache geladen werden, wurde bei jeder
+kleinen Änderung Code-Module neu aus dem Cache geladen. All diese Nebenwirkungen
+verursachten einen großen Performanceverlust. Die initiale Idee, rekursiv durch
+eine Baumstruktur zu iterieren, um die Anordnung der Diagramme in einem Dashboard
+darzustellen ist ansich nicht das Problem. Vielmehr sollte die Einstellungslogik klar
+von der der Anordnung getrennt werden.  
+
+Ein möglicher Lösungsansätz ist das getrennte speichern der Einstellungen jedes
+einzelnen Diagramms in der Datenbank. Findet der Algorithmus beim iterieren durch
+die Baumstruktur so ein Diagramm, fragt er anhand der dort gespeicherten 
+Identifikationsnummer bei der Datenbank an, welche Einstellungen dieses Diagramm
+beinhaltet. Dieser Ansatz hat aber zum einen den Nachteil der erhöhten Anzahl an
+Datenbankanfragen, zum anderen wird in diesem Fall der Fremdschlussel, welcher auch
+die Eintrag des Diagramms zeigt, nicht direkt in einem Datenbankfeld sondern in einer
+JSON struktur gespeichert. Die JSON struktur wird zwar selbst auch in der Datenbank 
+gespeichert, allerdings zerstört diese Art von Reference die Grundprinzipien des
+relationalen Datenbankmodells. Jeder Foreign Key sollte ein eigenes Feld besitzen.
+Ein hierarchisches Datenbankmodell würde dieses Problem lösen, allerdings aber auch
+ein weiteres Datenbankmodel in die Architektur hinzufügen, welches die Komplexität
+erhöhen würde. Außerdem benötigt man immer den ganzen Dashboardaufbau, weshalb es
+auch Sinn macht diesen als ganzen zu speichern. Dies erhöht außerdem die Flexibilität
+der Datenstruktur während der Entwicklung.
+
+Ein weiterer Lösungsansatz ist eine verbesserte Zustandsverwaltung im Frontend. In der
+Regel wird hierfür im Fall der JavaScript Frontend Bibliothek React die Bibliothek
+Redux zur Zustandsverwaltung verwendet. Dies ist historisch gewachsen, da React Anfangs
+nur bei den klassenbasierten Komponenten eine Zustandsverwaltung von Haus aus
+anbot. Bei der React Conf 2018 wurde von Dan Abramov und Ryan Florence ein neues
+Konzept der React Hooks vorgestellt.
+\footnote{Ein Mitschnitt der Vorträge findet man auf Youtube \cite{}}
+
+Durch die Verwendung des useContext Hooks konnten
+so nun auch funktionale Komponenten die Context API, eine eigene Zustandsverwaltung von React implementieren.
+Um die Komplexität der Applikation so gering wie möglich zu halten, entschied ich mich
+primär zur Zustandsverwaltung die Context API zu verwenden.
+
+
+
+
+
