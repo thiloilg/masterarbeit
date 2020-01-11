@@ -1,6 +1,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{scrhack}
+\usepackage[]{appendix}
+
+\makeatletter
+\g@addto@macro\appendix{%
+  \counterwithin*{lstlisting}{section}%
+}
+\makeatother
 
 \DeclareUnicodeCharacter{0374}{\"u}
 \DeclareUnicodeCharacter{0334}{\"U}
@@ -65,3 +72,4 @@ hyperref=true,
 \usepackage[]{acronym}
 
 \usepackage{parskip}
+
