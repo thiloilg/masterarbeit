@@ -1,0 +1,38 @@
+{
+  "name": "Blicc",
+  "description": "lightweight, user-friendly web app to analyse data ",
+  "short_name": "Blicc",
+  "icons": [
+    {
+      "src": "/icons/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/icons/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "purpose": "badge",
+      "src": "/icons/icon.svg",
+      "type": "image/svg"
+    }
+  ],
+  "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "serviceworker": {
+    "src": "serviceWorker.js",
+    "scope": "/",
+    "update_via_cache": "none"
+  }
+}
