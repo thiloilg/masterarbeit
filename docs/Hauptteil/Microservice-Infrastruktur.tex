@@ -5,6 +5,7 @@
 
 \section{Infrastruktur}
 \subsection{Gitlab CE}
+% Die Unabhängigkeit gegenüber einzelner Unternehmen
 \subsection{Gitlab Runner}
 \subsection{Docker Registry}
 \subsection{Hetzner Cloud}
@@ -17,6 +18,20 @@
 \subsection{Docker Compose Setup}
 
 \subsection{Health-Checks}
+In Microservice-Infrastrukturen sind die einzelnen Services eng miteinander verküpft
+und voneinander abhängig. Um die Verfügbarkeit sicherzustellen, werden auf
+Serviceebene Healthcheckendpunkte bereitgestellt. Diese spiegeln den aktuellen
+Gesundheitszustand des jeweiligen Dienstes wieder. Ein Healthcheckendpunkt
+ist speziell dann nützlich, wenn ein Dienst oder ein Verfahren von einem anderen
+abhängig ist. So ist beispielsweise die Backendapi von der Datenbank
+abhängig. Andererseits ist der Frontenddiesnt sowie das Apitestverfahren
+in der Buildpipeline von der Backendapi abhängig. 
+
+\begin{listing}
+    \label{lst:healthcheck}
+    \inputminted{sh}{snippets/sh/healthcheck.sh}
+    \caption{Healthcheckbeispiel in Docker}
+\end{listing}
 
 \section{Reverse Proxy}
 
