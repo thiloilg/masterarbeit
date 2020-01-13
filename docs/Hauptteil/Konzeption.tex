@@ -92,10 +92,16 @@ anpassen. \cite{GitlabDocs} % cication for https://docs.gitlab.com/ee/user/admin
 \section{Auswertung vorhandener Softwarelösungen}
 2018 verteilte sich mehr als 50\% des weltweiten Marktanteils an BI- und Geschäftsanalytiksoftware auf
 zehn Anbieter. Den größten Marktanteil besitzt Microsoft mit 10,6\%, gefolgt von SAP, IBM, SAS, Oracle,
-Tableau Software und Qlik. \footnote[1]{Laut einer Statistik von Statista \cite{StatistaMarketshareBI}} 
+Tableau Software und Qlik. \footnote[1]{Laut einer Statistik von Statista \cite{StatistaMarketshareBI}}
+In dieser Arbeit werden drei Softwarelösungen analysiert und ausgewertet, darunter Power BI Desktop von
+Microsoft, Qlik Sense von Qlik und Tableau von Tableau Software. Die Auswahl der drei Softwarelösungen
+basiert auf dem Marktanteil des Anbieters und der zu Verfügung stehenden Literatur. Alle diese 
+Anwendungen ermöglichen die Erkundung, Bereinigung und Auswertung von Daten. Was aber unterscheidet
+die Anwendungen von einander? Wo liegen ihre Stärken und Schwächen und welche von den zuvor genannten
+Anforderungen werden von den Marktführern erfüllt?
 
+\subsection{Power BI Desktop}
 
-\subsection{Power BI}
 % Wie hat es Power BI gelöst
 
 \subsection{Qlik Sense}
@@ -106,8 +112,26 @@ Tableau Software und Qlik. \footnote[1]{Laut einer Statistik von Statista \cite{
 
 \section{Progressive Web App}
 % PWA vs Native
+Eine Progressive Web App ist eine Webseite, die eine zunehmende Ansammlung an bestimmten Technologien,
+Strategien und Schnittstellen implementiert, welche Merkmale bereitstellen, die ursprünglich nur
+native Apps besaßen.\cite{WikiPWA} Eine der wichtigsten Browser-Technologien, die zur Entstehung der PWA beigetragen hat,
+ist der Service Worker. Er ermöglicht der PWA, auch ohne Internetverbindung zu funktionieren. Der 
+Service Worker ist ein auf einem separaten Thread laufender Prozess, welcher HTTP und je nach Browser
+auch WebSocket Anfragen abfangen und verarbeiten kann. Somit kann trotz fehlernder Internetverbindung
+eine Antwort zurückgesendet werden. \cite{W3ServiceWorker}
 
-\subsection{Was ist eine Progressive Web App?}
+Progressive Web Apps als Alternative zur nativen App ermöglichen mehr Freiheit gegenüber dem
+Plattformanbieter. Sobald die Möglichkeit besteht, PWAs mit Hilfe einer vom Browser angesteuerten API
+auf dem Homescreen zu speichern, verliert der Plattformanbieter die Kontrolle,
+bestimmte PWAs zu verbieten. Dies ist bei nativen Apps nicht der fall. So löschte Apple in der Vergangenheit
+bereits große Mengen an Apps aus dem App Store.\footnote[1]{Laut Heise.de löschte Apple im Oktober 2016 rund 47.300 Apps aus dem App Store.\cite{HeiseAppleLoeschtApps}} 
+Des weiteren verlieren die Plattformanbieter die Gewinnbeteiligung an App-, Abo- und Ingame-Verkäufen,
+da die Zahlungsabwicklung nun nicht mehr über den vom Plattformanbieter bereitgestellten App Store
+abgewickelt werden muss. Entwickler von Apps mussten in der Vergangenheit bis zu 30\% 
+ihrer Einnahmen abgeben. \cite{WinFutureEigenerAppStore} Nichtsdestotrotz arbeiten
+die Plattformanbieter weiter an neuen Features für PWAs.
+
+\subsection{Merkmale einer PWA}
 % Bestandteilanalyse
 
 \subsection{Unterstützter Funktionsumfang gängiger Browser}
