@@ -35,25 +35,34 @@ Generic Fallback
             \item manifest.json
             \item favicon.ico
        \end{itemize}
-       \item Antwort auf AJAX Anfragen in JSON
-       \item Plugin Bundle Quellcode
+       \item JSON Ressourcen von AJAX Anfragen
     \end{itemize}
+\end{description}
+
+Daraus folgende Zwischenspeicherstrategien:
+
+\begin{description}
     \item[Zwischenspeicherstrategie]~\par
     \begin{enumerate}
-       \item Statische Dateien mit durch Webpack generierten Hash im Dateinamen (, , )
+       \item Statische Dateien mit Hash
        \begin{enumerate}
-          \item erstens.
-          \item zweitens.
+          \item Zuerst aus dem Zwischenspeicher anfragen
+          \item Falls nicht vorhanden, aus dem Netzwerk laden und in den Zwischenspeicher ablegen
        \end{enumerate}
-       \item Statische Dateien ohne Hash im Dateinamen (index.html, manifest.json, favicon.ico)
+       \item Statische Dateien ohne Hash
+       \begin{enumerate}
+            \item Zuerst aus dem Netzwerk anfragen und in den Zwischenspeicher ablegen
+            \item Falls keine Netzwerkverbindung vorhanden, aus dem Zwischenspeicher laden
+        \end{enumerate}
+        \item JSON Ressourcen von AJAX Anfragen
+        \begin{enumerate}
+             \item Zuerst aus dem Netzwerk anfragen
+             \item Falls nicht vorhanden, Offline-Rückfallseite anzeigen 
+         \end{enumerate}
     \end{enumerate}
  \end{description}
 
-\begin{enumerate}
-    \item Statische Dateien mit durch Webpack generierten Hash im Dateinamen
-    \item static assets ohne hashes werden network first gecached
-    \item AJAX calls werden network first, then indexedDB, then redirect to offline page
-\end{enumerate}
+ % Probleme: Plugin Bundle Quellcode und Markdown seiten
 
 \subsection{Seitengenerator}
 % die verschiedenen Seiten sollten für das caching evtl. mit einem hash on build time versehen werden.
