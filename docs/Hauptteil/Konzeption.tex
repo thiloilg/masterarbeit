@@ -54,11 +54,60 @@ Softwarelösung wird eine gewisse Flexibilität abverlangt, die man nicht unters
 % Collection Exploration Mugling Modeling Validation Reporting
 
 \section{Anforderungsanalyse}
+In der Anforderungsanalyse soll es darum gegen, Anforderungen an die Software zu erkennen,
+diese zu erörtern und resultierende Anforderungen auszuwerten. Dabei werden die Anforderungen
+in fünf Rubriken unterteilt. Als erstes werden die Anforderungen an die grafische
+Benutzeroberfläche gestellt. Hier geht es primär um das Aussehen sowie die Benutzerfreundlichkeit
+der Frontendanwendung. Als zweites sollen die Anforderungen an die Funktionalität der
+Software analysiert werden. Was sind typische Benutzerhandlungen, die die Software ermöglichen
+sollte? Als drittes werden die Anforderungen zur Flexibilität der Datenquellen analysiert. Was
+sind mögliche Datensätze, mit denen die Software in Zukunft arbeiten können sollte? Als viertes
+werden die möglichen Datenvisualisierungsarten analysiert. Welche Arten von Diagrammen und
+Schaubildern benötigen die Benutzer, um aus ihren Daten möglichst viel Information zu ziehen?
+Schlussendlich soll das Augenmerk auf die Anforderungen an die Technologien gerichtet werden.
+
+GBO Datacomp hat ihrerseits mögliche Anforderungen an die Software in Form eines Informationsblattes
+bereitgestellt. Diese Anforderungen dienen zur Orientierung der System- und Softwaregestaltung. 
 
 \subsection{Grafische Benutzeroberfläche}
 Welche Anforderungen gibt es bei der grafischen Oberfläche zu beachten? Wie bereits
 in der Zielgruppenanalyse angemerkt, werden die verschiedensten Endgeräte auf die
-Software zugreifen. Darunter zählen unter anderem Smartphones sowohl Android als auch IOS,
+Software zugreifen. GBO Datacomp erwähnt in ihrem Informationsblatt die fokusierung auf folgende
+drei Gerätetypen: Desktop-PCs, Tablets und Smartphones. Man kann also davon ausgehen, dass die
+Softwarelösung als Eingabeschnittstelle neben der Maus und der Tastatur auch einen Touchscreen
+berücksichtigen sollte. GBO Datacomp weißt speziell auf die unterschiedlichen Bildschirmgrößen
+hin. So soll die Anwendung auf verschiedene Bildschirmgrößen reagieren und den Inhalt je nach
+Größe zugänglich bereitstellen. Geräte des gleichen Typs sollen keine signifikanten Unterschiede
+in der Darstellung aufweisen. Um diese Anforderung umzusetzen, benötigt es neben der Erkennung
+der Bildschirmgröße auch noch eine Erkennung des Gerätetyps.
+
+Man kann davon ausgehen, dass neben den unterschiedlichen Gerätetypen auch unterschiedliche
+Betriebssysteme verwendet werden. Laut StatCounter verteilt sich der weltweite Marktanteil
+an Betriebssystemen laut einer Analyse vom Dezember 2019 wie folgt auf. Android führt mit
+40,47\%, gefolgt von Windows mit 34,2\%, iOS mit 14,92\% und macOS mit 7,24\%. Linux und andere
+Betriebssysteme bilden hierbei eine Minderheit.\cite{StatCounterOSMarketShare} Betrachtet man den
+Nutzungsanteil der Browser im Oktober 2019 weltweit, führt Chrome mit 64,92\%, gefolgt von Safari mit 15,97\%,
+Firefox mit 4,33\%, Samsung Internet mit 3,29\%, der primär im asiatischen Bereich genutze Browser UC
+mit 2,94\%, Opera mit 2,34\%, Edge mit 2,05\%, Internet Explorer mit 1,98\% und Sonstige.\cite{StatCounterBrowserMarketShare}
+GBO Datacomp hat ihre Softwärelösungen primär auf Windows ausgerichtet. 
+
+
+an kann davon ausgehen, dass je nach Branchenbereich der Nutzungsanteil der Betriebssysteme
+sowie der Browser variert. 
+
+
+Im Falle, dass die Softwarelösung im Browser ausgeführt werden
+soll, gilt es unterschiedliche Browsertypen zu beachten. 
+
+
+
+Daraus lässt sich schlussfoldern, dass neben der Analyse der Größe
+des Bildschirms auch eine Geräteerkennung  
+
+eine Tastatur, eine Maus als auch einen Touchscreen als Eingabeschnittstelle 
+
+
+Darunter zählen unter anderem Smartphones sowohl Android als auch IOS,
 Tablets und Desktop PCs mit entweder Windows, MacOS als auch Linux. Die grafischen Elemente
 der Software sollen sich an die Größe des Bildschirms anpassen und den Platz des Bildschirms
 bestmöglich nutzen. Die Andendung sollte in horizontaler als auch verticaler Ausrichtung des
@@ -72,12 +121,6 @@ werden kann. Beispiele dafür gibt es in der Softwareindustrie häufig. So kann 
 der Community Edition von Gitlab das Logo sowie das Farbschema der Anwendung in den Einstellungen
 anpassen. \cite{GitlabDocs} % cication for https://docs.gitlab.com/ee/user/admin_area/appearance.html
 
-\subsection{Technologien}
-% Wahl der Technologien, Tech-Stack?
-% Anforderungen an die Technologien
-% Umfeld etc
-% Geschwindigkeit der Entwicklung
-
 \subsection{Funktionalitäten der Software}
 % Anforderungen an die Funktionalität der Software
 % Auch mehrere Sprachen
@@ -89,6 +132,12 @@ anpassen. \cite{GitlabDocs} % cication for https://docs.gitlab.com/ee/user/admin
 % Anforderungen an die Visualisierung der Daten
 % Mögliche Verabschaulichung der Daten
 % Aktuelle Modelle: Measures and Dimensions
+
+\subsection{Technologien}
+% Wahl der Technologien, Tech-Stack?
+% Anforderungen an die Technologien
+% Umfeld etc
+% Geschwindigkeit der Entwicklung
 
 \section{Auswertung vorhandener Softwarelösungen}
 2018 verteilte sich mehr als 50\% des weltweiten Marktanteils an BI- und Geschäftsanalytiksoftware auf
