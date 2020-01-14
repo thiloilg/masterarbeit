@@ -20,6 +20,45 @@ Cache then Network
 Stale while Revalidate
 Generic Fallback
 
+\begin{description}
+    \item[Für den Zwischenspeicher des Browsers relevante Untergliederung]~\par
+    \begin{itemize}
+       \item Statische Dateien mit Hash
+       \begin{itemize}
+            \item main.dd5a1ad0.chunk.css
+            \item main.46e36a4b.chunk.js
+            \item 2.dc039c03.chunk.js
+       \end{itemize}
+       \item Statische Dateien ohne Hash
+       \begin{itemize}
+            \item index.html
+            \item manifest.json
+            \item favicon.ico
+       \end{itemize}
+       \item Antwort auf AJAX Anfragen in JSON
+       \item Plugin Bundle Quellcode
+    \end{itemize}
+    \item[Zwischenspeicherstrategie]~\par
+    \begin{enumerate}
+       \item Statische Dateien mit durch Webpack generierten Hash im Dateinamen (, , )
+       \begin{enumerate}
+          \item erstens.
+          \item zweitens.
+       \end{enumerate}
+       \item Statische Dateien ohne Hash im Dateinamen (index.html, manifest.json, favicon.ico)
+    \end{enumerate}
+ \end{description}
+
+\begin{enumerate}
+    \item Statische Dateien mit durch Webpack generierten Hash im Dateinamen
+    \item static assets ohne hashes werden network first gecached
+    \item AJAX calls werden network first, then indexedDB, then redirect to offline page
+\end{enumerate}
+
+\subsection{Seitengenerator}
+% die verschiedenen Seiten sollten für das caching evtl. mit einem hash on build time versehen werden.
+
+
 \subsection{Stetige Aktualisierung der PWA}
 Probleme: cookies verändern sich, serviceworker verändert sich, neue Felder in der Datenbank
 Frontend und Backend etc, also allen verschiedenen Services
