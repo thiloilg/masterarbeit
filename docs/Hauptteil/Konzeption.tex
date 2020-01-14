@@ -135,41 +135,46 @@ müssen aus einer Datenquelle geladen werden. GBO Datacomp stellt hierfür eine 
 zur Verfügung. Für eine Datenquelle ist somit gesorgt. Um die Daten innerhalb der Anwendung
 einem Dashboard zur Verfügung zu stellen, müssen die Daten zu einem passenden Format verarbeitet werden.
 Zu guter Letzt muss noch definiert werden, welche Daten in welchem Dashboard verwendet
-werden sollten. Diese vier Funktionalitäten sind der Kern der Anwendung.
+werden sollten. Diese vier Funktionalitäten sind der Kern der Anwendung. In diesem Abschnitt
+werden zuerst die Anforderungen der Kernfunktionalitäten genauer analysiert. Daraufhin werden die Anforderungen
+für die Authentifizierung der Benutzer, die Rechteverwaltung, die Auswahl der Sprache,
+die Navigation durch die Software, die Suche nach Ressourcen in der Anwendung, einfaches
+Erstellen von Informationsseiten sowie für die Möglichkeit, die Anwendung auch offline
+zu verwenden, erörtert.
 
+Was sind die Anforderungen für die Erstellung des agilen Dashboards? Wie bereits in dem
+vorigen Abschnitt über die grafische Benutzeroberfläche debatiert, sollte die Anwendung und
+so auch die Erstellung des Dashboards selbsterklärend sein. Daraus resultiert, dass die Anwendung 
+selbst das genaue Zentrieren der einzelnen Komponenten des Dashboards übernehmen sollte. Der
+Benutzer sollte in einem intuitiven Verfahren, einzelne Komponenten auswählen und diese
+an bestimmte Positionen im Bildschirm ziehen können. Desweiteren sollte er Komponenten einfach
+entfernen und ersetzen können. Wirft man einen Blick auf andere BI Softwarelösungen,
+kann man feststellen, dass die Anzahl der Komponenten der Anwendung im Lauf der Zeit
+stetig anwachsen kann. Es soll also auch möglich sein, von einer großen Anzahl an Komponenten
+bequem eine passende Komponente zu finden und diese dann zu verwenden.
 
-Nun folgen zahlreiche
-Implementierungsdetails, die von GBO Datacomp gewünscht sind. 
+Was sind die Anforderungen für das Laden der Daten in die Anwendung? Neben der Flexibilität,
+die im darauffolgenden Abschitt erörtert wird, sollte das Laden von Daten schnell und zuverlässig
+sein. Typische Vorgehensweisen der Anwender sind das Auswerten von Maschinendaten. Dabei kann es
+sich um die Auslastung, Störfälle aber auch Ausfälle der Maschinen handeln. Es ist also sehr wichtig,
+das der Anwender rechtzeitig über Stör- und Ausfälle der Maschinen informiert wird. Unsere
+Aufmerksamkeit gilt also auch der zeitnahen Aktualisierung der Daten in den Dashboards. Nur
+so kann sichergestellt werden, dass der Anwender auch zeitnah auf in den Daten erkenntliche
+Ereignisse reagieren kann. In Anlehnung dieser Feststellung liegt es nahe, den Benutzer
+über bestimmte Ereignisse per Benachrichtigung zu informieren. So könnte man beispielsweise
+eine Benachtichtigung auf das Smartphone des Benutzers schicken, sobald ein zuvor definierter
+Schwellwert überschritten wird.
 
+Welche Anforderungen sind für die Verarbeitung der Daten notwendig? Daten können Fehler oder Lücken
+beinhalten. So kann in einer Spalte, die das ISO Datumsformat beinhalten, fälschlicherweise ein
+ungültiger Wert vorkommen oder dieser komplett fehlen. Solche Unreinheiten der Daten sollten die
+Anwendung nicht zum Abstürzen bringen. Sie sollten erkannt 
 
-Unterschiedliche Datenquellen
-
-Doch wie kommen die Daten in die
-unterschiedlichen Diagramme? 
-
-Da es sich um ein agiles Dashboardingtool zur Datenanalyse
-in einer Microservice-Infrastruktur handelt
-
-
-Die vier wichtigsten Funktionalitäten
-
-sind die agile Zusammenstellung eines Dashboards sowie die Möglichkeit, Daten aus
-externen Quellen zu laden, zu verarbeiten und den Dashboards zuzuweisen. 
-
-Dazu kommen zahlreiche Standartfunktionalitäten
-
-Er umfasst die Authentifizierung der Benutzer,
-die Rechteverwaltung, die Auswahl der Sprache, die Navigation durch die Software, die Suche
-nach Ressourcen in der Anwendung, einfaches Erstellen von Informationsseiten, das automatische
-Aktualisieren von angezeigten Daten sowie die Moglichkeit die Anwendung auch offline zu verwenden.
-
-% Agile zusammenstellen eines Dashboards
-% Agiles Datenzuordnung in einem Datenflussdiagramm
-
+Fehlende mittelwerte etc. 
 
 \subsection{Flexibilität}
 % Anforderungen an die Flexibilität der Datenquellen
-
+% Unterschiedliche Datenquellen
 % der Datenquellen, der Datenart
 
 \subsection{Visualisierung der Daten}
@@ -252,7 +257,8 @@ die Plattformanbieter weiter an neuen Features für PWAs.
 
 \subsection{Skizzen der Benutzeroberfläche}
 % Wireframes
-
+% Agile zusammenstellen eines Dashboards
+% Agiles Datenzuordnung in einem Datenflussdiagramm
 % die agile Erstellung eines Datenflussdiagramms, welches die Daten aus den Datenquellen verarbeitet und den Dashboards zuweist.
 \subsection{Skizzen der Infrastruktur}
 
