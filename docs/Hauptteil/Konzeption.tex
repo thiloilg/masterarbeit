@@ -123,16 +123,54 @@ für die führenden Browser Edge und Internet Explorer inbegriffen sollte gegebe
 Das Design sollte mit wenig Aufwand an das Erscheinungsbild eines Unternehmens angepasst werden
 können. Die GUI sollte eine klare, benutzerfreundliche Richtlinie verfolgen.
 
-\subsection{Funktionalitäten der Software}
-% Anforderungen an die Funktionalität der Software
-% Auch mehrere Sprachen
+\subsection{Funktionalität}
 Die Analyse der Anforderungen an die Funktionalität der Software ist der
-komplexeste Teil der Anforderungsanalyse.
+umfangreichste Teil der Anforderungsanalyse. Was sind die wichtigsten Anforderungen
+an die Funktionalität der Software? Dazu muss man sich den Titel der Masterarbeit
+nochmal vor Augen führen. Der Titel heißt: Agiles Dashboardingtool zur Datenvisualisierung
+in einer Microservice-Infrastruktur. Die erste und wichtigste Funktionalität sollte also
+eine möglichst agile Erstellung eines Dashboards sein. Desweiteren sollten damit Daten
+visualisiert werden. Um dies zu ermöglichen, benötigt das Dashboard Daten. Diese Daten
+müssen aus einer Datenquelle geladen werden. GBO Datacomp stellt hierfür eine REST API
+zur Verfügung. Für eine Datenquelle ist somit gesorgt. Um die Daten innerhalb der Anwendung
+einem Dashboard zur Verfügung zu stellen, müssen die Daten zu einem passenden Format verarbeitet werden.
+Zu guter Letzt muss noch definiert werden, welche Daten in welchem Dashboard verwendet
+werden sollten. Diese vier Funktionalitäten sind der Kern der Anwendung.
 
 
+Nun folgen zahlreiche
+Implementierungsdetails, die von GBO Datacomp gewünscht sind. 
 
-\subsection{Flexibilität der Datenquellen}
+
+Unterschiedliche Datenquellen
+
+Doch wie kommen die Daten in die
+unterschiedlichen Diagramme? 
+
+Da es sich um ein agiles Dashboardingtool zur Datenanalyse
+in einer Microservice-Infrastruktur handelt
+
+
+Die vier wichtigsten Funktionalitäten
+
+sind die agile Zusammenstellung eines Dashboards sowie die Möglichkeit, Daten aus
+externen Quellen zu laden, zu verarbeiten und den Dashboards zuzuweisen. 
+
+Dazu kommen zahlreiche Standartfunktionalitäten
+
+Er umfasst die Authentifizierung der Benutzer,
+die Rechteverwaltung, die Auswahl der Sprache, die Navigation durch die Software, die Suche
+nach Ressourcen in der Anwendung, einfaches Erstellen von Informationsseiten, das automatische
+Aktualisieren von angezeigten Daten sowie die Moglichkeit die Anwendung auch offline zu verwenden.
+
+% Agile zusammenstellen eines Dashboards
+% Agiles Datenzuordnung in einem Datenflussdiagramm
+
+
+\subsection{Flexibilität}
 % Anforderungen an die Flexibilität der Datenquellen
+
+% der Datenquellen, der Datenart
 
 \subsection{Visualisierung der Daten}
 % Anforderungen an die Visualisierung der Daten
@@ -140,6 +178,14 @@ komplexeste Teil der Anforderungsanalyse.
 % Aktuelle Modelle: Measures and Dimensions
 
 % KPI
+
+\subsection{Codebasis}
+% Anforderungen an die Codebasis
+% Einstieg für andere Entwickler
+% Weiterverwendbarkeit und Erweiterbarkeit
+% Lizenz
+% Continuous Integration and Continuous Delivery
+% Tests
 
 \section{Auswertung vorhandener Softwarelösungen}
 2018 verteilte sich mehr als 50\% des weltweiten Marktanteils an BI- und Geschäftsanalytiksoftware auf
@@ -206,6 +252,8 @@ die Plattformanbieter weiter an neuen Features für PWAs.
 
 \subsection{Skizzen der Benutzeroberfläche}
 % Wireframes
+
+% die agile Erstellung eines Datenflussdiagramms, welches die Daten aus den Datenquellen verarbeitet und den Dashboards zuweist.
 \subsection{Skizzen der Infrastruktur}
 
 % Wahl der Technologien, Tech-Stack?
