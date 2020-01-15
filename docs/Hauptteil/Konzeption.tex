@@ -45,8 +45,8 @@ benutzen? Dies kann sich je nach Betrieb unterscheiden. So können beispielsweis
 Managementebene aus über den Produktionsleiter bis hin zum Schichtarbeiter Benutzer mit dem
 Dashboard interagieren. Eines der Dashboards könnte an einem speziell für die Softwarelösung
 installierten Bildschirm in einer Produktionshalle angezeigt werden. Anderenfalls könnte aber
-auch der Produktionsleiter in der Mittagspause mit seinem Handy die aktuellen KPIs zu deutsch
-Leistungskennzahlen abrufen. Viele Produktionshallen besitzen alte Windows-Rechner, welche nicht
+auch der Produktionsleiter in der Mittagspause mit seinem Handy die aktuellen Leistungskennzahlen 
+(KPIs) abrufen. Viele Produktionshallen besitzen alte Windows-Rechner, welche nicht
 mit den neusten Browsern ausgestattet sind. Andere Betriebe besitzen Endgeräte mit Touchscreens.
 Fassen wir all diese möglichen Szenarien zusammen, wird uns eines sehr deutlich. Von der
 Softwarelösung wird eine gewisse Flexibilität abverlangt, die man nicht unterschätzen sollte.
@@ -73,7 +73,7 @@ bereitgestellt. Diese Anforderungen dienen zur Orientierung der System- und Soft
 Welche Anforderungen gibt es bei der Gestaltung der Anwendung oder noch spezieller 
 der grafischen Oberfläche zu beachten? Wie bereits in der Zielgruppenanalyse
 angemerkt, werden die verschiedensten Endgeräte auf die Software zugreifen.
-GBO Datacomp erwähnt in ihrem Informationsblatt die fokusierung auf folgende
+GBO Datacomp erwähnt in ihrem Informationsblatt die Fokussierung auf folgende
 drei Gerätetypen: Desktop-PCs, Tablets und Smartphones. Man kann also davon ausgehen, dass die
 Softwarelösung als Eingabeschnittstelle neben der Maus und der Tastatur auch einen Touchscreen
 berücksichtigen sollte. GBO Datacomp weißt speziell auf die unterschiedlichen Bildschirmgrößen
@@ -88,7 +88,7 @@ an Betriebssystemen laut einer Analyse vom Dezember 2019 wie folgt auf. Android 
 40,47\%, gefolgt von Windows mit 34,2\%, iOS mit 14,92\% und macOS mit 7,24\%. Linux und andere
 Betriebssysteme bilden hierbei eine Minderheit.\cite{StatCounterOSMarketShare} Betrachtet man den
 Nutzungsanteil der Browser im Oktober 2019 weltweit, führt Chrome mit 64,92\%, gefolgt von Safari mit 15,97\%,
-Firefox mit 4,33\%, Samsung Internet mit 3,29\%, der primär im asiatischen Bereich genutze Browser UC
+Firefox mit 4,33\%, Samsung Internet mit 3,29\%, der primär im asiatischen Bereich genutzte Browser UC
 mit 2,94\%, Opera mit 2,34\%, Edge mit 2,05\%, Internet Explorer mit 1,98\% und Sonstige.\cite{StatCounterBrowserMarketShare}
 Diese Kennzahlen geben einen groben Überblick über die aktuelle Lage des Marktes. Der Markt wird klar von
 Google und Microsoft Produkten dominiert. Allerdings variiert der Nutzungsanteil je nach Branche.
@@ -149,7 +149,7 @@ die Navigation durch die Software, die Suche nach Ressourcen in der Anwendungen
 sowie für die Möglichkeit, die Anwendung auch offline zu verwenden, erörtert.
 
 Was sind die Anforderungen für die Erstellung des agilen Dashboards? Wie bereits in dem
-vorigen Abschnitt über die grafische Benutzeroberfläche debatiert, sollte die Anwendung und
+vorigen Abschnitt über die grafische Benutzeroberfläche debattiert, sollte die Anwendung und
 so auch die Erstellung des Dashboards selbsterklärend sein. Daraus resultiert, dass die Anwendung 
 selbst das genaue Zentrieren der einzelnen Komponenten des Dashboards übernehmen sollte. Der
 Benutzer sollte in einem intuitiven Verfahren, einzelne Komponenten auswählen und diese
@@ -160,7 +160,7 @@ stetig anwachsen kann. Es soll also auch möglich sein, von einer großen Anzahl
 bequem eine passende Komponente zu finden und diese dann zu verwenden.
 
 Was sind die Anforderungen für das Laden der Daten in die Anwendung? Neben der Flexibilität,
-die im darauffolgenden Abschitt erörtert wird, sollte das Laden von Daten schnell und zuverlässig
+die im darauffolgenden Abschnitt erörtert wird, sollte das Laden von Daten schnell und zuverlässig
 sein. Typische Vorgehensweisen der Anwender sind das Auswerten von Maschinendaten. Dabei kann es
 sich um die Auslastung, Störfälle aber auch Ausfälle der Maschinen handeln. Es ist also sehr wichtig,
 das der Anwender rechtzeitig über Stör- und Ausfälle der Maschinen informiert wird. Unsere
@@ -168,7 +168,7 @@ Aufmerksamkeit gilt also auch der zeitnahen Aktualisierung der Daten in den Dash
 so kann sichergestellt werden, dass der Anwender auch zeitnah auf in den Daten erkenntliche
 Ereignisse reagieren kann. In Anlehnung dieser Feststellung liegt es nahe, den Benutzer
 über bestimmte Ereignisse per Benachrichtigung zu informieren. So könnte man beispielsweise
-eine Benachtichtigung auf das Smartphone des Benutzers schicken, sobald ein zuvor definierter
+eine Benachrichtigung auf das Smartphone des Benutzers schicken, sobald ein zuvor definierter
 Schwellwert überschritten wird.
 
 Welche Anforderungen sind für die Verarbeitung der Daten notwendig? Daten können Fehler oder Lücken
@@ -176,7 +176,7 @@ beinhalten. So kann in einer Spalte, die das ISO Datumsformat beinhalten, fälsc
 ungültiger Wert vorkommen oder dieser komplett fehlen. Zugegebenermaßen reicht es für einen MVP, ein
 minimal überlebensfähiges Produkt, aus, diese Unreinheiten so zu behandeln, dass die Anwendung
 eine informationsreiche Fehlerwarnung an den Benutzer überliefert oder alternativ einen Standartwert
-für fehlende Felder definitert.
+für fehlende Felder definiert.
 
 Wie werden die Dashboards mit den nötigen Daten versorgt? Grundsätzlich ist klar davon auszugehen,
 dass die Anwendung einen Zuweisungsmechanismus bereitstellt. Um von einer komplexeren, eingehenden
@@ -191,7 +191,7 @@ Sicherheit sollte in jeder Anwendung, welche mit Kundendaten interagiert, von gr
 Somit ist es naheliegend, dass für die heutigen IT-Sicherheitsstandards gesorgt werden sollte. Progressive
 Web Apps sind beispielsweise per Definition außerhalb der Entwicklung nur über HTTPS zu übertragen.\cite[S. 16]{KevinFrankPWAMasterarbeit}
 OWASP (Open Web Application Security Project) veröffentlichte 2017 einen Bericht über die zehn
-wichtisten Sicherheitsrisiken von Webanwendungen. Darunter sind unter anderem die Einschleusung
+wichtigsten Sicherheitsrisiken von Webanwendungen. Darunter sind unter anderem die Einschleusung
 von Quellcode durch mangelnde Maskierung, fehlerhafte Authentifizierungsverfahren, Preisgabe von sensiblen Daten,
 XSS-Attacken und Fehlkonfigurationen von Sicherheitseinstellungen.\cite[S. 4]{OWASPTopTen}
 Um die Kundendaten vor Angriffen zu schützen, liegt es nahe, dass diese Sicherheitsrisiken bei der
@@ -209,17 +209,17 @@ Ein Benutzer will einfach von einen Dashboard zu einem anderen gelanden können.
 einsehen, daraufhin an der Datenzuweisung arbeiten und dann beispielsweise die Dokumentation lesen können.
 Hierfür benötigt die Anwendung eine benutzerfreundliche Navigation. Ist die Anzahl der Ressourcen zu 
 groß, sollte die Anwendung einen automatischen Seitenumbruch einführen. Um die Suche nach speziellen
-Ressourcen zu erleichern, ist eine zentrale Suche erwünscht.
+Ressourcen zu erleichtern, ist eine zentrale Suche erwünscht.
 
 Zu allerletzt gilt es die Anforderungen an die Anwendung im Falle einer fehlenden Netzwerkverbindung
-zu erörtern. GBO Datacomp erleutert in ihrem Informationsblatt zu dieser Masterarbeit, dass der Benutzer
+zu erörtern. GBO Datacomp erläutert in ihrem Informationsblatt zu dieser Masterarbeit, dass der Benutzer
 die aktuell geladenen Daten auch offline verwenden können sollte. Dies sollte solang möglich sein,
 bis der Benutzer wieder Zugang zum Netzwerk erlangt. Bei Wiedererlangung der Netzwerkverbindung sollten
-die Daten automatisch aktuallisiert werden. Das An- und Abmelden muss über die Internetverbindung
+die Daten automatisch aktualisiert werden. Das An- und Abmelden muss über die Internetverbindung
 geschehen. Mozilla schreibt über die Obergrenze der Speicherkapazität der IndexedDB im Browser,
 dass diese dynamisch ist. Die Obergrenze werde durch verschiedene Faktoren wie dem freigegebenen
 Festplattenspeichervolumen und einer Obergrenze je Domain realisiert. Dabei kann die Domainspezifische
-Obergrenze von einem Minimum von 10 Megabyte bis zu einem Maximum von aktuall 2 Gigabyte reichen.\cite{MozillaStorageLimit}
+Obergrenze von einem Minimum von 10 Megabyte bis zu einem Maximum von aktuell 2 Gigabyte reichen.\cite{MozillaStorageLimit}
 Die Verwendung der Daten ohne Netzzugriff ist also bedingt möglich. Ist dies nicht möglich, gilt es
 eine Offline-Rückfallseite bereitzustellen.
 
