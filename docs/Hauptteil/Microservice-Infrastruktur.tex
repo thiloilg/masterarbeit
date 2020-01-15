@@ -18,13 +18,13 @@
 \subsection{Docker Compose Setup}
 
 \subsection{Health-Checks}
-In Microservice-Infrastrukturen sind die einzelnen Services eng miteinander verküpft
+In Microservice-Infrastrukturen sind die einzelnen Services eng miteinander verknüpft
 und voneinander abhängig. Um die Verfügbarkeit sicherzustellen, werden auf
 Serviceebene Healthcheckendpunkte bereitgestellt. Diese spiegeln den aktuellen
 Gesundheitszustand des jeweiligen Dienstes wieder. Ein Healthcheckendpunkt
 ist speziell dann nützlich, wenn ein Dienst oder ein Verfahren von einem anderen
 abhängig ist. So ist beispielsweise die Backendapi von der Datenbank
-abhängig. Andererseits ist der Frontenddiesnt sowie das Apitestverfahren
+abhängig. Andererseits ist der Frontenddienst sowie das Apitestverfahren
 in der Buildpipeline von der Backendapi abhängig. 
 
 \begin{listing}
