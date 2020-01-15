@@ -174,12 +174,29 @@ Schwellwert überschritten wird.
 
 Welche Anforderungen sind für die Verarbeitung der Daten notwendig? Daten können Fehler oder Lücken
 beinhalten. So kann in einer Spalte, die das ISO Datumsformat beinhalten, fälschlicherweise ein
-ungültiger Wert vorkommen oder dieser komplett fehlen. Solche Unreinheiten der Daten sollten die
-Anwendung nicht zum Abstürzen bringen.
+ungültiger Wert vorkommen oder dieser komplett fehlen. Zugegebenermaßen reicht es für einen MVP, ein
+minimal überlebensfähiges Produkt, aus, diese Unreinheiten so zu behandeln, dass die Anwendung
+eine informationsreiche Fehlerwarnung an den Benutzer überliefert oder alternativ einen Standartwert
+für fehlende Felder definitert.
 
+Wie werden die Dashboards mit den nötigen Daten versorgt? Grundsätzlich ist klar davon auszugehen,
+dass die Anwendung einen Zuweisungsmechanismus bereitstellt. Um von einer komplexeren, eingehenden
+Datenstruktur zu einer für die Visualisierung geeigneten Datenstruktur zu kommen, müssen die gewollten
+Daten ausgewählt und zugewiesen werden. Dem Benutzer selbst sollte ein, ähnlich wie bei der Erstellung
+des Dashboards, agiler Prozess zur Zuweisung der Daten ermöglicht werden. Ein Benutzer will auf einem
+Dashboard unterschiedliche Quellen von Daten vergleichen können. Somit muss die Möglichkeit bestehen,
+unterschiedliche Zuweisungen für die Diagramme eines Dashboards zu tätigen.
 
-Desweiteren sollte die Anwendung möglichst viele verschiedene
-
+Anschließend werden die Anforderungen für die Benutzerauthentifizierung und die Rechteverwaltung erörtert.
+Sicherheit sollte in jeder Anwendung, welche mit Kundendaten interagiert, von großer Bedeutung sein.
+Somit ist es naheliegend, dass für die heutigen IT-Sicherheitsstandards gesorgt werden sollte. Progressive
+Web Apps sind beispielsweise per Definition außerhalb der Entwicklung nur über HTTPS zu übertragen.\cite[S. 16]{KevinFrankPWAMasterarbeit}
+OWASP (Open Web Application Security Project) veröffentlichte 2017 einen Bericht über die zehn
+wichtisten Sicherheitsrisiken von Webanwendungen. Darunter sind unter anderem die Einschleusung
+von Quellcode durch mangelnde Maskierung, fehlerhafte Authentifizierungsverfahren, Preisgabe von sensiblen Daten,
+XSS-Attacken und Fehlkonfigurationen von Sicherheitseinstellungen.\cite[S. 4]{OWASPTopTen}
+Um die Kundendaten vor Angriffen zu schützen, liegt es nahe, diese Sicherheitsrisiken bei der
+Entwicklung der Anwendung beachtet werden müssen. 
 
 \subsection{Flexibilität}
 % Anforderungen an die Flexibilität der Datenquellen
