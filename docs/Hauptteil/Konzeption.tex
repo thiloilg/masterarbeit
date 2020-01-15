@@ -145,9 +145,8 @@ Zu guter Letzt muss noch definiert werden, welche Daten in welchem Dashboard ver
 werden sollten. Diese vier Funktionalitäten sind der Kern der Anwendung. In diesem Abschnitt
 werden zuerst die Anforderungen der Kernfunktionalitäten genauer analysiert. Daraufhin werden die Anforderungen
 für die Authentifizierung der Benutzer, die Rechteverwaltung, die Auswahl der Sprache,
-die Navigation durch die Software, die Suche nach Ressourcen in der Anwendung, einfaches
-Erstellen von Informationsseiten sowie für die Möglichkeit, die Anwendung auch offline
-zu verwenden, erörtert.
+die Navigation durch die Software, die Suche nach Ressourcen in der Anwendungen
+sowie für die Möglichkeit, die Anwendung auch offline zu verwenden, erörtert.
 
 Was sind die Anforderungen für die Erstellung des agilen Dashboards? Wie bereits in dem
 vorigen Abschnitt über die grafische Benutzeroberfläche debatiert, sollte die Anwendung und
@@ -196,7 +195,36 @@ wichtisten Sicherheitsrisiken von Webanwendungen. Darunter sind unter anderem di
 von Quellcode durch mangelnde Maskierung, fehlerhafte Authentifizierungsverfahren, Preisgabe von sensiblen Daten,
 XSS-Attacken und Fehlkonfigurationen von Sicherheitseinstellungen.\cite[S. 4]{OWASPTopTen}
 Um die Kundendaten vor Angriffen zu schützen, liegt es nahe, dass diese Sicherheitsrisiken bei der
-Entwicklung der Anwendung beachtet werden müssen. 
+Entwicklung der Anwendung beachtet werden müssen. Zum Funktionsumfang sollte dazu gehören,
+dass ein Benutzer ein Konto sicher anlegen, sich anmelden, abmelden und sein Konto auch wieder
+löschen kann. Die Rechteverwaltung sollte sich laut GBO Datacomp vorerst auf die elementaren
+Grundeigenschaften konzentrieren.
+
+Da GBO Datacomp ihre Softwarelösungen auch an nicht deutschsprachige Kunden verkauft, ist es notwendig,
+die Anwendung multilingual zu gestalten. Die Funktionalität, die Sprache der Anwendung zu verändern,
+ist somit Teil der Anforderungen. Dabei sollte es selbstverständlich sein, dass ausgewählte Spracheinstellungen
+unabhängig von denen des Browsers persistiert werden können.
+
+Ein Benutzer will einfach von einen Dashboard zu einem anderen gelanden können. Er will kurz seine Profileinstellungen
+einsehen, daraufhin an der Datenzuweisung arbeiten und dann beispielsweise die Dokumentation lesen können.
+Hierfür benötigt die Anwendung eine benutzerfreundliche Navigation. Ist die Anzahl der Ressourcen zu 
+groß, sollte die Anwendung einen automatischen Seitenumbruch einführen. Um die Suche nach speziellen
+Ressourcen zu erleichern, ist eine zentrale Suche erwünscht.
+
+Zu allerletzt gilt es die Anforderungen an die Anwendung im Falle einer fehlenden Netzwerkverbindung
+zu erörtern. GBO Datacomp erleutert in ihrem Informationsblatt zu dieser Masterarbeit, dass der Benutzer
+die aktuell geladenen Daten auch offline verwenden können sollte. Dies sollte solang möglich sein,
+bis der Benutzer wieder Zugang zum Netzwerk erlangt. Bei Wiedererlangung der Netzwerkverbindung sollten
+die Daten automatisch aktuallisiert werden. Das An- und Abmelden muss über die Internetverbindung
+geschehen. Mozilla schreibt über die Obergrenze der Speicherkapazität der IndexedDB im Browser,
+dass diese dynamisch ist. Die Obergrenze werde durch verschiedene Faktoren wie dem freigegebenen
+Festplattenspeichervolumen und einer Obergrenze je Domain realisiert. Dabei kann die Domainspezifische
+Obergrenze von einem Minimum von 10 Megabyte bis zu einem Maximum von aktuall 2 Gigabyte reichen.\cite{MozillaStorageLimit}
+Die Verwendung der Daten ohne Netzzugriff ist also bedingt möglich. Ist dies nicht möglich, gilt es
+eine Offline-Rückfallseite bereitzustellen.
+
+In diesem Abschnitt wurden somit die Anforderungen an die Funktionalitäten der Software analysiert. Als
+nächstes werden die Anforderungen an die Flexibilität erörtert.
 
 \subsection{Flexibilität}
 % Anforderungen an die Flexibilität der Datenquellen
@@ -217,6 +245,7 @@ Entwicklung der Anwendung beachtet werden müssen.
 % Lizenz
 % Continuous Integration and Continuous Delivery
 % Tests
+% einfaches Erstellen von Informationsseiten
 
 \section{Auswertung vorhandener Softwarelösungen}
 2018 verteilte sich mehr als 50\% des weltweiten Marktanteils an BI- und Geschäftsanalytiksoftware auf
