@@ -3,35 +3,26 @@
 
 Zur Erstellung des Konzepts gilt es mehrere Aspekte im Voraus genauer zu betrachten.
 Dabei wird als erstes in \Cref{sec:weristmeinezielgruppe} die Zielgruppe der Softwarelösung analysiert. Daraufhin
-werden vier Aspekte der Anforderungsanalyse an die Software erörtert. Als
-erstes geht es um die Anforderungen an die Gestaltung der Software. Hierbei liegt der Fokus auf
-der grafischen Oberfläche. Als zweites werden die Anforderungen an die Funktionalität der
-Software diskutiert. Hierbei werden mögliche Vorgehensweisen der Benutzer betrachtet, anhand derer
-dann Anforderungen an die Funktionalität der Software gestellt werden. Als drittes werden die 
-Anforderungen an die Flexibilität der Software gestellt. Im Unterschied zu den Anforderungen
-an die Funktionalität liegt hier ein besonderer Fokus auf der Vielfalt bestimmter Funktionalitäten.
-Dabei stellt sich die Frage, wie flexibel die Software in Bezug auf die zu analysierenden Daten
-und derer Visualisierung sein muss. Als viertes werden die Anforderungen an die Codebasis gestellt.
-Hier geht es um die bedeutsame Qualitäten der Software. Es stellt sich die Frage, wie es mit den
-Anforderungen an die Weiterverwendbarkeit sowie die Veränderbarkeit der Software aussieht.
-
-Nach der Anforderungsanalyse gilt es die aktuelle Lage des Marktes zu analysieren. Tools im Bereich der
-Geschäftsanalytik gibt es viele. \cite{WikiBISoftware} Was zeichnen diese Softwarelösungen aus? Mit welchen
-Merkmalen kann man sich von vorhandenen Lösungen bewusst unterscheiden? Diese Fragen werden in dem Abschnitt
-"Auswertung vorhandener Software" behandelt.
-
-Der Abschnitt vier und fünf der Konzeption beschäftigt sich mit der Analyse zweier für die Arbeit
-relevanter Technologien. Als erstes wird hier die Frage der Art der
-Frontendapplikation behandelt. Dabei werden folgende Fragen beantwortet: Was ist eine
-Progressive Web App und macht diese im Kontext der Benutzeranforderungen sinn?
-Was sind Vor- und Nachteile gegenüber nativer Apps? Wie sieht es mit der
-unterstützung der Plattformen aus? Als zweites werden folgende Fragen zur 
-
-Wie könnte die Serverinfrastruktur aussehen? Was für Komponenten beinhaltet sie? Welche Eigenschaften
-stellt die Infrastruktur bereit? Mit was für einer Verarbeitungsmenge muss man rechnen? Wie sieht
-es mit der Skalierbarkeit der einzelnen Server aus?
+wird in \Cref{sec:anforderungsanalyse} die Anforderungsanalyse der vier Aspekte; Gestaltung, Funktionalität,
+Flexibilität und Codebasis behandelt. Nach der Anforderungsanalyse gilt es
+in \Cref{sec:auswertungvorhandenersoftwareloesungen} die aktuelle Lage
+des Marktes zu analysieren. Tools im Bereich der Geschäftsanalytik gibt es viele. \cite{WikiBISoftware}
+Was zeichnet diese Softwarelösungen aus? Mit welchen Merkmalen kann man sich von vorhandenen Lösungen
+bewusst unterscheiden? In \Cref{sec:progressivewebapp} und \ref{sec:microservices} beschäftigt
+sich die Arbeit mit der Analyse zweier für die Softwarelösung relevanter Technologien.
+Bei der ersten Technologie handelt es sich um eine Progressive Web App. Hier gilt es folgende
+Fragen zu beantworten: Was ist eine Progressive Web App und macht diese 
+im Kontext der Benutzeranforderungen sinn? Was sind Vor- und Nachteile gegenüber nativer Apps?
+Wie sieht es mit der Unterstützung der Plattformen aus? Als zweites wird ein für die
+Serverinfrastruktur relevantes Architekturmuster als Lösungsansatz diskutiert. Hierbei
+stellen sich folgende Leitfragen: Was versteht man unter Microservices? Macht eine
+Microservice-Infrastruktur in Bezug auf die davor behandelten Anforderungen an die
+Softwarelösung sinn?
 
 Sind all diese Fragen beantwortet, kann ein Grundkonzept der Gesamtanwendung entwickelt werden.
+Hierbei werden in \Cref{sec:zielsetzung} die Ziele für die Softwarelösung gesetzt. In \Cref{sec:entwurf}
+werden daraufhin Entwürfe sowohl von der Benutzeroberfläche als auch von der Infrastruktur vorgestellt.
+Weitere Designentscheidungen werden in den folgenden Kapiteln debattiert.
 
 \section{Wer ist die Zielgruppe?}
 \label{sec:weristmeinezielgruppe}
@@ -65,6 +56,36 @@ Softwarelösung wird eine gewisse Flexibilität abverlangt, die nicht zu untersc
 
 \section{Anforderungsanalyse}
 \label{sec:anforderungsanalyse}
+
+
+
+
+
+
+
+
+
+
+erstes geht es um die Anforderungen an die Gestaltung der Software. Hierbei liegt der Fokus auf
+der grafischen Oberfläche. Als zweites werden die Anforderungen an die Funktionalität der
+Software diskutiert. Hierbei werden mögliche Vorgehensweisen der Benutzer betrachtet, anhand derer
+dann Anforderungen an die Funktionalität der Software gestellt werden. Als drittes werden die 
+Anforderungen an die Flexibilität der Software gestellt. Im Unterschied zu den Anforderungen
+an die Funktionalität liegt hier ein besonderer Fokus auf der Vielfalt bestimmter Funktionalitäten.
+Dabei stellt sich die Frage, wie flexibel die Software in Bezug auf die zu analysierenden Daten
+und derer Visualisierung sein muss. Als viertes werden die Anforderungen an die Codebasis gestellt.
+Hier geht es um die bedeutsame Qualitäten der Software. Es stellt sich die Frage, wie es mit den
+Anforderungen an die Weiterverwendbarkeit sowie die Veränderbarkeit der Software aussieht.
+
+
+
+
+
+
+
+
+
+
 In der Anforderungsanalyse soll es darum gehen, Anforderungen an die Software zu erkennen,
 diese zu erörtern und resultierende Anforderungen auszuwerten. Dabei werden die Anforderungen
 in fünf Rubriken unterteilt. Als erstes werden die Anforderungen an die Gestaltung der Anwendung
