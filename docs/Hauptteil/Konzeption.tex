@@ -12,12 +12,12 @@ bewusst unterscheiden? In \Cref{sec:progressivewebapp} und \ref{sec:microservice
 sich die Arbeit mit der Analyse zweier für die Softwarelösung relevanter Technologien.
 Bei der ersten Technologie handelt es sich um eine Progressive Web App. Hier gilt es folgende
 Fragen zu beantworten: Was ist eine Progressive Web App und macht diese 
-im Kontext der Benutzeranforderungen sinn? Was sind Vor- und Nachteile gegenüber nativer Apps?
+im Kontext der Benutzeranforderungen Sinn? Was sind Vor- und Nachteile gegenüber nativer Apps?
 Wie sieht es mit der Unterstützung der Plattformen aus? Als zweites wird ein für die
 Serverinfrastruktur relevantes Architekturmuster als Lösungsansatz diskutiert. Hierbei
 stellen sich folgende Leitfragen: Was versteht man unter Microservices? Macht eine
 Microservice-Infrastruktur in Bezug auf die davor behandelten Anforderungen an die
-Softwarelösung sinn?
+Softwarelösung Sinn?
 
 Sind all diese Fragen beantwortet, kann ein Grundkonzept der Gesamtanwendung entwickelt werden.
 Hierbei werden in \Cref{sec:zielsetzung} die Ziele für die Softwarelösung gesetzt. In \Cref{sec:entwurf}
@@ -237,21 +237,64 @@ nächstes werden die Anforderungen an die Flexibilität erörtert.
 
 \subsection{Flexibilität}
 \label{subsec:flexibilitaet}
-Was sind die Anforderungen an die Flexibilität der Software? Die Analyse der angeforderten Flexibilität
-der Software ist in zwei Bereiche unterteilt. Im ersten Bereich geht es um die Flexibilität im Umgang mit
-den Daten. Hier stellt sich die Frage, wie flexibel der Anschluss an die Datenquellen gestaltet werden soll?
-Im zweiten Bereich geht es um die Flexibilität der Visualisierungsmöglichkeiten. Hier werden die Anforderungen
-an die Flexibilität der Visualisierung der Daten anhand von Fallbeispielen erörtert.
+Was sind die Anforderungen an die Flexibilität der Software? Die Anforderungen lassen sich in zwei
+Bereiche gliedern. Im ersten Bereich geht es um die Flexibilität der Daten. Hierbei wird ein bestimmtes
+Augenmerk auf die Beschaffenheit der Datenquellen und der Daten selbst gelegt. Im zweiten Bereich
+wird die Anforderung in Bezug auf die Flexibilität der Visualisierung der Daten erörtert. Dabei werden
+zahlreiche Fallbeispiele durchleuchtet.
+
+Die Datenquelle ist wie bereits in \Cref{subsec:funktionalitaet} erwähnt von GBO Datacomp als REST Schnittstelle
+bereitgestellt. Über die API lassen sich Schichtdaten, Kennzahlen über die Gesamtanlageneffektivität, Arbeitsplätze
+sowie Arbeitsplatzgruppen abfragen. Ein typisches Szenario ist die Abfrage von aktuellen Schichtdaten eines bestimmten
+Arbeitsplatzes. Hierfür müssen zwei Aufrufe gegen die API durchgeführt werden. Zum einen muss ein Aufruf gegen die
+Arbeitsplätze gemacht werden. Einer der Arbeitsplätze muss ausgewählt werden, um damit die aktuellen Schichtdaten
+in Bezug auf diesen Arbeitsplatz zu erlangen. Um bestimmte Daten zu erhalten, benötigen wir also mehrere, aufeinanderfolgende
+Aufrufe gegen die API. Diese Aufrufe sind voneinander abhängig. Diese Erkenntnis ist für den späteren Gestaltungsprozess
+der Datenbeschaffung von großer Bedeutung.
+
+In einem Gespräch mit GBO Datacomp stellte sich folgendes heraus. GBO Datacomp liefert unterschiedliche Versionen ihrer
+Softwarelösungen an unterschiedliche Kunden aus. Dabei variiert auch die Datenstruktur und somit die Beschaffenheit der
+Schnittstelle. Diese Beschaffenheit ist essentiell für die Softwarearchitektur dieser Arbeit. Man kann davon ausgehen,
+dass GBO Datacomp ihre Softwarelösungen über die nächsten Jahre hinweg immer weiter verändern und anpassen wird.
+Es ist gut möglich, dass GBO Datacomp Softwarelösungen in Zukunft komplett austauschen wird. Anzunehmen,
+dass die Beschaffenheit der Schnittstelle unverändert bleibt, ist ein fataler Fehler. Nun gibt es zwei Optionen.
+Erstens: Man entwickelt für jede Änderung der Schnittstelle eine neue Version seiner Software. Alternativ:
+Die Information über die Beschaffenheit der Daten und somit der Schnittstelle kommt in die Datenbank und nicht in den
+Quellcode.
+
+Vergleicht man die zwei im vorherigen Absatz genannten Optionen anhand des Implementierungsaufwandes,
+kommt man auf folgendes Resultat: Auf kurze Sicht gewinnt die erste Option. Sie ist einfach zu implementieren.
+Man implementiert einfach die benötigten Aufrufe der Datenquelle in der geforderten Reihenfolge in seinen Quellcode.
+Möglicherweise fehlt noch ein bestimmter Aufruf, also fügt man diesen einfach hinzu.
+Option zwei ist um einiges schwerer zu implementieren. So muss man die Beschaffenheit sowie die Reihenfolge der Anfragen
+gegen die API in der Datenbank persistieren, diese auslesen und ausführen. Es ist gut möglich, dass die Daten zwischen den
+Anfragen verarbeitet werden müssen. Dieser Lösungsansatz fordert eine gut durchdachte Softwarearchitektur. Wie sieht es mit den
+zwei Optionen auf lange Sicht aus? Option zwei ist mit der Implementierung fertig. Die gut durchdachte Softwarearchitektur
+benötigt für folgende Änderungen der Schnittstelle nur einen neuen Datenbankeintrag. In Kontrast dazu steht Option eins.
+Hier muss für jede Änderung der Schnittstelle der Quellcode angepasst werden. Dies ist ein niemals endender Prozess.
+Der Implementierungsaufwand ist also unendlich.
+
+Eins gilt es bei dem zuvor durchgeführten Vergleich allerdings zu beachten. Beide Optionen haben ihre Daseinsberechtigung
+und machen je nach Situation auch durchaus Sinn. Es wäre falsch zu sagen, dass eine dieser beiden Optionen die richtige ist. Für einen
+Machbarkeitsnachweis \footnote[1]{In der Businesswelt spricht man hier oftmals von einem POC, also Proof of Concept}
+ist Option eins eine gültige Lösung. Will man hingegen ein langlebiges Produkt
+entwickeln, bei welchem die Kosten nicht ins Unendliche steigen, entscheidet man sich für Option zwei.
+
+
+
 
 % Anforderungen an die Flexibilität der Datenquellen
 % Unterschiedliche Datenquellen
 % der Datenquellen, der Datenart
 
+% Daten filterung
+
 % Visualisierung der Daten -> WICHTIG: VISUALISIERUNG DER DATEN
 % Anforderungen an die Visualisierung der Daten
 % Mögliche Veranschaulichung der Daten
 % Aktuelle Modelle: Measures and Dimensions
-% KPI
+% KPI 
+% Filterung der Daten
 
 \subsection{Codebasis}
 \label{subsec:codebasis}
