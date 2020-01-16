@@ -1,23 +1,40 @@
 \chapter{Microservice-Infrastruktur}
+\label{chap:microserviceinfrastruktur}
 
 \section{Monorepo und Submodules}
+\label{sec:monorepoundsubmodules}
 % Git submodules
 
 \section{Infrastruktur}
+\label{sec:infrastruktur}
+
 \subsection{Gitlab CE}
+\label{subsec:gitlabce}
 % Die Unabhängigkeit gegenüber einzelner Unternehmen
 \subsection{Gitlab Runner}
+\label{subsec:gitlabrunner}
+
 \subsection{Docker Registry}
+\label{subsec:dockerregistry}
+
 \subsection{Hetzner Cloud}
+\label{subsec:hetznercloud}
 
 \section{Pipeline Design}
+\label{sec:pipelinedesign}
+
 \subsection{Umgebungsvariablen}
+\label{subsec:umgebungsvariablen}
 
 \subsection{Stages}
+\label{subsec:stages}
 % Continuous Integration mit Gitlab
+
 \subsection{Docker Compose Setup}
+\label{subsec:dockercomposesetup}
 
 \subsection{Health-Checks}
+\label{subsec:healthcheck}
 In Microservice-Infrastrukturen sind die einzelnen Services eng miteinander verknüpft
 und voneinander abhängig. Um die Verfügbarkeit sicherzustellen, werden auf
 Serviceebene Healthcheckendpunkte bereitgestellt. Diese spiegeln den aktuellen
@@ -34,16 +51,23 @@ in der Buildpipeline von der Backendapi abhängig.
 \end{listing}
 
 \section{Reverse Proxy}
+\label{sec:reverseproxy}
 
 \section{Load Balancer}
+\label{sec:loadbalancer}
 
 \section{Inhaltsauslieferung}
+\label{sec:inhaltsauslieferung}
 
 \subsection{Kompression}
+\label{subsec:kompression}
+
 \subsection{CDN}
+\label{subsec:cdn}
 
 \section{Monitoring}
+\label{sec:monitoring}
 
 \section{Wartung}
+\label{sec:wartung}
 % clean up von server und docker setup
-
