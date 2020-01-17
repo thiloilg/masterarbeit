@@ -286,18 +286,24 @@ der Software bereitzustellen, verfolgt diese Arbeit den Ansatz aus Option zwei.
 Die Anforderungen an die Flexibilität der Software in Bezug auf die Kommunikation mit Schnittstellen wurde
 ausführlich diskutiert. Wie sieht es aber mit der Anforderung an die Flexibilität der Daten selbst aus?
 Die von GBO Datacomp bereitgestellte REST API ist mit einer Swagger Dokumentation basierend auf der
-OpenAPI-Specification 3.0 ausgestattet. Die Anfragen an die Ressourcen können mehrere Hierarchien an Werten beinhalten.
+OpenAPI-Specification 3.0 ausgestattet. Die Hierarchie einer Anfragen an eine Ressourcen kann mehrere Stufen von Objekten beinhalten.
 Bei der Anfrage an die OEE muss der Arbeitsplatz sowie eine Zeitspanne angegeben werden. Als Resultat bekommt man eine 
 in JSON formatierte Antwort. Auf der äußeren Ebene befindet sich ein Array, welches Objekte beinhaltet, die wieder ein
-Array und Objekte beinhalten. Analysiert man alle Antworten der bereitgestellten REST API anhand der Kardinalität,
+Array und Objekte beinhalten. Analysiert man die Antworten aller abzufragenden Routen der bereitgestellten REST API anhand der Kardinalität,
 kommt man auf folgendes Resultat: Die gefundenen Kardinalitäten beschränken sich auf \(1:1\) und \(1:N\). Dies macht auch
 durchaus Sinn, da ohne Verweise auf einzigartige Identifikatoren innerhalb der JSON Datenstruktur keine weiteren
-Kardinalitäten darstellbar sind.
+Kardinalitäten darstellbar sind.\footnote{Bei dieser Aussage werden untypische Implementationen, die ohne weitere Informationen nicht eindeutig zu verstehen sind, ausgeschlossen.}
+Daraus zu schlussfolgern, dass es keine \(N:N\)-Beziehungen geben wird, ist allerdings falsch.
+So können Ressourcen unterschiedlicher Abfragen untereinander durchaus \(N:N\)-Beziehungen beinhalten. Bei der Erstellung
+einer flexiblen Softwarelösung muss also eine mögliche \(N:N\)-Beziehungen unterhalb der durch die Abfragen erhaltenen
+Ressourcen berücksichtigt werden.
 
-Analysiert man die maximale Anzahl an Hierarchien der Antworten, 
-
-
-
+Als nächstes stellt sich die Frage nach der maximalen Anzahl an möglichen Stufen innerhalb einer angefragten Datenstruktur.
+\footnote{Die Anzahl der Stufen beschreibt hier die Tiefe eines JSON-Objektes.}
+Wenn man hierbei das ummantelnde Array einer Antwort bestehend aus mehreren Objekten als eine eigene Stufe zählt,
+kommt man auf maximal drei Stufen. Auch hier sollte allerdings klar sein, dass sich dies um Laufe der Zeit noch ändern kann.
+Somit ist auch hier auf eine Softwarelösung zu setzen, die flexibel auf eine größere Anzahl an Stufen in der Hierarchie der
+durch Datenstruktur reagiert.
 
 % Anforderungen an die Flexibilität der Datenquellen
 % Unterschiedliche Datenquellen
