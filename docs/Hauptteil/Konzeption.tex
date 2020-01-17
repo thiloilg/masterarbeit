@@ -101,7 +101,7 @@ Google und Microsoft Produkten dominiert. Allerdings variiert der Nutzungsanteil
 Um ein besseres Bild über die verwendeten Technologien möglicher Kunden zu erhalten,
 lohnt es sich ein Blick auf die Produkte von GBO Datacomp selbst zu werfen.
 BisoftMES, eines der zentralen Produkte von GBO Datacomp, "ist eine unter Microsoft.net
-entwickelte Maschinen- und Betriebsdatenerfassungssoftware".\footnote[1]{Aus dem BisoftMES Benutzerhandbuch\cite[S. 7]{BisoftMESHandbuch}}
+entwickelte Maschinen- und Betriebsdatenerfassungssoftware".\footnote{Aus dem BisoftMES Benutzerhandbuch\cite[S. 7]{BisoftMESHandbuch}}
 Es liegt nahe, dass auch die Bestandskunden von GBO Datacomp Produkte aus der Microsoft
 Produktpalette verwenden. Eine Unterstützung von Browsern wie Internet Explorer und Edge
 wäre daher wünschenswert.
@@ -112,8 +112,8 @@ werden kann. Beispiele dafür gibt es in der Softwareindustrie häufig. So kann 
 der Community Edition von Gitlab das Logo sowie das Farbschema der Anwendung in den Einstellungen
 anpassen.\cite{GitlabDocs}
 
-GBO Datacomp beschreibt in den Anforderungen konkret, dass die Benutzbarkeit der Software
-"ohne großen Schulungsaufwand" möglich sein soll. \cite{GBODatacompHandbuchDashboard}
+GBO Datacomp beschreibt in den Anforderungen des zu Beginn der Arbeit überreichten
+Informationsblattes konkret, dass die Benutzbarkeit der Software ohne großen Schulungsaufwand möglich sein soll.
 Dies steht im klaren Kontrast zu konkurrierenden Softwarelösungen im BI Sektor.
 So bietet QlikTech, ein führendes Unternehmen im Bereich Business Intelligence,
 weltweit Kurse für ihr Softwareprodukt Qlik Sense an. Die Kurse haben in der
@@ -238,16 +238,16 @@ nächstes werden die Anforderungen an die Flexibilität erörtert.
 \subsection{Flexibilität}
 \label{subsec:flexibilitaet}
 Was sind die Anforderungen an die Flexibilität der Software? Die Anforderungen lassen sich in zwei
-Bereiche gliedern. Im ersten Bereich geht es um die Flexibilität der Software in Bezug auf die der Daten. Hierbei wird ein bedeutsames
+Bereiche gliedern. Im ersten Bereich geht es um die Flexibilität der Software in Bezug auf die Daten. Hierbei wird ein bedeutsames
 Augenmerk auf den Umgang der Software mit der Beschaffenheit der Datenquellen und der Daten selbst gelegt. Im zweiten Bereich
 wird die Anforderung in Bezug auf die Flexibilität der Visualisierung der Daten erörtert. Dabei werden
 zahlreiche Fallbeispiele durchleuchtet.
 
 Die Datenquelle ist wie bereits in \Cref{subsec:funktionalitaet} erwähnt von GBO Datacomp als REST Schnittstelle
-bereitgestellt. Über die API lassen sich Schichtdaten, Kennzahlen über die Gesamtanlageneffektivität, Arbeitsplätze
+bereitgestellt. Über die API lassen sich Schichtdaten, Kennzahlen über die Gesamtanlageneffektivität (OEE), Arbeitsplätze
 sowie Arbeitsplatzgruppen abfragen. Ein typisches Szenario ist die Abfrage von aktuellen Schichtdaten eines bestimmten
 Arbeitsplatzes. Hierfür müssen zwei Aufrufe gegen die API durchgeführt werden. Zum einen muss ein Aufruf gegen die
-Arbeitsplätze gemacht werden. Einer der Arbeitsplätze muss ausgewählt werden, um damit die aktuellen Schichtdaten
+Arbeitsplätze durchgeführt werden. Einer der Arbeitsplätze muss ausgewählt werden, um damit die aktuellen Schichtdaten
 in Bezug auf diesen Arbeitsplatz zu erlangen. Um bestimmte Daten zu erhalten, benötigen wir also mehrere, aufeinanderfolgende
 Aufrufe gegen die API. Diese Aufrufe sind voneinander abhängig. Diese Erkenntnis ist für den späteren Gestaltungsprozess
 der Datenbeschaffung von großer Bedeutung.
@@ -257,35 +257,45 @@ Softwarelösungen an unterschiedliche Kunden aus. Dabei variiert auch die Datens
 Schnittstelle. Diese Beschaffenheit ist essentiell für die Softwarearchitektur dieser Arbeit. Man kann davon ausgehen,
 dass GBO Datacomp ihre Softwarelösungen über die nächsten Jahre hinweg immer weiter verändern und anpassen wird.
 Es ist gut möglich, dass GBO Datacomp Softwarelösungen in Zukunft komplett austauschen wird. Anzunehmen,
-dass die Beschaffenheit der Schnittstelle unverändert bleibt, ist ein fataler Fehler. Nun gibt es zwei Optionen.
-Erstens: Man entwickelt für jede Änderung der Schnittstelle eine neue Version seiner Software. Alternativ:
-Die Information über die Beschaffenheit der Daten und somit der Schnittstelle kommt in die Datenbank und nicht in den
+dass die Beschaffenheit der Schnittstelle unverändert bleibt, ist somit ein fataler Fehler. Nun gibt es zwei Optionen.
+Erstens: Man entwickelt für jede Änderung der Schnittstelle eine neue Version seiner Software. Zweitens:
+Die Information über die Beschaffenheit der Schnittstelle kommt in die Datenbank und nicht in den
 Quellcode.
 
 Vergleicht man die zwei im vorherigen Absatz genannten Optionen anhand des Implementierungsaufwandes,
 kommt man auf folgendes Resultat: Auf kurze Sicht gewinnt die erste Option. Sie ist einfach zu implementieren.
-Man implementiert die benötigten Aufrufe der Datenquelle in der geforderten Reihenfolge in seinen Quellcode.
+Man programmiert die benötigten Aufrufe der Datenquellen in der angeforderten Reihenfolge in den Quellcode.
 Möglicherweise fehlt noch ein bestimmter Aufruf, also fügt man diesen hinzu.
 Option zwei ist um einiges schwerer zu implementieren. So muss man die Beschaffenheit sowie die Reihenfolge der Anfragen
-gegen die API in der Datenbank persistieren, diese auslesen und ausführen. Es ist gut möglich, dass die Daten zwischen den
-Anfragen verarbeitet werden müssen. Dieser Lösungsansatz fordert eine gut durchdachte Softwarearchitektur. Wie sieht es mit den
-zwei Optionen auf lange Sicht aus? Option zwei ist mit der Implementierung fertig. Die gut durchdachte Softwarearchitektur
+gegen die API in der Datenbank persistieren, diese auslesen und ausführen. Es ist möglich, dass die Daten zwischen den
+Anfragen verarbeitet werden müssen. Dieser Lösungsansatz fordert eine durchdachte Softwarearchitektur. Wie sieht es mit den
+zwei Optionen auf lange Sicht aus? Option zwei ist mit der Implementierung fertig. Die Softwarearchitektur
 benötigt für folgende Änderungen der Schnittstelle nur einen neuen Datenbankeintrag. In Kontrast dazu steht Option eins.
 Hier muss für jede Änderung der Schnittstelle der Quellcode angepasst werden. Dies ist ein niemals endender Prozess.
 Der Implementierungsaufwand ist also unendlich.
 
 Eins gilt es bei dem zuvor durchgeführten Vergleich allerdings zu beachten. Beide Optionen haben ihre Daseinsberechtigung
 und machen je nach Situation auch durchaus Sinn. Es wäre falsch zu sagen, dass eine dieser beiden Optionen die richtige ist. Für einen
-Machbarkeitsnachweis \footnote[1]{In der Businesswelt spricht man hier oftmals von einem POC, also Proof of Concept}
+Machbarkeitsnachweis \footnote{In der Businesswelt spricht man hier oftmals von einem POC, also Proof of Concept}
 ist Option eins eine gültige Lösung. Wenn der Änderungsaufwand im Quellcode sehr gering ausfällt oder sich
-die Beschaffenheit der Schnittstelle nur sehr selten ändert, ist Option eins immernoch plausibel und eventuell
-kostengünstiger. 
-
-Will man hingegen ein langlebiges Produkt
-entwickeln, bei welchem die Kosten nicht ins Unendliche steigen, entscheidet man sich für Option zwei.
+die Beschaffenheit der Schnittstelle nur sehr selten ändert, ist Option eins plausibel und eventuell kostengünstiger.
+Aufgrund der oben genannte Fakten ist davon auszugehen, dass die Softwarelösung mit unterschiedlichen Schnittstellen arbeiten muss.
+Die Beschaffenheit der Schnittstellen kann sich stetig anpassen. Um diese Anforderung an die Flexibilität
+der Software bereitzustellen, verfolgt diese Arbeit den Ansatz aus Option zwei.
 
 Die Anforderungen an die Flexibilität der Software in Bezug auf die Kommunikation mit Schnittstellen wurde
 ausführlich diskutiert. Wie sieht es aber mit der Anforderung an die Flexibilität der Daten selbst aus?
+Die von GBO Datacomp bereitgestellte REST API ist mit einer Swagger Dokumentation basierend auf der
+OpenAPI-Specification 3.0 ausgestattet. Die Anfragen an die Ressourcen können mehrere Hierarchien an Werten beinhalten.
+Bei der Anfrage an die OEE muss der Arbeitsplatz sowie eine Zeitspanne angegeben werden. Als Resultat bekommt man eine 
+in JSON formatierte Antwort. Auf der äußeren Ebene befindet sich ein Array, welches Objekte beinhaltet, die wieder ein
+Array und Objekte beinhalten. Analysiert man alle Antworten der bereitgestellten REST API anhand der Kardinalität,
+kommt man auf folgendes Resultat: Die gefundenen Kardinalitäten beschränken sich auf \(1:1\) und \(1:N\). Dies macht auch
+durchaus Sinn, da ohne Verweise auf einzigartige Identifikatoren innerhalb der JSON Datenstruktur keine weiteren
+Kardinalitäten darstellbar sind.
+
+Analysiert man die maximale Anzahl an Hierarchien der Antworten, 
+
 
 
 
@@ -352,7 +362,7 @@ Progressive Web Apps als Alternative zur nativen App ermöglichen mehr Freiheit 
 Plattformanbieter. Sobald die Möglichkeit besteht, PWAs mit Hilfe einer vom Browser angesteuerten API
 auf dem Homescreen zu speichern, verliert der Plattformanbieter die Kontrolle,
 bestimmte PWAs zu verbieten. Dies ist bei nativen Apps nicht der fall. So löschte Apple in der Vergangenheit
-bereits große Mengen an Apps aus dem App Store.\footnote[1]{Laut Heise.de löschte Apple im Oktober 2016 rund 47.300 Apps aus dem App Store.\cite{HeiseAppleLoeschtApps}} 
+bereits große Mengen an Apps aus dem App Store.\footnote{Laut Heise.de löschte Apple im Oktober 2016 rund 47.300 Apps aus dem App Store.\cite{HeiseAppleLoeschtApps}} 
 Des weiteren verlieren die Plattformanbieter die Gewinnbeteiligung an App-, Abo- und Ingame-Verkäufen,
 da die Zahlungsabwicklung nun nicht mehr über den vom Plattformanbieter bereitgestellten App Store
 abgewickelt werden muss. Entwickler von Apps mussten in der Vergangenheit bis zu 30\% 
