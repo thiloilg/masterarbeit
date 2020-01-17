@@ -26,7 +26,7 @@ Weitere Designentscheidungen werden in den folgenden Kapiteln debattiert.
 
 \section{Wer ist die Zielgruppe?}
 \label{sec:weristmeinezielgruppe}
-Wer ist die Zielgruppe? Die in der Masterarbeit zu entwickelnde Softwarelösungen
+Die in der Masterarbeit zu entwickelnde Softwarelösungen
 soll den Bestandkunden von GBO Datacomp eine moderne Alternative geben, Daten 
 auf mobilen Endgeräten wie Tablets, Smartphones aber auch Desktop PCs auswerten zu können.
 Desweiteren muss die Software Neukunden ansprechen und zum Kauf überzeugen. GBO Datacomp
@@ -51,8 +51,6 @@ auch der Produktionsleiter in der Mittagspause mit seinem Handy die aktuellen Le
 mit den neusten Browsern ausgestattet sind. Andere Betriebe besitzen Endgeräte mit Touchscreens.
 Fassen wir all diese möglichen Szenarien zusammen, wird uns eines sehr deutlich. Von der
 Softwarelösung wird eine gewisse Flexibilität abverlangt, die nicht zu unterschätzen ist.
-
-% Collection Exploration Mugling Modeling Validation Reporting
 
 \section{Anforderungsanalyse}
 \label{sec:anforderungsanalyse}
@@ -153,8 +151,9 @@ Zu guter Letzt muss noch definiert werden, welche Daten in welchem Dashboard ver
 werden. Diese vier Funktionalitäten sind der Kern der Anwendung. In diesem Abschnitt
 werden zuerst die Anforderungen der Kernfunktionalitäten genauer analysiert. Daraufhin werden die Anforderungen
 für die Authentifizierung der Benutzer, die Rechteverwaltung, die Auswahl der Sprache,
-die Navigation durch die Software, die Suche nach Ressourcen in der Anwendungen
-sowie für die Möglichkeit, die Anwendung auch offline zu verwenden, erörtert.
+die Navigation durch die Software, die Suche nach Ressourcen in der Anwendungen,
+die Filterung der darzustellenden Daten im Dashboard sowie für die Möglichkeit,
+die Anwendung auch offline zu verwenden, erörtert.
 
 Was sind die Anforderungen für die Erstellung des agilen Dashboards? Wie bereits in dem
 vorigen Abschnitt über die grafische Benutzeroberfläche debattiert, muss die Anwendung und
@@ -219,6 +218,10 @@ einsehen, daraufhin an der Datenzuweisung arbeiten und dann die Dokumentation le
 Hierfür benötigt die Anwendung eine benutzerfreundliche Navigation. Ist die Anzahl der Ressourcen zu 
 groß, muss die Anwendung einen automatischen Seitenumbruch einführen. Um die Suche nach speziellen
 Ressourcen zu erleichtern, ist eine zentrale Suche erwünscht.
+
+In der aktuellen BisoftMES Softwarelösung von GBO Datacomp kann man die für die Anzeige relevanten Daten filtern.\cite[S. 14]{BisoftMESHandbuch}
+Es liegt nahe, dass diese Funktionalität auch bei einer webbasierten Anwendung von Benutzern erwartet wird. Die Möglichkeit, Daten
+anhand von Filterkriterien einzuschränken, ist somit Teil der Anforderung an die Funktionalität der Softwarelösung.
 
 Zu allerletzt gilt es die Anforderungen an die Anwendung im Falle einer fehlenden Netzwerkverbindung
 zu erörtern. GBO Datacomp erläutert in ihrem Informationsblatt zu der Masterarbeit, dass dem Benutzer
@@ -305,19 +308,11 @@ kommt man auf maximal drei Stufen. Auch hier sollte allerdings klar sein, dass s
 Somit ist auch hier auf eine Softwarelösung zu setzen, die flexibel auf eine größere Anzahl an Stufen in der Hierarchie der
 durch Datenstruktur reagiert.
 
-% Anforderungen an die Flexibilität der Datenquellen
-% Unterschiedliche Datenquellen
-% der Datenquellen, der Datenart
-
-% Daten filterung
-
 % Visualisierung der Daten -> WICHTIG: VISUALISIERUNG DER DATEN
 % Anforderungen an die Visualisierung der Daten
 % Mögliche Veranschaulichung der Daten
 % Aktuelle Modelle: Measures and Dimensions
 % KPI 
-% Filterung der Daten
-
 \subsection{Codebasis}
 \label{subsec:codebasis}
 % Anforderungen an die Codebasis
