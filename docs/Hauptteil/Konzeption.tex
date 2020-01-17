@@ -238,8 +238,8 @@ nächstes werden die Anforderungen an die Flexibilität erörtert.
 \subsection{Flexibilität}
 \label{subsec:flexibilitaet}
 Was sind die Anforderungen an die Flexibilität der Software? Die Anforderungen lassen sich in zwei
-Bereiche gliedern. Im ersten Bereich geht es um die Flexibilität der Daten. Hierbei wird ein bestimmtes
-Augenmerk auf die Beschaffenheit der Datenquellen und der Daten selbst gelegt. Im zweiten Bereich
+Bereiche gliedern. Im ersten Bereich geht es um die Flexibilität der Software in Bezug auf die der Daten. Hierbei wird ein bedeutsames
+Augenmerk auf den Umgang der Software mit der Beschaffenheit der Datenquellen und der Daten selbst gelegt. Im zweiten Bereich
 wird die Anforderung in Bezug auf die Flexibilität der Visualisierung der Daten erörtert. Dabei werden
 zahlreiche Fallbeispiele durchleuchtet.
 
@@ -264,8 +264,8 @@ Quellcode.
 
 Vergleicht man die zwei im vorherigen Absatz genannten Optionen anhand des Implementierungsaufwandes,
 kommt man auf folgendes Resultat: Auf kurze Sicht gewinnt die erste Option. Sie ist einfach zu implementieren.
-Man implementiert einfach die benötigten Aufrufe der Datenquelle in der geforderten Reihenfolge in seinen Quellcode.
-Möglicherweise fehlt noch ein bestimmter Aufruf, also fügt man diesen einfach hinzu.
+Man implementiert die benötigten Aufrufe der Datenquelle in der geforderten Reihenfolge in seinen Quellcode.
+Möglicherweise fehlt noch ein bestimmter Aufruf, also fügt man diesen hinzu.
 Option zwei ist um einiges schwerer zu implementieren. So muss man die Beschaffenheit sowie die Reihenfolge der Anfragen
 gegen die API in der Datenbank persistieren, diese auslesen und ausführen. Es ist gut möglich, dass die Daten zwischen den
 Anfragen verarbeitet werden müssen. Dieser Lösungsansatz fordert eine gut durchdachte Softwarearchitektur. Wie sieht es mit den
@@ -277,9 +277,15 @@ Der Implementierungsaufwand ist also unendlich.
 Eins gilt es bei dem zuvor durchgeführten Vergleich allerdings zu beachten. Beide Optionen haben ihre Daseinsberechtigung
 und machen je nach Situation auch durchaus Sinn. Es wäre falsch zu sagen, dass eine dieser beiden Optionen die richtige ist. Für einen
 Machbarkeitsnachweis \footnote[1]{In der Businesswelt spricht man hier oftmals von einem POC, also Proof of Concept}
-ist Option eins eine gültige Lösung. Will man hingegen ein langlebiges Produkt
+ist Option eins eine gültige Lösung. Wenn der Änderungsaufwand im Quellcode sehr gering ausfällt oder sich
+die Beschaffenheit der Schnittstelle nur sehr selten ändert, ist Option eins immernoch plausibel und eventuell
+kostengünstiger. 
+
+Will man hingegen ein langlebiges Produkt
 entwickeln, bei welchem die Kosten nicht ins Unendliche steigen, entscheidet man sich für Option zwei.
 
+Die Anforderungen an die Flexibilität der Software in Bezug auf die Kommunikation mit Schnittstellen wurde
+ausführlich diskutiert. Wie sieht es aber mit der Anforderung an die Flexibilität der Daten selbst aus?
 
 
 
