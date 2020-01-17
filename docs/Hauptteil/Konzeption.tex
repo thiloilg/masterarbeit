@@ -243,8 +243,7 @@ nächstes werden die Anforderungen an die Flexibilität erörtert.
 Was sind die Anforderungen an die Flexibilität der Software? Die Anforderungen lassen sich in zwei
 Bereiche gliedern. Im ersten Bereich geht es um die Flexibilität der Software in Bezug auf die Daten. Hierbei wird ein bedeutsames
 Augenmerk auf den Umgang der Software mit der Beschaffenheit der Datenquellen und der Daten selbst gelegt. Im zweiten Bereich
-wird die Anforderung in Bezug auf die Flexibilität der Visualisierung der Daten erörtert. Dabei werden
-zahlreiche Fallbeispiele durchleuchtet.
+wird die Anforderung in Bezug auf die Flexibilität der Visualisierung der Daten erörtert.
 
 Die Datenquelle ist wie bereits in \Cref{subsec:funktionalitaet} erwähnt von GBO Datacomp als REST Schnittstelle
 bereitgestellt. Über die API lassen sich Schichtdaten, Kennzahlen über die Gesamtanlageneffektivität (OEE), Arbeitsplätze
@@ -279,7 +278,7 @@ Der Implementierungsaufwand ist also unendlich.
 
 Eins gilt es bei dem zuvor durchgeführten Vergleich allerdings zu beachten. Beide Optionen haben ihre Daseinsberechtigung
 und machen je nach Situation auch durchaus Sinn. Es wäre falsch zu sagen, dass eine dieser beiden Optionen die richtige ist. Für einen
-Machbarkeitsnachweis \footnote{In der Businesswelt spricht man hier oftmals von einem POC, also Proof of Concept}
+Machbarkeitsnachweis \footnote{In der Businesswelt spricht man hier oftmals von einem POC (Proof of Concept).}
 ist Option eins eine gültige Lösung. Wenn der Änderungsaufwand im Quellcode sehr gering ausfällt oder sich
 die Beschaffenheit der Schnittstelle nur sehr selten ändert, ist Option eins plausibel und eventuell kostengünstiger.
 Aufgrund der oben genannte Fakten ist davon auszugehen, dass die Softwarelösung mit unterschiedlichen Schnittstellen arbeiten muss.
@@ -301,18 +300,31 @@ So können Ressourcen unterschiedlicher Abfragen untereinander durchaus \(N:N\)-
 einer flexiblen Softwarelösung muss also eine mögliche \(N:N\)-Beziehungen unterhalb der durch die Abfragen erhaltenen
 Ressourcen berücksichtigt werden.
 
-Als nächstes stellt sich die Frage nach der maximalen Anzahl an möglichen Stufen innerhalb einer angefragten Datenstruktur.
-\footnote{Die Anzahl der Stufen beschreibt hier die Tiefe eines JSON-Objektes.}
-Wenn man hierbei das ummantelnde Array einer Antwort bestehend aus mehreren Objekten als eine eigene Stufe zählt,
-kommt man auf maximal drei Stufen. Auch hier sollte allerdings klar sein, dass sich dies um Laufe der Zeit noch ändern kann.
-Somit ist auch hier auf eine Softwarelösung zu setzen, die flexibel auf eine größere Anzahl an Stufen in der Hierarchie der
-durch Datenstruktur reagiert.
+Bei einer Anfrage an einen Endpunkt der API, kann das zurückgelieferte JSON-Objekt verschiedene Tiefen aufweisen. 
+Um die Anforderung an die Flexibilität der Software in Bezug auf die Tiefe der zu verarbeitenden JSON-Objekte zu
+erörtern, muss die maximale Tiefe herausgefunden werden. Bei der bereitgestellten REST API beträgt die tiefste
+Hierarchie zwei Stufen. Ein ummantelndes Array was mehrere Objekte beinhaltet, welche wiederum ein Array mit Objekten
+beinhalten. Es ist auch hier davon auszugehen, dass sich die maximale Tiefe der Datenstruktur verändern kann.
+Die Software ist so flexibel zu gestalten, dass diese auch mit variablen Tiefen der JSON-Objekte umgehen kann.
+
+Als nächstes werfen wir einen Blick auf die Flexibilität in Bezug auf die Visualisierung der Daten. Wie flexibel
+muss die Visualisierung der Daten sein? Mit was für einer Vielfalt an Diagrammen ist zu rechnen? Wie sieht es
+mit dem stetigen Hinzufügen neuer Diagramme aus? In dem von GBO Datacomp ausgehändigten Informationsblatt
+werden einige Datenvisualisierungen aufgezeigt. Zu den bedeutsamsten Diagrammen gehören Balkendiagramme,
+Säulendiagramme, Liniendiagramme, Kreisdiagramme, Ringdiagramme sowie additive Diagramme. Desweiteren werden
+einzelne KPIs mit verschiedenen Visualisierungen dargestellt. So ändert sich die Farbe der OEE je nach
+Wert von grün über gelb bis hin zu rot. 
+
 
 % Visualisierung der Daten -> WICHTIG: VISUALISIERUNG DER DATEN
 % Anforderungen an die Visualisierung der Daten
 % Mögliche Veranschaulichung der Daten
 % Aktuelle Modelle: Measures and Dimensions
 % KPI 
+
+
+
+
 \subsection{Codebasis}
 \label{subsec:codebasis}
 % Anforderungen an die Codebasis
