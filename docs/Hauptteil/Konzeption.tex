@@ -313,20 +313,23 @@ mit dem stetigen Hinzufügen neuer Diagramme aus? In dem von GBO Datacomp ausgeh
 werden einige Datenvisualisierungen aufgezeigt. Zu den bedeutsamsten Diagrammen gehören Balkendiagramme,
 Säulendiagramme, Liniendiagramme, Kreisdiagramme, Ringdiagramme sowie additive Diagramme. Desweiteren werden
 einzelne KPIs mit verschiedenen Visualisierungen dargestellt. So ändert sich die Farbe der OEE je nach
-Wert von grün über gelb bis hin zu rot. 
-
-
-% Visualisierung der Daten -> WICHTIG: VISUALISIERUNG DER DATEN
-% Anforderungen an die Visualisierung der Daten
-% Mögliche Veranschaulichung der Daten
-% Aktuelle Modelle: Measures and Dimensions
-% KPI 
-
-
-
+Wert von grün über gelb bis hin zu rot. Aktuell verwendet GBO Datacomp für die Datenvisualisierung unter
+anderem Grafana \footnote{https://grafana.com/}, eine in Golang geschriebene Open Source Software, die zur Analyse
+und Überwachung von Daten verwendet werden kann. Gerade bei der Individualisierbarkeit der Visualisierung
+von Daten sind bei Grafana kaum Grenzen gesetzt. Versetzt man sich in die Sicht des Kunden, sind Feinjustierungen
+an dem Aussehen und der Darstellung der Diagramme von zweitrangiger Bedeutung. Wichtiger für ihn ist, dass
+er alle relevanten Daten klar strukturiert vor sich hat. Um die Anordnung der unterschiedlichen Diagramme
+zu gewährleisten, sollte ein robustes, selbsterklärendes Verfahren ausreichen. Die Flexibilität hingegen
+sollte sich eher auf die Erstellung neuer Diagramme richten. In der Regel wird der Kunde lieber aus einer
+großen Auswahl an Diagrammen ein passendes aussuchen wollen, als sich sein eigenes Diagramm zu gestalten.
+Das Ziel sollte sein, dem Kunden so viel Arbeit wie möglich abzunehmen. Dabei ist der Auslieferungsprozess
+von großer Bedeutung. Einzelne Diagramme müssen unabhängig von der Version der Gesamtanwendung auslieferbar
+sein. Somit kann auf Kundenwünsche schnell reagiert werden.
 
 \subsection{Codebasis}
 \label{subsec:codebasis}
+
+
 % Anforderungen an die Codebasis
 % Einstieg für andere Entwickler
 % Weiterverwendbarkeit und Erweiterbarkeit
