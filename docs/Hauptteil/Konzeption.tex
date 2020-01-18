@@ -317,22 +317,39 @@ Wert von grün über gelb bis hin zu rot. Aktuell verwendet GBO Datacomp für di
 anderem Grafana \footnote{https://grafana.com/}, eine in Golang geschriebene Open Source Software, die zur Analyse
 und Überwachung von Daten verwendet werden kann. Gerade bei der Individualisierbarkeit der Visualisierung
 von Daten sind bei Grafana kaum Grenzen gesetzt. Versetzt man sich in die Sicht des Kunden, sind Feinjustierungen
-an dem Aussehen und der Darstellung der Diagramme von zweitrangiger Bedeutung. Wichtiger für ihn ist, dass
-er alle relevanten Daten klar strukturiert vor sich hat. Um die Anordnung der unterschiedlichen Diagramme
-zu gewährleisten, reicht ein robustes, selbsterklärendes Verfahren aus. Die Flexibilität hingegen
-richtet sich auf die Erstellung neuer Diagramme. In der Regel wird der Kunde lieber aus einer
-großen Auswahl an Diagrammen ein passendes aussuchen wollen, als sich sein eigenes Diagramm zu gestalten.
-Das Ziel sollte sein, dem Kunden so viel Arbeit wie möglich abzunehmen. Dabei ist der Auslieferungsprozess
-von großer Bedeutung. Einzelne Diagramme müssen unabhängig von der Version der Gesamtanwendung auslieferbar
-sein. Somit kann auf Kundenwünsche schnell reagiert werden.
+an dem Aussehen und der Darstellung der Diagramme für den Kunden selbst von zweitrangiger Bedeutung.
+Wichtiger für den Kunden ist, dass er alle relevanten Daten klar strukturiert vor sich hat. Um die Anordnung
+der unterschiedlichen Diagramme zu gewährleisten, reicht ein robustes, selbsterklärendes Verfahren aus.
+Auf der anderen Seite ist auch genau das ein entscheidender Vorteil von Grafana. Gerade durch die
+Individualisierbarkeit in vielen bereichen der Funktionalität der Software, müssen Veränderungen nicht
+direkt in der Codebasis vorgenommen werden. Die Flexibilität dieser Arbeit soll sich jedoch auf die
+Erstellung neuer Diagramme konzentrieren. Grafana entkapselt bestimmte Teile der Logik der Software
+in ausgegliederte Plugins.\cite{GrafanaDeveloperGuide} Die Kosten für zukünftige Änderungen werden
+somit gering gehalten. Dieses Qualitätsmerkmal ist ausschlaggebend für eine langlebige Softwarelösung.
+
+Was können wir aus dem Fallbeispiel Grafana lernen? Eigene Logik sollte in austauschbare Komponenten
+ausgelagert werden. Konkret heißt das; die Datenvisualisierung muss von der Grundanwendung abstrahiert
+werden.
+
+In der Regel wird der Kunde lieber aus einer großen Auswahl an Diagrammen ein passendes aussuchen wollen,
+als sich sein eigenes Diagramm zu gestalten. Das Ziel sollte sein, dem Kunden so viel Arbeit wie möglich abzunehmen.
+Dabei ist der Auslieferungsprozess von großer Bedeutung. Einzelne Diagramme müssen unabhängig von der Version der
+Gesamtanwendung auslieferbar sein. Somit kann auf Kundenwünsche schnell reagiert werden.
 
 \subsection{Codebasis}
 \label{subsec:codebasis}
-Die Analyse der Anforderungen an die Codebasis ist in drei Bereiche einzuteilen. Als erstes gilt
-es die Anforderung an die Testabdeckung zu erörtern. Als zweites wird die Anforderung an die Weiterverwendbarkeit
-und als drittes an die Erweiterbarkeit untersucht.
+Die Analyse der Anforderungen an die Codebasis ist für die langlebigkeit der Software bedeutsam.
+Dabei soll es um die Anforderungen an die Tests, die stetige Auslieferung, \footnote{Bekannt als CD (Continuous Delivery)}
+den Einstieg und die Weiterverwendbarkeit, die Erweiterbarkeit und die Wartbarkeit der Software gehen. 
 
-Als erstes stellt sich die Frage, wie es mit den Anforderungen an die Testabdeckung aussieht. 
+Um die Anforderungen an die Tests zu erschließen, muss zuerst die Anforderung an die verschiedenen
+Arten von Tests gestellt werden. Dabei gibt es verschiedene Sichtweisen. Zum einen kann man aus
+Sicht des Benutzers testen, also bestimmte Funktionalitäten, die der Benutzer verwenden; desweiteren
+kann man aus Sicht der softwaretechnische Zusammenhänge testen; Zuletzt kann man aus der Sicht von
+Qualitätsmerkmalen der Software testen.\cite{WikiSoftwaretest}
+
+"Die Tests sind solange unzureichend, wie es Bedingungen gibt, die nicht von den Tests geprüft werden,
+oder Brechnungen, die nicht validiert werden." \cite[S. 370]{CleanCode}
 
 % Anforderungen an die Codebasis
 % Einstieg für andere Entwickler
@@ -341,6 +358,9 @@ Als erstes stellt sich die Frage, wie es mit den Anforderungen an die Testabdeck
 % Continuous Integration and Continuous Delivery
 % Tests
 % einfaches Erstellen von Informationsseiten
+% Wartbarkeit
+% Logging
+% Monitoring
 
 \section{Auswertung vorhandener Softwarelösungen}
 \label{sec:auswertungvorhandenersoftwareloesungen}
