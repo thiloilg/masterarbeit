@@ -373,6 +373,16 @@ Zu den zuvor als relevant definierten Testarten gilt die Aussage aus dem Buch Cl
 "Die Tests sind solange unzureichend, wie es Bedingungen gibt, die nicht von den Tests geprüft werden,
 oder Brechnungen, die nicht validiert werden." \cite[S. 370]{CleanCode}
 
+Um die Anwendung in einer realen Umgebung zu Testen, benötigt es die Methoden CI/CD\footnote{Continuous Integration und Continuous Delivery}
+zu praktizieren. Somit ist es möglich, eine Phase der Pipeline der Qualitätssicherung zu widmen.
+So können Product Owner die Software vor der Auslieferung nochmal überprüfen. Außerdem
+entlastet CI/CD den Rechner der Entwickler, da so die Tests automatisiert auf einem Server
+ausgeführt werden. Natürlich werden bestimmte Tests, wie beispielsweise Modultests, auch 
+lokal vor dem Einchecken neuer Softwareänderungen ausgeführt, aber eben nicht alle. Gerade
+bei einer Microservice-Infrastruktur sind Integrationtests und somit die Methoden CI/CD essentiell.
+
+
+
 % Anforderungen an die Codebasis
 % Einstieg für andere Entwickler
 % Weiterverwendbarkeit und Erweiterbarkeit
