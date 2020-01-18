@@ -365,13 +365,11 @@ Bei kleinen Problemen ist die Implementierung der Tests allerdings komplexer als
 Hier können Tests den Entwicklungsvorgang bremsen. Dies trifft speziell auf schnelllebige Teile der 
 Software zu. So macht es keinen Sinn, im Frontend eine GUI-Komponente zu testen, bei der man sich nicht sicher ist,
 ob man diese nicht innerhalb kürzester Zeit wieder verwürft. In Bezug auf die Anforderung an die Testabdeckung dieser Arbeit bedeutet das;
-Im Frontend sollten vorerst nur komplexe Problemstellungen getestet werden. Integrationstests für Services sind pflicht.
-
-Um abwägen zu können, wo Tests zwingend erforderlich und wo sie nicht notwendig sind
-
-
-
-
+Im Frontend sollten vorerst nur komplexe Problemstellungen getestet werden. Auf Integrationstests und Tests
+zu Qualitätsmerkmalen der Anwendung sollte großer Wert gelegt werden. Um die Softwarequalität kontinuierlich
+zu sichern, müssen die Tests in den automatisierten Softwareauslieferungsprozess eingebunden werden. 
+So sollte kein Merge auf den Master möglich sein, wenn nicht die CI-Pipeline fehlerfrei durchlaufen wurde.
+Zu den zuvor als relevant definierten Testarten gilt die Aussage aus dem Buch Clean Code von Robert C. Martin:
 "Die Tests sind solange unzureichend, wie es Bedingungen gibt, die nicht von den Tests geprüft werden,
 oder Brechnungen, die nicht validiert werden." \cite[S. 370]{CleanCode}
 
