@@ -353,7 +353,22 @@ Tests aus softwaretechnischer Sicht sind meistens Modul- und Integrationstests. 
 Kommunikation zwischen verschiedenen Teilen der Softwarearchitektur sichergestellt werden. Qualitätsmerkmale
 von Webseiten können mit Lighthouse, einem Open-Source Werkzeug von Google, getestet werden. \footnote{https://developers.google.com/web/tools/lighthouse}
 Lighthouse testet Performanz, Zugänglichkeit, optimale Vorgehensweisen, SEO und die Unterstützung
-des Funktionsumfangs von PWAs. 
+des Funktionsumfangs von PWAs.
+
+Wo sind Tests zwingend erforderlich und wo sind sie überflüssig? Um diese Frage zu beantworten, muss
+man die Vor- und Nachteile, die Tests mit sich bringen, abwägen. Was sind diese Vor- und Nachteile?
+Tests sind von grundaus essentiell für die Qualitätssicherung der Software. Allerdings bringen Sie auch
+einen Implementationsaufwand mit sich. Dieser ist bei dem Lösen von komplexen Problem um einiges kleiner
+als das Lösen des Problems selbst. Ein testgetriebener Ansatz kann sogar den Lösungsvorgang beschleunigen,
+da man sich die benötigte Funktionalität bei der Implementierung der Tests verdeutlicht.
+Bei kleinen Problemen ist die Implementierung der Tests allerdings komplexer als das Problem selbst.
+Hier können Tests den Entwicklungsvorgang bremsen. Dies trifft speziell auf schnelllebige Teile der 
+Software zu. So macht es keinen Sinn, im Frontend eine GUI-Komponente zu testen, bei der man sich nicht sicher ist,
+ob man diese nicht innerhalb kürzester Zeit wieder verwürft. In Bezug auf die Anforderung an die Testabdeckung dieser Arbeit bedeutet das;
+Im Frontend sollten vorerst nur komplexe Problemstellungen getestet werden. Integrationstests für Services sind pflicht.
+
+Um abwägen zu können, wo Tests zwingend erforderlich und wo sie nicht notwendig sind
+
 
 
 
