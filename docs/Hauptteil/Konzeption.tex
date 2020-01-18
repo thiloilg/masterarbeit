@@ -381,18 +381,26 @@ ausgeführt werden. Natürlich werden bestimmte Tests, wie beispielsweise Modult
 lokal vor dem Einchecken neuer Softwareänderungen ausgeführt, aber eben nicht alle. Gerade
 bei einer Microservice-Infrastruktur sind Integrationtests und somit die Methoden CI/CD essentiell.
 
+Der Einstieg für neue Entwickler sollte so unkompliziert wie möglich gestaltet sein. Um dem neuen
+Entwickler den Eintstieg in das Projekt zu erleichtern, sollte die Dokumentation gut gepflegt sein.
+Desweiteren ist das Aufsetzen des Projektes soweit zu automatisieren, dass mit so wenig Befehlen
+wie möglich die Entwicklungsumgebung zum Laufen gebracht werden kann. Hierbei spielen Technologien
+wie Docker und Docker-Compose eine bedeutsame Rolle. Docker ist eine Open-Source Software,
+die "...zur Isolierung von Anwendungen mit Containervirtualisierung verwendet wird". \cite{WikiDockerSoftware}
+So ermöglicht Docker, dass sich die Anwendung bei jedem Entwickler gleich verhält. Mit Docker-Compose
+kann man mehrere Services untereinander konfigurieren und automatisch in Betrieb nehmen.
 
+Die Erweiterbarkeit der Software ist nur durch eine gut durchdachte Softwarearchitektur erreichbar.
+So muss die Logik der Gesamtanwendung klar getrennt und Schnittstellen klar definiert werden. Es sollte
+immer damit zu rechnen sein, dass die einzelnen Komponenten, die die Gesamtsoftware bilden, jederzeit
+ausgetauscht werden können. Wird eine einzelne Komponente zu groß, muss diese anhand ihrer Logik in weitere
+Komponenten aufgeteilt werden. Es muss stetig damit gerechnet werden, dass neue Funktionalitäten im
+Laufe der Zeit hinzugefügt werden können.
 
-% Anforderungen an die Codebasis
-% Einstieg für andere Entwickler
-% Weiterverwendbarkeit und Erweiterbarkeit
-% Lizenz
-% Continuous Integration and Continuous Delivery
-% Tests
-% einfaches Erstellen von Informationsseiten
-% Wartbarkeit
-% Logging
-% Monitoring
+Für die Wartbarkeit der Software ist ein aussagekräftiges Logging in alle Services aufzunehmen.
+Damit die Entwickler bei auftauchenden Problemen schnell und effizient über die Ursache informiert werden,
+müssen mehrere Loglevel implementiert werden. Im falle einer Microservice-Infrastruktur sollte ein Überwachungssystem
+integriert werden, mithilfe dessen die einzelnen Services kontrolliert werden können.
 
 \section{Auswertung vorhandener Softwarelösungen}
 \label{sec:auswertungvorhandenersoftwareloesungen}
