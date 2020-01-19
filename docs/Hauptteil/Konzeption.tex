@@ -373,7 +373,7 @@ Zu den zuvor als relevant definierten Testarten gilt die Aussage aus dem Buch Cl
 "Die Tests sind solange unzureichend, wie es Bedingungen gibt, die nicht von den Tests geprüft werden,
 oder Brechnungen, die nicht validiert werden." \cite[S. 370]{CleanCode}
 
-Um die Anwendung in einer realen Umgebung zu Testen, benötigt es die Methoden CI/CD\footnote{Continuous Integration und Continuous Delivery}
+Um die Anwendung in einer realen Umgebung zu Testen, benötigt es die Methoden CI/CD
 zu praktizieren. Somit ist es möglich, eine Phase der Pipeline der Qualitätssicherung zu widmen.
 So können Product Owner die Software vor der Auslieferung nochmal überprüfen. Außerdem
 entlastet CI/CD den Rechner der Entwickler, da so die Tests automatisiert auf einem Server
@@ -404,24 +404,54 @@ integriert werden, mithilfe dessen die einzelnen Services kontrolliert werden k�
 
 \section{Auswertung vorhandener Softwarelösungen}
 \label{sec:auswertungvorhandenersoftwareloesungen}
-2018 verteilte sich mehr als 50\% des weltweiten Marktanteils an BI- und Geschäftsanalytiksoftware auf
-zehn Anbieter. Den größten Marktanteil besitzt Microsoft mit 10,6\%, gefolgt von SAP, IBM, SAS, Oracle,
-Tableau Software und Qlik.\cite{StatistaMarketshareBI}
-In dieser Arbeit werden drei Softwarelösungen analysiert und ausgewertet, darunter Power BI Desktop von
-Microsoft, Qlik Sense von Qlik und Tableau von Tableau Software. Die Auswahl der drei Softwarelösungen
-basiert auf dem Marktanteil des Anbieters und der zu Verfügung stehenden Literatur. Alle diese 
-Anwendungen ermöglichen die Erkundung, Bereinigung und Auswertung von Daten. Was aber unterscheidet
-die Anwendungen von einander? Wo liegen ihre Stärken und Schwächen? Welche von den zuvor genannten
-Anforderungen werden von den Marktführern erfüllt?
+Um einen besseren Überblick über Softwarelösungen im Bereich der Geschäftsanalytik zu erhalten, beschäftigt sich
+die Arbeit im folgenden Abschnitt mit drei etablierten Softwarelösungen; Power BI von
+Microsoft, Qlik Sense von QlikTech und Tableau von Tableau Software. Alle diese drei Anwendungen sind Werkzeuge,
+die dabei helfen, Wissen aus Daten zu entnehmen. Bei der Auswertung der Softwarelösungen soll der Fokus auf dem Laden
+von Daten aus Datenquellen, der Aufbereitung der Daten, der Datenmodellierung sowie der Erstellung von Dashboards liegen.
 
 \subsection{Power BI Desktop}
 \label{subsec:powerbidesktop}
+Microsoft beschreibt ihr Produkt Power BI Desktop wie folgt: "Power BI Desktop ist eine kostenlose Anwendung,
+die Sie auf Ihrem lokalen Computer installieren können und die es Ihnen ermöglicht, eine Verbindung mit Ihren
+Daten herzustellen und diese zu transformieren und zu visualisieren."\cite{MicrosoftPowerBIDesktopDocs}
+Power BI Desktop ist eines der Produkte von Power BI. Desweitere bietet Power BI einen cloudbasierten Power BI Dienst
+sowie eine native App an.\cite{WikiPowerBI}
 
-% Wie hat es Power BI gelöst
+Als erstes gilt es, das Laden von Daten in Power BI Desktop auszuwerten. Mit Power BI Desktop kann man 
+Daten aus Dateien, aus Datenbanken sowie aus cloudbasierten Diensten laden. Eine weitere Option zum Laden 
+von Daten, das DirektQuery, wird in dem Buch von Adam Aspin, Pro Power BI Desktop, erwähnt. 
+Hierbei handelt es sich, anders als bei den zuvor genannten Möglichkeiten, um das direkte
+Abfragen von Daten gegen eine Datenquelle, ohne die Daten zuvor alle in die Anwendung zu laden.\cite[S. 111]{ProPowerBIDesktop}
+Diese Art des Ladens wurde von den Entwicklern von Power BI unter anderem eingeschlagen,
+um das initiale Laden der Daten in das In-Memory-Model zu umgehen. Gerade bei großen Data Warehouses
+kann sich dies mitunter unvorteilhaft auf die Performanz auswirken.
+
+Eine weitere, für die Arbeit relevante Frage, ist, wie komplexe Datenstrukturen wie multidimensionale JSON-Dateien
+in die anwendungseigene Datenstruktur übersiedelt werden. Hierfür bietet der Power BI Kosmos eine extra Software
+namens Power Query. Es wäre falsch mit hundertprozentiger Sicherheit zu behaupten, dass Power BI in der
+anwendungseigenen Datenstruktur ein relationales Datenbankmodell verwendet. Befasst man sich mit der Art
+der Datenmodellierung, wie der Erstellung von Beziehungen zwischen Tabellen, verschwindet jedoch jedweder Zweifel. \cite[S. 319]{ProPowerBIDesktop}
+Somit ist davon auszugehen, dass Power Query die zu importierenden Datenstrukturen in ein relationales Datenbankmodell
+konvertiert. Eine mehrdimensionale JSON-Datei wird somit in eine eindimensionale Tabelle konvertiert.
+Hierfür benötigt man die hauseigene Formelsprache Power Query M. "Power Query M ist eine funktionale Sprache,
+die Groß-/Kleinschreibung beachtet und F\# ähnlich ist."\cite{MicrosoftDocsPowerQueryFormelsprache}
+
+Eine interessante, neue Funktionalität im cloudbasierten Power BI Dienst ist die Self-Service-Datenaufbereitung,
+bekannt als Dataflow. Mit Dataflows können ETL-Prozesse\footnote{ETL steht für das Extrahieren, Transformieren und Laden von Daten}
+unkompliziert innerhalb des Power BI Kosmos bewerkstelligt werden. Ein automatisierter Datenfluss,
+der die Daten in eine für die Visualisierung einheitliche Struktur vorbereitet, wird auch in dieser
+Arbeit notwendig sein.
+
+Bei der Erstellung eines Dashboards in Power BI, zieht man zuerst ein Diagrammtyp wie ein Kuchendiagram
+auf den weißen Untergrund. Als zweiten Schritt weißt man ebenfalls per Drag and Drop dem Kuchendiagram ein
+Datenfeld zu. Fährt man mit der Maus an die Ränder eines Diagramms, kann man dieses in eine beliebige Größe
+ziehen. Alles in allem ist das Erstellen von Dashboards in Power BI Desktop ein sehr intuitives,
+benutzerfreundliches Verfahren.
 
 \subsection{Qlik Sense}
 \label{subsec:qliksense}
-% Wie hat es Qlik Sense gelöst
+Qlik Sense 
 
 \subsection{Tableau}
 \label{subsec:tableau}
