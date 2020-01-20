@@ -451,10 +451,29 @@ benutzerfreundliches Verfahren.
 
 \subsection{Qlik Sense}
 \label{subsec:qliksense}
-Qlik Sense ist eine Software zur Entdeckung von Beziehungen, dem Analysieren sowie dem Visualisieren von Daten.\cite[S. 1]{QlikSenseCookbook}
+Das Laden von Daten ist bei Qlik Sense von Dateien, Datenbanken, Webseiten, FTP-Servern sowie von einer
+REST Schnittstelle möglich. Bei dem Laden der Daten von einer Webseite, wird die Seite nach einer Tabelle
+durchsucht und diese als Datenquelle verwendet.\cite[S. 17]{QlikSenseCookbook} Für das Laden von Daten von
+einer REST API, bietet Qlik Sense einen sogenannten REST Connector an. Dieser kann sowohl das JSON- als auch
+das XML-Format verarbeiten. In den Settings des REST Connectors können neben der URL auch ein
+Authentifizierungsschema ausgewählt werden.\cite[S. 23]{QlikSenseCookbook} Somit ist es möglich,
+eine API zu verwenden, bei der eine JWT-Authentifizierung vorausgesetzt ist. Wie in \Cref{subsec:gestaltung}
+bereits erwähnt, bestitzt Qlik Sense eine eigene SQL ähnliche Skriptsprache. Im Data Load Editor
+können mithilfe dieses Scripts Bearer-Token als Authorization Header gesetzt werden. Dies macht Qlik
+Sense in der Nutzung externer APIs sehr flexibel.
+
+Als nächstes werfen wir einen Blick auf die Aufbereitung der Daten. Nach der Auswahl einer Datenquelle
+erstellt Qlik Sense ein vorgefertigtes Script im Data Load Editor. Dies gilt primär als Orientierungspunkt
+und kann je nach Belieben angepasst werden. Genauso wie Power BI benutzt auch Qlik Sense ein relationales
+Datenbankmodell zur Datenmodellierung innerhalb der Anwendung. Im Data Load Editor wird so innerhalb des
+Scripts ein JSON auch eine Tabelle aufgeteilt. Der Bereich zur Datenmodellierung ist der Data Model Viewer.
+Hier werden mithilfe eines Kraftgerichteten Graphs die Beziehungen zwischen den unterschiedlichen
+Tabellen verdeutlicht. 
 
 \subsection{Tableau}
 \label{subsec:tableau}
+
+
 % Wie hat es Tableau gelöst
 
 \section{Progressive Web App}
