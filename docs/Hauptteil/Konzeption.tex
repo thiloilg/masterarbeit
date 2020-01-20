@@ -451,6 +451,7 @@ benutzerfreundliches Verfahren.
 
 \subsection{Qlik Sense}
 \label{subsec:qliksense}
+Als nächstes werfen wir einen Blick auf die Softwarelösung Qlik Sense.
 Das Laden von Daten ist bei Qlik Sense von Dateien, Datenbanken, Webseiten, FTP-Servern sowie von einer
 REST Schnittstelle möglich. Bei dem Laden der Daten von einer Webseite, wird die Seite nach einer Tabelle
 durchsucht und diese als Datenquelle verwendet.\cite[S. 17]{QlikSenseCookbook} Für das Laden von Daten von
@@ -490,7 +491,23 @@ auf die verschiedenen Achsen der Diagramme vereinfacht.
 
 \subsection{Tableau}
 \label{subsec:tableau}
+In diesen Abschnitt gilt es Tableau genauer zu betrachten. Tableau besitzt wie auch Power BI und Qlik
+eine Infrastruktur an unterschiedlichen Diensten. So gibt es Tableau Desktop, das Equivalent zu Power BI
+Desktop, einen Tableau Server sowie native Apps. Bei der Datenbeschaffung bietet Tableau Desktop wie auch
+Power BI und Qlik Sense, neben dem Laden von lokalen Dateien und diversen spezifischen Datenbankschnittstellen,
+das Laden aus Datenbanken mit einer gängigen ODBC-Schnittstelle an. Daten können in Echtzeit
+über SQL-Statements abgefragt werden. Alternativ werden die Daten auf dem Betriebsystem, auf dem
+Tableau Desktop verwendet wird, persistiert und mithilfe der eigenen Data Engine agil aus dem
+vorgeladenen Arbeitsspeicher geladen.\cite[S. 50]{ProTableauBook}
 
+Tableau besitzt für die Aufbereitung der Daten Tableau Prep, ein Werkzeug zur Durchführung der
+ETL-Prozesse.\footnote{https://www.tableau.com/de-de/products/prep} Positiv ins Auge fällt einem
+in Tableau Prep das agile Vorgehen zur Erstellung eines Dataflows. Im sogenannten Data Prep Builder
+lassen sich per Drag and Drop Datenquellen sowie diverse Verarbeitungsmechanismen zu einem Programmablaufplan
+zusammensetzen. Verarbeitungsmechanismen sind SQL-Joins, verschiedene Mechanismen der Datenbereinigung,
+das Aufteilen und Zusammenfügen von Feldern sowie das Erzeugen von Pivot-Tabellen. Die einzelnen
+Verarbeitungsmechanismen werden in dem Buch Prepare Your Data for Tableau von Tim Costello und
+Lori Blackshear genauer beschrieben.\cite{PrepareYourDataForTableauBook}
 
 \section{Progressive Web App}
 \label{sec:progressivewebapp}
