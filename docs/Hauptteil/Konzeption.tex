@@ -541,21 +541,95 @@ bereits große Mengen an Apps aus dem App Store.\footnote{Laut Heise.de löschte
 Des weiteren verlieren die Plattformanbieter die Gewinnbeteiligung an App-, Abo- und Ingame-Verkäufen,
 da die Zahlungsabwicklung nun nicht mehr über den vom Plattformanbieter bereitgestellten App Store
 abgewickelt werden muss. Entwickler von Apps mussten in der Vergangenheit bis zu 30\% 
-ihrer Einnahmen abgeben. \cite{WinFutureEigenerAppStore} Nichtsdestotrotz arbeiten
-die Plattformanbieter weiter an neuen Features für PWAs.
+ihrer Einnahmen abgeben. \cite{WinFutureEigenerAppStore} Daher kann man davon ausgehen,
+dass Plattformanbieter ihren Fokus für neue Funktionalitäten primär ihren eigenen
+nativen Apps widmen werden. Nichtsdestotrotz hat sich in letzter Zeit einiges getan.
+Gerade die Bandbreite der Plattform- und Browseranbieter, die für PWAs relevante
+Funktionalitäten anbieten, ist in der Vergangenheit stark gestiegen. So außert sich der Artikel
+"Webdesign: So steht es um Progressive-Web-Apps im Jahr 2020" von Dieter Petereit,
+der am 20. Januar 2020 auf t3n.de veröffentlicht wurde, über die Unterstützung der PWAs wie folgt:
+"Immerhin 93 Prozent aller Nutzer im weltweiten Netz verwenden einen Browser, der vollen Support
+für PWA bietet. Installieren könnten PWA immerhin bereits rund 86 Prozent aller Nutzer. Auch
+die Zielplattform der Installation ist nahezu frei wählbar. Insbesondere funktioniert es
+unter Windows ab Version 7, macOS. Linux, Xbox One, Android, iOS, iPadOS und natürlich Chrome OS,
+allerdings nicht mit jedem Browser."\cite{T3NPWASupport} Aus technologischer Sicht sind die
+Anforderungen, die es benötigt, um eine PWA zu benutzten, also größtenteils gegeben.
+Aufgrund dessen davon auszugehen, dass PWAs native Apps ersetzen werden, ist allerdings
+falsch. Erst wenn Plattformanbieter einen Weg finden, finanziell von PWAs profitieren
+zu können, werden Funktionalitäten in dem Maße unterstützt werden, dass diese mit
+nativen Apps mithalten können. Der Schritt von einer SPA zu einer
+PWA ist allerdings ein leichter.\footnote{Wenn man sich auf die Hauptfunktionalitäten beschränkt.}
+Um die PWA auf dem Desktop speichern zu können, muss man nur eine Manifest Datei in
+das Stammverzeichnis des Webservers legen sowie einen Service Worker registrieren.
+Somit ist die Einstiegsebene für PWAs sehr gering. Gerade für Unternehmen,
+die bereits eine Webseite besitzen und nun dem Benutzer die Möglichkeit geben wollen,
+diese auf dem Homescreen zu speichern, offline zu verwenden und Benachrichtigung zu erhalten,
+ist eine PWA attraktiv. Ein Hauptkriterium für die Implementierung einer PWA ist, dass man bei der Entwicklung
+keine plattformspezifischen Lösungen beachten muss. Somit sind die Kosten für die Entwicklung um einiges
+geringer. Verfügt man allerdings über die finanziellen Mittel und legt seinen Schwerpunkt unter anderem
+auf mobile Endgeräte, macht es Sinn, neben einer aufgewerteten Webseite auch native Apps anzubieten.
 
-Laut einem am 20. Januar 2020 erschienen Artikel über PWAs in 2020
-% https://t3n.de/news/webdesign-steht-um-jahr-2020-1242754/
-
-% Vorteil für kleines Entwicklerteam, da eine Lösung für alles
+In diesem Abschnitt wurden Markmale wie das Speichern der Webseite auf dem Homescreen,
+die Offlinefähigkeit sowie die Möglichkeit, Benachrichtigungen zu versenden, kurz angesprochen.
+In den folgenden zwei Abschnitten wird es mehr ins Detail gehen. Dabei werden folgende
+zwei Fragen erörtert: Was sind die Merkmale einer PWA und welche Browser unterstützen
+welche dieser Merkmale?
 
 \subsection{Merkmale einer PWA}
 \label{subsec:markmaleeinerpwa}
+
+
 % Bestandteilanalyse
+
 
 \subsection{Unterstützter Funktionsumfang gängiger Browser}
 \label{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
 % PWA Feature Detection
+
+
+\begin{tabular}{l*{8}{c}}
+    PWA Merkmale & IE & Edge & Firefox & Chrome & Safari & Opera & \specialcell{iOS\\Safari} & \specialcell{Opera\\Mini} \\
+    \hline
+    Offline Capabilities    & 6 & 4 & 0 & 2 & 0 & 5 & 0 & 5 \\
+    Push Notifications	    & 6 & 3 & 0 & 3 & 8 & 9 & 0 & 5 \\
+    Add to Home Screen	    & 6 & 2 & 1 & 3 & 7 & 8 & 0 & 5 \\
+    Background Sync	        & 6 & 2 & 1 & 3 & 5 & 8 & 0 & 5 \\
+    Periodic Bg. Sync       & 6 & 2 & 1 & 3 & 5 & 8 & 0 & 5 \\
+    Background Fetch        & 6 & 2 & 1 & 3 & 5 & 8 & 0 & 5 \\
+    Navigation Preload	    & 6 & 2 & 1 & 3 & 5 & 8 & 0 & 5 \\
+    Persistent Storage	    & 6 & 2 & 1 & 3 & 5 & 8 & 0 & 5 \\
+    Web Share (Level 1)	    & 6 & 2 & 1 & 3 & 5 & 8 & 0 & 5 \\
+    Web Share (Level 2)     & 6 & 2 & 1 & 3 & 5 & 8 & 0 & 5 \\
+    Media Session           & 6 & 2 & 1 & 3 & 5 & 8 & 0 & 5 \\
+    Media Capabilities	    & 6 & 2 & 1 & 3 & 5 & 8 & 0 & 5 \\
+    Device Memory	        & 6 & 2 & 1 & 3 & 5 & 8 & 0 & 5 \\
+    Detect Native App       & 6 & 2 & 1 & 3 & 5 & 8 & 0 & 5 \\
+    Payment Request	        & 6 & 2 & 1 & 3 & 5 & 8 & 0 & 5 \\
+    Payment Handler	        & 6 & 2 & 1 & 3 & 5 & 8 & 0 & 5 \\
+    Credential Mgmt	        & 6 & 2 & 1 & 3 & 5 & 8 & 0 & 5 \\
+\end{tabular}
+
+\begin{tabular}{l*{6}{c}}
+    PWA Merkmale  & \specialcell{Android\\Browser} & \specialcell{Opera\\Mobile}  & \specialcell{Chrome\\Android} & \specialcell{Firefox\\Android} & \specialcell{UC Browser\\Android} & \specialcell{Samsung\\Internet} \\
+    \hline
+    Offline Capabilities    & 6 & 4 & 0 & 2 & 0 & 5 \\
+    Push Notifications	    & 6 & 3 & 0 & 3 & 8 & 9 \\
+    Add to Home Screen	    & 6 & 2 & 1 & 3 & 7 & 8 \\
+    Background Sync	        & 6 & 2 & 1 & 3 & 5 & 8 \\
+    Periodic Bg. Sync       & 6 & 2 & 1 & 3 & 5 & 8 \\
+    Background Fetch        & 6 & 2 & 1 & 3 & 5 & 8 \\
+    Navigation Preload	    & 6 & 2 & 1 & 3 & 5 & 8 \\
+    Persistent Storage	    & 6 & 2 & 1 & 3 & 5 & 8 \\
+    Web Share (Level 1)	    & 6 & 2 & 1 & 3 & 5 & 8 \\
+    Web Share (Level 2)     & 6 & 2 & 1 & 3 & 5 & 8 \\
+    Media Session           & 6 & 2 & 1 & 3 & 5 & 8 \\
+    Media Capabilities	    & 6 & 2 & 1 & 3 & 5 & 8 \\
+    Device Memory	        & 6 & 2 & 1 & 3 & 5 & 8 \\
+    Detect Native App       & 6 & 2 & 1 & 3 & 5 & 8 \\
+    Payment Request	        & 6 & 2 & 1 & 3 & 5 & 8 \\
+    Payment Handler	        & 6 & 2 & 1 & 3 & 5 & 8 \\
+    Credential Mgmt	        & 6 & 2 & 1 & 3 & 5 & 8 \\
+\end{tabular}
 
 \section{Microservices}
 \label{sec:microservices}
