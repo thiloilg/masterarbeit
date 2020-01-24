@@ -559,8 +559,9 @@ falsch. Erst wenn Plattformanbieter einen Weg finden, finanziell von PWAs profit
 zu können, werden die Funktionalitäten in einem Maße unterstützt, das ihnen die Möglichkeit
 gibt mit nativen Apps mithalten zu können. Der Schritt von einer SPA zu einer
 PWA ist allerdings ein leichter.\footnote{Wenn man sich auf die Hauptfunktionalitäten beschränkt.}
-Um die PWA auf dem Desktop speichern zu können, muss man nur eine Manifest Datei in
-das Stammverzeichnis des Webservers legen sowie einen Service Worker registrieren.
+Um die PWA auf dem Desktop speichern zu können, muss man ein Web App Manifest
+\footnote{Ein Beispiel für ein Web App Manifest befindet sich unter "Weitere Quellcodeausschnitte" in \Cref{sec:webappmanifest}.}
+in das Stammverzeichnis des Webservers legen sowie einen Service Worker registrieren.
 Somit ist die Einstiegsebene für PWAs sehr gering. Gerade für Unternehmen,
 die bereits eine Webseite besitzen und nun dem Benutzer die Möglichkeit geben wollen,
 diese auf dem Homescreen zu speichern, offline zu verwenden und Benachrichtigung zu erhalten,
@@ -588,9 +589,13 @@ Die Merkmale einer PWA haben sich also über die Jahre hinweg angesammelt. Was s
 nun diese Merkmale? Alex Russell erwähnt in seinem Blogpost dazu folgende Merkmale:
 Die PWA soll responsive, netzunabhängig sein, app-ähnliche Navigationsvorgänge bereitstellen,\footnote{Ohne Verwendung von Browser Tabs} 
 immer aktuell sein, über TLS ausgeliefert werden, durch Suchmaschinen als solche mithilfe
-des PWA Manifests auffindbar sein, Plattformspezifische Funktionalitäten wie Push-Notifications
+des Web App Manifests auffindbar sein, Plattformspezifische Funktionalitäten wie Push-Notifications
 verwenden, auf dem Homescreen installierbar, über Hyperlinks teilbar sowie ohne aufwendigen
-Installationsprozess verwendbar sein.\cite{PWA2015} 
+Installationsprozess verwendbar sein.\cite{PWA2015} Eine 2018 veröffentlichte, wissenschaftliche
+Arbeit von Thomas Steiner über die Analyse von PWA-Merkmalen innerhalb eines WebViews\footnote{Ein Web View ist ein in einer nativen App eingebetteter Browser zur Darstellung von Webinhalten.}
+benennt fünfzehn für eine PWA relevante Merkmale, auf die sich die Analyse über den
+Unterstützen Funktionsumfang in \Cref{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
+beziehen wird.\cite{WhatIsInAWebView}
 
 \subsection{Unterstützter Funktionsumfang gängiger Browser}
 \label{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
@@ -618,7 +623,7 @@ Payment Request	        & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
 Payment Handler	        & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
 Credential Mgmt	        & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
 \end{tabular}
-\caption{Unterstützter PWA-Funktionsumfang Teil 2}
+\caption{Unterstützter PWA-Funktionsumfang Teil 1}
 \end{table}
 
 \begin{table}[h]
