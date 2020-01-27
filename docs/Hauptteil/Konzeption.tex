@@ -619,7 +619,7 @@ Bereiche wie den Lockscreen (Media Session API). Media Capabilities; Die Möglic
 Informationen, die vom Browser bereitgestellt werden (Media Capabilities API). Device Memory; wie viel RAM stehen dem Betriebssystem zur
 Verfügung (Device Memory API). Detect Native App; Ist die native Version meiner Anwendung bereits installiert? Payment Request;
 Die Benutzung von durch das Betriebssystem bereitgestellten Zahlungsverfahren (Payment Request API). Credential Management;
-dem Benutzer die Verwendung von im Betriebssystem gehorteten Anmeldedaten zu ermöglichen (Credential Management API).
+dem Benutzer die Verwendung von im Betriebssystem gehorteten Anmeldedaten zu ermöglichen (Credential Management API).\cite[Abschnitt 2.3]{WhatIsInAWebView}
 
 Bei der Analyse wurden die neuesten Versionen der Browser\footnote{Stand Januar 2020 (IE 11, Edge 79, Firefox 72, Chrome 79, Safari 13, Opera 64, Safari iOS 13.2, Opera Mini 46, Android Browser Chromium 76, Opera Mobile 46, Chrome für Android 79, Firefox für Android 68, UC Browser für Android 12.12 und Samsung Internet 10.1) }
 begutachtet. Aufgrund der Komplexität wurden die Ergebnisse in \Cref{tab:unterstutzterpwafunktionsumfangteil1}
@@ -704,11 +704,20 @@ alle PWA-Merkmale, die Chrome bereitstellt.\cite{StatCounterBrowserMarketShare}
 
 \section{Microservices}
 \label{sec:microservices}
-
-
+In diesem Abschnitt geht es um die Charakteristiken von Microservices. Das Ziel ist es,
+aufgrund der Auseinandersetzung mit dem Architekturmuster die Entscheidung treffen zu können, ob Microservices
+eine gute Wahl für die Sofrwarearchitektur dieser Arbeit sind. In \Cref{subsec:wasverstehtmanuntermicroservices}
+stellt sich die Frage, was Microservices eigentlich sind und was sie auszeichnet. In
+\Cref{subsec:sindmicroserviceseinezukunftsfaehigesoftwarearchitektur} werden die
+Microservices mit anderen Architekturmustern verglichen.
 
 \subsection{Was versteht man unter Microservices?}
 \label{subsec:wasverstehtmanuntermicroservices}
+In dem Buch Microservices von Eberhard Wolff werden diese als Ansatz zur Modularisierung
+von Software definiert. Der Unterschied zu vorhandenen Architekturmustern beschreibt er wie folgt:
+"Das Neue: Microservices nutzen als Module einzelne Programme, die als eigene Prozesse laufen."\cite[S. 2]{MicroservicesBook}
+
+
 % Analyse Microservices
 
 \subsection{Sind Microservices eine zukunftsfähige Softwarearchitektur?}
