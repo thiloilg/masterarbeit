@@ -586,70 +586,104 @@ wie die bei einer nativen App anfühlt, gab es allerdings bereits zuvor. So verk
 Steve Jobs bei der initialen iPhone Presentation für Entwickler bereits die Möglichkeit
 an, solche Web 2.0 Apps mithilfe von Safari zu entwickeln.\footnote{https://www.youtube.com/watch?v=ZlE7dzoD6GA}
 Die Merkmale einer PWA haben sich also über die Jahre hinweg angesammelt. Was sind aber
-nun diese Merkmale? Alex Russell erwähnt in seinem Blogpost dazu folgende Merkmale:
-Die PWA soll responsive, netzunabhängig sein, app-ähnliche Navigationsvorgänge bereitstellen,\footnote{Ohne Verwendung von Browser Tabs} 
+nun diese Merkmale? Alex Russell erwähnt in seinem Blogpost dazu folgendes:
+Die PWA soll responsive und netzunabhängig sein, app-ähnliche Navigationsvorgänge bereitstellen,\footnote{Ohne Verwendung von Browser Tabs} 
 immer aktuell sein, über TLS ausgeliefert werden, durch Suchmaschinen als solche mithilfe
 des Web App Manifests auffindbar sein, Plattformspezifische Funktionalitäten wie Push-Notifications
-verwenden, auf dem Homescreen installierbar, über Hyperlinks teilbar sowie ohne aufwendigen
+verwenden sowie auf dem Homescreen installierbar, über Hyperlinks teilbar und ohne aufwendigen
 Installationsprozess verwendbar sein.\cite{PWA2015} Eine 2018 veröffentlichte, wissenschaftliche
 Arbeit von Thomas Steiner über die Analyse von PWA-Merkmalen innerhalb eines WebViews\footnote{Ein Web View ist ein in einer nativen App eingebetteter Browser zur Darstellung von Webinhalten.}
 benennt fünfzehn für eine PWA relevante Merkmale, auf die sich die Analyse über den
-unterstützen Funktionsumfang von gangigen Browsern in \Cref{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
+unterstützten Funktionsumfang von gangigen Browsern in \Cref{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
 beziehen wird.\cite{WhatIsInAWebView}
 
 \subsection{Unterstützter Funktionsumfang gängiger Browser}
 \label{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
-Wie sieht es mit dem unterstützten Funktionsumfang der Browse aus? 
+In \Cref{subsec:gestaltung} (Absatz 2) wurde bereits der Nutzungsanteil der Browser analysiert. Um genauere Aussagen zwischen
+dem unterstützten Funktionsumfang von mobilen und Desktop-Endgeräten zu bekommen, wurden die Desktop-Browser von ihrem mobilen
+Gegenstück getrennt. Zu der Recherche des Funktionsumfangs wird der von Thomas Steiner aus der wissenschaftlichen Arbeit "What is
+in a Web View? An Analysis of Progressive Web App Features When the Means of Web Access is not a Web Browser" bereitgestellte
+PWA Feature Detector\footnote{https://github.com/tomayac/pwa-feature-detector/}, die Angaben in der Mozilla Developer Docs sowie 
+die Webseite "Can I use"\footnote{https://caniuse.com/} verwendet. Der PWA Feature Detector ermittelt anhand von im JavaScript
+DOM vorhandenen Feldern, ob der Browser bestimmte Merkmale unterstützt. Dabei werden neben den Feldern window, document und navigator
+auch Felder im Service Worker erkannt. Die Angaben können von dem eigentlich unterstützten Funktionsumfang abweichen. Die von Thomas
+Steiner in seiner wissenschaftlichen Arbeit für relevant angesehenen Merkmale sind folgende: Offline Capabilities; hierbei wird nach
+einer Unterstützung der Cache API gesucht. Push Notifications; ist die Push API unterstützt? Add to Homescreen; kann man PWAs auf
+dem Homescreen speichern (A2HS)? Background Sync; ist eine Unterstützung der Background Sync API vorhanden? Navigation Preload; Die Möglichkeit
+Ressourcen bereits während dem hochfahren des SW vorzuladen (Navigation Preload Manager API). Silent Push; das Starten von durch das
+Backend ausgelösten Prozessen im Frontend ohne den Benutzer davon durch eine Nachricht zu informieren (Web Budget API). 
+Storage Estimation; Die Nachfrage nach genutztem Speicher sowie dessen Beschränkung (Storage Manager). Persistent Storage;
+Das speichern von Daten, die nur mit Anfrage an den Benutzer gelöscht werden dürfen (Storage Manager). Web Share; das Teilen von Inhalten
+über die durch die Plattform bereitgestellten Operationen (Web Share API). Media Session, das Bereitstellen von Inhalten für native
+Bereiche wie den Lockscreen (Media Session API). Media Capabilities; Die Möglichkeit das perfekte Format von auszuliefernden Inhalten anhand von
+Informationen, die vom Browser bereitgestellt werden (Media Capabilities API). Device Memory; wie viel RAM stehen dem Betriebssystem zur
+Verfügung (Device Memory API). Detect Native App; Ist die native Version meiner Anwendung bereits installiert? Payment Request;
+Die Benutzung von durch das Betriebssystem bereitgestellten Zahlungsverfahren (Payment Request API). Credential Management;
+dem Benutzer die Verwendung von im Betriebssystem gehorteten Anmeldedaten zu ermöglichen (Credential Management API).
+
+Bei der Analyse wurden die neuesten Versionen der Browser\footnote{Stand Januar 2020} begutachtet. Aufgrund der Komplexität wurden
+die Ergebnisse in \Cref{tab:unterstutzterpwafunktionsumfangteil1} und \Cref{tab:unterstutzterpwafunktionsumfangteil2}
+aufgeteilt. Die fünfzehn in \Cref{subsec:markmaleeinerpwa} erwähnten Merkmale wurden auf achtzehn erweitert.
 
 \begin{table}[h]
 \begin{tabular}{l*{8}{c}}
 PWA Merkmale & IE & Edge & Firefox & Chrome & Safari & Opera & \specell{iOS\\Safari} & \specell{Opera\\Mini} \\
 \hline
-Offline Capabilities    & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
-Push Notifications	    & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
-Add to Home Screen	    & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
-Background Sync	        & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
-Periodic Bg. Sync       & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
-Background Fetch        & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
-Navigation Preload	    & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
-Persistent Storage	    & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
-Web Share (Level 1)	    & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
-Web Share (Level 2)     & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
-Media Session           & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
-Media Capabilities	    & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
-Device Memory	        & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
-Detect Native App       & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
-Payment Request	        & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
-Payment Handler	        & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
-Credential Mgmt	        & \cm & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
+Offline Capabilities    &  -  & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
+Push Notifications	    &  -  & \cm & \cm & \cm &  -  & \cm &  -  &  -  \\
+Add to Home Screen	    &  -  &  -  &  -  & \cm &  -  & \cm & \cm & \cm \\
+Background Sync	        &  -  &  -  &  -  & \cm &  -  & \cm &  -  & \cm \\
+Periodic Bg. Sync       &  -  &  -  &  -  &  -  &  -  &  -  &  -  &  -  \\
+Background Fetch        &  -  &  -  &  -  & \cm &  -  & \cm &  -  &  -  \\
+Navigation Preload	    &  -  & \cm &  -  & \cm &  -  & \cm &  -  & \cm \\
+Storage Estimation	    &  -  &  -  & \cm & \cm &  -  & \cm &  -  & \cm \\
+Persistent Storage	    &  -  &  -  & \cm & \cm &  -  & \cm &  -  & \cm \\
+Web Share Level 1	    &  -  &  -  &  -  &  -  & \cm &  -  & \cm &  -  \\
+Web Share Level 2       &  -  &  -  &  -  &  -  &  -  &  -  &  -  &  -  \\
+Media Session           &  -  &  -  &  -  & \cm &  -  & \cm &  -  &  -  \\
+Media Capabilities	    &  -  &  -  & \cm & \cm & \cm & \cm &  -  & \cm \\
+Device Memory	        &  -  &  -  &  -  & \cm &  -  & \cm &  -  & \cm \\
+Detect Related App      &  -  &  -  &  -  & \cm &  -  &  -  &  -  &  -  \\
+Payment Request	        &  -  & \cm &  -  & \cm & \cm & \cm & \cm &  -  \\
+Payment Handler	        &  -  &  -  &  -  & \cm &  -  & \cm &  -  & \cm \\
+Credential Mgmt	        &  -  &  -  &  -  & \cm &  -  & \cm &  -  & \cm \\
 \end{tabular}
 \caption{Unterstützter PWA-Funktionsumfang Teil 1}
+\label{tab:unterstutzterpwafunktionsumfangteil1}
 \end{table}
 
 \begin{table}[h]
 \begin{tabular}{l*{6}{c}}
 PWA Merkmale  & \specell{Android\\Browser} & \specell{Opera\\Mobile}  & \specell{Chrome\\Android} & \specell{Firefox\\Android} & \specell{UC Browser\\Android} & \specell{Samsung\\Internet} \\
 \hline
-Offline Capabilities    & \cm & \cm & \cm & \cm &   - & \cm \\
-Push Notifications	    & \cm & \cm & \cm & \cm &   - & \cm \\
-Add to Home Screen	    & \cm & \cm & \cm & \cm &   - & \cm \\
-Background Sync	        & \cm & \cm & \cm & \cm &   - & \cm \\
-Periodic Bg. Sync       & \cm & \cm & \cm & \cm &   - & \cm \\
-Background Fetch        & \cm & \cm & \cm & \cm &   - & \cm \\
-Navigation Preload	    & \cm & \cm & \cm & \cm &   - & \cm \\
-Persistent Storage	    & \cm & \cm & \cm & \cm &   - & \cm \\
-Web Share (Level 1)	    & \cm & \cm & \cm & \cm &   - & \cm \\
-Web Share (Level 2)     & \cm & \cm & \cm & \cm &   - & \cm \\
-Media Session           & \cm & \cm & \cm & \cm &   - & \cm \\
-Media Capabilities	    & \cm & \cm & \cm & \cm &   - & \cm \\
-Device Memory	        & \cm & \cm & \cm & \cm &   - & \cm \\
-Detect Native App       & \cm & \cm & \cm & \cm &   - & \cm \\
-Payment Request	        & \cm & \cm & \cm & \cm &   - & \cm \\
-Payment Handler	        & \cm & \cm & \cm & \cm &   - & \cm \\
-Credential Mgmt	        & \cm & \cm & \cm & \cm &   - & \cm \\
+Offline Capabilities    & \cm & \cm & \cm & \cm & \cm & \cm \\
+Push Notifications	    &  -  & \cm & \cm & \cm & \cm & \cm \\
+Add to Home Screen	    & \cm & \cm & \cm & \cm &  -  & \cm \\
+Background Sync	        & \cm & \cm & \cm &  -  & \cm & \cm \\
+Periodic Bg. Sync       &  -  &  -  &  -  &  -  &  -  &  -  \\
+Background Fetch        &  -  & \cm & \cm &  -  &  -  &  -  \\
+Navigation Preload	    & \cm & \cm & \cm &  -  &  -  & \cm \\
+Storage Estimation	    & \cm & \cm & \cm &  -  & \cm & \cm \\
+Persistent Storage	    & \cm & \cm & \cm &  -  & \cm & \cm \\
+Web Share (Level 1)	    &  -  & \cm & \cm &  -  &  -  & \cm \\
+Web Share (Level 2)     &  -  &  -  & \cm &  -  &  -  &  -  \\
+Media Session           &  -  & \cm & \cm &  -  &  -  & \cm \\
+Media Capabilities	    & \cm & \cm & \cm & \cm &  -  & \cm \\
+Device Memory	        & \cm & \cm & \cm &  -  &  -  & \cm \\
+Detect Native App       &  -  &  -  & \cm &  -  &  -  &  -  \\
+Payment Request	        &  -  &  -  & \cm &  -  &  -  & \cm \\
+Payment Handler	        & \cm & \cm & \cm &  -  &  -  & \cm \\
+Credential Mgmt	        & \cm & \cm & \cm &  -  &  -  &  -  \\
 \end{tabular}
 \caption{Unterstützter PWA-Funktionsumfang Teil 2}
+\label{tab:unterstutzterpwafunktionsumfangteil2}
 \end{table}
+
+
+% Periodic Background Sync comming in chrome version 80
+
+% Firefox verweist beim speichern der PWA auf dem Desktop auf die von Chrome installierte PWA. 
+% Add to homescreen falsch von PWA Detector erkannt.
 
 \section{Microservices}
 \label{sec:microservices}
