@@ -621,9 +621,10 @@ Verfügung (Device Memory API). Detect Native App; Ist die native Version meiner
 Die Benutzung von durch das Betriebssystem bereitgestellten Zahlungsverfahren (Payment Request API). Credential Management;
 dem Benutzer die Verwendung von im Betriebssystem gehorteten Anmeldedaten zu ermöglichen (Credential Management API).
 
-Bei der Analyse wurden die neuesten Versionen der Browser\footnote{Stand Januar 2020} begutachtet. Aufgrund der Komplexität wurden
-die Ergebnisse in \Cref{tab:unterstutzterpwafunktionsumfangteil1} und \Cref{tab:unterstutzterpwafunktionsumfangteil2}
-aufgeteilt. Die fünfzehn in \Cref{subsec:markmaleeinerpwa} erwähnten Merkmale wurden auf achtzehn erweitert.
+Bei der Analyse wurden die neuesten Versionen der Browser\footnote{Stand Januar 2020 (IE 11, Edge 79, Firefox 72, Chrome 79, Safari 13, Opera 64, Safari iOS 13.2, Opera Mini 46, Android Browser Chromium 76, Opera Mobile 46, Chrome für Android 79, Firefox für Android 68, UC Browser für Android 12.12 und Samsung Internet 10.1) }
+begutachtet. Aufgrund der Komplexität wurden die Ergebnisse in \Cref{tab:unterstutzterpwafunktionsumfangteil1}
+und \Cref{tab:unterstutzterpwafunktionsumfangteil2} aufgeteilt. Die fünfzehn in \Cref{subsec:markmaleeinerpwa}
+erwähnten Merkmale wurden auf achtzehn erweitert.
 
 \begin{table}[h]
 \begin{tabular}{l*{8}{c}}
@@ -641,7 +642,7 @@ Persistent Storage	    &  -  &  -  & \cm & \cm &  -  & \cm &  -  & \cm \\
 Web Share Level 1	    &  -  &  -  &  -  &  -  & \cm &  -  & \cm &  -  \\
 Web Share Level 2       &  -  &  -  &  -  &  -  &  -  &  -  &  -  &  -  \\
 Media Session           &  -  &  -  &  -  & \cm &  -  & \cm &  -  &  -  \\
-Media Capabilities	    &  -  &  -  & \cm & \cm & \cm & \cm &  -  & \cm \\
+Media Capabilities	    &  -  &  -  & \cm & \cm & \cm & \cm & \cm & \cm \\
 Device Memory	        &  -  &  -  &  -  & \cm &  -  & \cm &  -  & \cm \\
 Detect Related App      &  -  &  -  &  -  & \cm &  -  &  -  &  -  &  -  \\
 Payment Request	        &  -  & \cm &  -  & \cm & \cm & \cm & \cm &  -  \\
@@ -658,7 +659,7 @@ PWA Merkmale  & \specell{Android\\Browser} & \specell{Opera\\Mobile}  & \specell
 \hline
 Offline Capabilities    & \cm & \cm & \cm & \cm & \cm & \cm \\
 Push Notifications	    &  -  & \cm & \cm & \cm & \cm & \cm \\
-Add to Home Screen	    & \cm & \cm & \cm & \cm &  -  & \cm \\
+Add to Home Screen	    & \cm & \cm & \cm & \cm & \cm & \cm \\
 Background Sync	        & \cm & \cm & \cm &  -  & \cm & \cm \\
 Periodic Bg. Sync       &  -  &  -  &  -  &  -  &  -  &  -  \\
 Background Fetch        &  -  & \cm & \cm &  -  &  -  &  -  \\
@@ -679,11 +680,27 @@ Credential Mgmt	        & \cm & \cm & \cm &  -  &  -  &  -  \\
 \label{tab:unterstutzterpwafunktionsumfangteil2}
 \end{table}
 
+Analysiert man die Resultate von \Cref{tab:unterstutzterpwafunktionsumfangteil1} und
+\Cref{tab:unterstutzterpwafunktionsumfangteil2}, sticht klar ins Auge, dass Chrome
+die PWA Entwicklung vorantreibt. Es wundert auch kaum, dass der Internet Explorer,
+bei dem die Entwicklung im März 2015 eingestellt wurde,\cite{HeiseInternetExplorer} keine der PWA Merkmale
+unterstützt. Die Periodic Background Sync API, eine Erweiterung der Background
+Sync API, ist momentan noch in Entwicklung und wird vorraussichtlich erst mit
+Chrome 80 veröffentlicht. Die API wird das Ausführen von Hintergrundaufgaben der SW
+in einem periodischen Interval ermöglichen.\cite{ChromeStatusPeriodicBackgroundSync}
+Die A2HS-Funktionalität wird von allen mobilen Browsern unterstützt.\footnote{Von allen in dieser Auswertung betrachteten Browsern.}
+Bei den mobilen Browsern ist insgesammt der unterstütze Funktionsumfang größer als
+bei den Browsern für Desktop-Endgeräte. Ein Grund dafür ist, dass man sich bei den PWA-Merkmalen
+hauptsächlich an der Optik und Haptik von nativen Apps orientiert. Chrome ist aktuell
+der einzige Browser, bei dem man eine PWA auch auf einem Desktop-Endgerät installieren
+kann. Grundfunktionalitäten wie  die Möglichkeit der Offlineverwendung werden fast von allen
+Browsern unterstützt. Die wichtigste Erkenntnis dieser Auswertung ist folgende: Die einzelnen
+PWA-Merkmale müssen als Anreicherung betrachtet werden. Man kann nicht davon ausgehen, dass
+der Browser des Benutzers ein bestimmtes Merkmal unterstützt.
 
-% Periodic Background Sync comming in chrome version 80
-
-% Firefox verweist beim speichern der PWA auf dem Desktop auf die von Chrome installierte PWA. 
-% Add to homescreen falsch von PWA Detector erkannt.
+Auch wichtig ist, sich über den Browser-Marktanteil der eigenen Zielgruppe im klaren zu sein.
+So verwenden laut des globalen Marktanteils mehr als 50\% der Endbenutzer Chrome und besitzten somit
+alle PWA-Merkmale, die Chrome bereitstellt.\cite{StatCounterBrowserMarketShare}
 
 \section{Microservices}
 \label{sec:microservices}
