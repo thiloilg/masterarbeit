@@ -738,17 +738,17 @@ Technologie abhängig. Desweiteren sollte man sich bei der Serviceuntergliederun
 In \Cref{subsec:wasverstehtmanuntermicroservices} sind Microservices
 als einzelne, in einer Containervirtualisierung laufende, Programme definiert. Sind diese Programme
 zustandslos, lassen sie sich einfach und effizient skalieren. Zustandslos bedeutet, dass zwei
-aufeinanderfolgende Abfrage nicht an den gleichen Container, sondern an eine Kopie dessen, gesendet
-werden können. Beinhaltet der Service eine Datenbank, benötigt es eine weitere Strategie der Skalierung
+aufeinanderfolgende Abfragen nicht an die gleiche Instanz des Programms gesendet werden müssen.
+Beinhaltet der Service eine Datenbank, benötigt es eine weitere Strategie der Skalierung
 wie Database Sharding oder Master-Slave Replica. Durch die Lastverteilung auf eigenständige Services
-wird der Schwellwert, ab welchem man horizontal Skalieren muss, erst später erreicht.\footnote{Im Vergleich zu einem Monolith}
+wird der Schwellwert, ab welchem man horizontal skalieren muss, erst später erreicht.\footnote{Im Vergleich zu einem Monolith}
 Eberhard Wolff kritisiert den Performanzverlust, der durch die
 Kommunikation über die verteilten Systeme entsteht. So schreibt er wie folgt: "Aufrufe durch das Netzwerk
 sind deutlich langsamer als lokale Aufrufe. Aus reiner Performanz-Perspektive kann es sinnvoller sein,
 mehrere Microservices zusammenzulegen oder Technologien zu nutzen, die auf lokale Aufrufe setzen."\cite[S. 65, 3. Absatz]{MicroservicesBook}
 Um die Kommunikation zwischen den Services zu beschleunigen, werden daher Message Broker wie
 Apacke Kafta oder RabbitMQ verwendet. Nichtsdestotrotz kann die Performanz einer solchen
-Kommunikation im Regelfall nicht mit der internen Kommunikation eines Systems schritthalten.
+Kommunikation im Regelfall nicht mit der internen Kommunikation eines einzelnen Programms schritthalten.
 
 In dem Artikel "Warum es nicht immer Microservices sein müssen" auf Informatik Aktuell
 sprechen Christoph Iserlohn und Till Schulte-Coerne von einer Externalisierung der Komplexität.
@@ -757,8 +757,10 @@ zu einer Microservice-Umgebung wechseln. "Allerdings kaufen wir uns dies teuer e
 Wir verstecken durch die Trennung nämlich eine nicht unerhebliche Komplexität in
 der Kommunikation zwischen den Systemen und machen diese quasi unsichtbar."\cite[Paragraph 11]{InformatikAktuellWarumNichtImmerMicroservices}
 
-Aus der zuvor ausführlich geführten Debatte geht hervor, dass man bei der Entscheidung für eine
-Microservice-Infrastruktur an Flexibilität gewinnt, dafür aber mit Komplexität bezahlt.
+Microservices sind keineswegs als Wundermittel gegen eine verbesserungswürdige Archtektur eines
+Monolithen zu sehen. Bei der Entscheidung für eine Microservice-Infrastruktur geht man, wie
+auch bei allen anderen Architekturmustern, einen Kompromiss ein. So gewinnt man deutlich
+an Flexibilität, bezahlt dies aber mit einem Anstieg an Komplexität des Gesamtsystems.
 
 \section{Zielsetzung}
 \label{sec:zielsetzung}
@@ -766,7 +768,9 @@ In den vorherigen Abschnitten wurden die Anforderungen ermittelt, verwandte Soft
 studiert sowie zwei relevante Technologien genauer betrachtet. In der Zielsetzung soll nun
 anhand der daraus resultierenden Erkenntnisse ein klares, aussagekräftiges Ziel definiert werden.
 Dabei müssen Kompromisse eingegangen werden. Aufgabe der Zielsetzung ist es unter anderem,
-die Gewichtung auf die zuvor erörterten Anforderungen zu verteilen. 
+die Gewichtung auf die zuvor erörterten Anforderungen zu verteilen. In \Cref{sec:entwurf}
+wird daraufhin ein grober Entwurf konzipiert. In den folgenden Kapiteln wird darauf eingegangen,
+
 
 
 
