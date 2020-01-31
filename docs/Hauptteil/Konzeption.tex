@@ -769,14 +769,48 @@ studiert sowie zwei relevante Technologien genauer betrachtet. In der Zielsetzun
 anhand der daraus resultierenden Erkenntnisse ein klares, aussagekräftiges Ziel definiert werden.
 Dabei müssen Kompromisse eingegangen werden. Aufgabe der Zielsetzung ist es unter anderem,
 die Gewichtung auf die zuvor erörterten Anforderungen zu verteilen. In \Cref{sec:entwurf}
-wird daraufhin ein grober Entwurf konzipiert. In den folgenden Kapiteln wird darauf eingegangen,
+wird daraufhin ein grober Entwurf konzipiert. Am Ende der Arbeit wird anhand der Zielsetzung
+und der Auswertung ein Fazit über die Arbeit gezogen.
 
+Was ist das Ziel dieser Arbeit? Aus rein funktionaler Sicht ist das Ziel dieser Arbeit
+folgendes: Eine Webanwendung zu entwickeln, die Daten aus einer API ausließt,
+diese verarbeitet und in einem Dashboard veranschaulicht. Nutzer können sich
+in der Webanwendung anmelden, externe API-Aufrufe als Datenquellen bestimmen,
+die empfangenen Daten verarbeiten, ein Dashboard mit Diagrammen per Drag and Drop erstellen
+und den im Dashboard enthaltenen Diagrammen Datenquellen zuweisen. Die erstellten
+Dashboards können die Nutzer dann verwenden, um ihre aktuell über die externen 
+API-Aufrufe zur Verfügung gestellten Daten auszuwerten. Die Funktionalität
+ist das Herz der Anwendung und hat somit aus funktionaler Sicht höchste Priorität.
+Aus wissenschaftlicher Sicht ist das Ziel dieser Arbeit die zuvor genannte
+Funktionalität mithilfe einer langlebigen, gutdurchdachten, benutzerfreundlichen,
+robusten sowie performanten Softwarearchitektur zu verwirklichen. Auf wissenschaftlicher
+Ebene spielt die Auseinandersetzung mit der Erforschung und Findung einer möglichst perfekten
+Lösung für die Verwirklichung eines solchen Systems, eine, der Implementierung selbst,
+übergeordneten Rolle. Dabei stellen sich folgende Fragen: Wie kann ein möglichst agiler
+Prozess der Erstellung eines Dashboards aussehen? Wie muss die Logik innerhalb des Systems
+getrennt werden? Wie kann der Datenfluss optimiert werden? Wie können Qualitätsmerkmale
+gesichert werden? All diese und noch viele weitere Fragen gilt es zu beantworten.
 
-
-
-% Kurze zusammenfassung über das Ziel des Projekts
-% die diskusion wieso einzelne lösungen anderen vorgezogen wurden, findet in 
-% den folgenden kapiteln der jeweiligen themen statt!!! <- WICHTIG!!!
+Wie sieht es mit der Gewichtung der in der Anforderungsanalyse in \Cref{sec:anforderungsanalyse}
+ausgearbeiteten Anforderungen an die Gestaltung, Funktionalität, Flexibilität und Codebasis aus?
+Am einfachsten kann man diese Frage beantworten, in dem man sich klarmacht, was keinen wissenschaftlichen
+Mehrwert hätte. Eine API im Frontend aufzurufen, die erhaltenen Daten hartkodiert zu verarbeiten und
+in einer möglichst größen Anzahl an hartkodierten Diagrammen anzuzeigen. Das würde eventuell auf den
+ersten Blick gut aussehen, hat aber mit der Entwicklung einer soliden Softwarelösung nichts zu tun.
+Um eine solide Softwarelösung bewerkstelligen zu können, benötigt es eines soliden Softwaredesigns.
+Ein solches Design soll das primäre Ziel dieser Arbeit sein. Robert C. Martin sagt dazu folgendes:
+"Die Qualität des Designs bemisst sich schlicht und ergreifend an dem Ausmaß des Aufwands, der
+erforderlich ist, um den Bedürfnissen der Kunden gerecht zu werden. Bedarf es hierfür eines
+geringen Aufwands und bleibt dies auch während der gesamten Lebenszeit des Systems so,
+dann handelt es sich um ein gutes Design — steigt der Aufwand mit jedem neuen Release,
+taugt das Design nichts. So einfach ist das."\cite[S. 30]{RobertC.Martin2018} Was heißt
+das aber nun für die Gewichtung der in der Anforderungsanalyse erarbeteten Anforderungen?
+Ziel dieser Arbeit ist es bei der Entwicklung der Softwarelösung mehr Wert auf die Flexibilität
+der Softwarearchitektur als auf den Funktionsumfang einzelner Merkmale zu legen. In unserem
+vorherigen Beispiel heißt das konkret: Richtig ist es, eine Software zu entwickeln, die zwar erst ein Diagramm
+implementiert hat, wo aber der Vorgang, ein weiteres Diagramm hinzuzufügen, vereinfacht wurde.
+Falsch ist es, eine Software zu entwickeln, wo zwar bereits hunderte Diagramme implementiert sind,
+der Vorgang, ein neues hinzuzufügen, allerdings immer komplexer wird.
 
 \section{Entwurf}
 \label{sec:entwurf}
