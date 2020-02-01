@@ -889,17 +889,27 @@ Im mobilen Format sollen die einzelnen Diagramme untereinander aufgelistet werde
     \includegraphics[scale=0.2]{img/abbildungen/DiagrammanordnungsverfahrenMitLegende}
     \end{center}
     \caption{Diagrammanordnunsverfahren}
-    \label{figure:diagrammanordnungsverfahren}
+    \label{figure:diagrammanordnungabbildung}
 \end{figure}
 
 Die Diagramme sollen nach und nach per Drag and Drop in das Dashboard integriert werden. Dieses Verfahren
-wird in der Abbildung \ref{figure:diagrammanordnungsverfahren}
+wird in Abbildung \ref{figure:diagrammanordnungabbildung} dargestellt. \(a\) beschreibt den
+initialen Zustand eines leeren Dashboards. Hier kann man durch Drag and Drop das erste Diagramm dem Dashboard
+zuordnen. \(b\) beschreibt den Zustand des Dashboards mit genau einem enthaltenen Diagramm. Hier kann man das
+neue Diagramm in alle Richtungen einfügen. Dabei Teilt das bestehende Diagram den Platz mit dem neuen gleichmäßig
+auf. Bei der mittigen Positionierung wird das vorhandene Diagramm durch das neue ersetzt. \(c\) und \(d\)
+beschreiben den Zustand, bei dem sich mehr als ein Diagramm im Dashboard befindet. Wenn man im Zustand \(b\)
+ein Diagramm oberhalb oder unterhalb einfügt, bilden die beiden Diagramme eine Spalte. Beide dieser Diagramme
+beinhalten nun den Zustand \(c\). Additional zu den möglichkeiten von Zustand \(b\), kann hier ein Diagramm
+auch dazwischen gefügt werden. Es teilt sich dann den Platz mit den anderen Diagrammen in der Spalte.
+Fügt man bei Zustand \(b\) ein Diagramm links oder rechts ein, bilden die beiden Diagramme eine Reihe.
+Beide dieser Diagramme befinden sich nun in Zustand \(d\). Additional zu Zustand \(b\) können hier nun
+auch neue Diagramme in der gleichen Reihe positioniert werden. Diese Reihen und Spalten können sich
+immer weiter verschachteln. Somit kann der Benutzer mit einem ziemlich einfachen, intuitiven Verfahren
+das Dashboard mit Diagrammen füllen. Durch einen Button in der Ecke rechts oben im Diagramm-Fenster
+können diese auch wieder gelöscht werden. Dabei sind die zuvor beschriebenen Verfahren einfach rückläufig.
 
-
-
-
-
-% Wireframes
-% Agile zusammenstellen eines Dashboards
-% Agiles Datenzuordnung in einem Datenflussdiagramm
-% die agile Erstellung eines Datenflussdiagramms, das die Daten aus den Datenquellen verarbeitet und den Dashboards zuweist.
+Die Anordnung selbst soll als Baumstruktur im JSON-Format dargestellt werden. Um Änderungen in der Baumstruktur
+schneller zu erkennen, muss die Baumstruktur klein gehalten werden. Daher soll die Baumstruktur nur UUIDs
+als Referenzen auf die einzelnen Diagramme beinhalten. Somit kann unterschieden werden, ob sich etwas
+an der Anordnung oder den Einstellungen der einzelnen Diagramme verändert hat.
