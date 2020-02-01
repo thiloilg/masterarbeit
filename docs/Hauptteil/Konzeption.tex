@@ -815,11 +815,10 @@ der Vorgang, ein neues hinzuzufügen, allerdings immer komplexer wird.
 
 \section{Entwurf}
 \label{sec:entwurf}
-Der Entwurf ist in drei Abschnitte unterteilt. In \Cref{subsec:trennungvonlogic} handelt von
+Der Entwurf ist in zwei Abschnitte unterteilt. In \Cref{subsec:trennungvonlogic} handelt von
 der Trennung der Logic innerhalb des Systems. Die Trennung der Logic ist die wichtigste
-Designentscheidung und somit an erster Stelle. In \Cref{subsec:wasgehoertindiedatenbank}
-wird klar definiert, welche Ressourcen in der Datenbank anzufinden sind. In \Cref{subsec:diagrammanordnungsverfahren}
-wird ein intuitives Verfahren erarbeitet, was die agile Erstellung von Dashboards
+Designentscheidung und somit an erster Stelle. In \Cref{subsec:diagrammanordnungsverfahren}
+wird ein intuitives Verfahren vorgestellt, das die agile Erstellung von Dashboards
 ermöglicht.
 
 \subsection{Trennung von Logic}
@@ -861,7 +860,7 @@ im Backend zu verstehen. Ziel ist es, diese Services in Zukunft durch weitere Se
 \end{figure}
 
 Die Arbeit verfolgt auch für das Frontend einen Microservice-Ansatz. Man spricht hier von einem
-Microfrontend. Michael Geers schreibt dazu auf Digital Pioneers folgendes:
+Microfrontend. Michael Geers schreibt dazu in einem Artikel auf Digital Pioneers folgendes:
 "Der Ansatz, der sich jetzt förmlich aufdrängt, ist die Umsetzung der Microservice-Idee
 auch im Frontend. Anstatt einer ­großen Single-Page-Applikation baut man mehrere unabhängige
 Teilapplikationen, die miteinander kommunizieren. Diese sind dann deutlich einfacher zu verstehen.
@@ -877,20 +876,27 @@ während der Laufzeit agil nachgeladen. Da immer nur die verwendeten Diagramme a
 geladen werden, kann die Webanwendung eine nahezu unendliche Auswahl an möglichen Diagrammen zur Visualisierung
 der Daten bereitstellen.
 
-\subsection{Was gehört in die Datenbank?}
-\label{subsec:wasgehoertindiedatenbank}
-
-
 \subsection{Diagrammanordnungsverfahren}
 \label{subsec:diagrammanordnungsverfahren}
+Das Diagrammanordnungsverfahren beschreibt den Prozess, einzelne Diagramme in einem Dashboard anzuordnen.
+Um das Verfahren zu vereinfachen, ist ein automatisches Anordnen der Diagramme diagonal sowie vertikal vorgesehen.
+Die Anordnung der einzelnen Diagramme soll mithilfe der FlexBox Technologie implementiert werden.
+\footnote{CSS Flexible Box Layout, bekannt als FlexBox, ist ein standardisiertes Anordnungsmuster, das von allen gängigen Browsern unterstützt wird.\cite{CanIUseFlexBox}}
+Im mobilen Format sollen die einzelnen Diagramme untereinander aufgelistet werden. 
 
 \begin{figure}
-    \label{figure:diagrammanordnungsverfahren}
     \begin{center}
     \includegraphics[scale=0.2]{img/abbildungen/DiagrammanordnungsverfahrenMitLegende}
     \end{center}
     \caption{Diagrammanordnunsverfahren}
+    \label{figure:diagrammanordnungsverfahren}
 \end{figure}
+
+Die Diagramme sollen nach und nach per Drag and Drop in das Dashboard integriert werden. Dieses Verfahren
+wird in der Abbildung \ref{figure:diagrammanordnungsverfahren}
+
+
+
 
 
 % Wireframes
