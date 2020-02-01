@@ -907,9 +907,5 @@ Beide dieser Diagramme befinden sich nun in Zustand \(d\). Additional zu Zustand
 auch neue Diagramme in der gleichen Reihe positioniert werden. Diese Reihen und Spalten können sich
 immer weiter verschachteln. Somit kann der Benutzer mit einem ziemlich einfachen, intuitiven Verfahren
 das Dashboard mit Diagrammen füllen. Durch einen Button in der Ecke rechts oben im Diagramm-Fenster
-können diese auch wieder gelöscht werden. Dabei sind die zuvor beschriebenen Verfahren einfach rückläufig.
-
-Die Anordnung selbst soll als Baumstruktur im JSON-Format dargestellt werden. Um Änderungen in der Baumstruktur
-schneller zu erkennen, muss die Baumstruktur klein gehalten werden. Daher soll die Baumstruktur nur UUIDs
-als Referenzen auf die einzelnen Diagramme beinhalten. Somit kann unterschieden werden, ob sich etwas
-an der Anordnung oder den Einstellungen der einzelnen Diagramme verändert hat.
+können diese auch wieder gelöscht werden. Dabei verhalten sich die zuvor beschriebenen Verfahren einfach rückläufig.
+Die Anordnung der Diagramme wird als Baumstruktur im JSON-Format in der Datenbank persistiert.
