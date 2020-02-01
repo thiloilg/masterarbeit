@@ -770,7 +770,7 @@ anhand der daraus resultierenden Erkenntnisse ein klares, aussagekräftiges Ziel
 Dabei müssen Kompromisse eingegangen werden. Aufgabe der Zielsetzung ist es unter anderem,
 die Gewichtung auf die zuvor erörterten Anforderungen zu verteilen. In \Cref{sec:entwurf}
 wird daraufhin ein grober Entwurf konzipiert. Am Ende der Arbeit wird anhand der Zielsetzung
-und der Auswertung ein Fazit über die Arbeit gezogen.
+und der Auswertung ein Fazit gezogen.
 
 Was ist das Ziel dieser Arbeit? Aus rein funktionaler Sicht ist das Ziel dieser Arbeit
 folgendes: Eine Webanwendung zu entwickeln, die Daten aus einer API ausließt,
@@ -798,7 +798,8 @@ Mehrwert hätte. Eine API im Frontend aufzurufen, die erhaltenen Daten hartkodie
 in einer möglichst größen Anzahl an hartkodierten Diagrammen anzuzeigen. Das würde eventuell auf den
 ersten Blick gut aussehen, hat aber mit der Entwicklung einer soliden Softwarelösung nichts zu tun.
 Um eine solide Softwarelösung bewerkstelligen zu können, benötigt es eines soliden Softwaredesigns.
-Ein solches Design soll das primäre Ziel dieser Arbeit sein. Robert C. Martin sagt dazu folgendes:
+Ein solches Design soll das primäre Ziel dieser Arbeit sein. Robert C. Martin sagt zur Qualität eines
+solchen Designs folgendes:
 "Die Qualität des Designs bemisst sich schlicht und ergreifend an dem Ausmaß des Aufwands, der
 erforderlich ist, um den Bedürfnissen der Kunden gerecht zu werden. Bedarf es hierfür eines
 geringen Aufwands und bleibt dies auch während der gesamten Lebenszeit des Systems so,
@@ -806,7 +807,7 @@ dann handelt es sich um ein gutes Design — steigt der Aufwand mit jedem neuen 
 taugt das Design nichts. So einfach ist das."\cite[S. 30]{RobertC.Martin2018} Was heißt
 das aber nun für die Gewichtung der in der Anforderungsanalyse erarbeteten Anforderungen?
 Ziel dieser Arbeit ist es bei der Entwicklung der Softwarelösung mehr Wert auf die Flexibilität
-der Softwarearchitektur als auf den Funktionsumfang einzelner Merkmale zu legen. In unserem
+der Software als auf den Funktionsumfang einzelner Merkmale zu legen. In unserem
 vorherigen Beispiel heißt das konkret: Richtig ist es, eine Software zu entwickeln, die zwar erst ein Diagramm
 implementiert hat, wo aber der Vorgang, ein weiteres Diagramm hinzuzufügen, vereinfacht wurde.
 Falsch ist es, eine Software zu entwickeln, wo zwar bereits hunderte Diagramme implementiert sind,
@@ -814,10 +815,58 @@ der Vorgang, ein neues hinzuzufügen, allerdings immer komplexer wird.
 
 \section{Entwurf}
 \label{sec:entwurf}
+Der Entwurf ist in drei Abschnitte unterteilt. In \Cref{subsec:trennungvonlogic} handelt von
+der Trennung der Logic innerhalb des Systems. Die Trennung der Logic ist die wichtigste
+Designentscheidung und somit an erster Stelle. In \Cref{subsec:wasgehoertindiedatenbank}
+wird klar definiert, welche Ressourcen in der Datenbank anzufinden sind. In \Cref{subsec:diagrammanordnungsverfahren}
+wird ein intuitives Verfahren erarbeitet, was die agile Erstellung von Dashboards
+ermöglicht.
+
+\subsection{Trennung von Logic}
+\label{subsec:trennungvonlogic}
+Die Benutzerverwaltung muss klar von der Zulieferung der Daten getrennt werden.
+In der Zulieferung müssen die Daten verarbeitet und für die Frontendanwendung
+vorbereitet werden. Dieser Rechenaufwand ist nicht mit dem der Benutzerverwaltung
+zu vergleichen. So kann bei der Datenzulieferung die Menge der über die Netzwerkverbindung
+gesendeten Daten stark variieren. Dies ist in der Benutzerverwaltung nicht der Fall. 
+Hier werden maximal zehn Ressourcen wie Benutzer, Datenquellen, Dashboards oder Charts
+auf einer Seite angezeigt. Die Nutzlast verhält sich somit statisch. Für dieses Verhalten
+eignet sich eine REST-API über HTTP. Die Orientierung an den Entitäten spiegelt sich in der Navigation
+im Frontend wider. Die Zulieferung der auszuwertenden Daten muss in Echtzeit erfolgen.
+Hier ist eine bidirektionale Kommunikation zwischen Server und Client von Vorteil.
+Für solch eine Kommunikation eignet sich eine WebSocket-Verbindung. Nach dem über HTTP erfolgten
+Handshake rüstet sich die Verbindung auf das WebSocket-Protokol auf. Die WebSocket-Verbindung
+findet direkt auf der TCP-Schicht statt, wodurch man den HTTP-Mehraufwand umgeht.\footnote{Dieser Mehraufwand ist beispielsweise der bei jeder Anfrage mitgeschickte HTTP-Header}
+Eine WebSocket-Verbindung ist allerdings serverseitig sehr teuer, da die Verbindung während der Nutzung
+der Webanwendung kontinuierlich aufrechterhalten werden muss.\footnote{Man könnte natürlich die Verbindung immer wieder neu öffnen, der dafür nötige Handshake ist allerdings kostenaufwändiger als eine einfache HTTP-Abfrage.} 
+Es ist also essentiell, dass der Service, der sich um die Zulieferung der auszuwertenden Daten kümmert,
+getrennt von dem, der die Benutzerverwaltung bereitstellt, skaliert werden kann.
+
+Es sollte keine direkte Kommunikation zwischen dem Service der Benutzerverwaltung und dem
+Service der Datenzulieferung bestehen (siehe Abbildung \ref{figure:trennungderlogic}).
+Jeder Service besitzt sein eigenen Cache und seine eigene Datenbank. Somit sind
+die Services komplett unabhängig skalier- und auslieferbar. Die Abhängigkeit der einzelnen
+Services mit dem Frontend ist natürlich immernoch gegen. Diese Abhängigkeit muss man
+allerdings in Kauf nehmen.
+
+Ähnlich wie bei dem rwhuDIOA 
+
+
+\begin{figure}
+    \begin{center}
+    \includegraphics[scale=0.2]{img/abbildungen/TrennungDerLogic}
+    \end{center}
+    \caption{Trennung der Logic}
+    \label{figure:trennungderlogic}
+\end{figure}
+
+\subsection{Was gehört in die Datenbank?}
+\label{subsec:wasgehoertindiedatenbank}
 
 
 \subsection{Diagrammanordnungsverfahren}
-\label{subsec:skizzenderbenutzeroberflaeche}
+\label{subsec:diagrammanordnungsverfahren}
+
 \begin{figure}
     \label{figure:diagrammanordnungsverfahren}
     \begin{center}
@@ -831,10 +880,3 @@ der Vorgang, ein neues hinzuzufügen, allerdings immer komplexer wird.
 % Agile zusammenstellen eines Dashboards
 % Agiles Datenzuordnung in einem Datenflussdiagramm
 % die agile Erstellung eines Datenflussdiagramms, das die Daten aus den Datenquellen verarbeitet und den Dashboards zuweist.
-\subsection{Skizzen der Infrastruktur}
-\label{subsec:skizzenderinfrastruktur}
-
-% Wahl der Technologien, Tech-Stack?
-% Anforderungen an die Technologien
-% Umfeld etc
-% Geschwindigkeit der Entwicklung
