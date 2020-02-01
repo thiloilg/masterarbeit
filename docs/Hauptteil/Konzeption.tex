@@ -414,11 +414,11 @@ von Daten aus Datenquellen, der Aufbereitung der Daten, der Datenmodellierung so
 Microsoft beschreibt ihr Produkt Power BI Desktop wie folgt: "Power BI Desktop ist eine kostenlose Anwendung,
 die Sie auf Ihrem lokalen Computer installieren können und die es Ihnen ermöglicht, eine Verbindung mit Ihren
 Daten herzustellen und diese zu transformieren und zu visualisieren."\cite{MicrosoftPowerBIDesktopDocs}
-Power BI Desktop ist eines der Produkte von Power BI. Desweitere bietet Power BI einen cloudbasierten Power BI Dienst
+Power BI Desktop ist eines der Produkte von Power BI. Desweitere bietet Power BI einen cloud-basierten Power BI Dienst
 sowie eine native App an.\cite{WikiPowerBI}
 
 Als erstes gilt es, das Laden von Daten in Power BI Desktop auszuwerten. Mit Power BI Desktop kann man 
-Daten aus Dateien, aus Datenbanken sowie aus cloudbasierten Diensten laden. Eine weitere Option zum Laden 
+Daten aus Dateien, aus Datenbanken sowie aus cloud-basierten Diensten laden. Eine weitere Option zum Laden 
 von Daten, das DirektQuery, wird in dem Buch von Adam Aspin, Pro Power BI Desktop, erwähnt. 
 Hierbei handelt es sich, anders als bei den zuvor genannten Möglichkeiten, um das direkte
 Abfragen von Daten gegen eine Datenquelle, ohne die Daten zuvor alle in die Anwendung zu laden.\cite[S. 111]{ProPowerBIDesktop}
@@ -436,7 +436,7 @@ konvertiert. Eine mehrdimensionale JSON-Datei wird somit in eine eindimensionale
 Hierfür benötigt man die hauseigene Formelsprache Power Query M. "Power Query M ist eine funktionale Sprache,
 die Groß-/Kleinschreibung beachtet und F\# ähnlich ist."\cite{MicrosoftDocsPowerQueryFormelsprache}
 
-Eine interessante, neue Funktionalität im cloudbasierten Power BI Dienst ist die Self-Service-Datenaufbereitung,
+Eine interessante, neue Funktionalität im cloud-basierten Power BI Dienst ist die Self-Service-Datenaufbereitung,
 bekannt als Dataflow. Mit Dataflows können ETL-Prozesse\footnote{ETL steht für das Extrahieren, Transformieren und Laden von Daten}
 unkompliziert innerhalb des Power BI Kosmos bewerkstelligt werden. Ein automatisierter Datenfluss,
 der die Daten in eine für die Visualisierung einheitliche Struktur vorbereitet, wird auch in dieser
@@ -458,7 +458,7 @@ einer REST API, bietet Qlik Sense einen sogenannten REST Connector an. Dieser ka
 das XML-Format verarbeiten. In den Settings des REST Connectors können neben der URL auch ein
 Authentifizierungsschema ausgewählt werden.\cite[S. 23]{QlikSenseCookbook} Somit ist es möglich,
 eine API zu verwenden, bei der eine JWT-Authentifizierung vorausgesetzt ist. Wie in \Cref{subsec:gestaltung}
-bereits erwähnt, bestitzt Qlik Sense eine eigene SQL ähnliche Skriptsprache. Im Data Load Editor
+bereits erwähnt, besitzt Qlik Sense eine eigene SQL ähnliche Skriptsprache. Im Data Load Editor
 können mithilfe dieses Scripts Bearer-Token als Authorization Header gesetzt werden. Dies macht Qlik
 Sense in der Nutzung externer APIs sehr flexibel.
 
@@ -473,7 +473,7 @@ zwischen zwei Tabellen durchzuführen. So kann man Daten von einer API zusammen 
 verbinden.  
 
 Anders als bei Power BI, das von Microsoft selbst gehostet wird, kann man Qlik Sense nach dem Erwerben
-einer Lizens selbst auf einem Windows Server hosten. Außerdem hat Qlik verschiedene APIs, die man
+einer Lizenz selbst auf einem Windows Server hosten. Außerdem hat Qlik verschiedene APIs, die man
 verwenden kann um die Anwendung selbst ohne die Verwendung der GUI vorzubereiten. So kann man Daten
 auf den Server vorladen, die man dann später mithilfe der Frontendanwendung auswerten wird. Anders als bei
 dem API Connector von Qlik Sense, den man über die GUI einstellt, kann man mit der Repository Main API
@@ -544,7 +544,7 @@ ihrer Einnahmen abgeben. \cite{WinFutureEigenerAppStore} Daher kann man davon au
 dass Plattformanbieter ihren Fokus für neue Funktionalitäten primär ihren eigenen
 nativen Apps widmen werden. Nichtsdestotrotz hat sich in letzter Zeit einiges getan.
 Gerade die Bandbreite der Plattform- und Browseranbieter, die für PWAs relevante
-Funktionalitäten anbieten, ist in der Vergangenheit stark gestiegen. So außert sich der Artikel
+Funktionalitäten anbieten, ist in der Vergangenheit stark gestiegen. So äußert sich der Artikel
 "Webdesign: So steht es um Progressive-Web-Apps im Jahr 2020" von Dieter Petereit,
 der am 20. Januar 2020 auf t3n.de veröffentlicht wurde, über die Unterstützung der PWAs wie folgt:
 "Immerhin 93 Prozent aller Nutzer im weltweiten Netz verwenden einen Browser, der vollen Support
@@ -593,7 +593,7 @@ verwenden sowie auf dem Homescreen installierbar, über Hyperlinks teilbar und o
 Installationsprozess verwendbar sein.\cite{PWA2015} Eine 2018 veröffentlichte, wissenschaftliche
 Arbeit von Thomas Steiner über die Analyse von PWA-Merkmalen innerhalb eines WebViews\footnote{Ein Web View ist ein in einer nativen App eingebetteter Browser zur Darstellung von Webinhalten.}
 benennt fünfzehn für eine PWA relevante Merkmale, auf die sich die Analyse über den
-unterstützten Funktionsumfang von gangigen Browsern in \Cref{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
+unterstützten Funktionsumfang von gängigen Browsern in \Cref{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
 beziehen wird.\cite{WhatIsInAWebView}
 
 \subsection{Unterstützter Funktionsumfang gängiger Browser}
@@ -688,7 +688,7 @@ Sync API, ist momentan noch in Entwicklung und wird vorraussichtlich erst mit
 Chrome 80 veröffentlicht. Die API wird das Ausführen von Hintergrundaufgaben der SW
 in einem periodischen Interval ermöglichen.\cite{ChromeStatusPeriodicBackgroundSync}
 Die A2HS-Funktionalität wird von allen mobilen Browsern unterstützt.\footnote{Von allen in dieser Auswertung betrachteten Browsern.}
-Bei den mobilen Browsern ist insgesammt der unterstütze Funktionsumfang größer als
+Bei den mobilen Browsern ist insgesamt der unterstütze Funktionsumfang größer als
 bei den Browsern für Desktop-Endgeräte. Ein Grund dafür ist, dass man sich bei den PWA-Merkmalen
 hauptsächlich an der Optik und Haptik von nativen Apps orientiert. Chrome ist aktuell
 der einzige Browser, bei dem man eine PWA auch auf einem Desktop-Endgerät installieren
@@ -705,7 +705,7 @@ alle PWA-Merkmale, die Chrome bereitstellt.\cite{StatCounterBrowserMarketShare}
 \label{sec:microservices}
 In diesem Abschnitt geht es um die Charakteristiken von Microservices. Das Ziel ist es,
 aufgrund der Auseinandersetzung mit dem Architekturmuster die Entscheidung treffen zu können, ob Microservices
-eine gute Wahl für die Sofrwarearchitektur dieser Arbeit sind. In \Cref{subsec:wasverstehtmanuntermicroservices}
+eine gute Wahl für die Softwarearchitektur dieser Arbeit sind. In \Cref{subsec:wasverstehtmanuntermicroservices}
 stellt sich die Frage, was Microservices eigentlich sind und was sie auszeichnet. In
 \Cref{subsec:vorundnachteile} werden Vor- und Nachteile einer Microservice-Infrastruktur
 debattiert.
@@ -757,7 +757,7 @@ zu einer Microservice-Umgebung wechseln. "Allerdings kaufen wir uns dies teuer e
 Wir verstecken durch die Trennung nämlich eine nicht unerhebliche Komplexität in
 der Kommunikation zwischen den Systemen und machen diese quasi unsichtbar."\cite[Paragraph 11]{InformatikAktuellWarumNichtImmerMicroservices}
 
-Microservices sind keineswegs als Wundermittel gegen eine verbesserungswürdige Archtektur eines
+Microservices sind keineswegs als Wundermittel gegen eine verbesserungswürdige Architektur eines
 Monolithen zu sehen. Bei der Entscheidung für eine Microservice-Infrastruktur geht man, wie
 auch bei allen anderen Architekturmustern, einen Kompromiss ein. So gewinnt man deutlich
 an Flexibilität, bezahlt dies aber mit einem Anstieg an Komplexität des Gesamtsystems.
@@ -805,7 +805,7 @@ erforderlich ist, um den Bedürfnissen der Kunden gerecht zu werden. Bedarf es h
 geringen Aufwands und bleibt dies auch während der gesamten Lebenszeit des Systems so,
 dann handelt es sich um ein gutes Design — steigt der Aufwand mit jedem neuen Release,
 taugt das Design nichts. So einfach ist das."\cite[S. 30]{RobertC.Martin2018} Was heißt
-das aber nun für die Gewichtung der in der Anforderungsanalyse erarbeteten Anforderungen?
+das aber nun für die Gewichtung der in der Anforderungsanalyse erarbeiteten Anforderungen?
 Ziel dieser Arbeit ist es bei der Entwicklung der Softwarelösung mehr Wert auf die Flexibilität
 der Software als auf den Funktionsumfang einzelner Merkmale zu legen. In unserem
 vorherigen Beispiel heißt das konkret: Richtig ist es, eine Software zu entwickeln, die zwar erst ein Diagramm
@@ -835,7 +835,7 @@ eignet sich eine REST-API über HTTP. Die Orientierung an den Entitäten spiegel
 im Frontend wider. Die Zulieferung der auszuwertenden Daten muss in Echtzeit erfolgen.
 Hier ist eine bidirektionale Kommunikation zwischen Server und Client von Vorteil.
 Für solch eine Kommunikation eignet sich eine WebSocket-Verbindung. Nach dem über HTTP erfolgten
-Handshake rüstet sich die Verbindung auf das WebSocket-Protokol auf. Die WebSocket-Verbindung
+Handshake rüstet sich die Verbindung auf das WebSocket-Protokoll auf. Die WebSocket-Verbindung
 findet direkt auf der TCP-Schicht statt, wodurch man den HTTP-Mehraufwand umgeht.\footnote{Dieser Mehraufwand ist beispielsweise der bei jeder Anfrage mitgeschickte HTTP-Header}
 Eine WebSocket-Verbindung ist allerdings serverseitig sehr teuer, da die Verbindung während der Nutzung
 der Webanwendung kontinuierlich aufrechterhalten werden muss.\footnote{Man könnte natürlich die Verbindung immer wieder neu öffnen, der dafür nötige Handshake ist allerdings kostenaufwändiger als eine einfache HTTP-Abfrage.} 
@@ -845,12 +845,12 @@ getrennt von dem, der die Benutzerverwaltung bereitstellt, skaliert werden kann.
 Es sollte keine direkte Kommunikation zwischen dem Service der Benutzerverwaltung und dem
 Service der Datenzulieferung bestehen (siehe Abbildung \ref{figure:trennungderlogic}).
 Jeder Service besitzt sein eigenen Cache und seine eigene Datenbank. Somit sind
-die Services komplett unabhängig skalier- und auslieferbar. Die Abhängigkeit der einzelnen
+die Services komplett unabhängig entwickel-, ausliefer- und skalierbar. Die Abhängigkeit der einzelnen
 Services mit dem Frontend ist natürlich immernoch gegen. Diese Abhängigkeit muss man
 allerdings in Kauf nehmen.
 
-Ähnlich wie bei dem rwhuDIOA 
-
+Der Benutzerverwaltungsdienst sowie der Datenzulieferungsdienst sind als einzelne Microservices
+im Backend zu verstehen. Ziel ist es, diese Services in Zukunft durch weitere Services zu ergängen.
 
 \begin{figure}
     \begin{center}
@@ -859,6 +859,23 @@ allerdings in Kauf nehmen.
     \caption{Trennung der Logic}
     \label{figure:trennungderlogic}
 \end{figure}
+
+Die Arbeit verfolgt auch für das Frontend einen Microservice-Ansatz. Man spricht hier von einem
+Microfrontend. Michael Geers schreibt dazu auf Digital Pioneers folgendes:
+"Der Ansatz, der sich jetzt förmlich aufdrängt, ist die Umsetzung der Microservice-Idee
+auch im Frontend. Anstatt einer ­großen Single-Page-Applikation baut man mehrere unabhängige
+Teilapplikationen, die miteinander kommunizieren. Diese sind dann deutlich einfacher zu verstehen.
+Der Einsatz einer neuen Technologie lässt sich in einem kleineren Rahmen testen."\cite{MicrofrontendT3N}
+Dabei sollen die Diagramme eines Dashboards als einzelne Services ausgelagert werden (wie in Abbildung \ref{figure:trennungderlogic} dargetstellt).
+Die Diagramme können so einzeln entwickelt und ausgeliefert werden. Aufgrund der
+gleichen Machenschaft der Schnittstellen der Diagramme, kann man diese Art des Code-Splittings auch als
+einen Plugin-Ansatz ansehen. Die Diagramme sollen über die In-Memory-Datenbank
+Redis zur Verfügung gestellt werden. Die PWA selbst soll vorerst über einen
+Nginx Webserver und später über ein CDN ausgeliefert werden. Die Diagramme werden mithilfe
+von Dynamic Imports\footnote{Dynamic Imports gibt es seit ES6 (ECMAScript 2015)\cite{DynamicImportsV8}}
+während der Laufzeit agil nachgeladen. Da immer nur die verwendeten Diagramme aus der In-Memory-Datenbank
+geladen werden, kann die Webanwendung eine nahezu unendliche Auswahl an möglichen Diagrammen zur Visualisierung
+der Daten bereitstellen.
 
 \subsection{Was gehört in die Datenbank?}
 \label{subsec:wasgehoertindiedatenbank}
