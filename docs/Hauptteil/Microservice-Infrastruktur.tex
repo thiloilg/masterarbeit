@@ -1,5 +1,32 @@
 \chapter{Microservice-Infrastruktur}
 \label{chap:microserviceinfrastruktur}
+Bevor man mit dem Programmieren der Anwendung anfangen kann,
+gilt es einiges vorzubereiten. Dieses Kapitel beschäftigt sich
+mit der Microservice-Infrastruktur der Gesamtanwendung. Hier geht
+es um das Aufsetzen einer agilen Infrastruktur, die den
+stetigen Auslieferungsprozess der Software ermöglicht. 
+In \Cref{chap:qualitaetssicherung} geht es um Methoden und Verfahren,
+die die Qualität der Software sicherstellen. Erst nach der Erstellung
+der Microservice-Infrastruktur sowie der Automatisierung von
+Qualitätssicherungsprozessen, kann mit der Programmierung der
+Anwendung begonnen werden.
+
+Das Kapitel Microservice-Infrastruktur ist wie folgt gegliedert:
+In \Cref{sec:continuousdelivery} befasst sich die Arbeit mit
+dem stetigen Softwareauslieferungsprozess, bekannt als Continuous Delivery.
+In \Cref{sec:monorepoundsubmodules} wird die Aufteilung der Versionsverwaltung
+in einzelne Aufbewahrungsorte diskutiert. In \Cref{sec:infrastruktur}
+wird die Infrastruktur der Gesamtanwendung geschildert. Hier geht es
+um Technologien, die das Auslieferungsverfahren sowie die Benutzung
+der Anwendung in Produktion ermöglichen. In \Cref{sec:systemdesign}
+geht es um die Gestaltung der Anwendung selbst. Hier werden die einzelnen,
+für die Anwendung nötigen Komponenten erörtert und definiert. Dabei
+wird auf die Frage des Tech-Stacks der einzelnen Services geklärt.
+In \Cref{sec:pipelinedesign} geht es um die Pipeline, also den Auslieferungsprozess
+selbst. Hier werden Vorkehrungen getroffen, um diesen zu ermöglichen.
+
+\section{Continuous Delivery}
+\label{sec:continuousdelivery}
 
 \section{Monorepo und Submodules}
 \label{sec:monorepoundsubmodules}
@@ -7,14 +34,6 @@
 
 \section{Infrastruktur}
 \label{sec:infrastruktur}
-
-\begin{figure}
-    \label{figure:microserviceinfrastruktur}
-    \begin{center}
-    \includegraphics[scale=0.2]{img/abbildungen/MicroserviceInfrastruktur}
-    \end{center}
-    \caption{Übersicht über die Microservice-Infrastruktur}
-\end{figure}
 
 \subsection{Gitlab CE}
 \label{subsec:gitlabce}
@@ -27,6 +46,40 @@
 
 \subsection{Hetzner Cloud}
 \label{subsec:hetznercloud}
+
+\section{Systemdesign}
+\label{sec:systemdesign}
+
+% Wahl der Technologien, Tech-Stack?
+% Anforderungen an die Technologien
+% Umfeld etc
+% Geschwindigkeit der Entwicklung
+\begin{figure}
+    \label{figure:microserviceinfrastruktur}
+    \begin{center}
+    \includegraphics[scale=0.2]{img/abbildungen/MicroserviceInfrastruktur}
+    \end{center}
+    \caption{Übersicht über die Microservice-Infrastruktur}
+\end{figure}
+
+\subsection{Reverse Proxy}
+\label{sec:reverseproxy}
+
+\subsection{Load Balancer}
+\label{sec:loadbalancer}
+
+\subsection{Inhaltsauslieferung}
+\label{sec:inhaltsauslieferung}
+
+%% compression
+% CDM
+
+\subsection{Monitoring}
+\label{sec:monitoring}
+
+\subsection{Wartung}
+\label{sec:wartung}
+% clean up von server und docker setup
 
 \section{Pipeline Design}
 \label{sec:pipelinedesign}
@@ -58,32 +111,3 @@ in der Buildpipeline von der Backendapi abhängig.
     \caption{Healthcheckbeispiel in der Gitlab CI}
 \end{listing}
 
-\section{Reverse Proxy}
-\label{sec:reverseproxy}
-
-\section{Load Balancer}
-\label{sec:loadbalancer}
-
-\section{Inhaltsauslieferung}
-\label{sec:inhaltsauslieferung}
-
-\subsection{Kompression}
-\label{subsec:kompression}
-
-\subsection{CDN}
-\label{subsec:cdn}
-
-\section{Monitoring}
-\label{sec:monitoring}
-
-\section{Wartung}
-\label{sec:wartung}
-% clean up von server und docker setup
-
-\subsection{Skizzen der Infrastruktur}
-\label{subsec:skizzenderinfrastruktur}
-
-% Wahl der Technologien, Tech-Stack?
-% Anforderungen an die Technologien
-% Umfeld etc
-% Geschwindigkeit der Entwicklung
