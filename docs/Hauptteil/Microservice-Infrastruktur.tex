@@ -103,21 +103,19 @@ verweist. Traefik dient als Reverse-Proxy und Load-Balancer, bietet zusätzlich 
 auch noch geringe Überwachungsfunktionalitäten in einem webbasierten Dashboard an.
 Dazu mehr in \Cref{sec:reverseproxyundloadbalancer}.
 
+Die Docker Registry ist unter der Domain "registry.thiloilg.com", Gitlab CE
+unter "gitlab.thiloilg.com" erreichbar. Die Repositories werden alle zusätzlich
+auf Github.com gespiegelt. Github.com dient als drittes Backup, falls die Repositories auf dem
+eigenen Gitlab Server und dem lokale Rechner verloren gehen. Mit dem Git-Befehl in
+Quellcode \ref{lst:gitalias} kann man sich einen Alias setzen, um zu allen Remote Repositories
+gleichzeitig zu pushen. Der senkrechte Strich im Linux Terminal, bekannt als "Pipe", trennt zwei Befehle in der
+Kommandozeile. Das Ergebnis des ersten Befehls wird an den zweiten Befehl weitergereicht.
 
-
-% \subsection{Gitlab CE}
-% \label{subsec:gitlabce}
-% % Die Unabhängigkeit gegenüber einzelner Unternehmen
-
-% % anhand einer YML-Datei 
-
-% \subsection{Docker Registry}
-% \label{subsec:dockerregistry}
-
-% \subsection{Hetzner Cloud}
-% \label{subsec:hetznercloud}
-
-
+\begin{listing}
+    \inputminted{sh}{snippets/sh/pushall.sh}
+    \caption{Konfiguration eines eigenen Git Alias}
+    \label{lst:gitalias}
+\end{listing}
 
 \section{Systemdesign}
 \label{sec:systemdesign}
@@ -162,6 +160,8 @@ Docker-Container und hat die primäre Aufgabe, die
 \subsection{Stages}
 \label{subsec:stages}
 % Continuous Integration mit Gitlab
+
+% Docker Verlauf anzeigen
 
 \subsection{Docker Compose Setup}
 \label{subsec:dockercomposesetup}
