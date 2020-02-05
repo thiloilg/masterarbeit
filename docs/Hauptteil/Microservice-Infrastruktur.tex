@@ -117,6 +117,21 @@ Kommandozeile. Das Ergebnis des ersten Befehls wird an den zweiten Befehl weiter
     \label{lst:gitalias}
 \end{listing}
 
+Für das Aufsetzen der Server benötigt man drei Schritte.
+Als erstes verbindet man sich über SSH zu dem Server und richtet den die UFW
+ein.\footnote{UFW steht für Uncomplicated Firewall} Dabei öffnet man alle Ports,
+die von den Anwendungen des Server benötigt werden. In der Regel sind das Port 80
+für HTTP und Port 443 für HTTPS. Aufgrunddessen, dass bei dem Gitlab CE Server
+Port 22 bereits für die SSH verbindung benötigt wird, musste der Gitlab Shell SSH
+Port auf 2222 verlegt werden. Als zweiten Schritt Installiert man alle nötigen
+Programme auf dem Server. Das wichtigste der Programme ist Docker CE. In Schritt
+drei kopiert man mithilfe von SCP die \code{docker-compose.yml} Datei auf den
+Server und startet sie mit \code{docker-compose up}. In der Docker-Compose Datei
+stehen alle wichtigen Informationen, um ein kleines Docker-Cluster aufzuziehen.
+Bei dem Server für die Testphase sowie dem Produktionsserver ist dieser Prozess
+in der Gitlab CI Pipeline automatisiert. Eine genauere Beschreibung der
+Pipeline befindet sich in \Cref{sec:pipelinedesign}.
+
 \section{Systemdesign}
 \label{sec:systemdesign}
 

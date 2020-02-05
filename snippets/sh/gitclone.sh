@@ -1,0 +1,1 @@
+git clone ssh://git@gitlab.thiloilg.com:2222/repo/blicc.git
