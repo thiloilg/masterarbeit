@@ -89,36 +89,19 @@ Beständigkeit relevanten Ordner der Datenbank-Container zugewiesen. Die Zuweisu
 je nach Datenbank. Um die Server über das Internet zu erreichen, benötigt es diverse Domains
 und Subdomains, die mithilfe von DNS-Records auf die vom Server bereitgestellten
 IPv4- und IPv6-Adressen verweisen.\footnote{Man kann die Server natürlich auch direkt über die IP-Adresse ansprechen.}
-Folgende Domains würden für die drei Server verwendet:
 
-\begin{enumerate}
-    \item Versionsverwaltung und CI/CD
-    \begin{enumerate}
-        \item gitlab.thiloilg.com
-        \item registry.thiloilg.com
-    \end{enumerate}
-    \item Testphase
-    \begin{enumerate}
-        \item testing-stage.org
-        \item api.testing-stage.org
-        \item delivery.testing-stage.org
-    \end{enumerate}
-    \item JSON Ressourcen von AJAX Anfragen
-    \begin{enumerate}
-            \item blicc.org
-            \item api.blicc.org
-            \item delivery.blicc.org
-            \item monitor.blicc.org
-        \end{enumerate}
-\end{enumerate}
-
-Die beiden Subdomains "gitlab" und "registry" verweisen auf die Gitlab CE und die Docker Registry.
-Die Domain "testing-stage.org" wird für die Integrationstests und zur Qualitätssicherung verwendet.
 Die Domain "blicc.org" dient als Hauptdomain und wird in der Produktion verwendet. Der Name Blicc
-wurde zur representation des Produktes gewählt. Bei einer Verwendung der Anwendung als White-Label-Produkt wird der Name durch den der zu repräsentierenden Firma ersetzt. Der Name Blicc ist eine
-veränderte Form des deutschen Worts "Blick". Der Name wurde daher verändert, da die Verfügbarkeit
-des deutschen Wortes "Blick" in den meisten Domainvariationen nicht mehr erhältlich war und zudem
-überteuert angeboten wurde.
+wurde zur representation des Produktes gewählt. Bei einer Verwendung der Anwendung als White-Label-Produkt
+wird der Name durch den der zu repräsentierenden Firma ersetzt. Der Name Blicc ist eine
+veränderte Form des deutschen Wortes "Blick". Der Name wurde daher verändert, da die Verfügbarkeit
+von "Blick" in den meisten Domainvariationen nicht mehr erhältlich war und zudem
+überteuert angeboten wurde. Die Domain für den Server der Testphase ist "testing-stage.org".
+Die beiden Domains besitzten die Subdomains "api" und "delivery". Die Subdomain "api" verweist
+auf die Resource Management API; die Subdomain "delivery" verweist auf die Data Delivery API.
+Desweiteren gibt es die "monitor" Subdomain, welche auf die Kontrollübersicht von Traefik
+verweist. Traefik dient als Reverse-Proxy und Load-Balancer, bietet zusätzlich allerdings
+auch noch geringe Überwachungsfunktionalitäten in einem webbasierten Dashboard an.
+Dazu mehr in \Cref{sec:reverseproxyundloadbalancer}.
 
 
 
@@ -133,6 +116,8 @@ des deutschen Wortes "Blick" in den meisten Domainvariationen nicht mehr erhält
 
 % \subsection{Hetzner Cloud}
 % \label{subsec:hetznercloud}
+
+
 
 \section{Systemdesign}
 \label{sec:systemdesign}
@@ -149,11 +134,11 @@ des deutschen Wortes "Blick" in den meisten Domainvariationen nicht mehr erhält
     \caption{Übersicht über die Microservice-Infrastruktur}
 \end{figure}
 
-\subsection{Reverse Proxy}
-\label{sec:reverseproxy}
+\subsection{Reverse Proxy und Load Balancer}
+\label{sec:reverseproxyundloadbalancer}
 
-\subsection{Load Balancer}
-\label{sec:loadbalancer}
+Der Service läuft selbst in einem
+Docker-Container und hat die primäre Aufgabe, die 
 
 \subsection{Inhaltsauslieferung}
 \label{sec:inhaltsauslieferung}
