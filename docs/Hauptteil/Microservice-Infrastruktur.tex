@@ -38,7 +38,7 @@ Distribution von Software zu nutzen. Im Vergleich zu normalen Prozessen trennen 
 einzelne Anwendungen viel besser voneinander, wenn es darum geht, die Software auf einem anderen
 System zu installieren. Docker bietet ein Repository für Images an, so dass eine Vielzahl
 von Servern mit identischen Images betrieben werden können."\cite[S. 56]{ContinuousDeliveryWolff}
-Somit kann sichergestellt werden, dass die Software und deren Umgebung in der Testing-Stage
+Somit kann sichergestellt werden, dass die Software und deren Umgebung in der Testphase
 sowie in Produktion die selbe ist. Immer mehr Anbieter stellen CI-Werkzeuge zur Verfügung,
 die es ermöglichen eine CI/CD-Pipeline anhand von Konfigurationsdateien aufzuziehen. So bieten nun
 neben Travis CI, CircleCI und Jenkins auch Versionsverwaltungshosts wie Github und
@@ -49,8 +49,8 @@ der Version der Anwendung in Produktion sowie einfaches Reproduzieren von Fehler
 der große Aufwand des initialen Aufbaus der automatisierten Prozesse. Bei komplexen Änderungen des Systems müssen zudem
 große Teile des automatisierten Prozesses angepasst werden.
 
-In der Arbeit wird für die Versionsverwaltung und die stetige Softwareauslieferung ein eigener Linuxserver verwendet,
-auf dem die Community Version von Gitlab installiert ist. Auf dem Linuxserver befinden sich auch eine eigene Docker
+In der Arbeit wird für die Versionsverwaltung und die stetige Softwareauslieferung ein eigener Linux-Server verwendet,
+auf dem die Community Version von Gitlab installiert ist. Auf dem Linux-Server befinden sich auch eine eigene Docker
 Registry sowie ein eigener Gitlab Runner\footnote{Gitlab Runner dienen zur Ausführung der Pipeline}. Der Aufbau
 wird in \Cref{sec:infrastruktur} nochmal genauer behandelt. 
 
@@ -72,18 +72,67 @@ um in ihrem eigenen Repository Diagramme für die Anwendung zu entwickeln.
 
 \section{Infrastruktur}
 \label{sec:infrastruktur}
+Wie in \Cref{sec:continuousdelivery} bereits angesprochen, beinhaltet die Infrastruktur
+der Arbeit einen Linux-Server, auf welchem Gitlab CE, Gitlab Runner und eine Docker Registry
+installiert sind. Desweiteren benötigt es weitere Server, für die Testphase sowie für
+die Produktion. Die einzelnen Services werden einfachheitshalber mithilfe von Docker-Compose
+auf einem einzelnen Server ausgeführt. Das Ziel für die Zukunft ist es, die einzelnen
+Services auf einzelne Linux-Server zu verteilen. Dies soll mithilfe des Open Source IAC-Werkzeugs\footnote{IAC steht für Infrastructure as Code}
+Terraform über eine Cloudanbieter-API und dem Orchestrierungssystem Kubernetes automatisiert werden.
+Die Arbeit beschränkt sich allerdings auf drei Linux-Server. Einen für die Versionsverwaltung
+und den CI/CD-Prozess, einen für die Testphase sowie einen für die Produktion. 
+Die drei Server werden von Hetzner, einem Cloudanbieter, bereitgestellt und haben Ubuntu 18.04
+vorinstalliert.\footnote{Die 3 Linuxserver haben 4 VCPUs, 16GB RAM und 160GB SSD-Speicher} 
+Neben den Servern benötigt es noch Volumes, um die Daten der Datenbanken zu persistieren.
+Die an die Server angebrachten Volumes werden mithilfe von Docker-Compose auf die für die
+Beständigkeit relevanten Ordner der Datenbank-Container zugewiesen. Die Zuweisung variiert
+je nach Datenbank. Um die Server über das Internet zu erreichen, benötigt es diverse Domains
+und Subdomains, die mithilfe von DNS-Records auf die vom Server bereitgestellten
+IPv4- und IPv6-Adressen verweisen.\footnote{Man kann die Server natürlich auch direkt über die IP-Adresse ansprechen.}
+Folgende Domains würden für die drei Server verwendet:
 
-\subsection{Gitlab CE}
-\label{subsec:gitlabce}
-% Die Unabhängigkeit gegenüber einzelner Unternehmen
+\begin{enumerate}
+    \item Versionsverwaltung und CI/CD
+    \begin{enumerate}
+        \item gitlab.thiloilg.com
+        \item registry.thiloilg.com
+    \end{enumerate}
+    \item Testphase
+    \begin{enumerate}
+        \item testing-stage.org
+        \item api.testing-stage.org
+        \item delivery.testing-stage.org
+    \end{enumerate}
+    \item JSON Ressourcen von AJAX Anfragen
+    \begin{enumerate}
+            \item blicc.org
+            \item api.blicc.org
+            \item delivery.blicc.org
+            \item monitor.blicc.org
+        \end{enumerate}
+\end{enumerate}
 
-% anhand einer YML-Datei 
+Die beiden Subdomains "gitlab" und "registry" verweisen auf die Gitlab CE und die Docker Registry.
+Die Domain "testing-stage.org" wird für die Integrationstests und zur Qualitätssicherung verwendet.
+Die Domain "blicc.org" dient als Hauptdomain und wird in der Produktion verwendet. Der Name Blicc
+wurde zur representation des Produktes gewählt. Bei einer Verwendung der Anwendung als White-Label-Produkt wird der Name durch den der zu repräsentierenden Firma ersetzt. Der Name Blicc ist eine
+veränderte Form des deutschen Worts "Blick". Der Name wurde daher verändert, da die Verfügbarkeit
+des deutschen Wortes "Blick" in den meisten Domainvariationen nicht mehr erhältlich war und zudem
+überteuert angeboten wurde.
 
-\subsection{Docker Registry}
-\label{subsec:dockerregistry}
 
-\subsection{Hetzner Cloud}
-\label{subsec:hetznercloud}
+
+% \subsection{Gitlab CE}
+% \label{subsec:gitlabce}
+% % Die Unabhängigkeit gegenüber einzelner Unternehmen
+
+% % anhand einer YML-Datei 
+
+% \subsection{Docker Registry}
+% \label{subsec:dockerregistry}
+
+% \subsection{Hetzner Cloud}
+% \label{subsec:hetznercloud}
 
 \section{Systemdesign}
 \label{sec:systemdesign}
