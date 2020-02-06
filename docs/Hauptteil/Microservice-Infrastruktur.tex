@@ -135,42 +135,59 @@ Pipeline befindet sich in \Cref{sec:pipelinedesign}.
 \section{Systemdesign}
 \label{sec:systemdesign}
 In diesem Abschnitt wird das Grundkonzept aus \Cref{subsec:trennungvonlogic}
-über die Trennung von logic weiter ausgebaut und daraus ein komplettes System
-entwickelt. Dabei wird auch die Frage nach den verschiedenen Technologien für
-die Services geklärt. 
+über die Trennung von Logik weiter ausgebaut und daraus ein komplettes System
+entwickelt. Dabei wird auch die Frage nach den Technologien für
+die unterschiedlichen Komponenten des Systems geklärt. Komponentenspezifische
+Implementierungsdetails werden in \Cref{chap:komponentendesign} vorgestellt. 
+Dieser Abschnitt fokussiert sich auf die Merkmale der Komponenten,
+die für das Gesamtsystem von relevanz sind. In \Cref{subsec:systemuebersicht} verschafft
+sich die Arbeit einen groben Überblick über das System. Anhand einer Grafik wird das Zusammenspiel
+der einzelnen Komponenten erläutert. In  \Cref{subsec:reverseproxyundloadbalancer}
+wird der Reverse Proxy und der Load Balancer behandelt.
+Dabei stellen sich folgende Fragen: Wie muss die Schnittstelle der
+Infrastruktur zur Außenwelt aussehen? Was muss man einhalten, um späteres
+Skalieren zu ermöglichen? In \Cref{subsec:inhaltsauslieferung} wird
+die Inhaltsauslieferung vorgestellt. Dabei stellt sich die Frage,
+wie die Ressourcen möglichst performant an die Clients transportiert
+werden können. In \Cref{subsec:services} gibt es einen Überblick
+über die Services. Hier werden für das System relevante Machenschaften
+dargestellt. Abschließend setzt sich die Arbeit in \Cref{subsec:monitoringundwartung}
+mit der Überwachung und Wartung des Systems auseinander.
+
+\subsection{Systemübersicht}
+\label{subsec:systemuebersicht}
+Die Abbildung \ref{figure:uebersichtueberdassystemdesign} verschafft einen guten Überblick
+über das Zusammenspiel der einzelnen Komponenten. 
 
 % Wahl der Technologien, Tech-Stack?
 % Anforderungen an die Technologien
 % Umfeld etc
 % Geschwindigkeit der Entwicklung
 \begin{figure}
-    \label{figure:microserviceinfrastruktur}
     \begin{center}
     \includegraphics[scale=0.2]{img/abbildungen/MicroserviceInfrastruktur}
     \end{center}
-    \caption{Übersicht über die Microservice-Infrastruktur}
+    \caption{Übersicht über das Systemdesign}
+    \label{figure:uebersichtueberdassystemdesign}
 \end{figure}
 
 \subsection{Reverse Proxy und Load Balancer}
-\label{sec:reverseproxyundloadbalancer}
+\label{subsec:reverseproxyundloadbalancer}
 
 Der Service läuft selbst in einem
 Docker-Container und hat die primäre Aufgabe, die 
 
 \subsection{Inhaltsauslieferung}
-\label{sec:inhaltsauslieferung}
+\label{subsec:inhaltsauslieferung}
 
 %% compression
 % CDM
 
 \subsection{Services}
-\label{sec:services}
+\label{subsec:services}
 
-\subsection{Monitoring}
-\label{sec:monitoring}
-
-\subsection{Wartung}
-\label{sec:wartung}
+\subsection{Monitoring und Wartung}
+\label{subsec:monitoringundwartung}
 % clean up von server und docker setup
 
 \section{Pipeline Design}
