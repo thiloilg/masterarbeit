@@ -186,7 +186,17 @@ in drei Container unterteilt. Der wichtigste Container führt die Servicelogik a
 Schicht befindet sich eine In-Memory-Datenbank, die für das Caching verantwortlich ist. Zuallerletzt
 kommt eine Datenbank, um den Fortbestand der Daten zu sichern. Die Caching-Strategie sowie die Art der
 Datenbank variiert je nach Anforderung an den Service. Für die Langzeitspeicherung der Daten wird je nach Service
-eine dokumentenorientiertes als auch ein relationales Datenbanksystem verwendet. 
+eine dokumentenorientiertes als auch ein relationales Datenbanksystem verwendet. Die Data Delivery API
+verwendet ein dokumentenorientiertes Datenbanksystem. Hauptgrund hierfür ist der Fakt, dass man nicht
+im Vorhinein weiß, wie das Datenschema auszusehen hat. Der Benutzer der Anwendung kann jegliche API
+auswählen, Daten abfragen und diese mithilfe einer JSON-Abfragesprache verarbeiten. Das Datenschema
+kann sich also während der Laufzeit des Programms verändern. Im Gegensatz hierzu steht die Resource
+Management API, welche auf eine relationale Datenstruktur aufgebaut ist. Die Schemata formen das
+Erscheinungsbild der API und werden als CRUD-Operationen über eine REST-Schnittstelle enthüllt.
+Nun stellt sich aber die Frage, wieso man für die Resource Management API nicht auch eine
+No-SQL-Datenbank verwendet hat. Dazu gilt erst einmal zu erwägen, dass man bei der Wahl zu
+einem dokumentenorientierten Datenbanksystems für die gewonnene Flexibility des Datenschemas
+auch einen Kompromiss eingeht.
 
 
 % Wahl der Technologien, Tech-Stack?
