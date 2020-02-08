@@ -21,7 +21,7 @@ um Technologien, die das Auslieferungsverfahren sowie die Benutzung
 der Anwendung in Produktion ermöglichen. In \Cref{sec:systemdesign}
 geht es um die Gestaltung der Anwendung selbst. Hier werden die einzelnen,
 für die Anwendung nötigen Komponenten erörtert und definiert. Dabei
-wird auf die Frage des Tech-Stacks der einzelnen Services geklärt.
+ist von besonderer Bedeutung, welche Merkmale die einzelnen Komponenten ausmacht.
 In \Cref{sec:pipelinedesign} geht es um die Pipeline, also den Auslieferungsprozess
 selbst. Hier werden Vorkehrungen getroffen, um diesen zu ermöglichen.
 
@@ -186,9 +186,27 @@ in drei Container unterteilt. Der wichtigste Container führt die Servicelogik a
 Schicht befindet sich eine In-Memory-Datenbank, die für das Caching verantwortlich ist. Zuallerletzt
 kommt eine Datenbank, um den Fortbestand der Daten zu sichern. Die Caching-Strategie sowie die Art der
 Datenbank variiert je nach Anforderung an den Service. Für die Langzeitspeicherung der Daten wird je nach Service
-eine dokumentenorientiertes als auch ein relationales Datenbanksystem verwendet. Die Data Delivery API
-verwendet ein dokumentenorientiertes Datenbanksystem. Hauptgrund hierfür ist die Tatsache, dass man nicht
-im Vorhinein weiß, wie das Datenschema auszusehen hat. Der Benutzer der Anwendung kann jegliche API
+eine dokumentenorientiertes als auch ein relationales Datenbanksystem verwendet. Die Wahl der Datenbankarten wird in
+\Cref{subsec:wahlderdatenbankarten} genauer beschrieben. Der Content Delivery Service ist für die Auslieferung
+der statischen Dateien des Frontends verantwortlich. Hier ist die Wahl des richtigen Kompressionsverfahrens
+ausschlaggebend. Die Content Delivery (zu deutsch Inhaltsauslieferung) behandelt \Cref{subsec:inhaltsauslieferung}.
+
+% Wahl der Technologien, Tech-Stack?
+% Anforderungen an die Technologien
+% Umfeld etc
+% Geschwindigkeit der Entwicklung
+
+\subsection{Reverse Proxy und Load Balancer}
+\label{subsec:reverseproxyundloadbalancer}
+
+Der Service läuft selbst in einem
+Docker-Container und hat die primäre Aufgabe, die 
+
+\subsection{Wahl der Datenbankarten}
+\label{subsec:wahlderdatenbankarten}
+Die Data Delivery API verwendet ein dokumentenorientiertes Datenbanksystem.
+Hauptgrund hierfür ist die Tatsache, dass man nicht im Vorhinein weiß, wie das
+Datenschema auszusehen hat. Der Benutzer der Anwendung kann jegliche API
 auswählen, Daten abfragen und diese mithilfe einer JSON-Abfragesprache verarbeiten. Das Datenschema
 kann sich also während der Laufzeit des Programms verändern. Im Gegensatz hierzu steht die Resource
 Management API, welche auf eine relationale Datenstruktur aufgebaut ist. Die Schemata formen das
@@ -209,25 +227,10 @@ DBMS wie MongoDB nur auf Dokumentenebene atomar.\cite{MongoDBAtomaritaet} Da die
 Benutzerverwaltungsdaten von erheblicher relevant ist\footnote{Speziell bei sensiblen Transaktionen wie Zahlungsabläufen.}, 
 entscheidet sich die Arbeit für die Resource Management API ein RDBMS zu verwenden.
 
-% Wahl der Technologien, Tech-Stack?
-% Anforderungen an die Technologien
-% Umfeld etc
-% Geschwindigkeit der Entwicklung
-
-\subsection{Reverse Proxy und Load Balancer}
-\label{subsec:reverseproxyundloadbalancer}
-
-Der Service läuft selbst in einem
-Docker-Container und hat die primäre Aufgabe, die 
-
 \subsection{Inhaltsauslieferung}
 \label{subsec:inhaltsauslieferung}
-
 %% compression
 % CDM
-
-\subsection{Services}
-\label{subsec:services}
 
 \subsection{Monitoring und Wartung}
 \label{subsec:monitoringundwartung}
