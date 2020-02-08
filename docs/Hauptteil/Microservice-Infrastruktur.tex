@@ -276,10 +276,17 @@ der erste Zeitpunkt, an dem die Seite auf Benutzerinteraktionen reagieren könnt
 Unter Zeit für Interaktion versteht man den Zeitpunkt, an dem alle Inhalte geladen ist.
 Jetzt kann die Seite zu jeder Interaktion schnell reagieren.\cite{WhatPerformanceMetricsMeasure}
 
-Der Lighthouse Leistungstest zeigt klar, dass der Benutzer bei komprimierten Inhalten nur circa
-die Hälfte der Zeit warten muss. 
+In Abbildung \ref{tab:lighthouseleistungstestdesinitialenladevorgangs} wird klar deutlich,
+dass Kompression gerade bei langsameren Internetverbindungen von großer Bedeutung ist.
+Es ist wichtig anzumerken, dass der Brotli-Kompressionsalgorithmus zwar eine größere
+Kompressionsrate besitzt, allerdings für die Kompression und Dekompression mehr Zeit
+benötigt.\cite{CompressionBenchmark} Für dynamische Inhalte sollte man also Gzip
+benutzen. Wichtig ist auch, dass Bildformate in der Regel bereits komprimiert wurden.
+Ein weiterer Kompressionsvorgang kann die Größe der Bilder vergrößern.
 
-% CDM
+Die Arbeit verwendet wie bereits erwähnt einen Nginx Webserver für die
+Auslieferung von statischen Inhalten. Für die Zukunft sollte man die Nutzung
+eines CDNs in Betracht ziehen, um die weltweite Ladezeit zu optimieren.
 
 \subsection{Wahl der Datenbankarten}
 \label{subsec:wahlderdatenbankarten}
