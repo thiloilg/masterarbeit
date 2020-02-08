@@ -191,11 +191,21 @@ richtigen Kompressionsverfahrens ausschlaggebend.
 \subsection{Reverse Proxy und Load Balancer}
 \label{subsec:reverseproxyundloadbalancer}
 Anders, als bei einem Proxy, der den Client von dem Server versteckt, versteckt ein Reverse Proxy
-eine Serverinfrastruktur vor dem Client. 
+eine Serverinfrastruktur vor dem Client. Durch die Anonymisierung der Serverinfrastruktur
+sind Angriffe gegen spezifische Servertechnologien erschwert, da deren Schnittstelle
+nicht direkt mit der Außenwelt kommuniziert. In der Regel übernimmt der Reverse Proxy
+auch die SSL/TLS-Verschlüsselung. Desweiteren kann er auch zur Verteilung der Serverlast,
+also als Load Balancer verwendet werden. Ein typisches Beispiel für einen Reverse Proxy
+ist ein Nginx Webserver. Die Arbeit benutzt als Reverse Proxy und Load Balancer die
+in Golang geschriebene Open Source Software Traefik.\footnote{https://docs.traefik.io/}
+Traefik unterstützt die Kommunikation mit Orchestrierungssystemen wie Kubernetes
+und Docker Swarm, und bietet additional auch noch automatisierte SSL/TLS-Verschlüsselung
+mithilfe von Let's Encrypt.\footnote{https://letsencrypt.org/} Eine HTTPS-Verbindung
+ist notwendig, um typische Features der PWAs zu ermögliche.\cite{IsHTTPSforPWArequired}
+So kann ohne HTTPS keine PWA auf dem Homescreen installiert werden. 
 
 
-Der Service läuft selbst in einem
-Docker-Container und hat die primäre Aufgabe, die
+
 
 \subsection{Inhaltsauslieferung}
 \label{subsec:inhaltsauslieferung}
