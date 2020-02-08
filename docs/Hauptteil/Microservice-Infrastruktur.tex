@@ -100,7 +100,7 @@ auf die Resource Management API; die Subdomain "delivery" verweist auf die Data 
 Desweiteren gibt es die "monitor" Subdomain, welche auf die Kontrollübersicht von Traefik
 verweist. Traefik dient als Reverse-Proxy und Load-Balancer, bietet zusätzlich allerdings
 auch noch geringe Überwachungsfunktionalitäten in einem webbasierten Dashboard an.
-Dazu mehr in \Cref{sec:reverseproxyundloadbalancer}.
+Dazu mehr in \Cref{subsec:reverseproxyundloadbalancer}.
 
 Die Docker Registry ist unter der Domain "registry.thiloilg.com", Gitlab CE
 unter "gitlab.thiloilg.com" erreichbar. Die Repositories werden alle zusätzlich
@@ -244,11 +244,25 @@ einmal mit und einmal ohne Brotli Kompression durch. Brotli ist eine
 von Zoltán Szabadka und Jyrki Alakuijala entwickeltes Kompressionsverfahren,
 dass auf die Entropiekodierung Huffman und dem verlustlosen
 Datenkompressionsverfahren LZ77 basiert.\cite{BrotliGoogleOpenSourceBlog}
-Die Packetgröße der Frontendanwendung beträgt 819,43Kb. Die Performance-Tests
+Die Packetgröße der Frontendanwendung beträgt 819,43Kb. Die Leistungstests
 werden mit dem Open-Source-Werkzeug Lighthouse durchgeführt.\footnote{https://developers.google.com/web/tools/lighthouse}
 Um den Unterschied der benötigten Zeit zum initialen Laden der Frontendanwendung
 besser zu verdeutlichen, wird der Datendurchlauf auf 1.638,4Kbps verringert.
 Die Frontendanwendung wird in einem nachgeahmten Nexus 5X ausgeführt.
+
+\begin{table}[h]
+    \begin{center}
+\begin{tabular}{l*{8}{r}}
+Metrik & Ohne Kompr. & Gzip & Brotli \\
+\hline
+Erstes Zeichnen von Inhalten& 6,2s  & 3,1s & 2,9s \\
+Erster CPU Stillstand       & 6,2s  & 4,3s & 4,1s \\
+Erste mögliche Interaktion  & 7,5s  & 4,3s & 4,1s \\
+\end{tabular}
+\end{center}
+\caption{Lighthouse Leistungstest des initialen Ladevorgangs}
+\label{tab:lighthouseleistungstestdesinitialenladevorgangs}
+\end{table}
 
 %% compression
 % CDM
