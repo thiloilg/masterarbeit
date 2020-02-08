@@ -20,8 +20,7 @@ wird die Infrastruktur der Gesamtanwendung geschildert. Hier geht es
 um Technologien, die das Auslieferungsverfahren sowie die Benutzung
 der Anwendung in Produktion ermöglichen. In \Cref{sec:systemdesign}
 geht es um die Gestaltung der Anwendung selbst. Hier werden die einzelnen,
-für die Anwendung nötigen Komponenten erörtert und definiert. Dabei
-ist von besonderer Bedeutung, welche Merkmale die einzelnen Komponenten ausmacht.
+für die Anwendung nötigen Komponenten erörtert und definiert.
 In \Cref{sec:pipelinedesign} geht es um die Pipeline, also den Auslieferungsprozess
 selbst. Hier werden Vorkehrungen getroffen, um diesen zu ermöglichen.
 
@@ -136,9 +135,8 @@ Pipeline befindet sich in \Cref{sec:pipelinedesign}.
 \label{sec:systemdesign}
 In diesem Abschnitt wird das Grundkonzept aus \Cref{subsec:trennungvonlogic}
 über die Trennung von Logik weiter ausgebaut und daraus ein komplettes System
-entwickelt. Dabei wird auch die Frage nach den Technologien für
-die unterschiedlichen Komponenten des Systems geklärt. Komponentenspezifische
-Implementierungsdetails werden in \Cref{chap:komponentendesign} vorgestellt. 
+entwickelt. Komponentenspezifische Implementierungsdetails
+werden in \Cref{chap:komponentendesign} vorgestellt. 
 Dieser Abschnitt fokussiert sich auf die Merkmale der Komponenten,
 die für das Gesamtsystem von relevanz sind. In \Cref{subsec:systemuebersicht} verschafft
 sich die Arbeit einen groben Überblick über das System. Anhand einer Grafik wird das Zusammenspiel
@@ -149,10 +147,10 @@ Infrastruktur zur Außenwelt aussehen? Was muss man einhalten, um späteres
 Skalieren zu ermöglichen? In \Cref{subsec:inhaltsauslieferung} wird
 die Inhaltsauslieferung vorgestellt. Dabei stellt sich die Frage,
 wie die Ressourcen möglichst performant an die Clients transportiert
-werden können. In \Cref{subsec:services} gibt es einen Überblick
-über die Services. Hier werden für das System relevante Machenschaften
-dargestellt. Abschließend setzt sich die Arbeit in \Cref{subsec:monitoringundwartung}
-mit der Überwachung und Wartung des Systems auseinander.
+werden können. In \Cref{subsec:wahlderdatenbankarten} geht es um die Wahl
+der Datenbankart der einzelnen Services. Abschließend setzt sich die Arbeit
+in \Cref{subsec:monitoringundwartung} mit der Überwachung und Wartung
+des Systems auseinander.
 
 \subsection{Systemübersicht}
 \label{subsec:systemuebersicht}
@@ -186,10 +184,9 @@ in drei Container unterteilt. Der wichtigste Container führt die Servicelogik a
 Schicht befindet sich eine In-Memory-Datenbank, die für das Caching verantwortlich ist. Zuallerletzt
 kommt eine Datenbank, um den Fortbestand der Daten zu sichern. Die Caching-Strategie sowie die Art der
 Datenbank variiert je nach Anforderung an den Service. Für die Langzeitspeicherung der Daten wird je nach Service
-eine dokumentenorientiertes als auch ein relationales Datenbanksystem verwendet. Die Wahl der Datenbankarten wird in
-\Cref{subsec:wahlderdatenbankarten} genauer beschrieben. Der Content Delivery Service ist für die Auslieferung
-der statischen Dateien des Frontends verantwortlich. Hier ist die Wahl des richtigen Kompressionsverfahrens
-ausschlaggebend. Die Content Delivery (zu deutsch Inhaltsauslieferung) behandelt \Cref{subsec:inhaltsauslieferung}.
+eine dokumentenorientiertes als auch ein relationales Datenbanksystem verwendet. Der Content Delivery Service
+ist für die Auslieferung der statischen Dateien des Frontends verantwortlich. Hier ist die Wahl des
+richtigen Kompressionsverfahrens ausschlaggebend.
 
 % Wahl der Technologien, Tech-Stack?
 % Anforderungen an die Technologien
@@ -200,7 +197,12 @@ ausschlaggebend. Die Content Delivery (zu deutsch Inhaltsauslieferung) behandelt
 \label{subsec:reverseproxyundloadbalancer}
 
 Der Service läuft selbst in einem
-Docker-Container und hat die primäre Aufgabe, die 
+Docker-Container und hat die primäre Aufgabe, die
+
+\subsection{Inhaltsauslieferung}
+\label{subsec:inhaltsauslieferung}
+%% compression
+% CDM
 
 \subsection{Wahl der Datenbankarten}
 \label{subsec:wahlderdatenbankarten}
@@ -228,11 +230,6 @@ Benutzerverwaltungsdaten von erheblicher relevant ist\footnote{Speziell bei sens
 entscheidet sich die Arbeit für die Resource Management API ein RDBMS zu verwenden.
 % Performance verbesserung durch Indexing in der RDBMS
 
-
-\subsection{Inhaltsauslieferung}
-\label{subsec:inhaltsauslieferung}
-%% compression
-% CDM
 
 \subsection{Monitoring und Wartung}
 \label{subsec:monitoringundwartung}
