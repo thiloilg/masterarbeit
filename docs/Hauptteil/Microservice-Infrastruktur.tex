@@ -178,7 +178,7 @@ sind denkbar.
 
 Das Backend und dessen Microservice-Infrastruktur wird durch einen Reverse Proxy vom Internet versteckt.
 In dieser Zwischenschicht befinden sich unter anderem ein Load Balancer sowie ein Monitoring System.
-Das Backend ist in drei Services zu unterteilen; die Data Delivery API, die Resource Management API
+Das Backend ist in drei Services unterteilt; die Data Delivery API, die Resource Management API
 und den Content Delivery Service. Die Data Delivery API sowie die Resource Management API sind jeweils
 in drei Container unterteilt. Der wichtigste Container führt die Servicelogik aus. In der zweiten
 Schicht befindet sich eine In-Memory-Datenbank, die für das Caching verantwortlich ist. Zuallerletzt
@@ -188,13 +188,11 @@ eine dokumentenorientiertes als auch ein relationales Datenbanksystem verwendet.
 ist für die Auslieferung der statischen Dateien des Frontends verantwortlich. Hier ist die Wahl des
 richtigen Kompressionsverfahrens ausschlaggebend.
 
-% Wahl der Technologien, Tech-Stack?
-% Anforderungen an die Technologien
-% Umfeld etc
-% Geschwindigkeit der Entwicklung
-
 \subsection{Reverse Proxy und Load Balancer}
 \label{subsec:reverseproxyundloadbalancer}
+Anders, als bei einem Proxy, der den Client von dem Server versteckt, versteckt ein Reverse Proxy
+eine Serverinfrastruktur vor dem Client. 
+
 
 Der Service läuft selbst in einem
 Docker-Container und hat die primäre Aufgabe, die
@@ -228,8 +226,11 @@ die Konsistenz der Daten zu garantieren. Desweiteren ist der Schreibvorgang bei 
 DBMS wie MongoDB nur auf Dokumentenebene atomar.\cite{MongoDBAtomaritaet} Da die Konsistenz und Atomarität für
 Benutzerverwaltungsdaten von erheblicher relevant ist\footnote{Speziell bei sensiblen Transaktionen wie Zahlungsabläufen.}, 
 entscheidet sich die Arbeit für die Resource Management API ein RDBMS zu verwenden.
-% Performance verbesserung durch Indexing in der RDBMS
-
+Um das Performanzdefizit im vergleich zu dokumentbasierenden DBMS auszugleichen,
+werden Indices verwendet. Ein Datenbankindex ist ein Kompromiss, bei dem
+man Speicherplatz gegen Zugriffsgeschwindigkeit tauscht.\cite{YoutubePostgresIndexing}
+Mithilfe einer aktuell gehaltenen Indexstruktur\footnote{Beispielsweise Binärbäume, Hashtabellen und sortierte Abfolgen}
+wird die Komplexität eines Spaltenzugriffs dezimiert.
 
 \subsection{Monitoring und Wartung}
 \label{subsec:monitoringundwartung}
