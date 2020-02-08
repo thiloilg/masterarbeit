@@ -203,8 +203,14 @@ und Docker Swarm, und bietet additional auch noch automatisierte SSL/TLS-Verschl
 mithilfe von Let's Encrypt.\footnote{https://letsencrypt.org/} Laut einer Google Checklist,
 ist eine Verbindung über HTTPS Vorraussetzung für eine PWA.\cite{GooglePWAChecklist}
 Ohne SSL/TLS-Verschlüsselung werden Funktionalitäten wie das hinzufügen der App zum Homescreen
-von den Browsern nicht bereitgestellt.
-
+von den Browsern nicht bereitgestellt. Verschlüsselungsschichten wie TLS und der Vorgänger
+SSL liegen zwischen der TCP-Schicht und HTTP/WS. Neben dem Public-Key-Verschlüsselungsverfahren
+muss für eine TLS-Verschlüsselung auch die Authentizität des Servers, mit dem kommuniziert wird,
+bestätigt sein. Hierfür benötigt man ein EV-TLS-Zertifikate\footnote{EV steht für Extended Validation}
+Mithilfe von Let's Encrypt, einer gemeinnützigen Zertifizierungsstelle, kann man EV-TLS-Zertifikate
+kostenlos über eine API beantragen. Die Arbeit hat sich unter anderem für Traefik entschieden,
+da der Reverse Proxy einen automatisierten Vorgang bereitstellt, indem  EV-TLS-Zertifikate
+mithilfe von Let's Encrypt generiert werden.
 
 \subsection{Inhaltsauslieferung}
 \label{subsec:inhaltsauslieferung}
