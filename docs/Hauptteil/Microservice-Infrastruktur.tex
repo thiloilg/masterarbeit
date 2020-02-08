@@ -244,11 +244,12 @@ einmal mit Gzip, Brotli und einmal ohne Kompression durch. Brotli ist eine
 von Zoltán Szabadka und Jyrki Alakuijala entwickeltes Kompressionsverfahren,
 dass auf die Entropiekodierung Huffman und dem verlustlosen
 Datenkompressionsverfahren LZ77 basiert.\cite{BrotliGoogleOpenSourceBlog}
-Die Packetgröße der Frontendanwendung beträgt 819,43KB. Die Leistungstests
+Die unkomprimierte Größe der Frontendanwendung beträgt 819KB. Die Leistungstests
 werden mit dem Open-Source-Werkzeug Lighthouse durchgeführt.\footnote{https://developers.google.com/web/tools/lighthouse}
 Um den Unterschied der benötigten Zeit zum initialen Laden der Frontendanwendung
 besser zu verdeutlichen, wird der Datendurchlauf auf 1.638,4Kbps verringert.
 Die Frontendanwendung wird in einem nachgeahmten Nexus 5X ausgeführt.
+Für die Analyse wurden vier Metriken aus dem Testbericht entnommen.
 Die Ergebnisse des Leistungstests sind in Abbildung \ref{tab:lighthouseleistungstestdesinitialenladevorgangs}
 dargestellt.
 
@@ -257,16 +258,23 @@ dargestellt.
 \begin{tabular}{l*{8}{r}}
 Metrik & Ohne Kompr. & Gzip & Brotli \\
 \hline
-Erstes Zeichnen von Inhalten& 6,2s  & 3,1s & 2,9s \\
-Erster CPU Stillstand       & 6,2s  & 4,3s & 4,1s \\
-Erste mögliche Interaktion  & 7,5s  & 4,3s & 4,1s \\
-Totaller Datentransfer      & 1.172 KB  &  553 KB & 481 KB \\
+Erstes Zeichnen von Inhalten & 6,2s  & 3,1s & 2,9s \\
+Erste CPU-Inaktivität        & 6,2s  & 4,3s & 4,1s \\
+Zeit für Interaktion     & 7,5s  & 4,3s & 4,1s \\
+Übertragungsgröße            & 1.172KB  &  553KB & 481KB \\
 \end{tabular}
 \end{center}
 \caption{Lighthouse Leistungstest des initialen Ladevorgangs}
 \label{tab:lighthouseleistungstestdesinitialenladevorgangs}
 \end{table}
 
+Die Zeit wird von der ersten vom Browser ausgehenden Anfrage gemessen.
+Lighthouse beschreibt die Metriken wie folgt: Unter dem ersten Zeichnen
+von Inhalten versteht man den ersten Zeitpunkt, an dem der Browser
+irgendeinen Inhalt zeichnet. Die erste CPU-Inaktivität ist
+der erste Zeitpunkt, an dem die Seite auf Benutzerinteraktionen reagieren könnte.
+Unter Zeit für Interaktion versteht man den Zeitpunkt, an dem alle Inhalte geladen ist.
+Jetzt kann die Seite zu jeder Interaktion schnell reagieren.\cite{WhatPerformanceMetricsMeasure}
 
 
 %% compression
