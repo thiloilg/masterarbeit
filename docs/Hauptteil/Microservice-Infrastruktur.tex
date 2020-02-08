@@ -194,9 +194,13 @@ kann sich also während der Laufzeit des Programms verändern. Im Gegensatz hier
 Management API, welche auf eine relationale Datenstruktur aufgebaut ist. Die Schemata formen das
 Erscheinungsbild der API und werden als CRUD-Operationen über eine REST-Schnittstelle enthüllt.
 Nun stellt sich aber die Frage, wieso man für die Resource Management API nicht auch eine
-No-SQL-Datenbank verwendet hat. Dazu gilt es erst einmal zu erwägen, dass man bei der Wahl zu
-einem dokumentenorientierten Datenbanksystems für die gewonnene Flexibilität des Datenbankschemas
-auch einen Kompromiss eingeht.
+No-SQL-Datenbank verwendet hat. Clemens Gull bringt die Kompromisse, welche man bei der
+Entscheidung zwischen einem relationalen und einem dokumentenorientierten DBMS
+eingehen muss, in seinem Buch "Wev-Applikationen entwickeln mit NoSQL" auf den Punkt:
+"Da RDBMS (relationale Datenbankmanagementsysteme, also konventionelle Datenbanken) sehr streng
+auf die Konsistenz der Daten achten, kann es hier zu Problemen mit der Performance und Verfügbarkeit
+kommen. Dieses Konzept wird bei NoSQL zugunsten der besseren Skalierbarkeit und auch Verfügbarkeit
+aufgeweicht."\cite{NoSQLClemensGull}
 
 
 % Wahl der Technologien, Tech-Stack?
