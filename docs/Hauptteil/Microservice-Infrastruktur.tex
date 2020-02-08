@@ -200,8 +200,14 @@ eingehen muss, in seinem Buch "Wev-Applikationen entwickeln mit NoSQL" auf den P
 "Da RDBMS (relationale Datenbankmanagementsysteme, also konventionelle Datenbanken) sehr streng
 auf die Konsistenz der Daten achten, kann es hier zu Problemen mit der Performance und Verfügbarkeit
 kommen. Dieses Konzept wird bei NoSQL zugunsten der besseren Skalierbarkeit und auch Verfügbarkeit
-aufgeweicht."\cite{NoSQLClemensGull}
-
+aufgeweicht."\cite[S. 18]{NoSQLClemensGull} Um die bessere Verfügbarkeit bei dokumentenorientierten
+DBMS zu garantieren, wird bewusst auf die Normalisierung
+\footnote{Frank Geisler zur Normalisierung: "Die Normalisierung reduziert die in der Datenbank vorhandenen Datenredundanzen und hilft Ihnen so dabei, die \dots Anomalien zu vermeiden."\cite[S. 177]{DatenbankenFrankGeisler}}
+verzichtet. Durch die dadurch entstehende Redundanz in der Datenbank fällt es schwer,
+die Konsistenz der Daten zu garantieren. Desweiteren ist der Schreibvorgang bei dokumentenorientierten
+DBMS wie MongoDB nur auf Dokumentenebene atomar.\cite{MongoDBAtomaritaet} Da die Konsistenz und Atomarität für
+Benutzerverwaltungsdaten von erheblicher relevant ist\footnote{Speziell bei sensiblen Transaktionen wie Zahlungsabläufen.}, 
+entscheidet sich die Arbeit für die Resource Management API ein RDBMS zu verwenden.
 
 % Wahl der Technologien, Tech-Stack?
 % Anforderungen an die Technologien
