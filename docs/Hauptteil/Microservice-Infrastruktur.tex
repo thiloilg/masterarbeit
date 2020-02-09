@@ -375,7 +375,7 @@ Eine Docker Registry ist also eine Art Versionsverwaltung für Docker-Images.
 Hat man die Images einmal getestet, kann man davon ausgehen, dass es sich
 in ausgeliefertem Zustand genauso verhalten wird, wie dies beim Testen der Fall war.
 
-An dritter Stelle kommt der Abschnitt der Qualitätssicherung.\footnote{Auf English Quality Assurance, abgekürzt QA.}
+An dritter Stelle kommt die die Umgebung für die Qualitätssicherung.\footnote{Auf English Quality Assurance, abgekürzt QA.}
 Hier wird die Software nach ihrer Qualität getestet. Erst wenn sie eine
 zuvor definierte Qualitätsmerkmale aufweißt, darf diese in die Produktionsumgebung
 ausgeliefert werden. Nach dem Buch Software-Qualität von Peter Liggesmeyer
@@ -388,9 +388,15 @@ Die QA bietet sich besonders gut für Integrations- sowie End-to-End-Tests an. D
 das Zusammenspiel der einzelnen Komponenten. Mehr zu den einzelnen Testarten und derer Implementation
 ist in \Cref{chap:qualitaetssicherung} beschrieben.
 
-Zuletzt kommt der Produktionsabschnitt. 
+An letzter Stelle kommt die Produktionsumgebung. Hier werden die laufenden Container durch
+die neuen Container, welche alle Tests erfolgreich absolviert haben, ersetzt. Die Produktionsumgebung
+unterscheidet sich von der QA-Umgebung daran, dass hier die einzelnen Container je nach Verarbeitungsmenge
+skaliert werden.
 
-
+Als nächstes werden in \Cref{subsec:stages} die einzelnen Stages, also die Abschnitte der Pipeline
+beschrieben. Daraufhin geht die Arbeit in \Cref{subsec:dockercomposesetup} auf den Aufbau von Docker-Compose ein.
+In \Cref{subsec:umgebungsvariablen} wird beschrieben, wie die Arbeit mit den Umgebungsvariablen umgeht.
+Zuallerletzt wird in \Cref{subsec:healthcheck} das Konzept der Health-Checks beschrieben.
 
 \subsection{Stages}
 \label{subsec:stages}
@@ -398,12 +404,14 @@ Zuletzt kommt der Produktionsabschnitt.
 
 % Docker Verlauf anzeigen
 
+\subsection{Docker-Compose Setup}
+\label{subsec:dockercomposesetup}
+
 \subsection{Umgebungsvariablen}
 \label{subsec:umgebungsvariablen}
 
 
-\subsection{Docker Compose Setup}
-\label{subsec:dockercomposesetup}
+
 
 \subsection{Health-Checks}
 \label{subsec:healthcheck}
