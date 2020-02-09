@@ -349,17 +349,30 @@ entfernt sowie der Cache entleert.
 
 \section{Pipeline Design}
 \label{sec:pipelinedesign}
-
-
-
-\subsection{Umgebungsvariablen}
-\label{subsec:umgebungsvariablen}
-
-\subsection{Stages}
-\label{subsec:stages}
-% Continuous Integration mit Gitlab
-
-% Docker Verlauf anzeigen
+Um eine stetige Softwareauslieferung zu ermöglichen, benötigt es einen automatisierten
+Prozess. Dieser Prozess muss sich um das Bauen, Testen und Ausliefern der einzelnen
+Container kümmern. In Abbildung \ref{figure:uebersichtueberdenstetigenauslieferungsprozess}
+sieht man eine Übersicht über den Auslieferungsprozess. An der X-Achse entlang sieht
+man die unterschiedlichen Umgebungen. Als erstes ist dort die Pipeline, ein in einem
+Gitlab Runner ausgelagerter Prozess, der ein vordefiniertes Script durchläuft.
+Damit der Gitlab Runner weiß, was er zu tun hat, werden in der \code{.gitlab-ci.yml}
+Datei einzelne Abschnitte und deren Aufgaben mithilfe der vereinfachten
+Auszeichnungssprache YAML definiert. Für jeden Abschnitt kann ein eigenes Docker-Image
+gewählt werden. Mehr dazu findet man in \Cref{subsec:stages}. An zweiter Stelle
+befindet sich die Docker Registry. Eine Docker Registry ist für die Umgebung
+einer Softwareanwendung das, was eine Git Repository für den Quellcode ist.
+Eine Docker Registry ist also eine Art Versionsverwaltung für Docker-Images.
+Hat man die Images einmal getestet, kann man davon ausgehen, dass es sich
+in ausgeliefertem Zustand genauso verhalten wird, wie dies beim Testen der Fall war.
+An dritter Stelle kommt der Abschnitt der Qualitätssicherung.\footnote{Auf English Quality Assurance, abgekürzt QA.}
+Hier wird die Software nach ihrer Qualität getestet. Erst wenn sie eine
+zuvor definierte Qualitätsmerkmale aufweißt, darf diese in die Produktionsumgebung
+ausgeliefert werden. Nach dem Buch Software-Qualität von Peter Liggesmeyer
+ist ein Qualitätsmerkmal, eine "Eigenschaft einer Funktionseinheit, anhand derer ihre \(\rightarrow\)
+Qualität beschrieben und beurteilt wird, die jedoch keine Aussage über
+den Grad der Ausprägung enthält. Ein Qualitätsmerkmal kann über mehrere Stufen in Teilmerkmale
+verfeinert werden."\cite[S. 515]{SoftwareQualitaet} Typische Qualitätsmerkmale in der Softwareentwicklung
+sind Korrektheit, Vollständigkeit, Sicherheit, Zuverlässigkeit, Verfügbarkeit und Robustheit.\cite[S. 5]{SoftwareQualitaet}
 
 \begin{figure}
     \begin{center}
@@ -368,6 +381,18 @@ entfernt sowie der Cache entleert.
     \caption{Übersicht über den stetigen Auslieferungsprozess}
     \label{figure:uebersichtueberdenstetigenauslieferungsprozess}
 \end{figure}
+
+
+
+\subsection{Stages}
+\label{subsec:stages}
+% Continuous Integration mit Gitlab
+
+% Docker Verlauf anzeigen
+
+\subsection{Umgebungsvariablen}
+\label{subsec:umgebungsvariablen}
+
 
 \subsection{Docker Compose Setup}
 \label{subsec:dockercomposesetup}
