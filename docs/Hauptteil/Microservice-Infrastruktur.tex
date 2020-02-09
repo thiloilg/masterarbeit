@@ -400,9 +400,26 @@ Zuallerletzt wird in \Cref{subsec:healthcheck} das Konzept der Health-Checks bes
 
 \subsection{Stages}
 \label{subsec:stages}
-% Continuous Integration mit Gitlab
+In Abbildung \ref{figure:uebersichtueberdenstetigenauslieferungsprozess} des vorherigen Abschnitts
+sieht man auf der Y-Achse die Stages, die die Pipeline bei dem Auslieferungsprozess durchläuft.
+Genauso wie das System der eigentlichen Anwendung besteht auch die Pipeline aus unterschiedlichen
+Docker-Containern. Somit ist jeder der Abschnitte unabhängig von dem Gesamtgeschehen der Pipeline.
+Öfter auftretende Funktionalitäten können in der Gitlab-CI-Pipeline in eigene Scripts ausgelagert
+werden. So verhindert man redundanten Quellcode in der Pipeline. Ein Beispiel hierfür
+ist Quellcode \ref{lst:wiederverwendbarescriptsdergitlabci}. Das erste ausgelagerte
+Script ermöglicht das verwenden von SSH innerhalb der Pipeline. Somit kann sich
+die pipeline mit dem Server verbinden, um die Docker-Compose Datei auf den Server
+zu kopieren und diese auszuführen. Das zweite Script ist dafür zuständig,
+sich in die Docker Registry einzuloggen. Dies ist nötig, um Docker-Container
+in die Registry zu speichern und diese später vom Server aus wieder abzufragen.
 
-% Docker Verlauf anzeigen
+\begin{listing}
+    \inputminted{yaml}{snippets/yml/reusable_scripts.yml}
+    \caption{Wiederverwendbare Scripts der Gitlab-CI}
+    \label{lst:wiederverwendbarescriptsdergitlabci}
+\end{listing}
+
+
 
 \subsection{Docker-Compose Setup}
 \label{subsec:dockercomposesetup}
