@@ -320,10 +320,36 @@ wird die Komplexität eines Spaltenzugriffs dezimiert.
 
 \subsection{Monitoring und Wartung}
 \label{subsec:monitoringundwartung}
-% clean up von server und docker setup
+Essentiell für die Überwachung der Services ist eine solide Protokollierung.
+Die Arbeit beschränkt sich hier auf drei Protokollebenen; Error, Info und Debug.
+Error ist die tiefste Ebene. Hier werden die während der Laufzeit des Programms
+stattgefundenen Fehler protokolliert. Auf der Info-Protokollebene sieht man
+aufschlussreiche Informationen über den Service. Hier wird beispielsweise
+der HTTP-Verkehr aufgezeichnet. Die Error-Protokollebene ist in der Info-Protokollebene
+enthalten. In der Debug-Ebene erscheinen die beiden zuvor erwähnten Ebenen. Diese
+werden mit Informationen angereichert, die nur für das Debugging relevant sind.
+Ein Logeintrag besteht aus einem Zeitstempel, der Protokollebene sowie der Protokollnachricht.
+Kundenspezifische Informationen werden nicht offengelegt. Verweise auf Nutzer finden nur
+mithilfe der Identifikationsnummer des Datenbankeintrags statt. Die Info-Protokollebene
+wird über den \code{stdout} gelenkt. Die Error-Protokollebene wird desweiteren in einer
+Logdatei persistiert. Für das Debugging muss die Debug-Protokollebene aktiviert werden.
+Als Logging-Bibliothek für die Resource Management API verwendet die Arbeit den Winston
+Logger. Der HTTP-Verkehr wird mithilfe des Koa-Loggers\footnote{Koa ist ein HTTP Middleware Framework für Node.js} protokolliert und an den Winston
+Logger weitergereicht. Datenbankverbinder sowie Logger werden mithilfe des Singleton-Pattern
+implementiert, um das ständige herunterreichen von Instanzen zu vermeiden. Der komfortabelste
+Weg in JavaScript ein Singleton zu erstellen, ist, indem man ein Objekt exportiert. JavaScript-Objekte
+werden beim initialen Ladevorgang in den Cache gesetzt. JavaScript sorgt dafür,
+dass bei allen weiteren Zugriffen auf das Objekt, die selbe Instanz zurückgegeben wird.\footnote{Mehr dazu findet man in der Node.js Dokumentation unter Caching\cite{NodeJsCaching}}
+
+Der Reverse Proxy Traefik stellt eine Übersicht über die im HTTP-Verkehr gesendeten 
+HTTP-Statuscodes. Die einzelnen Services besitzen Health-Checks, die den aktuellen
+Gesundheitsstatus der Serviceinstanz widerspiegeln. Um die Wartung der Services zu erleichtern,
+werden bei jedem Pipeline-Durchlauf unbenutzte Container, Netzwerke und Images
+entfernt sowie der Cache entleert.
 
 \section{Pipeline Design}
 \label{sec:pipelinedesign}
+
 
 \subsection{Umgebungsvariablen}
 \label{subsec:umgebungsvariablen}
