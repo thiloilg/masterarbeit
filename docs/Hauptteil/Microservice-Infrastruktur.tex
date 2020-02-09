@@ -358,12 +358,23 @@ Gitlab Runner ausgelagerter Prozess, der ein vordefiniertes Script durchläuft.
 Damit der Gitlab Runner weiß, was er zu tun hat, werden in der \code{.gitlab-ci.yml}
 Datei einzelne Abschnitte und deren Aufgaben mithilfe der vereinfachten
 Auszeichnungssprache YAML definiert. Für jeden Abschnitt kann ein eigenes Docker-Image
-gewählt werden. Mehr dazu findet man in \Cref{subsec:stages}. An zweiter Stelle
+gewählt werden. Mehr dazu findet man in \Cref{subsec:stages}.
+
+\begin{figure}
+    \begin{center}
+    \includegraphics[scale=0.2]{img/abbildungen/Pipeline}
+    \end{center}
+    \caption{Übersicht über den stetigen Auslieferungsprozess}
+    \label{figure:uebersichtueberdenstetigenauslieferungsprozess}
+\end{figure}
+
+An zweiter Stelle
 befindet sich die Docker Registry. Eine Docker Registry ist für die Umgebung
 einer Softwareanwendung das, was eine Git Repository für den Quellcode ist.
 Eine Docker Registry ist also eine Art Versionsverwaltung für Docker-Images.
 Hat man die Images einmal getestet, kann man davon ausgehen, dass es sich
 in ausgeliefertem Zustand genauso verhalten wird, wie dies beim Testen der Fall war.
+
 An dritter Stelle kommt der Abschnitt der Qualitätssicherung.\footnote{Auf English Quality Assurance, abgekürzt QA.}
 Hier wird die Software nach ihrer Qualität getestet. Erst wenn sie eine
 zuvor definierte Qualitätsmerkmale aufweißt, darf diese in die Produktionsumgebung
@@ -373,14 +384,11 @@ Qualität beschrieben und beurteilt wird, die jedoch keine Aussage über
 den Grad der Ausprägung enthält. Ein Qualitätsmerkmal kann über mehrere Stufen in Teilmerkmale
 verfeinert werden."\cite[S. 515]{SoftwareQualitaet} Typische Qualitätsmerkmale in der Softwareentwicklung
 sind Korrektheit, Vollständigkeit, Sicherheit, Zuverlässigkeit, Verfügbarkeit und Robustheit.\cite[S. 5]{SoftwareQualitaet}
+Die QA bietet sich besonders gut für Integrations- sowie End-to-End-Tests an. Diese testen
+das Zusammenspiel der einzelnen Komponenten. Mehr zu den einzelnen Testarten und derer Implementation
+ist in \Cref{chap:qualitaetssicherung} beschrieben.
 
-\begin{figure}
-    \begin{center}
-    \includegraphics[scale=0.2]{img/abbildungen/Pipeline}
-    \end{center}
-    \caption{Übersicht über den stetigen Auslieferungsprozess}
-    \label{figure:uebersichtueberdenstetigenauslieferungsprozess}
-\end{figure}
+Zuletzt kommt der Produktionsabschnitt. 
 
 
 
