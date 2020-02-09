@@ -419,7 +419,9 @@ in die Registry zu speichern und diese später vom Server aus wieder abzufragen.
     \label{lst:wiederverwendbarescriptsdergitlabci}
 \end{listing}
 
-
+Für die Build- und Deploy-Stage wird ein von Docker vorgefertigtes Git-Image verwendet.
+Die Test-Stage verwendet ein vorgefertigtes Node.js Image mit der Version 12. Dies ist notwendig,
+um die Integrationstests auszuführen, welche in JavaScript geschrieben sind.
 
 \subsection{Docker-Compose Setup}
 \label{subsec:dockercomposesetup}
