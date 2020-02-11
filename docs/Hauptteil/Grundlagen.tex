@@ -1,0 +1,243 @@
+\chapter{Grundlagen}
+\label{chap:grundlagen}
+
+\section{Progressive Webanwendung}
+\label{sec:progressivewebanwendung}
+% PWA vs Native
+Eine Progressive Web App ist eine Webseite, die eine zunehmende Ansammlung an bestimmten Technologien,
+Strategien und Schnittstellen implementiert, die Merkmale bereitstellen, die ursprünglich nur
+native Apps besaßen.\cite{WikiPWA} Eine der wichtigsten Browser-Technologien, die zur Entstehung der PWA beigetragen hat,
+ist der Service Worker. Er ermöglicht der PWA, auch ohne Internetverbindung zu funktionieren. Der 
+Service Worker ist ein auf einem separaten Thread laufender Prozess, der HTTP und je nach Browser
+auch WebSocket Anfragen abfangen und verarbeiten kann. Somit kann trotz fehlernder Internetverbindung
+eine Antwort zurückgesendet werden.\cite{W3ServiceWorker}
+
+Progressive Web Apps als Alternative zur nativen App ermöglichen mehr Freiheit gegenüber dem
+Plattformanbieter. Sobald die Möglichkeit besteht, PWAs mit Hilfe einer vom Browser angesteuerten API
+auf dem Homescreen zu speichern, verliert der Plattformanbieter die Kontrolle,
+bestimmte PWAs zu verbieten. Dies ist bei nativen Apps nicht der fall. So löschte Apple in der Vergangenheit
+bereits große Mengen an Apps aus dem App Store.\footnote{Laut Heise.de löschte Apple im Oktober 2016 rund 47.300 Apps aus dem App Store.\cite{HeiseAppleLoeschtApps}} 
+Des weiteren verlieren die Plattformanbieter die Gewinnbeteiligung an App-, Abo- und Ingame-Verkäufen,
+da die Zahlungsabwicklung nun nicht mehr über den vom Plattformanbieter bereitgestellten App Store
+abgewickelt werden muss. Entwickler von Apps mussten in der Vergangenheit bis zu 30\% 
+ihrer Einnahmen abgeben. \cite{WinFutureEigenerAppStore} Daher kann man davon ausgehen,
+dass Plattformanbieter ihren Fokus für neue Funktionalitäten primär ihren eigenen
+nativen Apps widmen werden. Nichtsdestotrotz hat sich in letzter Zeit einiges getan.
+Gerade die Bandbreite der Plattform- und Browseranbieter, die für PWAs relevante
+Funktionalitäten anbieten, ist in der Vergangenheit stark gestiegen. So äußert sich der Artikel
+"Webdesign: So steht es um Progressive-Web-Apps im Jahr 2020" von Dieter Petereit,
+der am 20. Januar 2020 auf t3n.de veröffentlicht wurde, über die Unterstützung der PWAs wie folgt:
+"Immerhin 93 Prozent aller Nutzer im weltweiten Netz verwenden einen Browser, der vollen Support
+für PWA bietet. Installieren könnten PWA immerhin bereits rund 86 Prozent aller Nutzer. Auch
+die Zielplattform der Installation ist nahezu frei wählbar. Insbesondere funktioniert es
+unter Windows ab Version 7, macOS. Linux, Xbox One, Android, iOS, iPadOS und natürlich Chrome OS,
+allerdings nicht mit jedem Browser."\cite{T3NPWASupport} Aus technologischer Sicht sind die
+Anforderungen, die es benötigt, um eine PWA zu benutzten, also größtenteils gegeben.
+Aufgrund dessen davon auszugehen, dass PWAs native Apps ersetzen werden, ist allerdings
+falsch. Erst wenn Plattformanbieter einen Weg finden, finanziell von PWAs profitieren
+zu können, werden die Funktionalitäten in einem Maße unterstützt, das ihnen die Möglichkeit
+gibt mit nativen Apps mithalten zu können. Der Schritt von einer SPA zu einer
+PWA ist allerdings ein leichter.\footnote{Wenn man sich auf die Hauptfunktionalitäten beschränkt.}
+Um die PWA auf dem Desktop speichern zu können, muss man ein Web App Manifest
+\footnote{Ein Beispiel eines Web-App-Manifests befindet sich im Anhang.}
+in das Stammverzeichnis des Webservers legen sowie einen Service Worker registrieren.
+Somit ist die Einstiegsebene für PWAs sehr gering. Gerade für Unternehmen,
+die bereits eine Webseite besitzen und nun dem Benutzer die Möglichkeit geben wollen,
+diese auf dem Homescreen zu speichern, offline zu verwenden und Benachrichtigung zu erhalten,
+ist eine PWA attraktiv. Ein Hauptkriterium für die Implementierung einer PWA ist, dass man bei der Entwicklung
+keine plattformspezifischen Lösungen benötigt. Somit sind die Kosten für die Entwicklung um einiges
+geringer. Verfügt man allerdings über die finanziellen Mittel und legt seinen Schwerpunkt unter anderem
+auf mobile Endgeräte, macht es aus Sicht der aktuellen Lage Sinn, neben einer aufgewerteten Webseite
+auch native Apps anzubieten.
+
+In diesem Abschnitt wurden Markmale wie das Speichern der Webseite auf dem Homescreen,
+die Offlinefähigkeit sowie die Möglichkeit, Benachrichtigungen zu versenden, kurz angesprochen.
+In den folgenden zwei Abschnitten wird es mehr ins Detail gehen. Dabei werden folgende
+zwei Fragen erörtert: Was sind die Merkmale einer PWA und welche Browser unterstützen
+welche dieser Merkmale?
+
+\subsection{Merkmale}
+\label{subsec:markmale}
+Es gibt keine genaue Definition, die besagt, welche Merkmale eine PWA beinhalten muss.
+Der Begriff Progressive Web App wurde erstmals 2015 von Alex Russell in einem Blogpost
+verwendet.\cite{PWA2015} Die Idee hinter einer Web App, bei der sich die Optik und Haptik
+wie die bei einer nativen App anfühlt, gab es allerdings bereits zuvor. So verkündete
+Steve Jobs bei der initialen iPhone Presentation für Entwickler bereits die Möglichkeit
+an, solche Web 2.0 Apps mithilfe von Safari zu entwickeln.\footnote{https://www.youtube.com/watch?v=ZlE7dzoD6GA}
+Die Merkmale einer PWA haben sich also über die Jahre hinweg angesammelt. Was sind aber
+nun diese Merkmale? Alex Russell erwähnt in seinem Blogpost dazu folgendes:
+Die PWA soll responsive und netzunabhängig sein, app-ähnliche Navigationsvorgänge bereitstellen,\footnote{Ohne Verwendung von Browser Tabs} 
+immer aktuell sein, über TLS ausgeliefert werden, durch Suchmaschinen als solche mithilfe
+des Web App Manifests auffindbar sein, Plattformspezifische Funktionalitäten wie Push-Notifications
+verwenden sowie auf dem Homescreen installierbar, über Hyperlinks teilbar und ohne aufwendigen
+Installationsprozess verwendbar sein.\cite{PWA2015} Eine 2018 veröffentlichte, wissenschaftliche
+Arbeit von Thomas Steiner über die Analyse von PWA-Merkmalen innerhalb eines WebViews\footnote{Ein Web View ist ein in einer nativen App eingebetteter Browser zur Darstellung von Webinhalten.}
+benennt fünfzehn für eine PWA relevante Merkmale, auf die sich die Analyse über den
+unterstützten Funktionsumfang von gängigen Browsern in \Cref{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
+beziehen wird.\cite{WhatIsInAWebView}
+
+\subsection{Unterstützter Funktionsumfang gängiger Browser}
+\label{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
+In \Cref{subsec:gestaltung} (Absatz 2) wurde bereits der Nutzungsanteil der Browser analysiert. Um genauere Aussagen zwischen
+dem unterstützten Funktionsumfang von mobilen und Desktop-Endgeräten zu bekommen, wurden die Desktop-Browser von ihrem mobilen
+Gegenstück getrennt. Zu der Recherche des Funktionsumfangs wird der von Thomas Steiner aus der wissenschaftlichen Arbeit "What is
+in a Web View? An Analysis of Progressive Web App Features When the Means of Web Access is not a Web Browser" bereitgestellte
+PWA Feature Detector\footnote{https://github.com/tomayac/pwa-feature-detector/}, die Angaben in der Mozilla Developer Docs sowie 
+die Webseite "Can I use"\footnote{https://caniuse.com/} verwendet. Der PWA Feature Detector ermittelt anhand von im JavaScript
+DOM vorhandenen Feldern, ob der Browser bestimmte Merkmale unterstützt. Dabei werden neben den Feldern window, document und navigator
+auch Felder im Service Worker erkannt. Die Angaben können von dem eigentlich unterstützten Funktionsumfang abweichen. Die von Thomas
+Steiner in seiner wissenschaftlichen Arbeit für relevant angesehenen Merkmale sind folgende: Offline Capabilities; hierbei wird nach
+einer Unterstützung der Cache API gesucht. Push Notifications; ist die Push API unterstützt? Add to Homescreen; kann man PWAs auf
+dem Homescreen speichern (A2HS)? Background Sync; ist eine Unterstützung der Background Sync API vorhanden? Navigation Preload; Die Möglichkeit
+Ressourcen bereits während dem hochfahren des SW vorzuladen (Navigation Preload Manager API). Silent Push; das Starten von durch das
+Backend ausgelösten Prozessen im Frontend ohne den Benutzer davon durch eine Nachricht zu informieren (Web Budget API). 
+Storage Estimation; Die Nachfrage nach genutztem Speicher sowie dessen Beschränkung (Storage Manager). Persistent Storage;
+Das speichern von Daten, die nur mit Anfrage an den Benutzer gelöscht werden dürfen (Storage Manager). Web Share; das Teilen von Inhalten
+über die durch die Plattform bereitgestellten Operationen (Web Share API). Media Session, das Bereitstellen von Inhalten für native
+Bereiche wie den Lockscreen (Media Session API). Media Capabilities; Die Möglichkeit das perfekte Format von auszuliefernden Inhalten anhand von
+Informationen, die vom Browser bereitgestellt werden (Media Capabilities API). Device Memory; wie viel RAM stehen dem Betriebssystem zur
+Verfügung (Device Memory API). Detect Native App; Ist die native Version meiner Anwendung bereits installiert? Payment Request;
+Die Benutzung von durch das Betriebssystem bereitgestellten Zahlungsverfahren (Payment Request API). Credential Management;
+dem Benutzer die Verwendung von im Betriebssystem gehorteten Anmeldedaten zu ermöglichen (Credential Management API).\cite[Abschnitt 2.3]{WhatIsInAWebView}
+
+Bei der Analyse wurden die neuesten Versionen der Browser\footnote{Stand Januar 2020 (IE 11, Edge 79, Firefox 72, Chrome 79, Safari 13, Opera 64, Safari iOS 13.2, Opera Mini 46, Android Browser Chromium 76, Opera Mobile 46, Chrome für Android 79, Firefox für Android 68, UC Browser für Android 12.12 und Samsung Internet 10.1) }
+begutachtet. Aufgrund der Komplexität wurden die Ergebnisse in \Cref{tab:unterstutzterpwafunktionsumfangteil1}
+und \Cref{tab:unterstutzterpwafunktionsumfangteil2} aufgeteilt. Die fünfzehn in \Cref{subsec:markmaleeinerpwa}
+erwähnten Merkmale wurden auf achtzehn erweitert.
+
+\begin{table}[h]
+\begin{tabular}{l*{8}{c}}
+PWA Merkmale & IE & Edge & Firefox & Chrome & Safari & Opera & \specell{iOS\\Safari} & \specell{Opera\\Mini} \\
+\hline
+Offline Capabilities    &  -  & \cm & \cm & \cm & \cm & \cm & \cm & \cm \\
+Push Notifications	    &  -  & \cm & \cm & \cm &  -  & \cm &  -  &  -  \\
+Add to Home Screen	    &  -  &  -  &  -  & \cm &  -  & \cm & \cm & \cm \\
+Background Sync	        &  -  &  -  &  -  & \cm &  -  & \cm &  -  & \cm \\
+Periodic Bg. Sync       &  -  &  -  &  -  &  -  &  -  &  -  &  -  &  -  \\
+Background Fetch        &  -  &  -  &  -  & \cm &  -  & \cm &  -  &  -  \\
+Navigation Preload	    &  -  & \cm &  -  & \cm &  -  & \cm &  -  & \cm \\
+Storage Estimation	    &  -  &  -  & \cm & \cm &  -  & \cm &  -  & \cm \\
+Persistent Storage	    &  -  &  -  & \cm & \cm &  -  & \cm &  -  & \cm \\
+Web Share Level 1	    &  -  &  -  &  -  &  -  & \cm &  -  & \cm &  -  \\
+Web Share Level 2       &  -  &  -  &  -  &  -  &  -  &  -  &  -  &  -  \\
+Media Session           &  -  &  -  &  -  & \cm &  -  & \cm &  -  &  -  \\
+Media Capabilities	    &  -  &  -  & \cm & \cm & \cm & \cm & \cm & \cm \\
+Device Memory	        &  -  &  -  &  -  & \cm &  -  & \cm &  -  & \cm \\
+Detect Related App      &  -  &  -  &  -  & \cm &  -  &  -  &  -  &  -  \\
+Payment Request	        &  -  & \cm &  -  & \cm & \cm & \cm & \cm &  -  \\
+Payment Handler	        &  -  &  -  &  -  & \cm &  -  & \cm &  -  & \cm \\
+Credential Mgmt	        &  -  &  -  &  -  & \cm &  -  & \cm &  -  & \cm \\
+\end{tabular}
+\caption{Unterstützter PWA-Funktionsumfang Teil 1}
+\label{tab:unterstutzterpwafunktionsumfangteil1}
+\end{table}
+
+\begin{table}[h]
+\begin{tabular}{l*{6}{c}}
+PWA Merkmale  & \specell{Android\\Browser} & \specell{Opera\\Mobile}  & \specell{Chrome\\Android} & \specell{Firefox\\Android} & \specell{UC Browser\\Android} & \specell{Samsung\\Internet} \\
+\hline
+Offline Capabilities    & \cm & \cm & \cm & \cm & \cm & \cm \\
+Push Notifications	    &  -  & \cm & \cm & \cm & \cm & \cm \\
+Add to Home Screen	    & \cm & \cm & \cm & \cm & \cm & \cm \\
+Background Sync	        & \cm & \cm & \cm &  -  & \cm & \cm \\
+Periodic Bg. Sync       &  -  &  -  &  -  &  -  &  -  &  -  \\
+Background Fetch        &  -  & \cm & \cm &  -  &  -  &  -  \\
+Navigation Preload	    & \cm & \cm & \cm &  -  &  -  & \cm \\
+Storage Estimation	    & \cm & \cm & \cm &  -  & \cm & \cm \\
+Persistent Storage	    & \cm & \cm & \cm &  -  & \cm & \cm \\
+Web Share (Level 1)	    &  -  & \cm & \cm &  -  &  -  & \cm \\
+Web Share (Level 2)     &  -  &  -  & \cm &  -  &  -  &  -  \\
+Media Session           &  -  & \cm & \cm &  -  &  -  & \cm \\
+Media Capabilities	    & \cm & \cm & \cm & \cm &  -  & \cm \\
+Device Memory	        & \cm & \cm & \cm &  -  &  -  & \cm \\
+Detect Native App       &  -  &  -  & \cm &  -  &  -  &  -  \\
+Payment Request	        &  -  &  -  & \cm &  -  &  -  & \cm \\
+Payment Handler	        & \cm & \cm & \cm &  -  &  -  & \cm \\
+Credential Mgmt	        & \cm & \cm & \cm &  -  &  -  &  -  \\
+\end{tabular}
+\caption{Unterstützter PWA-Funktionsumfang Teil 2}
+\label{tab:unterstutzterpwafunktionsumfangteil2}
+\end{table}
+
+Analysiert man die Resultate von \Cref{tab:unterstutzterpwafunktionsumfangteil1} und
+\Cref{tab:unterstutzterpwafunktionsumfangteil2}, sticht klar ins Auge, dass Chrome
+die PWA Entwicklung vorantreibt. Es wundert auch kaum, dass der Internet Explorer,
+bei dem die Entwicklung im März 2015 eingestellt wurde,\cite{HeiseInternetExplorer} keine der PWA Merkmale
+unterstützt. Die Periodic Background Sync API, eine Erweiterung der Background
+Sync API, ist momentan noch in Entwicklung und wird vorraussichtlich erst mit
+Chrome 80 veröffentlicht. Die API wird das Ausführen von Hintergrundaufgaben der SW
+in einem periodischen Interval ermöglichen.\cite{ChromeStatusPeriodicBackgroundSync}
+Die A2HS-Funktionalität wird von allen mobilen Browsern unterstützt.\footnote{Von allen in dieser Auswertung betrachteten Browsern.}
+Bei den mobilen Browsern ist insgesamt der unterstütze Funktionsumfang größer als
+bei den Browsern für Desktop-Endgeräte. Ein Grund dafür ist, dass man sich bei den PWA-Merkmalen
+hauptsächlich an der Optik und Haptik von nativen Apps orientiert. Chrome ist aktuell
+der einzige Browser, bei dem man eine PWA auch auf einem Desktop-Endgerät installieren
+kann. Grundfunktionalitäten wie  die Möglichkeit der Offlineverwendung werden fast von allen
+Browsern unterstützt. Die wichtigste Erkenntnis dieser Auswertung ist folgende: Die einzelnen
+PWA-Merkmale müssen als Anreicherung betrachtet werden. Man kann nicht davon ausgehen, dass
+der Browser des Benutzers ein bestimmtes Merkmal unterstützt.
+
+Auch wichtig ist, sich über den Browser-Marktanteil der eigenen Zielgruppe im klaren zu sein.
+So verwenden laut des globalen Marktanteils mehr als 50\% der Endbenutzer Chrome und besitzten somit
+alle PWA-Merkmale, die Chrome bereitstellt.\cite{StatCounterBrowserMarketShare}
+
+\section{Microservices}
+\label{sec:microservices}
+In diesem Abschnitt geht es um die Charakteristiken von Microservices. Das Ziel ist es,
+aufgrund der Auseinandersetzung mit dem Architekturmuster die Entscheidung treffen zu können, ob Microservices
+eine gute Wahl für die Softwarearchitektur dieser Arbeit sind. In \Cref{subsec:wasverstehtmanuntermicroservices}
+stellt sich die Frage, was Microservices eigentlich sind und was sie auszeichnet. In
+\Cref{subsec:vorundnachteile} werden Vor- und Nachteile einer Microservice-Infrastruktur
+debattiert.
+
+\subsection{Was versteht man unter Microservices?}
+\label{subsec:wasverstehtmanuntermicroservices}
+Der Begriff "Microservices" ist in aller Munde.\footnote{Seit Februar 2014 ist das Interesse an dem Begriff "Microservices" auf Google Trends konstant angestiegen.\cite{MicroservicesGoogleTrends}}
+Wenn man den Begriff "Microservices" als erstes hört, denkt man womöglich an SOA\footnote{SOA steht für Serviceorientierte Architektur}.
+Der Begriff SOA wurde bereits 1996 von Fartner, einem Unternehmen, das Forschung in der IT-Branche
+betreibt\footnote{https://www.gartner.com/en/about/}, verwendet\cite{GartnerSOAPart1}.
+SOA ist ein Erklärungsmodell zur Aufteilung von Geschäftslogik in einzelne Services.
+Was sind aber jetzt eigentlich Microservices und was ist der Unterschied zu SOA?
+In dem Buch Microservices von Eberhard Wolff werden diese als Ansatz zur Modularisierung
+von Software definiert. Der Unterschied zu vorhandenen Architekturmustern beschreibt er wie folgt:
+"Das Neue: Microservices nutzen als Module einzelne Programme, die als eigene Prozesse laufen."\cite[S. 2]{MicroservicesBook}
+Durch neue Technologien wie Docker, eine Open-Source Software zur Kapselung von Prozessen in umgebungsunabhängige Instanzen,\cite{DockerOverview}
+ist es möglich, eine serviceorientierte Architektur flexibler zu gestalten. Docker stellt eine einheitliche Umgebung in
+allen Prozessstufen der stetigen Softwareauslieferung bereit. Ob in einer lokalen Entwicklungsumgebung oder in einem
+Kubernetes-Cluster, die Umgebung und somit das Verhalten der Anwendung ist gleich.\footnote{Von Umgebungsvariablen und externen Schnittstellen abgesehen}
+
+Microservice beinhaltet den Wortteil "Micro", bekannt als Einheitenvorsatz für \(10^{-6}\). Die Komplexität eines Softwareprojektes
+wird oftmals in LOC, Lines of Code gemessen. Laut Diskussionen auf StackExchange siedelt sich ein komplexes Softwareprojekt bei
+ca. 2 Millionen LOC an.\cite{ProjectsizeStackexchange} Daraus würde folgen, dass ein sogenannter "Microservice" eine Größe um die
+2 Code-Zeilen haben sollte. Diese Annahme ist von realen Anwendungsfällen weit entfernt. Eberhard Wolff sieht den Ansatz,
+die Größe eines Microservices anhand von Code-Zeilen zu messen als kritisch an. Code-Zeilen seien von der verwendeten
+Technologie abhängig. Desweiteren sollte man sich bei der Serviceuntergliederung lieber an der "...fachlichen Domäne richten".\cite[S. 31 und 32]{MicroservicesBook}
+
+\subsection{Vor- und Nachteile}
+\label{subsec:vorundnachteile}
+In \Cref{subsec:wasverstehtmanuntermicroservices} sind Microservices
+als einzelne, in einer Containervirtualisierung laufende, Programme definiert. Sind diese Programme
+zustandslos, lassen sie sich einfach und effizient skalieren. Zustandslos bedeutet, dass zwei
+aufeinanderfolgende Abfragen nicht an die gleiche Instanz des Programms gesendet werden müssen.
+Beinhaltet der Service eine Datenbank, benötigt es eine weitere Strategie der Skalierung
+wie Database Sharding oder Master-Slave Replica. Durch die Lastverteilung auf eigenständige Services
+wird der Schwellwert, ab welchem man horizontal skalieren muss, erst später erreicht.\footnote{Im Vergleich zu einem Monolith}
+Eberhard Wolff kritisiert den Performanzverlust, der durch die
+Kommunikation über die verteilten Systeme entsteht. So schreibt er wie folgt: "Aufrufe durch das Netzwerk
+sind deutlich langsamer als lokale Aufrufe. Aus reiner Performanz-Perspektive kann es sinnvoller sein,
+mehrere Microservices zusammenzulegen oder Technologien zu nutzen, die auf lokale Aufrufe setzen."\cite[S. 65, 3. Absatz]{MicroservicesBook}
+Um die Kommunikation zwischen den Services zu beschleunigen, werden daher Message Broker wie
+Apacke Kafta oder RabbitMQ verwendet. Nichtsdestotrotz kann die Performanz einer solchen
+Kommunikation im Regelfall nicht mit der internen Kommunikation eines einzelnen Programms schritthalten.
+
+In dem Artikel "Warum es nicht immer Microservices sein müssen" auf Informatik Aktuell
+sprechen Christoph Iserlohn und Till Schulte-Coerne von einer Externalisierung der Komplexität.
+Um komplexe Querzugriffe innerhalb des eigenen Systems zu vermeiden, würden Teams oftmals 
+zu einer Microservice-Umgebung wechseln. "Allerdings kaufen wir uns dies teuer ein.
+Wir verstecken durch die Trennung nämlich eine nicht unerhebliche Komplexität in
+der Kommunikation zwischen den Systemen und machen diese quasi unsichtbar."\cite[Paragraph 11]{InformatikAktuellWarumNichtImmerMicroservices}
+
+Microservices sind keineswegs als Wundermittel gegen eine verbesserungswürdige Architektur eines
+Monolithen zu sehen. Bei der Entscheidung für eine Microservice-Infrastruktur geht man, wie
+auch bei allen anderen Architekturmustern, einen Kompromiss ein. So gewinnt man deutlich
+an Flexibilität, bezahlt dies aber mit einem Anstieg an Komplexität des Gesamtsystems.

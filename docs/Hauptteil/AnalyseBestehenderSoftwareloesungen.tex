@@ -1,0 +1,120 @@
+\chapter{Analyse bestehender Softwarelösungen}
+\label{chap:analysebestehendersoftwareloesungen}
+
+Um einen besseren Überblick über Softwarelösungen im Bereich der Geschäftsanalytik zu erhalten, beschäftigt sich
+die Arbeit im folgenden Abschnitt mit drei etablierten Softwarelösungen; Power BI von
+Microsoft, Qlik Sense von QlikTech und Tableau von Tableau Software. Alle diese drei Anwendungen sind Werkzeuge,
+die dabei helfen, Wissen aus Daten zu entnehmen. Bei der Auswertung der Softwarelösungen soll der Fokus auf dem Laden
+von Daten aus Datenquellen, der Aufbereitung der Daten, der Datenmodellierung sowie der Erstellung von Dashboards liegen.
+
+\section{Power BI Desktop}
+\label{sec:powerbidesktop}
+Microsoft beschreibt ihr Produkt Power BI Desktop wie folgt: "Power BI Desktop ist eine kostenlose Anwendung,
+die Sie auf Ihrem lokalen Computer installieren können und die es Ihnen ermöglicht, eine Verbindung mit Ihren
+Daten herzustellen und diese zu transformieren und zu visualisieren."\cite{MicrosoftPowerBIDesktopDocs}
+Power BI Desktop ist eines der Produkte von Power BI. Desweitere bietet Power BI einen cloud-basierten Power BI Dienst
+sowie eine native App an.\cite{WikiPowerBI}
+
+Als erstes gilt es, das Laden von Daten in Power BI Desktop auszuwerten. Mit Power BI Desktop kann man 
+Daten aus Dateien, aus Datenbanken sowie aus cloud-basierten Diensten laden. Eine weitere Option zum Laden 
+von Daten, das DirektQuery, wird in dem Buch von Adam Aspin, Pro Power BI Desktop, erwähnt. 
+Hierbei handelt es sich, anders als bei den zuvor genannten Möglichkeiten, um das direkte
+Abfragen von Daten gegen eine Datenquelle, ohne die Daten zuvor alle in die Anwendung zu laden.\cite[S. 111]{ProPowerBIDesktop}
+Diese Art des Ladens wurde von den Entwicklern von Power BI unter anderem eingeschlagen,
+um das initiale Laden der Daten in das In-Memory-Model zu umgehen. Gerade bei großen Data Warehouses
+kann sich dies mitunter unvorteilhaft auf die Performanz auswirken.
+
+Eine weitere, für die Arbeit relevante Frage, ist, wie komplexe Datenstrukturen wie multidimensionale JSON-Dateien
+in die anwendungseigene Datenstruktur übersiedelt werden. Hierfür bietet der Power BI Kosmos eine extra Software
+namens Power Query. Es wäre falsch mit hundertprozentiger Sicherheit zu behaupten, dass Power BI in der
+anwendungseigenen Datenstruktur ein relationales Datenbankmodell verwendet. Befasst man sich mit der Art
+der Datenmodellierung, wie der Erstellung von Beziehungen zwischen Tabellen, verschwindet jedoch jedweder Zweifel. \cite[S. 319]{ProPowerBIDesktop}
+Somit ist davon auszugehen, dass Power Query die zu importierenden Datenstrukturen in ein relationales Datenbankmodell
+konvertiert. Eine mehrdimensionale JSON-Datei wird somit in eine eindimensionale Tabelle konvertiert.
+Hierfür benötigt man die hauseigene Formelsprache Power Query M. "Power Query M ist eine funktionale Sprache,
+die Groß-/Kleinschreibung beachtet und F\# ähnlich ist."\cite{MicrosoftDocsPowerQueryFormelsprache}
+
+Eine interessante, neue Funktionalität im cloud-basierten Power BI Dienst ist die Self-Service-Datenaufbereitung,
+bekannt als Dataflow. Mit Dataflows können ETL-Prozesse\footnote{ETL steht für das Extrahieren, Transformieren und Laden von Daten}
+unkompliziert innerhalb des Power BI Kosmos bewerkstelligt werden. Ein automatisierter Datenfluss,
+der die Daten in eine für die Visualisierung einheitliche Struktur vorbereitet, wird auch in dieser
+Arbeit notwendig sein.
+
+Bei der Erstellung eines Dashboards in Power BI, zieht man zuerst ein Diagrammtyp wie ein Kuchendiagram
+auf den weißen Untergrund. Als zweiten Schritt weißt man ebenfalls per Drag and Drop dem Kuchendiagram ein
+Datenfeld zu. Fährt man mit der Maus an die Ränder eines Diagramms, kann man dieses in eine beliebige Größe
+ziehen. Alles in allem ist das Erstellen von Dashboards in Power BI Desktop ein sehr intuitives,
+benutzerfreundliches Verfahren.
+
+\section{Qlik Sense}
+\label{sec:qliksense}
+Als nächstes werfen wir einen Blick auf die Softwarelösung Qlik Sense.
+Das Laden von Daten ist bei Qlik Sense von Dateien, Datenbanken, Webseiten, FTP-Servern sowie von einer
+REST Schnittstelle möglich. Bei dem Laden der Daten von einer Webseite, wird die Seite nach einer Tabelle
+durchsucht und diese als Datenquelle verwendet.\cite[S. 17]{QlikSenseCookbook} Für das Laden von Daten von
+einer REST API, bietet Qlik Sense einen sogenannten REST Connector an. Dieser kann sowohl das JSON- als auch
+das XML-Format verarbeiten. In den Settings des REST Connectors können neben der URL auch ein
+Authentifizierungsschema ausgewählt werden.\cite[S. 23]{QlikSenseCookbook} Somit ist es möglich,
+eine API zu verwenden, bei der eine JWT-Authentifizierung vorausgesetzt ist. Wie in \Cref{subsec:gestaltung}
+bereits erwähnt, besitzt Qlik Sense eine eigene SQL ähnliche Skriptsprache. Im Data Load Editor
+können mithilfe dieses Scripts Bearer-Token als Authorization Header gesetzt werden. Dies macht Qlik
+Sense in der Nutzung externer APIs sehr flexibel.
+
+Als nächstes werfen wir einen Blick auf die Aufbereitung der Daten. Nach der Auswahl einer Datenquelle
+erstellt Qlik Sense ein vorgefertigtes Script im Data Load Editor. Dies gilt primär als Orientierungspunkt
+und kann je nach Belieben angepasst werden. Genauso wie Power BI benutzt auch Qlik Sense ein relationales
+Datenbankmodell zur Datenmodellierung innerhalb der Anwendung. Im Data Load Editor wird so innerhalb des
+Scripts ein JSON auch eine Tabelle aufgeteilt. Der Bereich zur Datenmodellierung ist der Data Model Viewer.
+Hier werden mithilfe eines Kraftgerichteten Graphs die Beziehungen zwischen den unterschiedlichen
+Tabellen verdeutlicht. Mit der Datenmodellierung von Qlik Sense ist es möglich, alle typischen SQL-Joins
+zwischen zwei Tabellen durchzuführen. So kann man Daten von einer API zusammen mit Daten aus einer SQL-Datenbank
+verbinden.  
+
+Anders als bei Power BI, das von Microsoft selbst gehostet wird, kann man Qlik Sense nach dem Erwerben
+einer Lizenz selbst auf einem Windows Server hosten. Außerdem hat Qlik verschiedene APIs, die man
+verwenden kann um die Anwendung selbst ohne die Verwendung der GUI vorzubereiten. So kann man Daten
+auf den Server vorladen, die man dann später mithilfe der Frontendanwendung auswerten wird. Anders als bei
+dem API Connector von Qlik Sense, den man über die GUI einstellt, kann man mit der Repository Main API
+die Anwendung komplett über eine Schnittstelle aus verwalten.\cite{QlikSenseRepositoryMainAPI}
+Das vereinfacht das Einbinden von Qlik Sense in eine bereits existierende IoT-Umgebung.
+
+Bei der Erstellung von Charts ähnelt Qlik dem Vorgehen von Power BI Desktop. Mit einem intuitiven
+Drag and Drop Verfahren können die Benutzer zuerst Diagrammtypen auf das Dashboard ziehen und
+daraufhin Daten zuweisen. Bei der Datenzuweisung unterscheidet Qlik Sense zwischen Measures und
+Dimensions. Measures sind numerische Werte wie Anzahl der verkauften Produkte oder der Jahresumsatz,
+Dimensions sind deskriptive Werte wie Monat, Jahr oder ProduktID.\cite{TutorialsSpotMeasuresDimensions}
+Durch die klare Trennung in numerische sowie descriptive Werte wird die Zuordnung der Daten
+auf die verschiedenen Achsen der Diagramme vereinfacht.
+
+\section{Tableau}
+\label{sec:tableau}
+In diesen Abschnitt gilt es Tableau genauer zu betrachten. Tableau besitzt wie auch Power BI und Qlik
+eine Infrastruktur an unterschiedlichen Diensten. So gibt es Tableau Desktop, das Equivalent zu Power BI
+Desktop, einen Tableau Server sowie native Apps. Bei der Datenbeschaffung bietet Tableau Desktop wie auch
+Power BI und Qlik Sense, neben dem Laden von lokalen Dateien und diversen spezifischen Datenbankschnittstellen,
+das Laden aus Datenbanken mit einer gängigen ODBC-Schnittstelle an. Daten können in Echtzeit
+über SQL-Statements abgefragt werden. Alternativ werden die Daten auf dem Betriebsystem, auf dem
+Tableau Desktop verwendet wird, persistiert und mithilfe der eigenen Data Engine agil aus dem
+vorgeladenen Arbeitsspeicher geladen.\cite[S. 50]{ProTableauBook}
+
+Tableau besitzt für die Aufbereitung der Daten Tableau Prep, ein Werkzeug zur Durchführung der
+ETL-Prozesse.\footnote{https://www.tableau.com/de-de/products/prep} Positiv ins Auge fällt einem
+in Tableau Prep das agile Vorgehen zur Erstellung eines Flows. Ein Flow in Tableau Prep ist ein Programmablaufplan
+zur Verarbeitung eines Datenflusses. In einem Flow lassen sich per Drag and Drop Datenquellen sowie diverse Verarbeitungsmechanismen zu einem Programmablaufplan
+zusammensetzen. Verarbeitungsmechanismen sind SQL-Joins, verschiedene Mechanismen der Datenbereinigung,
+das Aufteilen und Zusammenfügen von Feldern sowie das Drehen von Tabellen anhand von definierbaren Drehpunkten.
+Die einzelnen Verarbeitungsmechanismen werden in dem Buch Prepare Your Data for Tableau von Tim Costello und
+Lori Blackshear genauer beschrieben.\cite{PrepareYourDataForTableauBook} Die Flows von Tableau Prep können,
+ähnlich wie die Dataflows von Power BI, gespeichert und unter Mitarbeitern geteilt werden. Von der Datenstruktur
+scheint ein Flow ein gerichteter Graph zu sein, durch den Daten von einer Seite zu der anderen durchfließen
+können. Es ist allerdings kein Wurzelgraph, da die Flows neben mehreren Datenquellen auch mehrere Datenausgaben
+haben können. Die Knoten des Graphen stellen die Verarbeitungsmechanismen dar. Die Darstellung ist sehr statisch
+aufgebaut. Es handelt sich hier also nicht wie bei der Datenmodellierung von Qlik um einen kraftgerichteter Graphen.
+Fährt man mit dem Mauszeiger über die Knoten des Graphen, lassen sich neue Knoten durch das Klicken auf ein
+auftauchendes Plus hinzufügen.
+
+Das Erstellen von Dashboards ist wie auch bei Power BI und Qlik Sense durch ein Drag und Drop Verfahren möglich.
+Die Daten sind wie bei Qlik Sense in Measures und Dimensions unterteilt. Bei der Platzierung der Diagramme auf dem
+Dashboard sind zwei Optionen möglich. Es gibt eine freie sowie eine an einem Raster fixierte Anordnung. Bei der fixierten
+Anordnung lassen sich die bereits auf dem Dashboard existierenden Diagramme vertikal sowie horizontal von dem neu 
+hinzugefügten Diagramm unterteilen.
