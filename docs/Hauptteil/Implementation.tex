@@ -375,15 +375,6 @@ Für die Build- und Deploy-Stage wird ein von Docker vorgefertigtes Git-Image ve
 Die Test-Stage verwendet ein vorgefertigtes Node.js Image mit der Version 12. Dies ist notwendig,
 um die Integrationstests auszuführen, welche in JavaScript geschrieben sind.
 
-\subsection{Docker-Compose Setup}
-\label{subsec:dockercomposesetup}
-
-\subsection{Umgebungsvariablen}
-\label{subsec:umgebungsvariablen}
-
-
-
-
 \subsection{Health-Checks}
 \label{subsec:healthcheck}
 In Microservice-Infrastrukturen sind die einzelnen Services eng miteinander verknüpft
@@ -400,10 +391,6 @@ in der Buildpipeline von der Backendapi abhängig.
     \inputminted{sh}{snippets/sh/healthcheck.sh}
     \caption{Healthcheckbeispiel in der Gitlab CI}
 \end{listing}
-
-\section{Web App}
-\subsection{Die Zentrierung service-relevanter Einstellungen}
-% extraction von theme colors etc.
 
 \subsection{Zwischenspeicherstrategie im Service Worker}
 Ein Service Worker ist ein in JavaScript geschriebener,
@@ -462,32 +449,6 @@ Daraus folgende Zwischenspeicherstrategien:
     \end{enumerate}
  \end{description}
 
- % Probleme: Plugin Bundle Quellcode und Markdown seiten
-
-
-\subsection{Healthcheck}
-% logout in one browser tab
-
-\subsection{Seitengenerator}
-% die verschiedenen Seiten sollten für das caching evtl. mit einem hash on build time versehen werden.
-
-\subsection{Sprachauswahl}
-
-\subsection{Modaldesign}
-
-\subsection{Stetige Aktualisierung der PWA}
-Probleme: cookies verändern sich, Service Worker verändert sich, neue Felder in der Datenbank
-Frontend und Backend etc, also allen verschiedenen Services
-
-\section{Benutzerverwaltung}
-\subsection{Mailserver}
-\subsection{Two-factor Auth}
-\subsection{Two-Way Validation}
-\subsection{Die Rechteverwaltung}
-\subsection{One verification route}
-\subsection{Horizontale Skalierung ermöglichen}
-% stateless backend, no sessions etc.
-
 
 \section{Datenlieferung}
 
@@ -516,25 +477,3 @@ Frontend und Backend etc, also allen verschiedenen Services
 \end{figure}
 % Erkenntnis, Der Cache ist viel schneller, Cache ist O(1) wohingegen datenverarbeitung O(n) ist siehe
 % anhand der größeren Anfrage
-
-\subsection{WWS Handshake Authentifizierung}
-\subsection{Golang MongoDB Aufbau}
-
-\section{Plugins}
-\subsection{Code Splitting und Lazy Loading}
-% loading plugins on runtime
-\subsection{D3.js und Chart.js}
-\begin{listing}
-    \label{lst:HelloJSX}
-    \caption{Ein einfaches JSX Beispiel}
-    \inputminted{jsx}{snippets/examples/Welcome.jsx}
-\end{listing}
-
-\begin{listing}
-    \label{lst:Golang}
-    \caption{Ein einfaches Golang Beispiel}
-    \inputminted{go}{snippets/examples/hello.go}
-\end{listing}
-
-\subsection{Middlewares}
-\label{subsec:middlewares}
