@@ -91,7 +91,7 @@ Bei dem Server für die Testphase sowie dem Produktionsserver ist dieser Prozess
 in der Gitlab CI Pipeline automatisiert. Eine genauere Beschreibung der
 Pipeline befindet sich in \Cref{sec:pipelinedesign}.
 
-\section{Systemdesign}
+\section{Gesamtsystem}
 \label{sec:systemdesign}
 In diesem Abschnitt wird das Grundkonzept aus \Cref{subsec:trennungvonlogic}
 über die Trennung von Logik weiter ausgebaut und daraus ein komplettes System
@@ -307,8 +307,8 @@ Gesundheitsstatus der Serviceinstanz widerspiegeln. Um die Wartung der Services 
 werden bei jedem Pipeline-Durchlauf unbenutzte Container, Netzwerke und Images
 entfernt sowie der Cache entleert.
 
-\section{Pipeline Design}
-\label{sec:pipelinedesign}
+\section{Pipeline}
+\label{sec:pipeline}
 Um eine stetige Softwareauslieferung zu ermöglichen, benötigt es einen automatisierten
 Prozess. Dieser Prozess muss sich um das Bauen, Testen und Ausliefern der einzelnen
 Container kümmern. In Abbildung \ref{figure:uebersichtueberdenstetigenauslieferungsprozess}
