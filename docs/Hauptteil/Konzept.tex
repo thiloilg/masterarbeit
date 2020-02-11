@@ -173,3 +173,120 @@ Die Anordnung der Diagramme wird als Baumstruktur im JSON-Format in der Datenban
 
 \section{Qualitätssicherung}
 \label{sec:qualitaetssicherung}
+
+\section{Testgetriebene Entwicklung}
+% Wie sieht richtige testgetriebene entwicklung aus?
+% Wann machen Tests Sinn, wann machen welche tests sinn?
+% seeds. besähen der Daten etc.
+
+\subsection{Schnittstellentests}
+% Integrationstests mit Fokus auf Schnittstellentests
+% Teil der Integrationstests
+
+%% VON SEEDS DATABASE POPULATION
+%% Database seeding admin account etc.
+%% Probleme with extra route to initialize administration account!!!
+%% Problem initializing with trivial password since a lot of provider forget to update
+%% also known as Populating a Database
+%% Problem Typeorm auto sync
+%% necessary also for as fixtures, a basic setup for running tests
+
+\subsection{Komponententests}
+% react hook tests
+
+\subsection{End-to-End-Tests}
+% Cypress
+
+\subsection{Lighthouse Tests}
+% Google Lighthouse tests sinnvoll einsetzen um die PWA zu vervollständigen
+% performance
+
+\section{Automatisierung von Entwicklungsprozessen}
+\subsection{Git Hooks, Eslint und Prettier}
+% Prettier
+% Eslint
+\subsection{Multistage Build}
+\subsection{Aufsetzen des Projekts}
+% one command 
+\subsection{Nodemon und Reflex}
+% docker-compose mapping automatischer neustart der services
+
+\section{Refactoring}
+% Konstantes Refactoring, über die Zeit kann sich die
+% ideale art der Projektstruktur, der Software architektur,
+% des System designs, der auslastung der Services angleichen
+% Daher ist eine kontinuierliche Veränderung der gesamten
+% Infrastruktur erforderlich
+% Projektstruktur auch hier behandeln
+% Domain Driven Design
+
+\section{Dokumentation}
+\subsection{Für externe Entwickler}
+% Swagger swagger-jsdoc etc open API 3.0
+
+\subsection{Für interne Entwickler}
+% clean simple code
+
+
+\section{Kompontentendesign}
+\label{sec:komponentendesign}
+
+
+%%% IN diesem Kapitel werden für die einzelnen services der Tech stack geklärt etc.!!!
+
+\begin{figure}
+    \label{figure:diagrammanordnungsverfahren}
+    \begin{center}
+    \includegraphics[scale=0.2]{img/abbildungen/Diagrammanordnunsverfahren}
+    \end{center}
+    \caption{Diagrammanordnunsverfahren}
+\end{figure}
+
+\section{Resource Management API}
+\label{sec:resourcemanagementapi}
+
+\subsection{Authentifizierungsverfahren}
+\label{subsec:authentifizierungsverfahren}
+% JWT vs Session
+% Whitelist statt Blacklist
+
+\section{Data Delivery API}
+\label{sec:datadeliveryapi}
+
+\section{Protokolle}
+\label{sec:protokolle}
+% Also question ? Send batches which server can immediately handle
+% or does the server has to wait till all the data has arrived
+\subsection{HTTP 2}
+\label{subsec:http2}
+
+\subsection{Websockets}
+\label{subsec:websockets}
+
+% Cite this text: Another useful feature of being able to establish a connection using
+% HTTP is the ability to use HTTP authentication semantics for the socket,
+% such as the Authorization header for Basic Auth or Bearer Token Auth.
+% https://codeburst.io/why-you-don-t-need-socket-io-6848f1c871cd
+
+\section{Schnittstellengestaltung}
+\label{sec:schnittstellengestaltung}
+
+\subsection{Open API 3.0}
+\label{subsec:openapi3}
+
+\subsection{AsyncAPI}
+\label{subsec:asyncapi}
+
+\subsection{GraphQL Subscriptions}
+\label{subsec:graphqlsubscriptions}
+
+\section{Sicherheit}
+\label{sec:sicherheit}
+
+\subsection{Middlewares}
+\label{subsec:middlewares}
+
+
+
+\section{Skalierbarkeit}
+\label{sec:skalierbarkeit}
