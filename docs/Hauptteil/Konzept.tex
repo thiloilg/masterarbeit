@@ -23,8 +23,8 @@ Hierbei werden in \Cref{sec:zielsetzung} die Ziele für die Softwarelösung gese
 werden daraufhin Entwürfe sowohl von der Benutzeroberfläche als auch von der Infrastruktur vorgestellt.
 Weitere Designentscheidungen werden in den folgenden Kapiteln debattiert.
 
-\section{Zielsetzung}
-\label{sec:zielsetzung}
+\section{Kompromisse}
+\label{sec:kompromisse}
 In den vorherigen Abschnitten wurden die Anforderungen ermittelt, verwandte Softwarelösungen
 studiert sowie zwei relevante Technologien genauer betrachtet. In der Zielsetzung soll nun
 anhand der daraus resultierenden Erkenntnisse ein klares, aussagekräftiges Ziel definiert werden.
@@ -74,16 +74,8 @@ implementiert hat, wo aber der Vorgang, ein weiteres Diagramm hinzuzufügen, ver
 Falsch ist es, eine Software zu entwickeln, wo zwar bereits hunderte Diagramme implementiert sind,
 der Vorgang, ein neues hinzuzufügen, allerdings immer komplexer wird.
 
-\section{Entwurf}
-\label{sec:entwurf}
-Der Entwurf ist in zwei Abschnitte unterteilt. In \Cref{subsec:trennungvonlogic} handelt von
-der Trennung der Logic innerhalb des Systems. Die Trennung der Logic ist die wichtigste
-Designentscheidung und somit an erster Stelle. In \Cref{subsec:diagrammanordnungsverfahren}
-wird ein intuitives Verfahren vorgestellt, das die agile Erstellung von Dashboards
-ermöglicht.
-
-\subsection{Trennung von Logic}
-\label{subsec:trennungvonlogic}
+\section{Trennung von Logic}
+\label{sec:trennungvonlogic}
 Die Benutzerverwaltung muss klar von der Zulieferung der Daten getrennt werden.
 In der Zulieferung müssen die Daten verarbeitet und für die Frontendanwendung
 vorbereitet werden. Dieser Rechenaufwand ist nicht mit dem der Benutzerverwaltung
@@ -137,8 +129,8 @@ während der Laufzeit agil nachgeladen. Da immer nur die verwendeten Diagramme a
 geladen werden, kann die Webanwendung eine nahezu unendliche Auswahl an möglichen Diagrammen zur Visualisierung
 der Daten bereitstellen.
 
-\subsection{Diagrammanordnungsverfahren}
-\label{subsec:diagrammanordnungsverfahren}
+\section{Diagrammanordnungsverfahren}
+\label{sec:diagrammanordnungsverfahren}
 Das Diagrammanordnungsverfahren beschreibt den Prozess, einzelne Diagramme in einem Dashboard anzuordnen.
 Um das Verfahren zu vereinfachen, ist ein automatisches Anordnen der Diagramme diagonal sowie vertikal vorgesehen.
 Die Anordnung der einzelnen Diagramme soll mithilfe der FlexBox Technologie implementiert werden.
