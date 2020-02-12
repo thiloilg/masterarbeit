@@ -53,9 +53,11 @@ auch native Apps anzubieten.
 
 In diesem Abschnitt wurden Markmale wie das Speichern der Webseite auf dem Homescreen,
 die Offlinefähigkeit sowie die Möglichkeit, Benachrichtigungen zu versenden, kurz angesprochen.
-In den folgenden zwei Abschnitten wird es mehr ins Detail gehen. Dabei werden folgende
-zwei Fragen erörtert: Was sind die Merkmale einer PWA und welche Browser unterstützen
-welche dieser Merkmale?
+In den folgenden drei Abschnitten wird es mehr ins Detail gehen. In \Cref{subsec:merkmale}
+werden die Merkmale einer PWA erörtert. In \Cref{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
+wird der unterstütze Funktionsumfang der zuvor erörterten Merkmale bei verschiedenen Browsern
+analysiert. In \Cref{subsec:trustedwebactivities} geht es um eine von Google vorgestellte Methode,
+die es ermöglicht PWAs in den App Store zu bringen.
 
 \subsection{Merkmale}
 \label{subsec:markmale}
@@ -203,6 +205,32 @@ der Browser des Benutzers ein bestimmtes Merkmal unterstützt.
 Auch wichtig ist, sich über den Browser-Marktanteil der eigenen Zielgruppe im klaren zu sein.
 So verwenden laut StatCounter weltweit mehr als 50\% der Endbenutzer Google Chrome und besitzten somit
 alle PWA-Merkmale, die Chrome bereitstellt\cite{StatCounterBrowserMarketShare}.
+
+\subsection{Trusted Web Activities}
+\label{subsec:trustedwebactivities}
+Das größte Manko einer PWA ist, dass diese nicht im App Store gefunden werden kann.
+Für viele Nutzer ist es ungewohnt, PWAs direkt aus dem Browser heraus auf ihr mobiles Endgerät zu installieren.
+Seit Google Chrome Version 72 bietet Google hierfür eine Lösung.
+Mit sogenannten Trusted Web Activities (TWA) ist es möglich, PWAs auch in den App Store
+zu bringen. Eine TWA ist eine Methode, den Inhalt einer PWA in eine Android App mithilfe
+von Google Chromes Custom Tabs zu integrieren.\cite{TrustedWebActivitiesGoogle}
+Ein Verweis auf ein im Webserver liegendes Zertifikat stellt sicher,
+dass die Webseite und die App von dem gleichen Entwickler
+stammen. Ein Vorteil gegenüber dem Einbinden einer PWA in einen WebView, ist es,
+dass der WebView und somit die native App nicht kontinuierlich aktualisiert werden muss,
+um den Browser auf dem neuesten Stand zu halten.
+Trusted Web Activities werden mit \code{activity} Tags in das Android-App-Manifest integriert. Für die Darstellung
+der TWA wird wie auch bei der PWA ein Browser verwendet. Das bringt Vor- sowie Nachteile mit sich.
+Ein Vorteil ist, dass die TWA Zugriff auf im Browser gespeicherte Daten wie den LocalStorage
+hat. Ein schwerwiegender Nachteil ist allerdings, dass der installierte Browser des mobilen Endgerätes
+die Verwendung der TWA unterstützen muss. Tut er dies nicht, wird die Anwendung in einem sichtbaren
+Browser-Tab angezeigt. Andreas Domin erwähnt in einem Blogbeitrag auf Digital Pioneers eine Möglichkeit,
+dies zu umgehen: Hierfür "\dots wird nativer Java- oder Kotlin-Code benötigt, um zu überprüfen, ob Chrome
+(oder ein Browser, der Custom Tab unterstützt) installiert ist.
+Ist dem nicht so, kann eine alternative Technologie geladen werden:
+eine Webview zum Beispiel."\cite[2. Abschnitt]{TrustedWebActivitiesT3N}
+Trusted Web Activities werden aktuell allerdings nur von Google und somit Android unterstützt. Um die PWA
+in den App Store von Apple zu bringen, muss so oder so ein WebView verwendet werden.
 
 \section{Microservices}
 \label{sec:microservices}
