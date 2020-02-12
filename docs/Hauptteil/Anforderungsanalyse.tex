@@ -139,25 +139,26 @@ Obergrenze von einem Minimum von 10 Megabyte bis zu einem Maximum von aktuell 2 
 Die Verwendung der Daten ohne Netzzugriff ist bedingt möglich. Ist dies nicht möglich, gilt es
 eine Offline-Rückfallseite bereitzustellen.
 
-In diesem Abschnitt wurden somit die Anforderungen an die Funktionalitäten der Software analysiert. Als
-nächstes werden die Anforderungen an die Flexibilität erörtert.
-
 \section{Nicht-funktionale Anforderungen}
 \label{sec:nichtfunktionaleanforderungen}
+In diesem Abschnitt werden die nicht-funktionalen Anforderungen analysiert.
+In \Cref{subsec:gestaltung} geht es um die graphische Benutzeroberfäche sowie
+deren Benutzerfreundlichkeit. In \Cref{subsec:flexibilitaet} wird die geforderte
+Flexibilität an die Softwarelösung erörtert. Zuallerletzt werden in \Cref{subsec:codebasis}
+Anforderungen an die Entwicklungsumgebung und den Entwicklungsprozess gestellt.
 
 \subsection{Gestaltung}
 \label{subsec:gestaltung}
 Welche Anforderungen gibt es bei der Gestaltung der Anwendung oder noch spezieller 
-der grafischen Oberfläche zu beachten? Wie bereits in der Zielgruppenanalyse
+der grafischen Oberfläche zu beachten? Wie bereits in der Zielgruppenanalyse in \Cref{sec:weristmeinezielgruppe}
 angemerkt, werden die verschiedensten Endgeräte auf die Software zugreifen.
 GBO Datacomp erwähnt in ihrem Informationsblatt die Fokussierung auf folgende
 drei Gerätetypen: Desktop-PCs, Tablets und Smartphones. Man kann davon ausgehen, dass die
 Softwarelösung als Eingabeschnittstelle neben der Maus und der Tastatur auch mit einem Touchscreen
 gesteuert werden kann. GBO Datacomp weißt speziell auf die unterschiedlichen Bildschirmgrößen
 hin. So soll die Anwendung auf verschiedene Bildschirmgrößen reagieren und den Inhalt je nach
-Größe zugänglich bereitstellen. Geräte des gleichen Typs weisen keine signifikanten Unterschiede
-in der Darstellung auf. Um diese Anforderung umzusetzen, benötigt es neben der Erkennung
-der Bildschirmgröße auch noch eine Erkennung des Gerätetyps.
+Größe zugänglich bereitstellen. Geräte des gleichen Typs sollen keine signifikanten Unterschiede
+in der Darstellung aufweisen.
 
 Man kann davon ausgehen, dass neben den unterschiedlichen Gerätetypen auch unterschiedliche
 Betriebssysteme verwendet werden. Laut StatCounter verteilt sich der weltweite Marktanteil
@@ -214,7 +215,7 @@ Bereiche gliedern. Im ersten Bereich geht es um die Flexibilität der Software i
 Augenmerk auf den Umgang der Software mit der Beschaffenheit der Datenquellen und der Daten selbst gelegt. Im zweiten Bereich
 wird die Anforderung in Bezug auf die Flexibilität der Visualisierung der Daten erörtert.
 
-Die Datenquelle ist wie bereits in \Cref{subsec:funktionalitaet} erwähnt von GBO Datacomp als REST Schnittstelle
+Die Datenquelle ist wie bereits in \Cref{sec:funktionaleanforderungen} erwähnt von GBO Datacomp als REST Schnittstelle
 bereitgestellt. Über die API lassen sich Schichtdaten, Kennzahlen über die Gesamtanlageneffektivität (OEE), Arbeitsplätze
 sowie Arbeitsplatzgruppen abfragen. Ein typisches Szenario ist die Abfrage von aktuellen Schichtdaten eines bestimmten
 Arbeitsplatzes. Hierfür müssen zwei Aufrufe gegen die API durchgeführt werden. Zum einen muss ein Aufruf gegen die
