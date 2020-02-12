@@ -12,14 +12,14 @@ von Daten aus Datenquellen, der Aufbereitung der Daten, der Datenmodellierung so
 Microsoft beschreibt ihr Produkt Power BI Desktop wie folgt: "Power BI Desktop ist eine kostenlose Anwendung,
 die Sie auf Ihrem lokalen Computer installieren können und die es Ihnen ermöglicht, eine Verbindung mit Ihren
 Daten herzustellen und diese zu transformieren und zu visualisieren."\cite{MicrosoftPowerBIDesktopDocs}
-Power BI Desktop ist eines der Produkte von Power BI. Desweitere bietet Power BI einen cloud-basierten Power BI Dienst
+Power BI Desktop ist eines der Produkte von Power BI. Desweitere bietet Power BI einen cloud-basierten Dienst
 sowie eine native App an.\cite{WikiPowerBI}
 
 Als erstes gilt es, das Laden von Daten in Power BI Desktop auszuwerten. Mit Power BI Desktop kann man 
-Daten aus Dateien, aus Datenbanken sowie aus cloud-basierten Diensten laden. Eine weitere Option zum Laden 
-von Daten, das DirektQuery, wird in dem Buch von Adam Aspin, Pro Power BI Desktop, erwähnt. 
+Daten aus Dateien, aus Datenbanken sowie aus cloud-basierten Diensten laden. In dem Buch "Pro Power BI Desktop"
+von Adam Aspin wird eine weitere Option zum Laden von Daten erwähnt; die DirektQuery.
 Hierbei handelt es sich, anders als bei den zuvor genannten Möglichkeiten, um das direkte
-Abfragen von Daten gegen eine Datenquelle, ohne die Daten zuvor alle in die Anwendung zu laden.\cite[S. 111]{ProPowerBIDesktop}
+Abfragen von Daten gegen eine Datenquelle, ohne zuvor alle Daten in die Anwendung zu laden.\cite[S. 111]{ProPowerBIDesktop}
 Diese Art des Ladens wurde von den Entwicklern von Power BI unter anderem eingeschlagen,
 um das initiale Laden der Daten in das In-Memory-Model zu umgehen. Gerade bei großen Data Warehouses
 kann sich dies mitunter unvorteilhaft auf die Performanz auswirken.
@@ -30,7 +30,9 @@ namens Power Query. Es wäre falsch mit hundertprozentiger Sicherheit zu behaupt
 anwendungseigenen Datenstruktur ein relationales Datenbankmodell verwendet. Befasst man sich mit der Art
 der Datenmodellierung, wie der Erstellung von Beziehungen zwischen Tabellen, verschwindet jedoch jedweder Zweifel. \cite[S. 319]{ProPowerBIDesktop}
 Somit ist davon auszugehen, dass Power Query die zu importierenden Datenstrukturen in ein relationales Datenbankmodell
-konvertiert. Eine mehrdimensionale JSON-Datei wird somit in eine eindimensionale Tabelle konvertiert.
+konvertiert. Eine mehrdimensionale JSON-Datei wird somit in eine eindimensionale Tabelle
+konvertiert.\footnote{Die Tabelle beinhaltet die weiteren Dimensionen in den jeweiligen Reihen als Arrays.
+Die Tabelle kann daraufhin in mehrere Tabellen mit den jeweiligen Kardinalitäten konvertiert werden.}
 Hierfür benötigt man die hauseigene Formelsprache Power Query M. "Power Query M ist eine funktionale Sprache,
 die Groß-/Kleinschreibung beachtet und F\# ähnlich ist."\cite{MicrosoftDocsPowerQueryFormelsprache}
 
