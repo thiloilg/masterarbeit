@@ -38,6 +38,8 @@
 
 \AfterPackage{float}{\renewcommand\newfloat[3]{}}
 \usepackage[outputdir=build]{minted}
+\setminted{fontsize=\footnotesize}
+\setminted{baselinestretch=1}
 
 \newenvironment{quellcode}{\captionsetup{type=listing,indention=0cm}}{}
 \SetupFloatingEnvironment{listing}{name=Quellcode}
