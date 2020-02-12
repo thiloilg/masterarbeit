@@ -87,8 +87,8 @@ in a Web View? An Analysis of Progressive Web App Features When the
 Means of Web Access is not a Web Browser" bereitgestellte
 PWA Feature Detector\footnote{https://github.com/tomayac/pwa-feature-detector/} sowie 
 die Webseite "Can I use"\footnote{https://caniuse.com/} verwendet.
-Der PWA Feature Detector ermittelt anhand von im JavaScript
-DOM vorhandenen Feldern, ob der Browser bestimmte Merkmale unterstützt.
+Der PWA Feature Detector ermittelt anhand von im JavaScript-HTML-DOM
+vorhandenen Feldern, ob der Browser bestimmte Merkmale unterstützt.
 Dabei werden neben den Feldern window, document und navigator
 auch Felder im Service Worker erkannt. Die Angaben können von dem
 eigentlich unterstützten Funktionsumfang abweichen. Die von Thomas
@@ -97,24 +97,24 @@ Merkmale sind folgende: Offline Capabilities; hierbei wird nach
 einer Unterstützung der Cache API gesucht. Push Notifications;
 ist die Push API unterstützt? Add to Homescreen; kann man PWAs auf
 dem Homescreen speichern (A2HS)? Background Sync; ist eine Unterstützung
-der Background Sync API vorhanden? Navigation Preload; Die Möglichkeit
+der Background Sync API vorhanden? Navigation Preload; die Möglichkeit
 Ressourcen bereits während dem hochfahren des SW vorzuladen
 (Navigation Preload Manager API). Silent Push; das Starten von durch das
 Backend ausgelösten Prozessen im Frontend ohne den Benutzer
 davon durch eine Nachricht zu informieren (Web Budget API). 
 Storage Estimation; Die Nachfrage nach genutztem Speicher sowie
 dessen Beschränkung (Storage Manager). Persistent Storage;
-Das speichern von Daten, die nur mit Anfrage an den Benutzer gelöscht
+das speichern von Daten, die nur mit Anfrage an den Benutzer gelöscht
 werden dürfen (Storage Manager). Web Share; das Teilen von Inhalten
 über die durch die Plattform bereitgestellten Operationen (Web Share API).
 Media Session, das Bereitstellen von Inhalten für native
 Bereiche wie den Lockscreen (Media Session API). Media Capabilities;
-Die Möglichkeit das perfekte Format von auszuliefernden Inhalten anhand von
-Informationen, die vom Browser bereitgestellt werden (Media Capabilities API).
+die Möglichkeit das perfekte Format von Inhalten anhand von
+Informationen, die vom Browser bereitgestellt werden, auszuliefern (Media Capabilities API).
 Device Memory; wie viel RAM stehen dem Betriebssystem zur
-Verfügung (Device Memory API). Detect Native App; Ist die native Version
+Verfügung (Device Memory API). Detect Native App; ist die native Version
 meiner Anwendung bereits installiert? Payment Request;
-Die Benutzung von durch das Betriebssystem bereitgestellten
+die Benutzung von durch das Betriebssystem bereitgestellten
 Zahlungsverfahren (Payment Request API). Credential Management;
 dem Benutzer die Verwendung von im Betriebssystem gehorteten
 Anmeldedaten zu ermöglichen (Credential Management API).\cite[Abschnitt 2.3]{WhatIsInAWebView}
