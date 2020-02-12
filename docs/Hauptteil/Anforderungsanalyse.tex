@@ -41,14 +41,9 @@ Softwarelösung wird eine gewisse Flexibilität abverlangt, die nicht zu untersc
 
 \section{Funktionale Anforderungen}
 \label{sec:funktionaleanforderungen}
-
-Die Analyse der Anforderungen an die Funktionalität der Software ist der
-umfangreichste Teil der Anforderungsanalyse. Dabei gilt es folgende Frage zu beantworten:
-Was sind die bedeutsamsten Anforderungen an die Funktionalität der Software?
-Dazu muss man sich den Titel der Masterarbeit nochmal vor Augen führen.
-Der Titel heißt: Agiles Dashboardingtool zur Datenvisualisierung
-in einer Microservice-Infrastruktur. Die erste und bedeutsamste Funktionalität ist
-die möglichst agile Erstellung eines Dashboards. Die Aufgabe des Dashboards ist es Daten
+In diesem Abschnitt werden die Anforderungen an die Funktionalität der Software analysiert.
+Die erste und bedeutsamste Funktionalität ist
+die möglichst agile Erstellung eines Dashboards. Die Aufgabe des Dashboards ist es, Daten
 zu visualisieren. Um dies zu ermöglichen, benötigt das Dashboard Daten. Diese Daten
 müssen aus einer Datenquelle geladen werden. GBO Datacomp stellt hierfür eine REST API
 zur Verfügung. Für eine Datenquelle ist somit gesorgt. Um die Daten innerhalb der Anwendung
@@ -61,19 +56,22 @@ die Navigation durch die Software, die Suche nach Ressourcen in der Anwendungen,
 die Filterung der darzustellenden Daten im Dashboard sowie für die Möglichkeit,
 die Anwendung auch offline zu verwenden, erörtert.
 
-Was sind die Anforderungen für die Erstellung des agilen Dashboards? Wie bereits in dem
-vorigen Abschnitt über die grafische Benutzeroberfläche debattiert, muss die Anwendung und
-so auch die Erstellung des Dashboards selbsterklärend sein. Daraus resultiert, dass die Anwendung 
-selbst die Justierung der einzelnen Komponenten des Dashboards übernimmt. Der
-Benutzer kann in einem intuitiven Verfahren, einzelne Komponenten auswählen und diese
-an bestimmte Positionen im Bildschirm ziehen. Desweiteren kann er die Komponenten
+Was sind die Anforderungen für die Erstellung des agilen Dashboards? Die Anwendung und
+so auch die Erstellung des Dashboards sollte selbsterklärend sein. Daraus resultiert, 
+dass die Anwendung möglichst einfach aufgebaut werden sollte. Einstellungsmöglichkeiten,
+die Nebenrollen in der Gesamtfunktionalität der Software darstellen, sollten von der
+Software selbst entschieden werden. Ein Beispiel hierfür ist die Justierung der
+einzelnen Komponenten eines Dashboards. Der Prozess der Erstellung eines Dashboards
+sollte wie folgt aussehen. Ein Benutzer kann in einem intuitiven Verfahren,
+einzelne Komponenten auswählen und diese an bestimmte Positionen im Bildschirm
+ziehen. Desweiteren kann er die Komponenten
 entfernen und ersetzen. Wirft man einen Blick auf andere BI Softwarelösungen,
 stellt man fest, dass die Anzahl der Komponenten der Anwendung im Lauf der Zeit
 stetig anwachsen kann. Somit ist die effiziente Auswahl, auch aus einer großen
 Anzahl an Komponenten, pflicht.
 
 Was sind die Anforderungen für das Laden der Daten in die Anwendung? Neben der Flexibilität,
-die im darauffolgenden Abschnitt erörtert wird, muss das Laden von Daten schnell und zuverlässig
+die in \Cref{subsec:flexibilitaet} erörtert wird, muss das Laden von Daten schnell und zuverlässig
 sein. Typische Vorgehensweisen der Anwender sind das Auswerten von Maschinendaten. Dabei kann es
 sich um die Auslastung, Störfälle aber auch Ausfälle der Maschinen handeln. Es ist bedeutsam,
 das der Anwender rechtzeitig von diesen Ereignissen informiert wird. Unsere
