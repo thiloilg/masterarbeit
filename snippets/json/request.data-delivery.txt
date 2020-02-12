@@ -1,0 +1,9 @@
+{
+    "channel": "/data-delivery/a1aMczof",
+    "data": {
+        "url": "https://api.example.com/data",
+        "interval": 86400000,
+        "query": "{ labels: ['Category 1', 'Category 2'],
+            datasets: [{label: 'Value', data: [].someValue}]}"
+    }
+}

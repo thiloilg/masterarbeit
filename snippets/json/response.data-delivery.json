@@ -1,0 +1,18 @@
+{
+    "channel": "/data-delivery/a1aMczof",
+    "data": {
+        "labels": [
+            "Category 1",
+            "Category 2"
+        ],
+        "datasets": [
+            {
+                "label": "Value",
+                "data": [
+                    72.2,
+                    68.8
+                ]
+            }
+        ]
+    }
+}
