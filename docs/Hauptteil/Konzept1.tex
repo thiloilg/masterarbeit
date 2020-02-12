@@ -193,30 +193,3 @@ der Daten bereitstellen.
 \section{Strategie der vereinten Frontendanwendung}
 \label{sec:vereintefrontendanwendung}
 
-\section{Monorepo und Git-Submodules}
-\label{sec:monorepoundsubmodules}
-In diesem Abschnitt geht es um die Aufteilung des
-Programmcodes in Repositories. Für die Versionsverwaltung
-wird Git verwendet. Die Arbeit entscheidet sich dazu,
-die einzelnen Microservices in einer Monorepo unterzubringen.
-Unter Monorepo versteht man die Strategie, den Programmcode
-aus mehreren Anwendungen, Services, Bibliotheken und Frameworks
-in einer Repository unterzubringen.\cite{MonorepoTrunkBasedDevelopment}
-Diese Strategie verringert nicht nur den Aufwand
-des Aufsetzens mehrerer Repositories, sondern gibt den
-Entwicklern auch einen besseren Überblick über die einzelnen
-Projekte. Gerade im Fall von Microservices hat dieser
-Ansatz den Vorteil, dass man Änderungen in mehreren Services,
-die miteinander verkoppelt sind, in einem Commit in die
-Versionsverwaltung einchecken kann. Dies kann verbindlich sein,
-wenn Tests der Pipeline auf bestimmte Versionen der unterschiedlichen
-Services angewiesen sind. Verändert man beispielsweise
-eine API eines Services, kann man gleichzeitig das Frontend
-anpassen. Die Diagramme eines Dashboards sollen allerdings
-auch extern entwickelbar sein. Um dies zu ermöglichen, verwendet
-die Arbeit Git-Submodules.\cite{GitsubmodulesGitSCM} Mithilfe dieser Submodules
-kann man andere Repositories in ein Repository integrieren. Somit können externe Entwickler das Repository des
-Submodules gabeln\footnote{Unter "gabeln" oder auch "forken" versteht man
-das Erstellen einer eigenen Kopie eines Repositories, mit der unabhängig von
-der Versionierung der gegabelten Repository entwickelt werden kann.},
-um in ihrem eigenen Repository Diagramme für die Anwendung zu entwickeln.
