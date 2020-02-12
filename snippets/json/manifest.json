@@ -7,16 +7,6 @@
       "src": "/icons/favicon-16x16.png",
       "sizes": "16x16",
       "type": "image/png"
-    },
-    {
-      "src": "/icons/favicon.ico",
-      "sizes": "48x48",
-      "type": "image/x-icon"
-    },
-    {
-      "purpose": "badge",
-      "src": "/icons/icon.svg",
-      "type": "image/svg"
     }
   ],
   "scope": "/",
