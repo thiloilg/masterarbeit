@@ -57,24 +57,25 @@ durchsucht und diese als Datenquelle verwendet.\cite[S. 17]{QlikSenseCookbook} F
 einer REST API, bietet Qlik Sense einen sogenannten REST Connector an. Dieser kann sowohl das JSON- als auch
 das XML-Format verarbeiten. In den Settings des REST Connectors können neben der URL auch ein
 Authentifizierungsschema ausgewählt werden.\cite[S. 23]{QlikSenseCookbook} Somit ist es möglich,
-eine API zu verwenden, bei der eine JWT-Authentifizierung vorausgesetzt ist. Wie in \Cref{subsec:gestaltung}
-bereits erwähnt, besitzt Qlik Sense eine eigene SQL ähnliche Skriptsprache. Im Data Load Editor
+eine API zu verwenden, bei der eine JWT-Authentifizierung vorausgesetzt ist. Qlik Sense besitzt
+eine eigene SQL ähnliche Skriptsprache. Im Data Load Editor
 können mithilfe dieses Scripts Bearer-Token als Authorization Header gesetzt werden. Dies macht Qlik
 Sense in der Nutzung externer APIs sehr flexibel.
 
 Als nächstes werfen wir einen Blick auf die Aufbereitung der Daten. Nach der Auswahl einer Datenquelle
 erstellt Qlik Sense ein vorgefertigtes Script im Data Load Editor. Dies gilt primär als Orientierungspunkt
 und kann je nach Belieben angepasst werden. Genauso wie Power BI benutzt auch Qlik Sense ein relationales
-Datenbankmodell zur Datenmodellierung innerhalb der Anwendung. Im Data Load Editor wird so innerhalb des
-Scripts ein JSON auch eine Tabelle aufgeteilt. Der Bereich zur Datenmodellierung ist der Data Model Viewer.
-Hier werden mithilfe eines Kraftgerichteten Graphs die Beziehungen zwischen den unterschiedlichen
+Datenbankmodell zur Datenmodellierung innerhalb der Anwendung. Im Data Load Editor
+wird so wie bei Power BI das eingehende JSON mithilfe eines Scripts in eine Tabelle konvertiert.
+Der Bereich zur Datenmodellierung ist der Data Model Viewer.
+Hier werden mithilfe eines kraftgerichteten Graphs die Beziehungen zwischen den unterschiedlichen
 Tabellen verdeutlicht. Mit der Datenmodellierung von Qlik Sense ist es möglich, alle typischen SQL-Joins
 zwischen zwei Tabellen durchzuführen. So kann man Daten von einer API zusammen mit Daten aus einer SQL-Datenbank
-verbinden.  
+verbinden. 
 
 Anders als bei Power BI, das von Microsoft selbst gehostet wird, kann man Qlik Sense nach dem Erwerben
 einer Lizenz selbst auf einem Windows Server hosten. Außerdem hat Qlik verschiedene APIs, die man
-verwenden kann um die Anwendung selbst ohne die Verwendung der GUI vorzubereiten. So kann man Daten
+verwenden kann, um die Anwendung selbst ohne die Verwendung der GUI vorzubereiten. So kann man Daten
 auf den Server vorladen, die man dann später mithilfe der Frontendanwendung auswerten wird. Anders als bei
 dem API Connector von Qlik Sense, den man über die GUI einstellt, kann man mit der Repository Main API
 die Anwendung komplett über eine Schnittstelle aus verwalten.\cite{QlikSenseRepositoryMainAPI}
