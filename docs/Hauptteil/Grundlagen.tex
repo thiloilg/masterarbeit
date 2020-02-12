@@ -215,26 +215,40 @@ debattiert.
 
 \subsection{Was versteht man unter Microservices?}
 \label{subsec:wasverstehtmanuntermicroservices}
-Der Begriff "Microservices" ist in aller Munde.\footnote{Seit Februar 2014 ist das Interesse an dem Begriff "Microservices" auf Google Trends konstant angestiegen.\cite{MicroservicesGoogleTrends}}
-Wenn man den Begriff "Microservices" als erstes hört, denkt man womöglich an SOA\footnote{SOA steht für Serviceorientierte Architektur}.
-Der Begriff SOA wurde bereits 1996 von Fartner, einem Unternehmen, das Forschung in der IT-Branche
+Der Begriff "Microservices" ist in aller Munde.\footnote{Seit Februar 2014 ist das Interesse
+an dem Begriff "Microservices" auf Google Trends konstant angestiegen.\cite{MicroservicesGoogleTrends}}
+Wenn man den Begriff "Microservices" als erstes hört, denkt man womöglich an das Architekturmuster
+"Serviceorientierte Architektur" (SOA). Der Begriff SOA wurde bereits 1996
+von Gartner, einem Unternehmen, das Forschung in der IT-Branche
 betreibt\footnote{https://www.gartner.com/en/about/}, verwendet\cite{GartnerSOAPart1}.
 SOA ist ein Erklärungsmodell zur Aufteilung von Geschäftslogik in einzelne Services.
 Was sind aber jetzt eigentlich Microservices und was ist der Unterschied zu SOA?
 In dem Buch Microservices von Eberhard Wolff werden diese als Ansatz zur Modularisierung
 von Software definiert. Der Unterschied zu vorhandenen Architekturmustern beschreibt er wie folgt:
-"Das Neue: Microservices nutzen als Module einzelne Programme, die als eigene Prozesse laufen."\cite[S. 2]{MicroservicesBook}
-Durch neue Technologien wie Docker, eine Open-Source Software zur Kapselung von Prozessen in umgebungsunabhängige Instanzen,\cite{DockerOverview}
-ist es möglich, eine serviceorientierte Architektur flexibler zu gestalten. Docker stellt eine einheitliche Umgebung in
-allen Prozessstufen der stetigen Softwareauslieferung bereit. Ob in einer lokalen Entwicklungsumgebung oder in einem
-Kubernetes-Cluster, die Umgebung und somit das Verhalten der Anwendung ist gleich.\footnote{Von Umgebungsvariablen und externen Schnittstellen abgesehen}
+"Das Neue: Microservices nutzen als Module einzelne
+Programme, die als eigene Prozesse laufen."\cite[S. 2]{MicroservicesBook}
+Durch neue Technologien wie Docker, eine Open-Source Software
+zur Kapselung von Prozessen in umgebungsunabhängige Instanzen,\cite{DockerOverview}
+ist es möglich, eine serviceorientierte Architektur flexibler
+zu gestalten. Docker stellt eine einheitliche Umgebung in
+allen Prozessstufen der stetigen Softwareauslieferung bereit.
+Ob in einer lokalen Entwicklungsumgebung oder in einem
+Kubernetes-Cluster, die Umgebung und somit das
+Verhalten der Anwendung ist gleich.\footnote{Von Einflussfaktoren
+wie veränderbaren Umgebungsvariablen und externen Schnittstellen abgesehen}
 
-Microservice beinhaltet den Wortteil "Micro", bekannt als Einheitenvorsatz für \(10^{-6}\). Die Komplexität eines Softwareprojektes
-wird oftmals in LOC, Lines of Code gemessen. Laut Diskussionen auf StackExchange siedelt sich ein komplexes Softwareprojekt bei
-ca. 2 Millionen LOC an.\cite{ProjectsizeStackexchange} Daraus würde folgen, dass ein sogenannter "Microservice" eine Größe um die
-2 Code-Zeilen haben sollte. Diese Annahme ist von realen Anwendungsfällen weit entfernt. Eberhard Wolff sieht den Ansatz,
-die Größe eines Microservices anhand von Code-Zeilen zu messen als kritisch an. Code-Zeilen seien von der verwendeten
-Technologie abhängig. Desweiteren sollte man sich bei der Serviceuntergliederung lieber an der "...fachlichen Domäne richten".\cite[S. 31 und 32]{MicroservicesBook}
+Das Wort "Microservice" beinhaltet den Wortteil "Micro",
+bekannt als Einheitenvorsatz für \(10^{-6}\). Die Komplexität eines Softwareprojektes
+wird oftmals in Lines of Code (LOC) gemessen. Ausgehend
+von Diskussionen auf StackExchange siedelt sich ein komplexes Softwareprojekt bei
+ca. 2 Millionen LOC an\cite{ProjectsizeStackexchange}.
+Daraus würde folgen, dass ein sogenannter "Microservice" eine Größe um die
+2 Code-Zeilen haben sollte. Diese Annahme ist von realen
+Anwendungsfällen weit entfernt. Eberhard Wolff sieht den Ansatz,
+die Größe eines Microservices anhand von Code-Zeilen zu
+messen als kritisch an. Code-Zeilen seien von der verwendeten
+Technologie abhängig. Desweiteren sollte man sich bei der
+Serviceuntergliederung lieber an der "...fachlichen Domäne richten".\cite[S. 31 und 32]{MicroservicesBook}
 
 \subsection{Vor- und Nachteile}
 \label{subsec:vorundnachteile}
