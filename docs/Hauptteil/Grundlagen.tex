@@ -60,46 +60,64 @@ welche dieser Merkmale?
 \subsection{Merkmale}
 \label{subsec:markmale}
 Es gibt keine genaue Definition, die besagt, welche Merkmale eine PWA beinhalten muss.
-Der Begriff Progressive Web App wurde erstmals 2015 von Alex Russell in einem Blogpost
-verwendet.\cite{PWA2015} Die Idee hinter einer Web App, bei der sich die Optik und Haptik
+Der Begriff "Progressive Web App" wurde erstmals 2015 von Alex Russell in einem Blogpost
+verwendet\cite{PWA2015}. Die Idee hinter einer Webanwendung, bei der sich die Optik und Haptik
 wie die bei einer nativen App anfühlt, gab es allerdings bereits zuvor. So verkündete
-Steve Jobs bei der initialen iPhone Presentation für Entwickler bereits die Möglichkeit
+Steve Jobs bei der initialen iPhone Präsentation für Entwickler bereits die Möglichkeit
 an, solche Web 2.0 Apps mithilfe von Safari zu entwickeln.\footnote{https://www.youtube.com/watch?v=ZlE7dzoD6GA}
 Die Merkmale einer PWA haben sich also über die Jahre hinweg angesammelt. Was sind aber
 nun diese Merkmale? Alex Russell erwähnt in seinem Blogpost dazu folgendes:
 Die PWA soll responsive und netzunabhängig sein, app-ähnliche Navigationsvorgänge bereitstellen,\footnote{Ohne Verwendung von Browser Tabs} 
 immer aktuell sein, über TLS ausgeliefert werden, durch Suchmaschinen als solche mithilfe
-des Web App Manifests auffindbar sein, Plattformspezifische Funktionalitäten wie Push-Notifications
+des Web-App-Manifests auffindbar sein, Plattformspezifische Funktionalitäten wie Push-Notifications
 verwenden sowie auf dem Homescreen installierbar, über Hyperlinks teilbar und ohne aufwendigen
-Installationsprozess verwendbar sein.\cite{PWA2015} Eine 2018 veröffentlichte, wissenschaftliche
+Installationsprozess verwendbar sein\cite{PWA2015}. Eine 2018 veröffentlichte, wissenschaftliche
 Arbeit von Thomas Steiner über die Analyse von PWA-Merkmalen innerhalb eines WebViews\footnote{Ein Web View ist ein in einer nativen App eingebetteter Browser zur Darstellung von Webinhalten.}
 benennt fünfzehn für eine PWA relevante Merkmale, auf die sich die Analyse über den
 unterstützten Funktionsumfang von gängigen Browsern in \Cref{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
-beziehen wird.\cite{WhatIsInAWebView}
+beziehen wird\cite{WhatIsInAWebView}.
 
 \subsection{Unterstützter Funktionsumfang gängiger Browser}
 \label{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
-In \Cref{subsec:gestaltung} (Absatz 2) wurde bereits der Nutzungsanteil der Browser analysiert. Um genauere Aussagen zwischen
-dem unterstützten Funktionsumfang von mobilen und Desktop-Endgeräten zu bekommen, wurden die Desktop-Browser von ihrem mobilen
-Gegenstück getrennt. Zu der Recherche des Funktionsumfangs wird der von Thomas Steiner aus der wissenschaftlichen Arbeit "What is
-in a Web View? An Analysis of Progressive Web App Features When the Means of Web Access is not a Web Browser" bereitgestellte
-PWA Feature Detector\footnote{https://github.com/tomayac/pwa-feature-detector/}, die Angaben in der Mozilla Developer Docs sowie 
-die Webseite "Can I use"\footnote{https://caniuse.com/} verwendet. Der PWA Feature Detector ermittelt anhand von im JavaScript
-DOM vorhandenen Feldern, ob der Browser bestimmte Merkmale unterstützt. Dabei werden neben den Feldern window, document und navigator
-auch Felder im Service Worker erkannt. Die Angaben können von dem eigentlich unterstützten Funktionsumfang abweichen. Die von Thomas
-Steiner in seiner wissenschaftlichen Arbeit für relevant angesehenen Merkmale sind folgende: Offline Capabilities; hierbei wird nach
-einer Unterstützung der Cache API gesucht. Push Notifications; ist die Push API unterstützt? Add to Homescreen; kann man PWAs auf
-dem Homescreen speichern (A2HS)? Background Sync; ist eine Unterstützung der Background Sync API vorhanden? Navigation Preload; Die Möglichkeit
-Ressourcen bereits während dem hochfahren des SW vorzuladen (Navigation Preload Manager API). Silent Push; das Starten von durch das
-Backend ausgelösten Prozessen im Frontend ohne den Benutzer davon durch eine Nachricht zu informieren (Web Budget API). 
-Storage Estimation; Die Nachfrage nach genutztem Speicher sowie dessen Beschränkung (Storage Manager). Persistent Storage;
-Das speichern von Daten, die nur mit Anfrage an den Benutzer gelöscht werden dürfen (Storage Manager). Web Share; das Teilen von Inhalten
-über die durch die Plattform bereitgestellten Operationen (Web Share API). Media Session, das Bereitstellen von Inhalten für native
-Bereiche wie den Lockscreen (Media Session API). Media Capabilities; Die Möglichkeit das perfekte Format von auszuliefernden Inhalten anhand von
-Informationen, die vom Browser bereitgestellt werden (Media Capabilities API). Device Memory; wie viel RAM stehen dem Betriebssystem zur
-Verfügung (Device Memory API). Detect Native App; Ist die native Version meiner Anwendung bereits installiert? Payment Request;
-Die Benutzung von durch das Betriebssystem bereitgestellten Zahlungsverfahren (Payment Request API). Credential Management;
-dem Benutzer die Verwendung von im Betriebssystem gehorteten Anmeldedaten zu ermöglichen (Credential Management API).\cite[Abschnitt 2.3]{WhatIsInAWebView}
+Um genauere Aussagen zwischen dem unterstützten Funktionsumfang von Mobile-
+und Desktop-Endgeräten zu bekommen, wurden die Desktop-Browser von ihrem mobilen
+Gegenstück getrennt. Zu der Recherche des Funktionsumfangs wird
+der von Thomas Steiner aus der wissenschaftlichen Arbeit "What is
+in a Web View? An Analysis of Progressive Web App Features When the
+Means of Web Access is not a Web Browser" bereitgestellte
+PWA Feature Detector\footnote{https://github.com/tomayac/pwa-feature-detector/} sowie 
+die Webseite "Can I use"\footnote{https://caniuse.com/} verwendet.
+Der PWA Feature Detector ermittelt anhand von im JavaScript
+DOM vorhandenen Feldern, ob der Browser bestimmte Merkmale unterstützt.
+Dabei werden neben den Feldern window, document und navigator
+auch Felder im Service Worker erkannt. Die Angaben können von dem
+eigentlich unterstützten Funktionsumfang abweichen. Die von Thomas
+Steiner in seiner wissenschaftlichen Arbeit für relevant angesehenen
+Merkmale sind folgende: Offline Capabilities; hierbei wird nach
+einer Unterstützung der Cache API gesucht. Push Notifications;
+ist die Push API unterstützt? Add to Homescreen; kann man PWAs auf
+dem Homescreen speichern (A2HS)? Background Sync; ist eine Unterstützung
+der Background Sync API vorhanden? Navigation Preload; Die Möglichkeit
+Ressourcen bereits während dem hochfahren des SW vorzuladen
+(Navigation Preload Manager API). Silent Push; das Starten von durch das
+Backend ausgelösten Prozessen im Frontend ohne den Benutzer
+davon durch eine Nachricht zu informieren (Web Budget API). 
+Storage Estimation; Die Nachfrage nach genutztem Speicher sowie
+dessen Beschränkung (Storage Manager). Persistent Storage;
+Das speichern von Daten, die nur mit Anfrage an den Benutzer gelöscht
+werden dürfen (Storage Manager). Web Share; das Teilen von Inhalten
+über die durch die Plattform bereitgestellten Operationen (Web Share API).
+Media Session, das Bereitstellen von Inhalten für native
+Bereiche wie den Lockscreen (Media Session API). Media Capabilities;
+Die Möglichkeit das perfekte Format von auszuliefernden Inhalten anhand von
+Informationen, die vom Browser bereitgestellt werden (Media Capabilities API).
+Device Memory; wie viel RAM stehen dem Betriebssystem zur
+Verfügung (Device Memory API). Detect Native App; Ist die native Version
+meiner Anwendung bereits installiert? Payment Request;
+Die Benutzung von durch das Betriebssystem bereitgestellten
+Zahlungsverfahren (Payment Request API). Credential Management;
+dem Benutzer die Verwendung von im Betriebssystem gehorteten
+Anmeldedaten zu ermöglichen (Credential Management API).\cite[Abschnitt 2.3]{WhatIsInAWebView}
 
 Bei der Analyse wurden die neuesten Versionen der Browser\footnote{Stand Januar 2020 (IE 11, Edge 79, Firefox 72, Chrome 79, Safari 13, Opera 64, Safari iOS 13.2, Opera Mini 46, Android Browser Chromium 76, Opera Mobile 46, Chrome für Android 79, Firefox für Android 68, UC Browser für Android 12.12 und Samsung Internet 10.1) }
 begutachtet. Aufgrund der Komplexität wurden die Ergebnisse in \Cref{tab:unterstutzterpwafunktionsumfangteil1}
