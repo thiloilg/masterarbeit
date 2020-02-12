@@ -7,7 +7,7 @@ Eine progressive Webanwendung (PWA) ist eine Webseite, die eine zunehmende Ansam
 an bestimmten Technologien, Strategien und Schnittstellen implementiert,
 die Merkmale bereitstellen, die ursprünglich nur native Anwendungen besaßen\cite{WikiPWA}.
 Eine der wichtigsten Browser-Technologien, die zur Entstehung der PWA beigetragen hat,
-ist der Service Worker. Er ermöglicht der PWA auch ohne Internetverbindung zu funktionieren. Der 
+ist der Service Worker (SW). Er ermöglicht der PWA auch ohne Internetverbindung zu funktionieren. Der 
 Service Worker ist ein parallel zu der Hauptanwendung laufender Prozess, der HTTP- und je nach Browser
 auch WebSocket-Anfragen abfangen, verarbeiten und versenden kann. Somit kann trotz fehlernder Internetverbindung
 eine Antwort zurückgesendet werden.\cite{W3ServiceWorker}
@@ -185,13 +185,13 @@ Credential Mgmt	        & \cm & \cm & \cm &  -  &  -  &  -  \\
 Analysiert man die Resultate von \Cref{tab:unterstutzterpwafunktionsumfangteil1} und
 \Cref{tab:unterstutzterpwafunktionsumfangteil2}, sticht klar ins Auge, dass Chrome
 die PWA Entwicklung vorantreibt. Es wundert auch kaum, dass der Internet Explorer,
-bei dem die Entwicklung im März 2015 eingestellt wurde,\cite{HeiseInternetExplorer} keine der PWA Merkmale
+bei dem die Entwicklung im März 2015 eingestellt wurde,\cite{HeiseInternetExplorer} keine der PWA-Merkmale
 unterstützt. Die Periodic Background Sync API, eine Erweiterung der Background
 Sync API, ist momentan noch in Entwicklung und wird vorraussichtlich erst mit
 Chrome 80 veröffentlicht. Die API wird das Ausführen von Hintergrundaufgaben der SW
 in einem periodischen Interval ermöglichen.\cite{ChromeStatusPeriodicBackgroundSync}
 Die A2HS-Funktionalität wird von allen mobilen Browsern unterstützt.\footnote{Von allen in dieser Auswertung betrachteten Browsern.}
-Bei den mobilen Browsern ist insgesamt der unterstütze Funktionsumfang größer als
+Bei den mobilen Browsern ist der unterstütze Funktionsumfang insgesamt größer als
 bei den Browsern für Desktop-Endgeräte. Ein Grund dafür ist, dass man sich bei den PWA-Merkmalen
 hauptsächlich an der Optik und Haptik von nativen Apps orientiert. Chrome ist aktuell
 der einzige Browser, bei dem man eine PWA auch auf einem Desktop-Endgerät installieren
@@ -201,8 +201,8 @@ PWA-Merkmale müssen als Anreicherung betrachtet werden. Man kann nicht davon au
 der Browser des Benutzers ein bestimmtes Merkmal unterstützt.
 
 Auch wichtig ist, sich über den Browser-Marktanteil der eigenen Zielgruppe im klaren zu sein.
-So verwenden laut des globalen Marktanteils mehr als 50\% der Endbenutzer Chrome und besitzten somit
-alle PWA-Merkmale, die Chrome bereitstellt.\cite{StatCounterBrowserMarketShare}
+So verwenden laut StatCounter weltweit mehr als 50\% der Endbenutzer Google Chrome und besitzten somit
+alle PWA-Merkmale, die Chrome bereitstellt\cite{StatCounterBrowserMarketShare}.
 
 \section{Microservices}
 \label{sec:microservices}
