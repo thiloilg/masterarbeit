@@ -50,6 +50,22 @@ Die Anordnung der Diagramme wird als Baumstruktur im JSON-Format in der Datenban
 \subsection{Pluginverfahren}
 % Bündelung der Bibliotheken
 
+Die Arbeit verfolgt auch für das Frontend einen Microservice-Ansatz. Man spricht hier von einem
+Microfrontend. Michael Geers schreibt dazu in einem Artikel auf Digital Pioneers folgendes:
+"Der Ansatz, der sich jetzt förmlich aufdrängt, ist die Umsetzung der Microservice-Idee
+auch im Frontend. Anstatt einer ­großen Single-Page-Applikation baut man mehrere unabhängige
+Teilapplikationen, die miteinander kommunizieren. Diese sind dann deutlich einfacher zu verstehen.
+Der Einsatz einer neuen Technologie lässt sich in einem kleineren Rahmen testen."\cite{MicrofrontendT3N}
+Dabei sollen die Diagramme eines Dashboards als einzelne Services ausgelagert werden.
+Die Diagramme können so einzeln entwickelt und ausgeliefert werden. Aufgrund der
+gleichen Machenschaft der Schnittstellen der Diagramme, kann man diese Art des Code-Splittings auch als
+einen Plugin-Ansatz ansehen. Die Diagramme sollen über die In-Memory-Datenbank
+Redis zur Verfügung gestellt werden. Die Diagramme werden mithilfe
+von Dynamic Imports\footnote{Dynamic Imports gibt es seit ES6 (ECMAScript 2015)\cite{DynamicImportsV8}}
+während der Laufzeit agil nachgeladen. Da immer nur die verwendeten Diagramme aus der In-Memory-Datenbank
+geladen werden, kann die Webanwendung eine nahezu unendliche Auswahl an möglichen Diagrammen zur Visualisierung
+der Daten bereitstellen.
+
 \section{Speicherung}
 \subsection{Aufbau des Dashboards}
 \subsection{Datenquellen und Einstellungen}
