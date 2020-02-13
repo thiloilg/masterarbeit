@@ -1,14 +1,61 @@
 \chapter{Konzept}
 \label{chap:konzept}
+Dieses Kapitel ist aus der Sicht des Datenflusses organisiert. Als erstes
+gilt es die Daten zu beschaffen. Daraufhin werden sie verarbeitet und
+der Frontendanwendung zugeliefert. Dort werden die Daten den Dashboards
+und deren Diagrammen zugewiesen. In den Diagrammen werden die Daten
+visualisiert. Zu guterletzt werden die Einstellungen der Dashboards
+und die Zuweisung der Daten gespeichert.
 
-\section{Beschaffung und Zulieferung}
-\subsection{Datenübermittlungskonzept}
-\subsection{Echtzeitauslieferung}
-\subsection{Caching}
+Der zuvor beschriebene Vorgang geht bereits davon aus, dass die Daten im Backend
+verarbeitet und daraufhin dem Frontend ausgeliefert werden. Die Arbeit entscheidet
+sich hierfür aus drei Gründen. Sicherheit, Performanz und Flexibilität. Die URLs
+zum Abrufen der Daten sollen im Client einstellbar sein. Würde man die Anfragen an
+die externen APIs zur Beschaffung der Daten direkt aus dem Client heraus senden,
+müssen bei allen externen APIs CORS-Header für die eigene Origin gesetzt sein\cite{CORSW3C}.
+Desweiteren bieten sich serverseitige Programmiersprachen besser zur Verhinderung
+von Attacken zur Einschleusung von schädlichem Quellcode an.\footnote{Bei
+Unmarshalling- und Validierungsverfahren ist Golang flexibler als das im Client ausgeführte JS.}
+Für die Performanz sprechen folgende Gründe: Das Endgeräte des Clients ist womöglich
+nicht zur Datenverarbeitung ausgelegt. Das mehrfache Berechnen der gleichen Anfrage
+kann im Backend einfach abgefangen und aus dem Cache genommen werden. Die Verbindung
+des Backendservers zur externen API ist in der Regel schneller als die Verbindung
+des Clients zum Server. Wenn das Backend die Daten bereits Verarbeitet, wird nur noch
+eine verdichtete Form der Daten an den Client gesendet.\footnote{Es ist davon auszugehen, dass
+die aus der Verarbeitung resultierende Datenmenge geringer als die der initialen Anfrage ist.}
+Für die Flexibilität spricht, dass die Verarbeitung so nicht in neue Frontendanwendungen
+integriert werden muss.
+
+Die folgenden Abschnitte gehen genauer in das Konzept der Gesamtanwendung ein.
+In \Cref{}
+
+\section{Beschaffung}
+\label{sec:beschaffung}
+Das Konzept für die Beschaffung und Zulieferung der Daten sieht es vor, dass
+diese Aufgaben von einem separaten Service übernommen werden. 
+
+Die Beschaffung und Zulieferung der Daten 
 
 \section{Verarbeitung}
+\label{sec:verarbeitung}
+
+
+\section{Zulieferung}
+\label{sec:zulieferung}
+
+\subsection{Datenübermittlungskonzept}
+\label{subsec:datenuebermittlungskonzept}
+
+
+\subsection{Echtzeitauslieferung}
+\label{subsec:echtzeitauslieferung}
+
+
+\subsection{Caching}
+\label{subsec:caching}
 
 \section{Anordnung und Zuweisung}
+\label{sec:andordnungundzuweisung}
 
 \subsection{Diagrammanordnungsverfahren}
 \label{subsec:diagrammanordnungsverfahren}
@@ -45,9 +92,13 @@ können diese auch wieder gelöscht werden. Dabei verhalten sich die zuvor besch
 Die Anordnung der Diagramme wird als Baumstruktur im JSON-Format in der Datenbank persistiert.
 
 \subsection{Zuweisung von Datenquellen}
+\label{subsec:zuweisungungvondatenquellen}
 
 \section{Darstellung}
+\label{sec:darstellung}
+
 \subsection{Pluginverfahren}
+\label{subsec:pluginverfahren}
 % Bündelung der Bibliotheken
 
 Die Arbeit verfolgt auch für das Frontend einen Microservice-Ansatz. Man spricht hier von einem
@@ -67,5 +118,10 @@ geladen werden, kann die Webanwendung eine nahezu unendliche Auswahl an möglich
 der Daten bereitstellen.
 
 \section{Speicherung}
+\label{sec:speicherung}
+
 \subsection{Aufbau des Dashboards}
+\label{subsec:aufbaudesdashboards}
+
 \subsection{Datenquellen und Einstellungen}
+\label{subsec:datenquellenundeinstellungen}
