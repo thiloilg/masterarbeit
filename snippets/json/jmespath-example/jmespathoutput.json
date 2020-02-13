@@ -1,0 +1,22 @@
+{
+    "labels": [
+      "Maschine 1",
+      "Maschine 2"
+    ],
+    "dataset": [
+      {
+        "label": "Performance",
+        "data": [
+          27.1,
+          37.8
+        ]
+      },
+      {
+        "label": "Quality",
+        "data": [
+          42.6,
+          75.8
+        ]
+      }
+    ]
+  }

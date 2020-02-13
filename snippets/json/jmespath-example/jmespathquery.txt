@@ -1,0 +1,13 @@
+{
+    labels: [].name,
+    dataset: [
+        {
+            label: 'Performance',
+            data: [].performance
+        },
+        {
+            label: 'Quality',
+            data: [].quality
+        }
+    ]
+}

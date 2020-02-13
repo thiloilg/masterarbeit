@@ -83,8 +83,39 @@ gewollte Abfragezeichenfolge abspeichern. Diese wird dann bei der Darstellung de
 Dashboards in der Datenanfrage an die \code{Data Delivery API} mitgesendet.
 Die weitere Verarbeitung findet dann im Backend statt.
 
+\begin{listing}[]
+    \inputminted{jsx}{snippets/json/jmespath-example/jmespathinput.json}
+    \caption{JMESPath Eingangsdaten}
+    \label{lst:jmespatheingangsdaten}
+\end{listing}
+
+\begin{listing}[]
+    \inputminted{jsx}{snippets/json/jmespath-example/jmespathquery.txt}
+    \caption{JMESPath Abfrage}
+    \label{lst:jmespathabfrage}
+\end{listing}
+
+\begin{listing}[]
+    \inputminted{jsx}{snippets/json/jmespath-example/jmespathoutput.json}
+    \caption{JMESPath Ausgabedaten}
+    \label{lst:jmespathausgabedaten}
+\end{listing}
+
+Um die Datenverarbeitung mithilfe von \code{JMESPath} zu verdeutlichen, folgt ein
+Beispiel: Das Array in Quellcode \ref{lst:jmespatheingangsdaten} beinhaltet zwei Ressourcen;
+\code{Maschine 1} und \code{Maschine 2}. Es repräsentiert die durch die REST-API empfangenen
+Daten.\footnote{Die Beispieldaten wurden simplifiziert.} In Quellcode \ref{lst:jmespathabfrage}
+sieht man eine Abfrage, anhand welcher die Daten Verarbeitet werden. In Quellcode \ref{lst:jmespathdatenausgabe}
+sieht man das Endresultat der Abfrage. Die Werte der Felder \code{name}, \code{performance} und \code{quality}
+wurden mithilfe des Array-Selektor \code{[]} und des angehangenen Feldnamen ausgewählt.
+Das Format der Datenausgabe ist ein gültiger Datensatz für die Diagrammvisualisierungsbibliothek
+\code{chart.js}. Somit lassen sich die Eingangsdaten mithilfe eines sehr flexiblen Verfahrens
+in gültige Ausgabedaten transformieren.
+
 \section{Zulieferung}
 \label{sec:zulieferung}
+
+
 
 \subsection{Datenübermittlungskonzept}
 \label{subsec:datenuebermittlungskonzept}

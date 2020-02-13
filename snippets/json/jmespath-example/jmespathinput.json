@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Maschine 1",
+        "performance": 27.1,
+        "quality": 42.6
+    },
+    {
+        "name": "Maschine 2",
+        "performance": 37.8,
+        "quality": 75.8
+    }
+]
