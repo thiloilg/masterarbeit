@@ -114,12 +114,22 @@ in verwendbare Ausgabedaten transformieren.
 
 \section{Zulieferung}
 \label{sec:zulieferung}
-
-
+Das Konzept der Zulieferung der Daten ist in drei Abschnitte
+unterteilt. In \Cref{subsec:datenuebermittlungskonzept} wird das Datenübermittlungskonzept
+zwischen dem Client und dem \code{Data Delivery Service} vorgestellt.
+In \Cref{subsec:echtzeitauslieferung} geht es um die Liveübertragung der Daten. In
+\Cref{subsec:caching} wird ein Konzept zur Leistungssteigerung der Datenauslieferung
+erarbeitet.
 
 \subsection{Datenübermittlungskonzept}
 \label{subsec:datenuebermittlungskonzept}
-
+Zur Datenübermittlung verwendet die Arbeit das Publish/Subscribe Architekturkonzept.
+Um die bidirektionale Kommunikation zwischen dem Client und dem Server zu ermöglichen,
+wird das WebSocket-Protokoll verwendet. Verglichen mit HTTP ist das WebSocket-Protokoll
+aufgrund der fehlenden Header-Fixkosten performanter. Eine aufrechterhaltene WebSocket-Verbindung
+benötigt allerdings auch mehr Rechenleistung als einzelne Mitteilungen über HTTP. Desweiteren
+kann HTTP nur bedingt mithilfe von Server-Sent Events eine bidirektionale Verbindung aufbauen.
+Server-Sent Events selbst sind allerdings nur unidirektional\cite[2. Abschnitt]{WebSocketVSSSE}.
 
 \subsection{Echtzeitauslieferung}
 \label{subsec:echtzeitauslieferung}
