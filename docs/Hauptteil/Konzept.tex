@@ -131,14 +131,6 @@ benötigt allerdings auch mehr Rechenleistung als einzelne Mitteilungen über HT
 kann HTTP nur bedingt mithilfe von Server-Sent Events eine bidirektionale Verbindung aufbauen.
 Server-Sent Events selbst sind allerdings nur unidirektional\cite[2. Abschnitt]{WebSocketVSSSE}.
 
-Das Konzept der Datenübermittlung ist folgendes: Besucht der Nutzer ein Dashboard,
-abonnieren die einzelnen Diagramme die jeweiligen Kanäle, die die Datenquellen 
-repräsentieren (Siehe Abbildung \ref{figure:uebersichtderdatenauslieferung}).
-Desweiteren wird eine Nachricht an den \code{Data Delivery Service} veröffentlicht,
-indem dieser darüber informiert wird, dass der Client jetzt bereit ist Daten zu empfangen.
-Je nach angefragtem Interval sendet nun der \code{Data Delivery Service} verarbeitete
-Daten an das Frontend, die in der Frontendanwendung angezeigt werden. 
-
 \begin{figure}
     \begin{center}
     \includegraphics[scale=0.2]{img/abbildungen/Verteilung}
@@ -147,8 +139,17 @@ Daten an das Frontend, die in der Frontendanwendung angezeigt werden.
     \label{figure:uebersichtderdatenauslieferung}
 \end{figure}
 
-Um die Redundanz in im Datenfluss zu verringern, werden die ausgehenden Nachrichten
-so gefiltert, dass für jede Datenquelle nur eine Nachricht versendet wird. 
+Das Konzept der Datenübermittlung ist folgendes: Besucht der Nutzer ein Dashboard,
+abonnieren die einzelnen Diagramme die jeweiligen Kanäle, die die Datenquellen 
+repräsentieren (Siehe Abbildung \ref{figure:uebersichtderdatenauslieferung}).
+Desweiteren wird eine Nachricht an den \code{Data Delivery Service} veröffentlicht,
+indem dieser darüber informiert wird, dass der Client jetzt bereit ist Daten zu empfangen.
+Je nach angefragtem Interval sendet nun der \code{Data Delivery Service} verarbeitete
+Daten an das Frontend, die in der Frontendanwendung angezeigt werden. Um die
+Redundanz im Datenfluss zu verringern, werden die ausgehenden Nachrichten
+so gefiltert, dass für jede Datenquelle nur eine Nachricht versendet wird. Die ankommenden
+Nachrichten werden hingegen so verteilt, dass alle Diagramme mit der passenden Datenquelle
+versorgt werden.
 
 \subsection{Echtzeitauslieferung}
 \label{subsec:echtzeitauslieferung}
