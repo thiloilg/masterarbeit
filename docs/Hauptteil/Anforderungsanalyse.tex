@@ -229,11 +229,34 @@ Softwarelösungen an unterschiedliche Kunden aus. Dabei variiert auch die Datens
 Schnittstelle. Diese Beschaffenheit ist essentiell für die Softwarearchitektur dieser Arbeit. Man kann davon ausgehen,
 dass GBO Datacomp ihre Softwarelösungen über die nächsten Jahre hinweg immer weiter verändern und anpassen wird.
 Es ist gut möglich, dass GBO Datacomp Softwarelösungen in Zukunft komplett austauschen wird. Anzunehmen,
-dass die Beschaffenheit der Schnittstelle unverändert bleibt, ist somit ein fataler Fehler. Es muss also dafür gesorgt
-werden, dass die Software so flexibel gestaltet ist, dass sie mit Änderungen externer Schnittstellen umgehen kann.
+dass die Beschaffenheit der Schnittstelle unverändert bleibt, ist somit ein fataler Fehler. Nun gibt es zwei Optionen.
+Erstens: Man entwickelt für jede Änderung der Schnittstelle eine neue Version seiner Software. Zweitens:
+Die Information über die Beschaffenheit der Schnittstelle kommt in die Datenbank und nicht in den
+Quellcode.
 
-Die Anforderungen an die Flexibilität der Software in Bezug auf die Kommunikation mit Schnittstellen wurde bereits
-erörtert. Wie sieht es aber mit der Anforderung an die Flexibilität der Daten selbst aus?
+Vergleicht man die zwei im vorherigen Absatz genannten Optionen anhand des Implementierungsaufwandes,
+kommt man auf folgendes Resultat: Auf kurze Sicht gewinnt die erste Option. Sie ist einfach zu implementieren.
+Man programmiert die benötigten Aufrufe der Datenquellen in der angeforderten Reihenfolge in den Quellcode.
+Möglicherweise fehlt noch ein bestimmter Aufruf, also fügt man diesen hinzu.
+Option zwei ist um einiges schwerer zu implementieren. So muss man die Beschaffenheit sowie die Reihenfolge der Anfragen
+gegen die API in der Datenbank persistieren, diese auslesen und ausführen. Es ist möglich, dass die Daten zwischen den
+Anfragen verarbeitet werden müssen. Dieser Lösungsansatz fordert eine durchdachte Softwarearchitektur. Wie sieht es mit den
+zwei Optionen auf lange Sicht aus? Option zwei ist mit der Implementierung fertig. Die Softwarearchitektur
+benötigt für folgende Änderungen der Schnittstelle nur einen neuen Datenbankeintrag. In Kontrast dazu steht Option eins.
+Hier muss für jede Änderung der Schnittstelle der Quellcode angepasst werden. Dies ist ein niemals endender Prozess.
+Der Implementierungsaufwand ist also unendlich.
+
+Eins gilt es bei dem zuvor durchgeführten Vergleich allerdings zu beachten. Beide Optionen haben ihre Daseinsberechtigung
+und machen je nach Situation auch durchaus Sinn. Es wäre falsch zu sagen, dass eine dieser beiden Optionen die richtige ist. Für einen
+Machbarkeitsnachweis \footnote{In der Businesswelt spricht man hier oftmals von einem POC (Proof of Concept).}
+ist Option eins eine gültige Lösung. Wenn der Änderungsaufwand im Quellcode sehr gering ausfällt oder sich
+die Beschaffenheit der Schnittstelle nur sehr selten ändert, ist Option eins plausibel und eventuell kostengünstiger.
+Aufgrund der oben genannte Fakten ist davon auszugehen, dass die Softwarelösung mit unterschiedlichen Schnittstellen arbeiten muss.
+Die Beschaffenheit der Schnittstellen kann sich stetig anpassen. Um diese Anforderung an die Flexibilität
+der Software bereitzustellen, verfolgt diese Arbeit den Ansatz aus Option zwei.
+
+Die Anforderungen an die Flexibilität der Software in Bezug auf die Kommunikation mit Schnittstellen wurde
+ausführlich diskutiert. Wie sieht es aber mit der Anforderung an die Flexibilität der Daten selbst aus?
 Die von GBO Datacomp bereitgestellte REST API ist mit einer Swagger Dokumentation basierend auf der
 OpenAPI-Specification 3.0 ausgestattet. Die Hierarchie einer Anfragen an eine Ressourcen kann mehrere Stufen von Objekten beinhalten.
 Bei der Anfrage an die OEE muss der Arbeitsplatz sowie eine Zeitspanne angegeben werden. Als Resultat bekommt man eine 
