@@ -27,6 +27,12 @@ die aus der Verarbeitung resultierende Datenmenge geringer als die der initialen
 Für die Flexibilität spricht, dass die Verarbeitung so nicht in neue Frontendanwendungen
 integriert werden muss.
 
+Die Benutzerverwaltungslogik soll klar von der Datenbeschaffungs-, Verarbeitungs-
+und Zulieferungslogik getrennt sein. Die Arbeit geht somit von zwei Services aus.
+Dem \code{Resource Management Service}, der für die Verwaltung von Ressourcen wie Dashboards,
+Diagrammen, Datenquellen und Benutzer zuständig ist, und dem \code{Data Delivery Service},
+der sich um die zu analysierenden Daten kümmert.
+
 Die folgenden Abschnitte gehen genauer in das Konzept der Gesamtanwendung ein.
 In \Cref{sec:beschaffung} geht es um die Beschaffung der Daten. In \Cref{sec:verarbeitung}
 wird ein Konzept zur Transformation der Daten in ein für die Diagramme plausibles Format
@@ -39,11 +45,43 @@ Zu guterletzt wird in \Cref{sec:speicherung} die Speicherung der Dashboards beha
 
 \section{Beschaffung}
 \label{sec:beschaffung}
-
+Die Datenbeschaffung selbst behandelt das Verfahren, zu analysierende Daten
+von einer externen API zu dem \code{Data Delivery Service} zu transportieren.
+Hier bieten sich Open Source Message Broker wie RabbitMQ und Apache Kafka an.
+Aktuell stellt GBO Datacomp hierfür allerdings eine REST-API zur Verfügung.
+Für den Datentransport von der REST-API zu dem \code{Data Delivery Service} reicht somit
+eine GET-Anfrage aus.
 
 \section{Verarbeitung}
 \label{sec:verarbeitung}
+Die Verarbeitung der Daten ist ein komplexes Verfahren. Die bereits in der
+Anforderungsanalyse erwähnt, liefert die API von GBO Datacomp die Daten im
+JSON-Format aus. Die Arbeit entscheidet sich zur Datenverarbeitung für die
+Verwendung einer Abfragesprache. In \Cref{chap:analysebestehendersoftwareloesungen}
+wurden drei bestehende Softwarelösungen im Bereich der Datenvisualisierung von
+Betriebsdaten analysiert. Dabei verwendete jede der Lösungen eine Abfragesprache,
+um komplexere Datentransformationen durchzuführen. Bei der Implementation einer
+GUI zur Definition der Verarbeitungsweise der Daten kommt man schnell an seine Grenzen.
+Die Möglichkeit, Felder aus verschiedenen Ebenen einer JSON-Datei auszuwählen
+und in eine gewollte Ausgangsstruktur zu transformieren, ist mithilfe einer GUI nahezu
+unmöglich. Desweiteren ist mit einer Abfragesprache auch um einiges schneller als mit
+der Verwendung einer GUI. Allerdings benötigt die Verwendung einer Abfragesprache
+Einarbeitungszeit. Nichtsdestotrotz ist es für die Arbeit die einzige Möglichkeit,
+die Flexibilität für die Datenverarbeitung sowie die Datenmodellierung der Daten
+beizubehalten.
 
+Softwarelösungen wie Power BI, Qlik und Tableau verwenden SQL-ähnliche Abfragesprachen.
+Da die Eingangsdaten im JSON-Format vorliegen und das Frontend in JS geschrieben wird,
+ist es naheliegend, eine JSON-Abfragesprache für die Arbeit zu verwenden. Die Arbeit
+verwendet hierfür die JSON-Abfragesprache \code{JMESPath}.\footnote{http://jmespath.org/}
+Die Abfragesprache wurde von James Saryerwinnie ins Leben gerufen und wird aktuell von
+Amazon in ihrer Amazon Web Services CLI verwendet.\cite{AWSJMESPath} Eine Umsetzung von
+\code{JMESPath} gibt es in Golang als auch in JS. Somit ist es möglich, die Daten im
+Frontend sowie Backend zu verarbeiten. Die Idee ist es, den Benutzern die Verarbeitung
+im Frontend zu ermöglichen. Dort kann der Benutzer die Daten passend verarbeiten und die
+gewollte Abfragezeichenfolge abspeichern. Diese wird dann bei der Darstellung des 
+Dashboards in der Datenanfrage an die \code{Data Delivery API} mitgesendet.
+Die weitere Verarbeitung findet dann im Backend statt.
 
 \section{Zulieferung}
 \label{sec:zulieferung}
