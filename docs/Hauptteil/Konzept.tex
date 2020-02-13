@@ -1,5 +1,6 @@
 \chapter{Konzept}
 \label{chap:konzept}
+\setcounter{footnote}{0}
 Dieses Kapitel ist aus der Sicht des Datenflusses organisiert. Als erstes
 gilt es die Daten zu beschaffen. Daraufhin werden sie verarbeitet und
 der Frontendanwendung zugeliefert. Dort werden die Daten den Dashboards
@@ -27,14 +28,18 @@ Für die Flexibilität spricht, dass die Verarbeitung so nicht in neue Frontenda
 integriert werden muss.
 
 Die folgenden Abschnitte gehen genauer in das Konzept der Gesamtanwendung ein.
-In \Cref{}
+In \Cref{sec:beschaffung} geht es um die Beschaffung der Daten. In \Cref{sec:verarbeitung}
+wird ein Konzept zur Transformation der Daten in ein für die Diagramme plausibles Format
+erarbeitet. In \Cref{sec:zulieferung} geht es um ein Konzept, das
+eine leistungsfähige Datenauslieferung an die Clients ermöglicht. In \Cref{sec:andordnungundzuweisung}
+geht es um die Erstellung Eines Dashboards und dessen Zuweisung auf die
+Datenquellen. In \Cref{sec:darstellung} wird ein Konzept entwickelt,
+was Daten möglichst flexibel im Client visualisieren kann.
+Zu guterletzt wird in \Cref{sec:speicherung} die Speicherung der Dashboards behandelt.
 
 \section{Beschaffung}
 \label{sec:beschaffung}
-Das Konzept für die Beschaffung und Zulieferung der Daten sieht es vor, dass
-diese Aufgaben von einem separaten Service übernommen werden. 
 
-Die Beschaffung und Zulieferung der Daten 
 
 \section{Verarbeitung}
 \label{sec:verarbeitung}
