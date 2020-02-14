@@ -153,10 +153,19 @@ versorgt werden.
 
 \subsection{Echtzeitauslieferung}
 \label{subsec:echtzeitauslieferung}
-
+Durch das Publish/Subscribe Architekturkonzept ist die Grundlage für die Echtzeitauslieferung
+bereits geschaffen. Die im Dashboard enthaltenen Diagramme warten auf ankommende Nachrichten,
+mit derer enthaltenen Daten sie ihre Visualisierung neuzeichnen. Der \code{Data Delivery Service}
+benötigt eine in einem separaten Prozess taktierte Ausführung einer Routine, die die Daten
+anhand eines gegebenen Intervals anfragt, verarbeitet und an die Frontendanwendung sendet.
 
 \subsection{Caching}
 \label{subsec:caching}
+Der initiale Lade-, Verarbeitungs- und Auslieferungsprozess kann eine für den Benutzer
+unangenehme Zeit in Anspruch nehmen. Um das initiale Warten beim Laden eines Dashboards
+zu verringern, bietet sich folgende Caching-Strategie an: Bei einer Anfrage schaut
+der \code{Data Delivery Service} zuerst, ob es bereits einen Cache-Eintrag für die
+angefragte ID der Datenquelle gibt.  
 
 \section{Anordnung und Zuweisung}
 \label{sec:andordnungundzuweisung}
