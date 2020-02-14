@@ -97,15 +97,15 @@ Die weitere Verarbeitung findet dann im Backend statt.
 
 \begin{listing}[]
     \inputminted{jsx}{snippets/json/jmespath-example/jmespathoutput.json}
-    \caption{JMESPath Ausgabedaten}
-    \label{lst:jmespathausgabedaten}
+    \caption{JMESPath Ausgangsdaten}
+    \label{lst:jmespathausgangsdaten}
 \end{listing}
 
 Um die Datenverarbeitung mithilfe von \code{JMESPath} zu verdeutlichen, folgt ein
 Beispiel: Das Array in Quellcode \ref{lst:jmespatheingangsdaten} beinhaltet zwei Ressourcen;
 \code{Maschine 1} und \code{Maschine 2}. Es repräsentiert die durch die REST-API empfangenen
 Daten.\footnote{Die Beispieldaten wurden simplifiziert.} In Quellcode \ref{lst:jmespathabfrage}
-sieht man eine Abfrage, anhand welcher die Daten Verarbeitet werden. In Quellcode \ref{lst:jmespathausgabedaten}
+sieht man eine Abfrage, anhand welcher die Daten Verarbeitet werden. In Quellcode \ref{lst:jmespathausgangsdaten}
 sieht man das Endresultat der Abfrage. Die Werte der Felder \code{name}, \code{performance} und \code{quality}
 wurden mithilfe des Array-Selektor \code{[]} und des angehangenen Feldnamen ausgewählt.
 Das Format der Datenausgabe ist ein gültiger Datensatz für die Diagrammvisualisierungsbibliothek
