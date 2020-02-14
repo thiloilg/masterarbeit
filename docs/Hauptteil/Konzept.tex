@@ -165,10 +165,24 @@ Der initiale Lade-, Verarbeitungs- und Auslieferungsprozess kann eine für den B
 unangenehme Zeit in Anspruch nehmen. Um das initiale Warten beim Laden eines Dashboards
 zu verringern, bietet sich folgende Caching-Strategie an: Bei einer Anfrage schaut
 der \code{Data Delivery Service} zuerst, ob es bereits einen Cache-Eintrag für die
-angefragte ID der Datenquelle gibt.  
+angefragte ID der Datenquelle gibt. Existiert dieser, wird eine sofortige Nachricht
+mit den Daten aus dem Cache an die Frontendanwendung geschickt. Existiert anfangs noch
+kein Cache-Eintrag, wird dieser Schritt übersprungen. Daraufhin werden
+die aktuellen Daten in einem separaten Prozess abgefragt, verarbeitet, der Cache
+aktualisiert und eine zweite Nachricht mit den aktuellen Daten an die Frontendanwendung
+geschickt. Der Key für den Cache-Eintrag soll hierbei aus der ID der Datenquelle sowie
+einem aus dem Request-Body generierten Hash zusammengesetzt werden. Somit werden
+Kollisionen zwischen unterschiedlichen Benutzern ausgeschlossen\footnote{Die ID der Datenquellen ist
+unter allen Nutzern einzigartig und wird dem Ersteller der Datenquelle zugewiesen.}
+und Änderungen in dem Request-Body erkannt.
 
 \section{Anordnung und Zuweisung}
 \label{sec:andordnungundzuweisung}
+Das Konzept der Anordnung und Zuweisung ist in zwei Abschnitte unterteilt.
+In \Cref{subsec:diagrammanordnungsverfahren} geht es um die Konzeptentwicklung
+der Anordnung der Diagramme innerhalb eines Dashboards. Daraufhin geht
+es in \Cref{subsec:zuweisungungvondatenquellen} um die Zuweisung der Datenquellen
+zu den angeordneten Diagrammen.
 
 \subsection{Diagrammanordnungsverfahren}
 \label{subsec:diagrammanordnungsverfahren}
