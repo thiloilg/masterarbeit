@@ -174,7 +174,10 @@ geschickt. Der Key für den Cache-Eintrag soll hierbei aus der ID der Datenquell
 einem aus dem Request-Body generierten Hash zusammengesetzt werden. Somit werden
 Kollisionen zwischen unterschiedlichen Benutzern ausgeschlossen\footnote{Die ID der Datenquellen ist
 unter allen Nutzern einzigartig und wird dem Ersteller der Datenquelle zugewiesen.}
-und Änderungen in dem Request-Body erkannt.
+und Änderungen in dem Request-Body erkannt. Kollisionen unterhalb verschiedener
+Benutzer könnten fatale Folgen haben. Im schlimmsten Fall würden so geheime Daten
+in die Hände eines fremden Nutzers gelangen. Daher ist die Integration der Datenquellen-ID
+in den Cache-Key essentiell.
 
 \section{Anordnung und Zuweisung}
 \label{sec:andordnungundzuweisung}
