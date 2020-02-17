@@ -303,13 +303,15 @@ der Diagramme als Baumstruktur im JSON-Format in der Datenbank persistiert werde
 rekursiven Algorithmus soll durch die Baumstruktur gelaufen werden, um so die für das Dashboard
 nötigen Komponenten zu erstellen.\footnote{Unter "Weitere Quellcodeabschnitte" findet man ein Beispiel
 einer JSON-Datei, die die Einstellungen und die Anordnung eines Dashboards beinhaltet.}
-Zwischen der Anordnung und den Einstellungen des Dashboards soll eine UUID je Diagramm
-als Verweis benutzt werden. Dieses Konzept der Trennung zwischen der Anordnung und den
-Einstellungen des Dashboards soll verhindert, dass alle Informationen in einer
-immer komplexeren Baumstruktur gespeichert werden. Desweiteren können so
-Änderungen in dem Aufbau getrennt erkannt und darauf reagiert werden. Bei der Verwendung
-eines Frameworks wie React kann so unterschieden werden, ob nur einzelne Komponenten oder
-der komplette Aufbau des Dashboards gerendert werden muss.
+Zwischen der Anordnung und den Einstellungen des Dashboards soll eine UUID\footnote{UUID ist ein universeller,
+einzigartiger Identifikator, der zufällig generiert wird. Aufgrund der Größe
+von 128-Bit ist eine Kollision sehr gering\cite{UUIDJavaSEDocs}.} 
+je Diagramm als Verweis benutzt werden. Dieses Konzept der Trennung zwischen
+der Anordnung und den Einstellungen des Dashboards soll verhindert, dass
+alle Informationen in einer immer komplexeren Baumstruktur gespeichert werden.
+Desweiteren können so Änderungen in dem Aufbau getrennt erkannt und darauf reagiert
+werden. Bei der Verwendung eines Frameworks wie React kann so unterschieden werden,
+ob nur einzelne Komponenten oder der komplette Aufbau des Dashboards gerendert werden muss.
 
 \subsection{Datenquellen und Einstellungen}
 \label{subsec:datenquellenundeinstellungen}
