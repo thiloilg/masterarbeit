@@ -18,7 +18,14 @@ des Webservers einer progressiven Webanwendung liegen muss. Aus Platzgründen wu
 \section*{Resource Management API Routes}
 \label{sec:resourcemanagementapiroutes}
 Die Tabelle \ref{tab:resourcemanagementapiroutes} zeigt die
-Routen der REST-API des \code{Resource Management Sources}
+Routen der REST-API des \code{Resource Management Services} in Zusammenhang
+mit den HTTP-Methoden. Dabei steht grundsätzlich \code{GET} für den Zugriff,
+\code{POST} für das Erstellen, \code{PUT} für das Aktualisieren und \code{DELETE}
+für das Löschen einer Ressource. Ausnahmen sind hierbei beispielsweise Routen wie
+\code{/users/:id/delete}, bei welchen eine zusätzliche Übertragung der Anmeldedaten
+gefordert ist. Für die Routen \code{/charts}, \code{/dashboards} und \code{data-sources}
+sind Query-Parameter wie \code{fields=id,title}, \code{search=oee}, \code{skip=10} und
+\code{take=2} möglich. 
 
 \begin{table}[h]
 \begin{center}
