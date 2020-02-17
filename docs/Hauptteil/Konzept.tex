@@ -290,14 +290,20 @@ zur Entwicklung von UI-Komponenten, verwendet werden.
 
 \section{Speicherung}
 \label{sec:speicherung}
-Die Speicherung der Daten ist in zwei Abschnitte unterteilt. In \Cref{subsec:aufbaudesdashboards} geht es
-um die Persistierung des Aufbaus der Dashboards. Der \Cref{subsec:datenquellenundeinstellungen} handelt
-von der Speicherung der Datenquellen sowie jegliche weitere für die Anwendung relevante Speichermechanismen.
+Das Konzept für die Speicherung der Daten ist in zwei Abschnitte unterteilt.
+In \Cref{subsec:aufbaudesdashboards} geht es um die Persistierung des Aufbaus
+der Dashboards. Der \Cref{subsec:datenquellenundeinstellungen} handelt
+von der Speicherung der Datenquellen sowie jegliche weitere für die Anwendung
+relevante Speichermechanismen.
 
 \subsection{Aufbau des Dashboards}
 \label{subsec:aufbaudesdashboards}
 Das Konzept der Speicherung des Aufbaus der Dashboards sieht es vor, dass die Anordnung 
-der Diagramme als Baumstruktur im JSON-Format in der Datenbank persistiert werden. 
+der Diagramme als Baumstruktur im JSON-Format in der Datenbank persistiert werden. Mithilfe eines
+rekursiven Algorithmus soll durch die Baumstruktur gelaufen werden, um so die für das Dashboard
+nötigen Komponenten zu erstellen.\footnote{Unter "Weitere Quellcodeabschnitte" findet man ein Beispiel
+einer JSON-Datei, die die Einstellungen und die Anordnung eines Dashboards beinhaltet.}
+
 
 \subsection{Datenquellen und Einstellungen}
 \label{subsec:datenquellenundeinstellungen}
