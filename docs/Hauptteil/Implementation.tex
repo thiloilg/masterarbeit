@@ -1,33 +1,5 @@
 \chapter{Implementation}
 \label{chap:implementation}
-Bevor man mit dem Programmieren der Anwendung anfangen kann,
-gilt es einiges vorzubereiten. Dieses Kapitel beschäftigt sich
-mit der Microservice-Infrastruktur der Gesamtanwendung. Hier geht
-es um das Aufsetzen einer agilen Infrastruktur, die den
-stetigen Auslieferungsprozess der Software ermöglicht. 
-In \Cref{chap:qualitaetssicherung} geht es um Methoden und Verfahren,
-die die Qualität der Software sicherstellen. Erst nach der Erstellung
-der Microservice-Infrastruktur sowie der Automatisierung von
-Qualitätssicherungsprozessen, kann mit der Programmierung der
-Anwendung begonnen werden.
-
-Das Kapitel Microservice-Infrastruktur ist wie folgt gegliedert:
-In \Cref{sec:continuousdelivery} befasst sich die Arbeit mit
-dem stetigen Softwareauslieferungsprozess, bekannt als Continuous Delivery.
-In \Cref{sec:monorepoundsubmodules} wird die Aufteilung der Versionsverwaltung
-in einzelne Aufbewahrungsorte diskutiert. In \Cref{sec:infrastruktur}
-wird die Infrastruktur der Gesamtanwendung geschildert. Hier geht es
-um Technologien, die das Auslieferungsverfahren sowie die Benutzung
-der Anwendung in Produktion ermöglichen. In \Cref{sec:systemdesign}
-geht es um die Gestaltung der Anwendung selbst. Hier werden die einzelnen,
-für die Anwendung nötigen Komponenten erörtert und definiert.
-In \Cref{sec:pipelinedesign} geht es um die Pipeline, also den Auslieferungsprozess
-selbst. Hier werden Vorkehrungen getroffen, um diesen zu ermöglichen.
-
-In der Arbeit wird für die Versionsverwaltung und die stetige Softwareauslieferung ein eigener Linux-Server verwendet,
-auf dem die Community Version von Gitlab installiert ist. Auf dem Linux-Server befinden sich auch eine eigene Docker
-Registry sowie ein eigener Gitlab Runner\footnote{Gitlab Runner dienen zur Ausführung der Pipeline}. Der Aufbau
-wird in \Cref{sec:infrastruktur} nochmal genauer behandelt.
 
 \section{Infrastruktur}
 \label{sec:infrastruktur}
