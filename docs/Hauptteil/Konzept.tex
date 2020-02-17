@@ -324,10 +324,10 @@ sollen auch in den Einstellungen des jeweiligen Diagramms gespeichert werden.
 
 \subsection{Weitere Speichermechanismen}
 \label{subsec:weiterespeichermechanismen}
-Typische Felder wie die ID, das Erstellungsdatum, der Titel und die Beschreibung einer Ressource
-soll in einer Datenbank gespeichert werden. Dadurch ist die Option gegeben, alle
+Typische Felder wie die ID, das Erstellungsdatum, der Titel und die Beschreibung einer Ressource,
+werden in einer Datenbank gespeichert. Dadurch ist die Option gegeben, alle
 Ressourcen nach Erstellungsdatum zu sortieren. Die IDs der Ressourcen sind kompakt gehalten,
-da diese in der URL angezeigt werden. Hier ist das Konzept folgendes. Eine achtstellige ID,
+da diese in der URL angezeigt werden. Hier ist das Konzept folgendes: Eine achtstellige ID,
 welche Klein- sowie Großbuchstaben und Zahlen beinhalten kann, wird vom \code{Ressource Management Service}
 generiert. Daraufhin wird in der Datenbank geschaut, ob diese bereits existiert. Wenn nicht,
 wird diese als ID für die neue, anzulegende Ressource verwendet. Falls die ID bereits existiert,
@@ -336,4 +336,4 @@ wird eine neue generiert und das Verfahren fängt wieder von vorne an, bis eine 
 Die CRUD-Operationen sollen für jede Ressource über den \code{Ressource Management Service}
 in Form einer REST-API zur Verfügung gestellt werden. Für die Repräsentation der Plugins
 in der URL sollen Slugs\footnote{Von Menschen lesbare, aneinandergefügte Worte,
-die eine Ressource beschreiben} verwendet werden.
+die eine Ressource beschreiben\cite{SlugTermDjango}.} verwendet werden.
