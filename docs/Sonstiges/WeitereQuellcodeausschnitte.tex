@@ -59,8 +59,12 @@ Route & HTTP-Methods \\
 
 \newpage
 
-\section*{Data Delivery API Channels}
-\label{sec:resourcemanagementapiroutes}
+\section*{Data Delivery API Ein- und Ausgangsdaten}
+\label{sec:datadeliveryapieinundausgangsdaten}
+
+Die folgenden zwei Quellcodeausschnitte \ref{lst:datadelvieryrequestbodybeispiel}
+und \ref{lst:datadeliveryresponsebodybeispiel} zeigen die Ein- und
+Ausgangsdaten einer Anfrage gegen die \code{Data Delivery API}.
 
 \begin{listing}[h]
     \inputminted{jsx}{snippets/json/data-delivery-example/request.data-delivery.txt}
@@ -78,6 +82,12 @@ Route & HTTP-Methods \\
 
 \section*{JSON-Datei zur Speicherung eines Dashboards}
 \label{sec:jsondateizurspeicherungeinesdashboards}
+
+Der Quellcodeausschnitt \ref{lst:jsondateizurspeicherungeinesdashboards}
+zeigt die JSON-Datei, die alle Informationen beinhaltet, die zum
+automatisierten Erstellungsprozess eines Dashboards benötigt werden.
+Unter \code{arrangement} sieht man die Anordnung und unter \code{settings}
+die Einstellungen eines Dashboards.
 
 \begin{listing}[h]
     \inputminted{jsx}{snippets/json/dashboard-arrangement/anordnung.json}
