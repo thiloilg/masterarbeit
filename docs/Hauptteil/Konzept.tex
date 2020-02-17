@@ -273,6 +273,18 @@ während der Laufzeit agil nachgeladen. Da immer nur die verwendeten Diagramme a
 geladen werden, kann die Webanwendung eine nahezu unendliche Auswahl an möglichen Diagrammen zur Visualisierung
 der Daten bereitstellen.
 
+Verwendete Bibliotheken können in die Plugins integriert werden. Somit ist es möglich, für die Visualisierung
+der Daten alle möglichen JS-Bibliotheken zu verwenden. So können Teile des Dashboards
+in \code{chart.js}\footnote{https://www.chartjs.org/} und andere Teile in \code{d3.js}\footnote{https://d3js.org/}
+umgesetzt werden. Die Bibliotheken selbst befinden sich nicht in der Frontendanwendung selbst,
+sondern werden während der Laufzeit für die Diagramme, die diese verwenden, nachgeladen.
+Ein Problem hierbei ist, dass durch das Bündeln der Diagramme in Module, die Bibliotheken für jedes einzelne
+Modul gebündelt werden müssen. Somit werden bei einem Dashboard mit einer großen Anzahl an verschiedenen
+Diagrammen, Bibliotheken mehrfach geladen. Um dies weitestmöglich zu verhindern, aber dennoch die Flexibilität
+der Pluginentwicklung zu gewährleisten, werden ähnliche Plugins in Bündeln zusammengefügt. Wenn ein solches
+Bündel an Diagrammen \code{chart.js} als Bibliothek für die Umsetzung ihrer Diagramme verwendet, wird diese
+Bibliothek nur einmal für das ganze Bündel geladen.
+
 \section{Speicherung}
 \label{sec:speicherung}
 
