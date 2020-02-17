@@ -290,16 +290,16 @@ zur Entwicklung von UI-Komponenten, verwendet werden.
 
 \section{Speicherung}
 \label{sec:speicherung}
-Das Konzept für die Speicherung der Daten ist in zwei Abschnitte unterteilt.
-In \Cref{subsec:aufbaudesdashboards} geht es um die Persistierung des Aufbaus
-der Dashboards. Der \Cref{subsec:datenquellenundeinstellungen} handelt
-von der Speicherung der Datenquellen sowie jegliche weitere für die Anwendung
-relevante Speichermechanismen.
+Das Konzept der Speicherung der Daten ist in zwei Abschnitte unterteilt.
+In \Cref{subsec:aufbauundeinstellungenderdashboards} geht es um die Persistierung des Aufbaus und der
+Einstellungen der Dashboards. Der \Cref{subsec:weiterespeichermechanismen} handelt
+von der Speicherung der Datenquellen, von für die Benutzerverwaltung benötigte Daten
+sowie jegliche weitere für die Anwendung relevante Speichermechanismen.
 
-\subsection{Aufbau des Dashboards}
-\label{subsec:aufbaudesdashboards}
+\subsection{Aufbau und Einstellungen der Dashboards}
+\label{subsec:aufbauundeinstellungenderdashboards}
 Das Konzept der Speicherung des Aufbaus der Dashboards sieht es vor, dass die Anordnung 
-der Diagramme als Baumstruktur im JSON-Format in der Datenbank persistiert werden. Mithilfe eines
+der Diagramme als Baumstruktur im JSON-Format in der Datenbank persistiert wird. Mithilfe eines
 rekursiven Algorithmus soll durch die Baumstruktur gelaufen werden, um so die für das Dashboard
 nötigen Komponenten zu erstellen.\footnote{Unter "Weitere Quellcodeabschnitte" findet man ein Beispiel
 einer JSON-Datei, die die Einstellungen und die Anordnung eines Dashboards beinhaltet.}
@@ -309,9 +309,21 @@ von 128-Bit ist eine Kollision sehr gering\cite{UUIDJavaSEDocs}.}
 je Diagramm als Verweis benutzt werden. Dieses Konzept der Trennung zwischen
 der Anordnung und den Einstellungen des Dashboards soll verhindert, dass
 alle Informationen in einer immer komplexeren Baumstruktur gespeichert werden.
-Desweiteren können so Änderungen in dem Aufbau getrennt erkannt und darauf reagiert
-werden. Bei der Verwendung eines Frameworks wie React kann so unterschieden werden,
-ob nur einzelne Komponenten oder der komplette Aufbau des Dashboards gerendert werden muss.
+Desweiteren können so Änderungen in dem Aufbau getrennt von den Änderungen in der
+Einstellungen erkannt und darauf reagiert werden. Bei der Verwendung eines
+Frameworks wie React kann so unterschieden werden, ob nur einzelne Komponenten
+oder der komplette Aufbau des Dashboards gerendert werden muss.
 
-\subsection{Datenquellen und Einstellungen}
-\label{subsec:datenquellenundeinstellungen}
+Die ID der zu einem Dashboard zugewiesenen Datenquelle wird in dem Einstellungen
+des jeweiligen Diagramms gespeichert. Jedes Diagramm hat die Möglichkeit,
+Einstellungen zu persistieren. So kann sich die Anwendung beispielsweise merken,
+welche Filteroptionen der Benutzer in einem bestimmten Diagramm als letztes verwendet
+hat. Desweiteren kann ein Diagramm wie in \Cref{subsec:zuweisungungvondatenquellen} beschrieben,
+Änderungen in der Werkzeugleiste vornehmen. Diese Änderungen
+sollen auch in den Einstellungen des jeweiligen Diagramms gespeichert werden.
+
+\subsection{Weitere Speichermechanismen}
+\label{subsec:weiterespeichermechanismen}
+Typische Felder wie die ID, das Erstellungsdatum, der Titel und die Beschreibung einer Ressource
+soll in einer relationalen Datenbank gespeichert werden. Dadurch ist die Option gegeben, alle
+Ressourcen nach Erstellungsdatum zu sortieren.
