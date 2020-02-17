@@ -1,0 +1,32 @@
+{
+  "arrangement": {
+    "direction": "column",
+    "items": [
+      {
+        "direction": "row",
+        "items": [
+          { "id": "bc890b55-4e9d-4a96-96ce-304ddf8a59d5" },
+          { "id": "beda8db9-5f05-47d6-8380-18132c8d1add" }
+        ]
+      },
+      { "id": "633d81cf-1de5-4976-9ba3-f67841303ee7" }
+    ]
+  },
+  "settings": {
+    "bc890b55-4e9d-4a96-96ce-304ddf8a59d5": {
+      "data_source": "rbKqulRM",
+      "chart_type": "essentials/BarChart",
+      "plugin_settings": {}
+    },
+    "633d81cf-1de5-4976-9ba3-f67841303ee7": {
+      "chart_type": "essentials/LineChart",
+      "data_source": "rbKqulRM",
+      "plugin_settings": {}
+    },
+    "beda8db9-5f05-47d6-8380-18132c8d1add": {
+      "chart_type": "essentials/PieChart",
+      "data_source": "rbKqulRM",
+      "plugin_settings": {}
+    }
+  }
+}
