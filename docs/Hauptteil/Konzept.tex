@@ -13,7 +13,7 @@ verarbeitet und daraufhin dem Frontend ausgeliefert werden. Die Arbeit entscheid
 sich hierfür aus drei Gründen. Sicherheit, Performanz und Flexibilität. Die URLs
 zum Abrufen der Daten sollen im Client einstellbar sein. Würde man die Anfragen an
 die externen APIs zur Beschaffung der Daten direkt aus dem Client heraus senden,
-müssen bei allen externen APIs CORS-Header für die eigene Origin gesetzt sein\cite{CORSW3C}.
+müssen bei allen externen APIs CORS-Header für die eigene Origin gesetzt sein \cite{CORSW3C}.
 Desweiteren bieten sich serverseitige Programmiersprachen besser zur Verhinderung
 von Attacken zur Einschleusung von schädlichem Quellcode an.\footnote{Bei
 Unmarshalling- und Validierungsverfahren ist Golang flexibler als das im Client ausgeführte JS.}
@@ -129,7 +129,7 @@ wird das WebSocket-Protokoll verwendet. Verglichen mit HTTP ist das WebSocket-Pr
 aufgrund der fehlenden Header-Fixkosten performanter. Eine aufrechterhaltene WebSocket-Verbindung
 benötigt allerdings auch mehr Rechenleistung als einzelne Mitteilungen über HTTP. Desweiteren
 kann HTTP nur bedingt mithilfe von Server-Sent Events eine bidirektionale Verbindung aufbauen.
-Server-Sent Events selbst sind allerdings nur unidirektional\cite[2. Abschnitt]{WebSocketVSSSE}.
+Server-Sent Events selbst sind allerdings nur unidirektional \cite[2. Abschnitt]{WebSocketVSSSE}.
 
 \begin{figure}
     \begin{center}
@@ -245,13 +245,13 @@ Gleichermaßen soll die Komplexität der Frontendanwendung gering gehalten werde
 \subsection{Zentralisierung der Individualisierbarkeit}
 \label{subsec:zentralisierungderindividualisierbarkeit}
 Für die Darstellung der Frontendanwendung wird das CSS-Framework Bootstrap verwendet.\footnote{https://getbootstrap.com/}
-Die unkompilierte Form von Bootstrap ist in SASS geschrieben\cite[2. Abschnitt]{Bootstrap4punkt4}.
+Die unkompilierte Form von Bootstrap ist in SASS geschrieben \cite[2. Abschnitt]{Bootstrap4punkt4}.
 Die Arbeit verfolgt den Ansatz, für die Individualisierbarkeit relevante Parameter an einem Ort
 zu zentralisieren. Diese Parameter sollen die Einstellungen von Bootstrap überschreiben und
 in eigene SASS- sowie JS-Dateien importiert und verwendete werden. Somit kann mit der Veränderung
 eines einzelnen Parameters die komplette Darstellung der Frontendanwendung angepasst werden.
 WebPack, ein statischer Modulebündler für JS, ermöglicht mithilfe des \code{sass-loader}\footnote{https://www.npmjs.com/package/sass-loader} Variablen
-aus SASS zu exportieren und daraufhin in JS zu importieren\cite{ShareSCSSwithJS}.
+aus SASS zu exportieren und daraufhin in JS zu importieren \cite{ShareSCSSwithJS}.
 
 \subsection{Pluginverfahren}
 \label{subsec:pluginverfahren}
@@ -268,7 +268,7 @@ Die Diagramme können so einzeln entwickelt und ausgeliefert werden. Aufgrund de
 gleichen Machenschaft der Schnittstellen der Diagramme, kann man diese Art des Code-Splittings auch als
 einen Plugin-Ansatz ansehen. Die Diagramme sollen über die In-Memory-Datenbank
 Redis zur Verfügung gestellt werden. Die Diagramme werden mithilfe
-von Dynamic Imports\footnote{Dynamic Imports gibt es seit ES6 (ECMAScript 2015)\cite{DynamicImportsV8}}
+von Dynamic Imports\footnote{Dynamic Imports gibt es seit ES6 (ECMAScript 2015) \cite{DynamicImportsV8}}
 während der Laufzeit agil nachgeladen. Da immer nur die verwendeten Diagramme aus der In-Memory-Datenbank
 geladen werden, kann die Webanwendung eine nahezu unendliche Auswahl an möglichen Diagrammen zur Visualisierung
 der Daten bereitstellen.
@@ -305,7 +305,7 @@ nötigen Komponenten zu erstellen.\footnote{Unter "Weitere Quellcodeabschnitte" 
 einer JSON-Datei, die die Einstellungen und die Anordnung eines Dashboards beinhaltet.}
 Zwischen der Anordnung und den Einstellungen des Dashboards soll eine UUID\footnote{UUID ist ein universeller,
 einzigartiger Identifikator, der zufällig generiert wird. Aufgrund der Größe
-von 128-Bit ist eine Kollision sehr gering\cite{UUIDJavaSEDocs}.} 
+von 128-Bit ist eine Kollision sehr gering \cite{UUIDJavaSEDocs}.} 
 je Diagramm als Verweis benutzt werden. Dieses Konzept der Trennung zwischen
 der Anordnung und den Einstellungen des Dashboards soll verhindert, dass
 alle Informationen in einer immer komplexeren Baumstruktur gespeichert werden.
@@ -336,4 +336,4 @@ wird eine neue generiert und das Verfahren fängt wieder von vorne an, bis eine 
 Die CRUD-Operationen sollen für jede Ressource über den \code{Ressource Management Service}
 in Form einer REST-API zur Verfügung gestellt werden. Für die Repräsentation der Plugins
 in der URL sollen Slugs\footnote{Von Menschen lesbare, aneinandergereihte Buchstaben, Worte, Binde- und Unterstriche,
-die eine Ressource beschreiben\cite{SlugTermDjango}.} verwendet werden.
+die eine Ressource beschreiben \cite{SlugTermDjango}.} verwendet werden.
