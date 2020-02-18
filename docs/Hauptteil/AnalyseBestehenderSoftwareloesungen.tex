@@ -16,8 +16,8 @@ Daten herzustellen und diese zu transformieren und zu visualisieren."\cite{Micro
 Power BI Desktop ist eines der Produkte von Power BI. Außerdem bietet Power BI einen cloud-basierten Dienst
 sowie eine native App an.\cite{WikiPowerBI}
 
-Als erstes gilt es, das Laden von Daten in Power BI Desktop auszuwerten. Mit Power BI Desktop kann man 
-Daten aus Dateien, aus Datenbanken sowie aus cloud-basierten Diensten laden. In dem Buch "Pro Power BI Desktop"
+Als erstes gilt es, das Laden von Daten in Power BI Desktop auszuwerten. Mit Power BI Desktop können
+Daten aus Dateien, aus Datenbanken sowie aus cloud-basierten Diensten geladen werden. In dem Buch "Pro Power BI Desktop"
 von Adam Aspin wird eine weitere Option zum Laden von Daten erwähnt; die DirektQuery.
 Hierbei handelt es sich, anders als bei den zuvor genannten Möglichkeiten, um das direkte
 Abfragen von Daten gegen eine Datenquelle, ohne zuvor alle Daten in die Anwendung zu laden.\cite[S. 111]{ProPowerBIDesktop}
@@ -25,9 +25,9 @@ Diese Art des Ladens wurde von den Entwicklern von Power BI unter anderem einges
 um das initiale Laden der Daten in das In-Memory-Model zu umgehen. Gerade bei großen Data Warehouses
 kann sich dies mitunter unvorteilhaft auf die Performanz auswirken.
 
-Eine weitere, für die Arbeit relevante Frage, ist, wie komplexe Datenstrukturen wie multidimensionale JSON-Dateien
+Eine weitere für die Arbeit relevante Frage ist, wie komplexe Datenstrukturen, wie multidimensionale JSON-Dateien,
 in die anwendungseigene Datenstruktur übersiedelt werden. Hierfür bietet der Power BI Kosmos eine extra Software
-namens Power Query. Es wäre falsch mit hundertprozentiger Sicherheit zu behaupten, dass Power BI in der
+namens Power Query an. Es wäre falsch mit hundertprozentiger Sicherheit zu behaupten, dass Power BI in der
 anwendungseigenen Datenstruktur ein relationales Datenbankmodell verwendet. Befasst man sich mit der Art
 der Datenmodellierung, wie der Erstellung von Beziehungen zwischen Tabellen, verschwindet jedoch jedweder Zweifel.\cite[S. 319]{ProPowerBIDesktop}
 Somit ist davon auszugehen, dass Power Query die zu importierenden Datenstrukturen in ein relationales Datenbankmodell
@@ -44,18 +44,18 @@ der die Daten in eine für die Visualisierung einheitliche Struktur vorbereitet,
 Arbeit notwendig sein.
 
 Bei der Erstellung eines Dashboards in Power BI, zieht man zuerst ein Diagrammtyp wie ein Kuchendiagram
-auf den weißen Untergrund. Als zweiten Schritt weißt man ebenfalls per Drag and Drop dem Kuchendiagram ein
-Datenfeld zu. Fährt man mit der Maus an die Ränder eines Diagramms, kann man dieses in eine beliebige Größe
-ziehen. Alles in allem ist das Erstellen von Dashboards in Power BI Desktop ein sehr intuitives,
+auf den weißen Untergrund. Als zweiten Schritt weist man ebenfalls per Drag and Drop dem Kuchendiagram ein
+Datenfeld zu. Fährt man mit der Maus an die Ränder eines Diagramms, kann dieses in eine beliebige Größe
+gezogen werden. Alles in allem ist das Erstellen von Dashboards in Power BI Desktop ein sehr intuitives,
 benutzerfreundliches Verfahren.
 
 \section{Qlik Sense}
 \label{sec:qliksense}
 Als nächstes werfen wir einen Blick auf die Softwarelösung Qlik Sense.
 Das Laden von Daten ist bei Qlik Sense von Dateien, Datenbanken, Webseiten, FTP-Servern sowie von einer
-REST Schnittstelle möglich. Bei dem Laden der Daten von einer Webseite, wird die Seite nach einer Tabelle
+REST Schnittstelle aus möglich. Bei dem Laden der Daten von einer Webseite, wird die Seite nach einer Tabelle
 durchsucht und diese als Datenquelle verwendet.\cite[S. 17]{QlikSenseCookbook} Für das Laden von Daten von
-einer REST API, bietet Qlik Sense einen sogenannten REST Connector an. Dieser kann sowohl das JSON- als auch
+einer REST-API, bietet Qlik Sense einen sogenannten REST Connector an. Dieser kann sowohl das \mbox{JSON-,} als auch
 das XML-Format verarbeiten. In den Settings des REST Connectors können neben der URL auch ein
 Authentifizierungsschema ausgewählt werden.\cite[S. 23]{QlikSenseCookbook} Somit ist es möglich,
 eine API zu verwenden, bei der eine JWT-Authentifizierung vorausgesetzt ist. Qlik Sense besitzt
@@ -63,21 +63,21 @@ eine eigene SQL ähnliche Skriptsprache. Im Data Load Editor
 können mithilfe dieses Scripts Bearer-Token als Authorization Header gesetzt werden. Dies macht Qlik
 Sense in der Nutzung externer APIs sehr flexibel.
 
-Als nächstes werfen wir einen Blick auf die Aufbereitung der Daten. Nach der Auswahl einer Datenquelle
+Als nächstes wenden wir uns der Aufbereitung der Daten zu. Nach der Auswahl einer Datenquelle
 erstellt Qlik Sense ein vorgefertigtes Script im Data Load Editor. Dies gilt primär als Orientierungspunkt
 und kann je nach Belieben angepasst werden. Genauso wie Power BI benutzt auch Qlik Sense ein relationales
 Datenbankmodell zur Datenmodellierung innerhalb der Anwendung. Im Data Load Editor
-wird so wie bei Power BI das eingehende JSON mithilfe eines Scripts in eine Tabelle konvertiert.
+wird, so wie bei Power BI, das eingehende JSON mithilfe eines Scripts in eine Tabelle konvertiert.
 Der Bereich zur Datenmodellierung ist der Data Model Viewer.
 Hier werden mithilfe eines kraftgerichteten Graphs die Beziehungen zwischen den unterschiedlichen
 Tabellen verdeutlicht. Mit der Datenmodellierung von Qlik Sense ist es möglich, alle typischen SQL-Joins
-zwischen zwei Tabellen durchzuführen. So kann man Daten von einer API zusammen mit Daten aus einer SQL-Datenbank
-verbinden. 
+zwischen zwei Tabellen durchzuführen. So können Daten von einer API zusammen mit Daten aus einer SQL-Datenbank
+verbunden werden.
 
 Anders als bei Power BI, das von Microsoft selbst gehostet wird, kann man Qlik Sense nach dem Erwerben
 einer Lizenz selbst auf einem Windows Server hosten. Außerdem hat Qlik verschiedene APIs, die man
 verwenden kann, um die Anwendung selbst ohne die Verwendung der GUI vorzubereiten. So kann man Daten
-auf den Server vorladen, die man dann später mithilfe der Frontendanwendung auswerten wird. Anders als bei
+auf den Server vorladen, die man später mithilfe der Frontendanwendung auswerten wird. Anders als bei
 dem API Connector von Qlik Sense, den man über die GUI einstellt, kann man mit der Repository Main API
 die Anwendung komplett über eine Schnittstelle aus verwalten.\cite{QlikSenseRepositoryMainAPI}
 Das vereinfacht das Einbinden von Qlik Sense in eine bereits existierende IoT-Umgebung.
@@ -85,14 +85,14 @@ Das vereinfacht das Einbinden von Qlik Sense in eine bereits existierende IoT-Um
 Bei der Erstellung von Charts ähnelt Qlik dem Vorgehen von Power BI Desktop. Mit einem intuitiven
 Drag and Drop Verfahren können die Benutzer zuerst Diagrammtypen auf das Dashboard ziehen und
 daraufhin Daten zuweisen. Bei der Datenzuweisung unterscheidet Qlik Sense zwischen Measures und
-Dimensions. Measures sind numerische Werte wie Anzahl der verkauften Produkte oder der Jahresumsatz,
+Dimensions. Measures sind numerische Werte wie die Anzahl der verkauften Produkte oder der Jahresumsatz,
 Dimensions sind deskriptive Werte wie Monat, Jahr oder ProduktID.\cite{TutorialsSpotMeasuresDimensions}
 Durch die klare Trennung in numerische sowie descriptive Werte wird die Zuordnung der Daten
 auf die verschiedenen Achsen der Diagramme vereinfacht.
 
 \section{Tableau}
 \label{sec:tableau}
-In diesen Abschnitt gilt es Tableau genauer zu betrachten. Tableau besitzt wie auch Power BI und Qlik
+In diesem Abschnitt gilt es Tableau genauer zu betrachten. Tableau besitzt, wie auch Power BI und Qlik,
 eine Infrastruktur an unterschiedlichen Diensten. So gibt es Tableau Desktop, das Equivalent zu Power BI
 Desktop, einen Tableau Server sowie native Apps. Bei der Datenbeschaffung bietet Tableau Desktop wie auch
 Power BI und Qlik Sense, neben dem Laden von lokalen Dateien und diversen spezifischen Datenbankschnittstellen,
