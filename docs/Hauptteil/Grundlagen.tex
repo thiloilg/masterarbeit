@@ -291,7 +291,7 @@ Serviceuntergliederung lieber nach der "...fachlichen Domäne richten".\cite[S. 
 \subsection{Vor- und Nachteile}
 \label{subsec:vorundnachteile}
 In \Cref{subsec:wasverstehtmanuntermicroservices} sind Microservices
-als einzelne, in einer Containervirtualisierung laufende, Programme definiert. Sind diese Programme
+als einzelne, in einer Containervirtualisierung laufende Programme definiert. Sind diese Programme
 zustandslos, lassen sie sich einfach und effizient skalieren. Zustandslos bedeutet, dass zwei
 aufeinanderfolgende Abfragen nicht an die gleiche Instanz des Programms gesendet werden müssen.
 Beinhaltet der Service eine Datenbank, benötigt es eine weitere Strategie der Skalierung
@@ -308,7 +308,7 @@ zusammenzulegen oder Technologien zu nutzen, die auf lokale Aufrufe setzen."\cit
 
 Um die Kommunikation zwischen den Services zu beschleunigen, werden daher Message Broker wie
 Apacke Kafta oder RabbitMQ verwendet. Nichtsdestotrotz kann die Performanz einer solchen
-Kommunikation im Regelfall nicht mit der internen Kommunikation eines einzelnen Programms schritthalten.
+Kommunikation im Regelfall nicht mit der internen Kommunikation eines einzelnen Programms Schritt halten.
 
 In dem Artikel "Warum es nicht immer Microservices sein müssen" auf Informatik Aktuell
 sprechen Christoph Iserlohn und Till Schulte-Coerne von einer Externalisierung der Komplexität.
@@ -340,12 +340,12 @@ von Servern mit identischen Images betrieben werden können."\cite[S. 56]{Contin
 \end{quote}
 
 Somit kann sichergestellt werden, dass die Software und deren Umgebung in der Testphase
-sowie in Produktion die selbe ist. Immer mehr Anbieter stellen Werkzeuge für Continuous Integration (CI) zur Verfügung,
+sowie in der Produktion die selbe ist. Immer mehr Anbieter stellen Werkzeuge für Continuous Integration (CI) zur Verfügung,
 die es ermöglichen eine CI/CD-Pipeline anhand von Konfigurationsdateien aufzuziehen. So bieten
 neben Travis CI, CircleCI und Jenkins nun auch Versionsverwaltungshosts wie Github und
 Gitlab CI-Werkzeuge an.\footnote{Github bietet seit 13. November 2019 eigene CI/CD-Werkzeuge an \cite{GithubCIToolsHeise}}
-Vorteile eines CI/CD-Ansatzes sind schnelle Feature-Auslieferung und somit schnellere Resonanz der Benutzer auf die Features,
-Robustheit der Software durch stetiges Ausführen automatisierter Tests in der Pipeline, einfaches Zurückrollen
-der Version der Anwendung in Produktion sowie einfaches Reproduzieren von Fehlern. Ein Nachteil eines CI/CD-Ansatzes ist
+Vorteile eines CI/CD-Ansatzes sind eine schnelle Feature-Auslieferung und somit schnellere Resonanz der Benutzer auf die Features,
+die Robustheit der Software durch stetiges Ausführen automatisierter Tests in der Pipeline, einfaches Zurückrollen
+der Version der Anwendung in der Produktion sowie einfaches Reproduzieren von Fehlern. Ein Nachteil eines CI/CD-Ansatzes ist
 der große Aufwand des initialen Aufbaus der automatisierten Prozesse. Bei komplexen Änderungen des Systems müssen zudem
 große Teile des automatisierten Prozesses angepasst werden.
