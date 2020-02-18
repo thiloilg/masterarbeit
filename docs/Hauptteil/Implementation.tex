@@ -183,7 +183,7 @@ Da die Aufrechterhaltung der WebSocket-Verbindungen der Data Delivery API gegen�
 den Clients allerdings nicht linear verlaufen wird,\footnote{Manche Benutzer beenden die Anwendung sofort, andere lassen Sie über Tage laufen.}
 empfiehlt sich hier die Implementierung einer anhand von Health-Checks basierenden
 Lastverteilungsverfahren. Man schaut in überschaubaren Abständen nach der aktuellen
-Lastverteilung und weißt die Anfragen so dem am wenigsten überlasteten Service zu.
+Lastverteilung und weist die Anfragen so dem am wenigsten überlasteten Service zu.
 Die Arbeit konzentriert sich hier auf die Ermöglichung eines solchen Verfahrens,
 indem die Schicht der Servicelogik zustandslos gestaltet wird. Somit ist eine
 horizontale Skalierung der Serviceinstanzen problemlos möglich. Mehr dazu in
@@ -345,8 +345,8 @@ in ausgeliefertem Zustand genauso verhalten wird, wie dies beim Testen der Fall 
 
 An dritter Stelle kommt die die Umgebung für die Qualitätssicherung.\footnote{Auf English Quality Assurance, abgekürzt QA.}
 Hier wird die Software nach ihrer Qualität getestet. Erst wenn sie eine
-zuvor definierte Qualitätsmerkmale aufweißt, darf diese in die Produktionsumgebung
-ausgeliefert werden. 
+zuvor definierte Qualitätsmerkmale aufweist, darf diese in die Produktionsumgebung
+ausgeliefert werden.
 
 An letzter Stelle kommt die Produktionsumgebung. Hier werden die laufenden Container durch
 die neuen Container, welche alle Tests erfolgreich absolviert haben, ersetzt. Die Produktionsumgebung

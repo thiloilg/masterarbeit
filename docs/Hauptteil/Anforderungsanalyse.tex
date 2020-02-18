@@ -2,7 +2,7 @@
 \label{chap:anforderungsanalyse}
 
 In der Anforderungsanalyse geht es um das Erörtern der Anforderungen an die Software.
-Als erstes gilt es in \Cref{sec:weristmeinezielgruppe} die Zielgruppe der Anwendung zu
+Als erstes gilt es in \Cref{sec:weristmeinezielgruppe}, die Zielgruppe der Anwendung zu
 definieren und zu analysieren. Die daraufhin folgende Anforderungsanalyse wird in zwei
 Grundrubriken unterteilt. Funktionale sowie nicht-funktionale Anforderungen. Die
 nicht-funktionalen Anforderungen sind in die Unterabschnitte Gestaltung, Flexibilität
@@ -13,15 +13,14 @@ bereitgestellt. Diese Anforderungen werden in den Folgeabschnitten miteinbezogen
 
 \section{Wer ist die Zielgruppe?}
 \label{sec:weristmeinezielgruppe}
-Die in der Masterarbeit zu entwickelnde Softwarelösungen
-soll den Bestandkunden von GBO Datacomp eine moderne Alternative geben, Daten 
-auf mobilen Endgeräten wie Tablets, Smartphones aber auch Desktop PCs auswerten zu können.
+Die in der Masterarbeit zu entwickelnde Softwarelösung
+soll den Bestandskunden von GBO Datacomp eine moderne Alternative geben, Daten 
+auf mobilen Endgeräten wie Tablets, Smartphones, aber auch auf Desktop PCs auswerten zu können.
 Außerdem muss die Software Neukunden ansprechen und zum Kauf überzeugen. GBO Datacomp
 hat Kunden in vielen verschiedenen Branchen. So hat das Unternehmen Kunden in der
 Automobilindustrie, in der Metall- und Gussindustrie, in der Lebensmittelindustrie,
 in der Steinverarbeitung, in der Verpackungsindustrie, in dem Druckgewerbe, in der
-Zahntechnik, der Kundstoffverarbeitung, Holzindustrie, Möbelindustrie, Metall- und Gussindustrie sowie
-der Steinverarbeitung.\cite{GBODatacompBranchenloesungen}
+Zahntechnik, der Kundstoffverarbeitung, Holzindustrie und in der Möbelindustrie.\cite{GBODatacompBranchenloesungen}
 
 Eines der wichtigsten Produkte von GBO Datacomp ist BisoftMES, eine Software zur Erfassung von
 Maschinen- und Betriebsdaten. Diese Daten können Auftragsdaten, Schichtdaten und Maschinendaten sein.
@@ -36,7 +35,7 @@ installierten Bildschirm in einer Produktionshalle angezeigt werden. Anderenfall
 auch der Produktionsleiter in der Mittagspause mit seinem Handy die aktuellen Leistungskennzahlen 
 (KPIs) abrufen. Viele Produktionshallen besitzen alte Windows-Rechner, die nicht
 mit den neusten Browsern ausgestattet sind. Andere Betriebe besitzen Endgeräte mit Touchscreens.
-Fassen wir all diese möglichen Szenarien zusammen, wird uns eines sehr deutlich. Von der
+Fassen wir all diese möglichen Szenarien zusammen, wird uns eines sehr deutlich: Von der
 Softwarelösung wird eine gewisse Flexibilität abverlangt, die nicht zu unterschätzen ist.
 
 \section{Funktionale Anforderungen}
@@ -53,7 +52,7 @@ werden. Diese vier Funktionalitäten sind der Kern der Anwendung. In diesem Absc
 werden zuerst die Anforderungen der Kernfunktionalitäten genauer analysiert. Daraufhin werden die Anforderungen
 für die Authentifizierung der Benutzer, die Rechteverwaltung, die Auswahl der Sprache,
 die Navigation durch die Software, die Suche nach Ressourcen in der Anwendungen,
-die Filterung der darzustellenden Daten im Dashboard sowie für die Möglichkeit,
+die Filterung der darzustellenden Daten im Dashboard sowie die Möglichkeit,
 die Anwendung auch offline zu verwenden, erörtert.
 
 Was sind die Anforderungen für die Erstellung des agilen Dashboards? Die Anwendung und
@@ -62,19 +61,19 @@ dass die Anwendung möglichst einfach aufgebaut werden sollte. Einstellungsmögl
 die Nebenrollen in der Gesamtfunktionalität der Software darstellen, sollten von der
 Software selbst entschieden werden. Ein Beispiel hierfür ist die Justierung der
 einzelnen Komponenten eines Dashboards. Der Prozess der Erstellung eines Dashboards
-sollte wie folgt aussehen. Ein Benutzer kann in einem intuitiven Verfahren,
+sollte wie folgt aussehen. Ein Benutzer kann in einem intuitiven Verfahren
 einzelne Komponenten auswählen und diese an bestimmte Positionen im Bildschirm
 ziehen. Des Weiteren kann er die Komponenten
 entfernen und ersetzen. Wirft man einen Blick auf andere BI Softwarelösungen,
-stellt man fest, dass die Anzahl der Komponenten der Anwendung im Lauf der Zeit
+stellt man fest, dass die Anzahl der Komponenten der Anwendung im Laufe der Zeit
 stetig anwachsen kann. Somit ist die effiziente Auswahl, auch aus einer großen
-Anzahl an Komponenten, pflicht.
+Anzahl an Komponenten, Pflicht.
 
 Was sind die Anforderungen für das Laden der Daten in die Anwendung? Neben der Flexibilität,
 die in \Cref{subsec:flexibilitaet} erörtert wird, muss das Laden von Daten schnell und zuverlässig
 sein. Typische Vorgehensweisen der Anwender sind das Auswerten von Maschinendaten. Dabei kann es
-sich um die Auslastung sowie Stör- und Ausfälle der Maschinen handeln. Es ist bedeutsam,
-das der Anwender rechtzeitig von diesen Ereignissen informiert wird. Unsere
+sich um die Auslastung sowie um Stör- und Ausfälle der Maschinen handeln. Es ist bedeutsam,
+dass der Anwender rechtzeitig von diesen Ereignissen informiert wird. Unsere
 Aufmerksamkeit gilt also auch der zeitnahen Aktualisierung der Daten in den Dashboards. Nur
 so kann sichergestellt werden, dass der Anwender auch zeitnah auf in den Daten erkenntliche
 Ereignisse reagieren kann. In Anlehnung dieser Feststellung liegt es nahe, den Benutzer
@@ -92,7 +91,7 @@ für fehlende Felder definiert.
 Wie werden die Dashboards mit den nötigen Daten versorgt? Grundsätzlich ist klar davon auszugehen,
 dass die Anwendung einen Zuweisungsmechanismus bereitstellt. Um von einer komplexeren, eingehenden
 Datenstruktur zu einer für die Visualisierung geeigneten Datenstruktur zu kommen, müssen die gewollten
-Daten ausgewählt und zugewiesen werden. Dem Benutzer selbst ist ein, ähnlich wie bei der Erstellung
+Daten ausgewählt und zugewiesen werden. Dem Benutzer selbst wird ein, ähnlich wie bei der Erstellung
 des Dashboards, agiler Prozess zur Zuweisung der Daten ermöglicht. Ein Benutzer will auf einem
 Dashboard unterschiedliche Quellen von Daten vergleichen. Somit muss die Möglichkeit bestehen,
 unterschiedliche Zuweisungen für die Diagramme eines Dashboards zu tätigen.
@@ -104,7 +103,7 @@ Web Apps sind per Definition außerhalb der Entwicklung nur über HTTPS zu über
 OWASP (Open Web Application Security Project) veröffentlichte 2017 einen Bericht über die zehn
 bedeutsamsten Sicherheitsrisiken von Webanwendungen. Darunter sind unter anderem die Einschleusung
 von Quellcode durch mangelnde Maskierung, fehlerhafte Authentifizierungsverfahren, Preisgabe von sensiblen Daten,
-XSS-Attacken und Fehlkonfigurationen von Sicherheitseinstellungen \cite[S. 4]{OWASPTopTen}.
+XSS-Attacken und Fehlkonfigurationen von Sicherheitseinstellungen zu finden.\cite[S. 4]{OWASPTopTen}
 Um die Kundendaten vor Angriffen zu schützen, liegt es nahe, dass diese Sicherheitsrisiken bei der
 Entwicklung der Anwendung beachtet werden. Zum Funktionsumfang gehört dazu,
 dass ein Benutzer ein Konto sicher anlegen, sich anmelden, abmelden und sein Konto auch wieder
@@ -117,8 +116,8 @@ ist somit Teil der Anforderungen. Damit der Benutzer nicht bei jedem Besuch die 
 muss, gilt es die Spracheinstellungen im Browser zu persistieren. GBO Datacomp merkt hier an, dass diese
 unabhängig von denen des Browsers gespeichert werden müssen.
 
-Ein Benutzer will ohne großen Aufwand von einen Dashboard zu einem anderen gelangen. Er will kurz seine Profileinstellungen
-einsehen, daraufhin an der Datenzuweisung arbeiten und dann die Dokumentation lesen.
+Ein Benutzer will ohne großen Aufwand von einen Dashboard zu einem anderen gelangen. Er will seine Profileinstellungen
+kurz einsehen, daraufhin an der Datenzuweisung arbeiten und danach die Dokumentation lesen.
 Hierfür benötigt die Anwendung eine benutzerfreundliche Navigation. Ist die Anzahl der Ressourcen zu 
 groß, muss die Anwendung einen automatischen Seitenumbruch einführen. Um die Suche nach speziellen
 Ressourcen zu erleichtern, ist eine zentrale Suche erwünscht.
@@ -127,14 +126,14 @@ In der aktuellen BisoftMES Softwarelösung von GBO Datacomp kann man die für di
 Es liegt nahe, dass diese Funktionalität auch bei einer webbasierten Anwendung von Benutzern erwartet wird. Die Möglichkeit, Daten
 anhand von Filterkriterien einzuschränken, ist somit Teil der Anforderung an die Funktionalität der Softwarelösung.
 
-Zu allerletzt gilt es die Anforderungen an die Anwendung im Falle einer fehlenden Netzwerkverbindung
-zu erörtern. GBO Datacomp erläutert in ihrem Informationsblatt zu der Masterarbeit, dass dem Benutzer
+Zuallerletzt gilt es die Anforderungen an die Anwendung im Falle einer fehlenden Netzwerkverbindung
+zu erörtern. GBO Datacomp erläutert in ihrem Informationsblatt, dass dem Benutzer
 ermöglicht werden sollte, geladene Daten offline weiterzuverwenden. Dies sollte solang möglich sein,
 bis der Benutzer wieder Zugang zum Netzwerk erlangt. Bei Wiedererlangung der Netzwerkverbindung werden
 die Daten automatisch aktualisiert. Das An- und Abmelden muss über die Internetverbindung
 geschehen. Mozilla schreibt über die Obergrenze der Speicherkapazität der IndexedDB im Browser,
 dass diese dynamisch ist. Die Obergrenze werde durch verschiedene Faktoren wie dem freigegebenen
-Festplattenspeichervolumen und einer Obergrenze je Domain realisiert. Dabei kann die Domainspezifische
+Festplattenspeichervolumen und einer Obergrenze je Domain realisiert. Dabei kann die domainspezifische
 Obergrenze von einem Minimum von 10 Megabyte bis zu einem Maximum von aktuell 2 Gigabyte reichen \cite{MozillaStorageLimit}.
 Die Verwendung der Daten ohne Netzzugriff ist bedingt möglich. Ist dies nicht möglich, gilt es
 eine Offline-Rückfallseite bereitzustellen.
@@ -144,23 +143,23 @@ eine Offline-Rückfallseite bereitzustellen.
 In diesem Abschnitt werden die nicht-funktionalen Anforderungen analysiert.
 In \Cref{subsec:gestaltung} geht es um die graphische Benutzeroberfäche sowie
 deren Benutzerfreundlichkeit. In \Cref{subsec:flexibilitaet} wird die geforderte
-Flexibilität an die Softwarelösung erörtert. Zuallerletzt werden in \Cref{subsec:codebasis}
+Flexibilität an die Softwarelösung erörtert. Zuallerletzt werden im \Cref{subsec:codebasis}
 Anforderungen an die Entwicklungsumgebung und den Entwicklungsprozess gestellt.
 
 \subsection{Gestaltung}
 \label{subsec:gestaltung}
-Welche Anforderungen gibt es bei der Gestaltung der Anwendung oder noch spezieller 
+Welche Anforderungen gibt es bei der Gestaltung der Anwendung, oder, noch spezieller, 
 der grafischen Oberfläche zu beachten? Wie bereits in der Zielgruppenanalyse in \Cref{sec:weristmeinezielgruppe}
 angemerkt, werden die verschiedensten Endgeräte auf die Software zugreifen.
 GBO Datacomp erwähnt in ihrem Informationsblatt die Fokussierung auf folgende
-drei Gerätetypen: Desktop-PCs, Tablets und Smartphones. Man kann davon ausgehen, dass die
-Softwarelösung als Eingabeschnittstelle neben der Maus und der Tastatur auch mit einem Touchscreen
-gesteuert werden kann. GBO Datacomp weißt speziell auf die unterschiedlichen Bildschirmgrößen
+drei Gerätetypen: Desktop-PCs, Tablets und Smartphones. Es ist davon auszugehen, dass die
+Softwarelösung als Eingabeschnittstelle, neben der Maus und der Tastatur, auch mit einem Touchscreen
+gesteuert werden kann. GBO Datacomp weist speziell auf die unterschiedlichen Bildschirmgrößen
 hin. So soll die Anwendung auf verschiedene Bildschirmgrößen reagieren und den Inhalt je nach
 Größe zugänglich bereitstellen. Geräte des gleichen Typs sollen keine signifikanten Unterschiede
 in der Darstellung aufweisen.
 
-Man kann davon ausgehen, dass neben den unterschiedlichen Gerätetypen auch unterschiedliche
+Es ist davon auszugehen, dass neben den unterschiedlichen Gerätetypen auch unterschiedliche
 Betriebssysteme verwendet werden. Laut StatCounter verteilt sich der weltweite Marktanteil
 an Betriebssystemen laut einer Analyse vom Dezember 2019 wie folgt auf. Android führt mit
 40,47\%, gefolgt von Windows mit 34,2\%, iOS mit 14,92\% und macOS mit 7,24\%. Linux mit 0,83\% und weitere
