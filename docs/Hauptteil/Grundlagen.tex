@@ -330,10 +330,15 @@ die im März 2013 von dotCloud ins Leben gerufen wurde \cite{DockerAbout2014}, v
 den stetigen Softwareauslieferungsprozess enorm. So kann man in einem automatisierten
 Auslieferungsprozess, Images bauen, diese testen und selbige nach erfolgreichem
 Bestehen der Tests in der Produktion verwenden. Eberhard Wolff schreibt über das Ziel von Docker in
-seinem Buch "Continuous Delivery" folgendes: "Im Vergleich zu normalen Prozessen trennen Linux-Container
+seinem Buch "Continuous Delivery" folgendes:
+
+\begin{quote}
+"Im Vergleich zu normalen Prozessen trennen Linux-Container
 einzelne Anwendungen viel besser voneinander, wenn es darum geht, die Software auf einem anderen
 System zu installieren. Docker bietet ein Repository für Images an, so dass eine Vielzahl
 von Servern mit identischen Images betrieben werden können."\cite[S. 56]{ContinuousDeliveryWolff}
+\end{quote}
+
 Somit kann sichergestellt werden, dass die Software und deren Umgebung in der Testphase
 sowie in Produktion die selbe ist. Immer mehr Anbieter stellen Werkzeuge für Continuous Integration (CI) zur Verfügung,
 die es ermöglichen eine CI/CD-Pipeline anhand von Konfigurationsdateien aufzuziehen. So bieten
