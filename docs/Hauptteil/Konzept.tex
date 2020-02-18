@@ -14,7 +14,7 @@ sich hierfür aus drei Gründen. Sicherheit, Performanz und Flexibilität. Die U
 zum Abrufen der Daten sollen im Client einstellbar sein. Würde man die Anfragen an
 die externen APIs zur Beschaffung der Daten direkt aus dem Client heraus senden,
 müssen bei allen externen APIs CORS-Header für die eigene Origin gesetzt sein \cite{CORSW3C}.
-Desweiteren bieten sich serverseitige Programmiersprachen besser zur Verhinderung
+Des Weiteren bieten sich serverseitige Programmiersprachen besser zur Verhinderung
 von Attacken zur Einschleusung von schädlichem Quellcode an.\footnote{Bei
 Unmarshalling- und Validierungsverfahren ist Golang flexibler als das im Client ausgeführte JS.}
 Für die Performanz sprechen folgende Gründe: Das Endgeräte des Clients ist womöglich
@@ -64,7 +64,7 @@ um komplexere Datentransformationen durchzuführen. Bei der Implementation einer
 GUI zur Definition der Verarbeitungsweise der Daten kommt man schnell an seine Grenzen.
 Die Möglichkeit, Felder aus verschiedenen Ebenen einer JSON-Datei auszuwählen
 und in eine gewollte Ausgangsstruktur zu transformieren, ist mithilfe einer GUI nahezu
-unmöglich. Desweiteren ist mit einer Abfragesprache auch um einiges schneller als mit
+unmöglich. Außerdem ist mit einer Abfragesprache auch um einiges schneller als mit
 der Verwendung einer GUI. Allerdings benötigt die Verwendung einer Abfragesprache
 Einarbeitungszeit. Nichtsdestotrotz ist es für die Arbeit die einzige Möglichkeit,
 die Flexibilität für die Datenverarbeitung sowie die Datenmodellierung der Daten
@@ -127,7 +127,7 @@ Zur Datenübermittlung verwendet die Arbeit das Publish/Subscribe Architekturkon
 Um die bidirektionale Kommunikation zwischen dem Client und dem Server zu ermöglichen,
 wird das WebSocket-Protokoll verwendet. Verglichen mit HTTP ist das WebSocket-Protokoll
 aufgrund der fehlenden Header-Fixkosten performanter. Eine aufrechterhaltene WebSocket-Verbindung
-benötigt allerdings auch mehr Rechenleistung als einzelne Mitteilungen über HTTP. Desweiteren
+benötigt allerdings auch mehr Rechenleistung als einzelne Mitteilungen über HTTP. Des Weiteren
 kann HTTP nur bedingt mithilfe von Server-Sent Events eine bidirektionale Verbindung aufbauen.
 Server-Sent Events selbst sind allerdings nur unidirektional \cite[2. Abschnitt]{WebSocketVSSSE}.
 
@@ -142,7 +142,7 @@ Server-Sent Events selbst sind allerdings nur unidirektional \cite[2. Abschnitt]
 Das Konzept der Datenübermittlung ist Folgendes: Besucht der Nutzer ein Dashboard,
 abonnieren die einzelnen Diagramme die jeweiligen Kanäle, die die Datenquellen 
 repräsentieren (Siehe Abbildung \ref{figure:uebersichtderdatenauslieferung}).
-Desweiteren wird eine Nachricht an den \code{Data Delivery Service} veröffentlicht,
+Außerdem wird eine Nachricht an den \code{Data Delivery Service} veröffentlicht,
 indem dieser darüber informiert wird, dass der Client jetzt bereit ist Daten zu empfangen.
 Je nach angefragtem Interval sendet nun der \code{Data Delivery Service} verarbeitete
 Daten an das Frontend, die in der Frontendanwendung angezeigt werden. Um die
@@ -313,7 +313,7 @@ von 128-Bit ist eine Kollision sehr gering \cite{UUIDJavaSEDocs}.}
 je Diagramm als Verweis benutzt werden. Dieses Konzept der Trennung zwischen
 der Anordnung und den Einstellungen des Dashboards soll verhindert, dass
 alle Informationen in einer immer komplexeren Baumstruktur gespeichert werden.
-Desweiteren können so Änderungen in dem Aufbau getrennt von den Änderungen in der
+Außerdem können so Änderungen in dem Aufbau getrennt von den Änderungen in der
 Einstellungen erkannt und darauf reagiert werden. Bei der Verwendung eines
 Frameworks wie React kann so unterschieden werden, ob nur einzelne Komponenten
 oder der komplette Aufbau des Dashboards gerendert werden muss.
@@ -322,7 +322,7 @@ Die ID der zu einem Dashboard zugewiesenen Datenquelle wird in dem Einstellungen
 des jeweiligen Diagramms gespeichert. Jedes Diagramm hat die Möglichkeit,
 Einstellungen zu persistieren. So kann sich die Anwendung beispielsweise merken,
 welche Filteroptionen der Benutzer in einem bestimmten Diagramm als letztes verwendet
-hat. Desweiteren kann ein Diagramm wie in \Cref{subsec:zuweisungungvondatenquellen} beschrieben,
+hat. Des Weiteren kann ein Diagramm wie in \Cref{subsec:zuweisungungvondatenquellen} beschrieben,
 Änderungen in der Werkzeugleiste vornehmen. Diese Änderungen
 sollen auch in den Einstellungen des jeweiligen Diagramms gespeichert werden.
 

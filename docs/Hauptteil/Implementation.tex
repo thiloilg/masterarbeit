@@ -5,7 +5,7 @@
 \label{sec:infrastruktur}
 Wie in \Cref{sec:continuousdelivery} bereits angesprochen, beinhaltet die Infrastruktur
 der Arbeit einen Linux-Server, auf welchem Gitlab CE, Gitlab Runner und eine Docker Registry
-installiert sind. Desweiteren benötigt es weitere Server, für die Testphase sowie für
+installiert sind. Des Weiteren benötigt es weitere Server, für die Testphase sowie für
 die Produktion. Die einzelnen Services werden einfachheitshalber mithilfe von Docker-Compose
 auf einem einzelnen Server ausgeführt. Das Ziel für die Zukunft ist es, die einzelnen
 Services auf einzelne Linux-Server zu verteilen. Dies soll mithilfe des Open Source IAC-Werkzeugs\footnote{IAC steht für Infrastructure as Code}
@@ -29,7 +29,7 @@ von "Blick" in den meisten Domainvariationen nicht mehr erhältlich war und zude
 überteuert angeboten wurde. Die Domain für den Server der Testphase ist \code{testing-stage.org}.
 Die beiden Domains besitzten die Subdomains \code{api} und \code{delivery}. Die Subdomain \code{api} verweist
 auf die Resource Management API; die Subdomain \code{delivery} verweist auf die Data Delivery API.
-Desweiteren gibt es die \code{monitor} Subdomain, welche auf die Kontrollübersicht von Traefik
+Außerdem gibt es die \code{monitor} Subdomain, welche auf die Kontrollübersicht von Traefik
 verweist. Traefik dient als Reverse-Proxy und Load-Balancer, bietet zusätzlich allerdings
 auch noch geringe Überwachungsfunktionalitäten in einem webbasierten Dashboard an.
 Dazu mehr in \Cref{subsec:reverseproxyundloadbalancer}.
@@ -158,7 +158,7 @@ Anders, als bei einem Proxy, der den Client von dem Server versteckt, versteckt 
 eine Serverinfrastruktur vor dem Client. Durch die Anonymisierung der Serverinfrastruktur
 sind Angriffe gegen spezifische Servertechnologien erschwert, da deren Schnittstelle
 nicht direkt mit der Außenwelt kommuniziert. In der Regel übernimmt der Reverse Proxy
-auch die SSL/TLS-Verschlüsselung. Desweiteren kann er auch zur Verteilung der Serverlast,
+auch die SSL/TLS-Verschlüsselung. Des Weiteren kann er auch zur Verteilung der Serverlast,
 also als Load Balancer verwendet werden. Ein typisches Beispiel für einen Reverse Proxy
 ist ein Nginx Webserver. Die Arbeit benutzt als Reverse Proxy und Load Balancer die
 in Golang geschriebene Open Source Software Traefik.\footnote{https://docs.traefik.io/}
@@ -276,7 +276,7 @@ aufgeweicht."\cite[S. 18]{NoSQLClemensGull}
 Um die bessere Verfügbarkeit bei dokumentenorientierten DBMS zu garantieren, wird bewusst auf die Normalisierung
 \footnote{Frank Geisler zur Normalisierung: "Die Normalisierung reduziert die in der Datenbank vorhandenen Datenredundanzen und hilft Ihnen so dabei, die \dots Anomalien zu vermeiden."\cite[S. 177]{DatenbankenFrankGeisler}}
 verzichtet. Durch die dadurch entstehende Redundanz in der Datenbank fällt es schwer,
-die Konsistenz der Daten zu garantieren. Desweiteren ist der Schreibvorgang bei dokumentenorientierten
+die Konsistenz der Daten zu garantieren. Außerdem ist der Schreibvorgang bei dokumentenorientierten
 DBMS wie MongoDB nur auf Dokumentenebene atomar.\cite{MongoDBAtomaritaet} Da die Konsistenz und Atomarität für
 Benutzerverwaltungsdaten von erheblicher relevant ist\footnote{Speziell bei sensiblen Transaktionen wie Zahlungsabläufen.}, 
 entscheidet sich die Arbeit für die Resource Management API ein RDBMS zu verwenden.
@@ -299,7 +299,7 @@ werden mit Informationen angereichert, die nur für das Debugging relevant sind.
 Ein Logeintrag besteht aus einem Zeitstempel, der Protokollebene sowie der Protokollnachricht.
 Kundenspezifische Informationen werden nicht offengelegt. Verweise auf Nutzer finden nur
 mithilfe der Identifikationsnummer des Datenbankeintrags statt. Die Info-Protokollebene
-wird über den \code{stdout} gelenkt. Die Error-Protokollebene wird desweiteren in einer
+wird über den \code{stdout} gelenkt. Die Error-Protokollebene wird des Weiteren in einer
 Logdatei persistiert. Für das Debugging muss die Debug-Protokollebene aktiviert werden.
 Als Logging-Bibliothek für die Resource Management API verwendet die Arbeit den Winston
 Logger. Der HTTP-Verkehr wird mithilfe des Koa-Loggers\footnote{Koa ist ein HTTP Middleware Framework für Node.js} protokolliert und an den Winston
