@@ -21,21 +21,21 @@ je nach Datenbank. Um die Server über das Internet zu erreichen, benötigt es d
 und Subdomains, die mithilfe von DNS-Records auf die vom Server bereitgestellten
 IPv4- und IPv6-Adressen verweisen.\footnote{Man kann die Server natürlich auch direkt über die IP-Adresse ansprechen.}
 
-Die Domain "blicc.org" dient als Hauptdomain und wird in der Produktion verwendet. Der Name Blicc
+Die Domain \code{blicc.org} dient als Hauptdomain und wird in der Produktion verwendet. Der Name Blicc
 wurde zur representation des Produktes gewählt. Bei einer Verwendung der Anwendung als White-Label-Produkt
 wird der Name durch den der zu repräsentierenden Firma ersetzt. Der Name Blicc ist eine
 veränderte Form des deutschen Wortes "Blick". Der Name wurde daher verändert, da die Verfügbarkeit
 von "Blick" in den meisten Domainvariationen nicht mehr erhältlich war und zudem
-überteuert angeboten wurde. Die Domain für den Server der Testphase ist "testing-stage.org".
-Die beiden Domains besitzten die Subdomains "api" und "delivery". Die Subdomain "api" verweist
-auf die Resource Management API; die Subdomain "delivery" verweist auf die Data Delivery API.
-Desweiteren gibt es die "monitor" Subdomain, welche auf die Kontrollübersicht von Traefik
+überteuert angeboten wurde. Die Domain für den Server der Testphase ist \code{testing-stage.org}.
+Die beiden Domains besitzten die Subdomains \code{api} und \code{delivery}. Die Subdomain \code{api} verweist
+auf die Resource Management API; die Subdomain \code{delivery} verweist auf die Data Delivery API.
+Desweiteren gibt es die \code{monitor} Subdomain, welche auf die Kontrollübersicht von Traefik
 verweist. Traefik dient als Reverse-Proxy und Load-Balancer, bietet zusätzlich allerdings
 auch noch geringe Überwachungsfunktionalitäten in einem webbasierten Dashboard an.
 Dazu mehr in \Cref{subsec:reverseproxyundloadbalancer}.
 
-Die Docker Registry ist unter der Domain "registry.thiloilg.com", Gitlab CE
-unter "gitlab.thiloilg.com" erreichbar. Die Repositories werden alle zusätzlich
+Die Docker Registry ist unter der Domain \code{registry.thiloilg.com}, Gitlab CE
+unter \code{gitlab.thiloilg.com} erreichbar. Die Repositories werden alle zusätzlich
 auf Github.com gespiegelt. Github.com dient als drittes Backup, falls die Repositories auf dem
 eigenen Gitlab Server und dem lokale Rechner verloren gehen. Mit dem Git-Befehl in
 Quellcode \ref{lst:gitalias} kann man sich einen Alias setzen, um zu allen Remote Repositories
@@ -265,11 +265,15 @@ Nun stellt sich aber die Frage, wieso man für die Resource Management API nicht
 No-SQL-Datenbank verwendet hat. Clemens Gull bringt die Kompromisse, welche man bei der
 Entscheidung zwischen einem relationalen und einem dokumentenorientierten DBMS
 eingehen muss, in seinem Buch "Wev-Applikationen entwickeln mit NoSQL" auf den Punkt:
+
+\begin{quote}
 "Da RDBMS (relationale Datenbankmanagementsysteme, also konventionelle Datenbanken) sehr streng
 auf die Konsistenz der Daten achten, kann es hier zu Problemen mit der Performance und Verfügbarkeit
 kommen. Dieses Konzept wird bei NoSQL zugunsten der besseren Skalierbarkeit und auch Verfügbarkeit
-aufgeweicht."\cite[S. 18]{NoSQLClemensGull} Um die bessere Verfügbarkeit bei dokumentenorientierten
-DBMS zu garantieren, wird bewusst auf die Normalisierung
+aufgeweicht."\cite[S. 18]{NoSQLClemensGull}
+\end{quote}
+
+Um die bessere Verfügbarkeit bei dokumentenorientierten DBMS zu garantieren, wird bewusst auf die Normalisierung
 \footnote{Frank Geisler zur Normalisierung: "Die Normalisierung reduziert die in der Datenbank vorhandenen Datenredundanzen und hilft Ihnen so dabei, die \dots Anomalien zu vermeiden."\cite[S. 177]{DatenbankenFrankGeisler}}
 verzichtet. Durch die dadurch entstehende Redundanz in der Datenbank fällt es schwer,
 die Konsistenz der Daten zu garantieren. Desweiteren ist der Schreibvorgang bei dokumentenorientierten
