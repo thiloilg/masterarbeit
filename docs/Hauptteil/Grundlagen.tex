@@ -81,13 +81,13 @@ Die Merkmale einer PWA haben sich demnach über die Jahre hinweg angesammelt. Wa
 nun diese Merkmale? Alex Russell erwähnt in seinem Blogpost dazu Folgendes:
 Die PWA soll responsive und netzunabhängig sein, app-ähnliche Navigationsvorgänge bereitstellen,\footnote{Ohne Verwendung von Browser Tabs} 
 immer aktuell sein, über TLS ausgeliefert werden, durch Suchmaschinen als solche mithilfe
-des Web-App-Manifests auffindbar sein, Plattformspezifische Funktionalitäten wie Push-Notifications
+des Web-App-Manifests auffindbar sein, plattformspezifische Funktionalitäten wie Push-Notifications
 verwenden sowie auf dem Homescreen installierbar, über Hyperlinks teilbar und ohne aufwendigen
-Installationsprozess verwendbar sein \cite{PWA2015}. Eine 2018 veröffentlichte, wissenschaftliche
-Arbeit von Thomas Steiner über die Analyse von PWA-Merkmalen innerhalb eines WebViews\footnote{Ein Web View ist ein in einer nativen App eingebetteter Browser zur Darstellung von Webinhalten.}
+Installationsprozess verwendbar sein.\cite{PWA2015} Eine 2018 veröffentlichte, wissenschaftliche
+Arbeit von Thomas Steiner, über die Analyse von PWA-Merkmalen innerhalb eines WebViews\footnote{Ein Web View ist ein in einer nativen App eingebetteter Browser zur Darstellung von Webinhalten.},
 benennt fünfzehn für eine PWA relevante Merkmale, auf die sich die Analyse über den
 unterstützten Funktionsumfang von gängigen Browsern in \Cref{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
-beziehen wird \cite{WhatIsInAWebView}.
+beziehen wird.\cite{WhatIsInAWebView}
 
 \subsection{Unterstützter Funktionsumfang gängiger Browser}
 \label{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
@@ -110,21 +110,21 @@ einer Unterstützung der Cache API gesucht. Push Notifications;
 ist die Push API unterstützt? Add to Homescreen; kann man PWAs auf
 dem Homescreen speichern (A2HS)? Background Sync; ist eine Unterstützung
 der Background Sync API vorhanden? Navigation Preload; die Möglichkeit
-Ressourcen bereits während dem hochfahren des SW vorzuladen
+Ressourcen bereits während dem Hochfahren des SW vorzuladen
 (Navigation Preload Manager API). Silent Push; das Starten von durch das
-Backend ausgelösten Prozessen im Frontend ohne den Benutzer
-davon durch eine Nachricht zu informieren (Web Budget API). 
-Storage Estimation; Die Nachfrage nach genutztem Speicher sowie
+Backend ausgelösten Prozessen im Frontend, ohne den Benutzer
+durch eine Nachricht davon zu informieren (Web Budget API). 
+Storage Estimation; die Nachfrage nach genutztem Speicher sowie
 dessen Beschränkung (Storage Manager). Persistent Storage;
-das speichern von Daten, die nur mit Anfrage an den Benutzer gelöscht
-werden dürfen (Storage Manager). Web Share; das Teilen von Inhalten
+das Speichern von Daten, die nur mit Anfrage an den Benutzer gelöscht
+werden dürfen (Storage Manager). Web Share; das Teilen von Inhalten,
 über die durch die Plattform bereitgestellten Operationen (Web Share API).
-Media Session, das Bereitstellen von Inhalten für native
+Media Session; das Bereitstellen von Inhalten für native
 Bereiche wie den Lockscreen (Media Session API). Media Capabilities;
 die Möglichkeit das perfekte Format von Inhalten anhand von
 Informationen, die vom Browser bereitgestellt werden, auszuliefern (Media Capabilities API).
 Device Memory; wie viel RAM stehen dem Betriebssystem zur
-Verfügung (Device Memory API). Detect Native App; ist die native Version
+Verfügung (Device Memory API)? Detect Native App; ist die native Version
 meiner Anwendung bereits installiert? Payment Request;
 die Benutzung von durch das Betriebssystem bereitgestellten
 Zahlungsverfahren (Payment Request API). Credential Management;
@@ -195,11 +195,11 @@ Credential Mgmt	        & \cm & \cm & \cm &  -  &  -  &  -  \\
 \end{table}
 
 Analysiert man die Resultate von \Cref{tab:unterstutzterpwafunktionsumfangteil1} und
-\Cref{tab:unterstutzterpwafunktionsumfangteil2}, sticht klar ins Auge, dass Chrome
-die PWA Entwicklung vorantreibt. Es wundert auch kaum, dass der Internet Explorer,
+\Cref{tab:unterstutzterpwafunktionsumfangteil2}, wird klar ersichtlich, dass Chrome
+die PWA Entwicklung vorantreibt. Es überrascht auch kaum, dass der Internet Explorer,
 bei dem die Entwicklung im März 2015 eingestellt wurde, \cite{HeiseInternetExplorer} keine der PWA-Merkmale
 unterstützt. Die Periodic Background Sync API, eine Erweiterung der Background
-Sync API, ist momentan noch in Entwicklung und wird vorraussichtlich erst mit
+Sync API, ist momentan noch in der Entwicklung und wird vorraussichtlich erst mit
 Chrome 80 veröffentlicht. Die API wird das Ausführen von Hintergrundaufgaben der SW
 in einem periodischen Interval ermöglichen.\cite{ChromeStatusPeriodicBackgroundSync}
 Die A2HS-Funktionalität wird von allen mobilen Browsern unterstützt.\footnote{Von allen in dieser Auswertung betrachteten Browsern.}
@@ -207,49 +207,49 @@ Bei den mobilen Browsern ist der unterstütze Funktionsumfang insgesamt größer
 bei den Browsern für Desktop-Endgeräte. Ein Grund dafür ist, dass man sich bei den PWA-Merkmalen
 hauptsächlich an der Optik und Haptik von nativen Apps orientiert. Chrome ist aktuell
 der einzige Browser, bei dem man eine PWA auch auf einem Desktop-Endgerät installieren
-kann. Grundfunktionalitäten wie  die Möglichkeit der Offlineverwendung werden fast von allen
+kann. Grundfunktionalitäten, wie  die Möglichkeit der Offlineverwendung, werden fast von allen
 Browsern unterstützt. Die wichtigste Erkenntnis dieser Auswertung ist folgende: Die einzelnen
-PWA-Merkmale müssen als Anreicherung betrachtet werden. Man kann nicht davon ausgehen, dass
+PWA-Merkmale müssen als Anreicherung betrachtet werden. Es ist nicht davon auszugehen, dass
 der Browser des Benutzers ein bestimmtes Merkmal unterstützt.
 
-Auch wichtig ist, sich über den Browser-Marktanteil der eigenen Zielgruppe im klaren zu sein.
+Auch wichtig ist, sich den Browser-Marktanteil der eigenen Zielgruppe zu vergegenwärtigen.
 So verwenden laut StatCounter weltweit mehr als 50\% der Endbenutzer Google Chrome und besitzten somit
-alle PWA-Merkmale, die Chrome bereitstellt \cite{StatCounterBrowserMarketShare}.
+alle PWA-Merkmale, die Chrome bereitstellt.\cite{StatCounterBrowserMarketShare}
 
 \subsection{Trusted Web Activities}
 \label{subsec:trustedwebactivities}
-Das größte Manko einer PWA ist, dass diese nicht im App Store gefunden werden kann.
+Das größte Defizit einer PWA ist, dass diese nicht im App Store gefunden werden kann.
 Für viele Nutzer ist es ungewohnt, PWAs direkt aus dem Browser heraus auf ihr mobiles Endgerät zu installieren.
-Seit Google Chrome Version 72 bietet Google hierfür eine Lösung.
+Seit Google Chrome Version 72 bietet Google hierfür eine Lösung an.
 Mit sogenannten Trusted Web Activities (TWA) ist es möglich, PWAs auch in den App Store
 zu bringen. Eine TWA ist eine Methode, den Inhalt einer PWA in eine Android App mithilfe
 von Google Chromes Custom Tabs zu integrieren.\cite{TrustedWebActivitiesGoogle}
 Ein Verweis auf ein im Webserver liegendes Zertifikat stellt sicher,
 dass die Webseite und die App von dem gleichen Entwickler
-stammen. Ein Vorteil gegenüber dem Einbinden einer PWA in einen WebView, ist es,
-dass der WebView und somit die native App nicht kontinuierlich aktualisiert werden muss,
+stammen. Ein Vorteil, gegenüber dem Einbinden einer PWA in einen WebView, ist es,
+dass der WebView und somit die native App nicht kontinuierlich aktualisiert werden müssen,
 um den Browser auf dem neuesten Stand zu halten.
-Trusted Web Activities werden mit \code{activity} Tags in das Android-App-Manifest integriert. Für die Darstellung
-der TWA wird wie auch bei der PWA ein Browser verwendet. Das bringt Vor- sowie Nachteile mit sich.
+Trusted Web Activities werden mit activity Tags in das Android-App-Manifest integriert. Für die Darstellung
+der TWA wird, wie auch bei der PWA, ein Browser verwendet. Das bringt Vor- und Nachteile mit sich.
 Ein Vorteil ist, dass die TWA Zugriff auf im Browser gespeicherte Daten wie den LocalStorage
 hat. Ein schwerwiegender Nachteil ist allerdings, dass der installierte Browser des mobilen Endgerätes
 die Verwendung der TWA unterstützen muss. Tut er dies nicht, wird die Anwendung in einem sichtbaren
 Browser-Tab angezeigt. Andreas Domin erwähnt in einem Blogbeitrag auf Digital Pioneers eine Möglichkeit,
-dies zu umgehen: Hierfür "\dots wird nativer Java- oder Kotlin-Code benötigt, um zu überprüfen, ob Chrome
+dies zu umgehen: Hierfür "[...] wird nativer Java- oder Kotlin-Code benötigt, um zu überprüfen, ob Chrome
 (oder ein Browser, der Custom Tab unterstützt) installiert ist.
 Ist dem nicht so, kann eine alternative Technologie geladen werden:
 eine Webview zum Beispiel."\cite[2. Abschnitt]{TrustedWebActivitiesT3N}
 Trusted Web Activities werden aktuell allerdings nur von Google und somit Android unterstützt. Um die PWA
-in den App Store von Apple zu bringen, muss so oder so ein WebView verwendet werden.
+in den App Store von Apple zu bringen, muss ohnehin eine WebView verwendet werden.
 
 \section{Microservices}
 \label{sec:microservices}
 In diesem Abschnitt geht es um die Charakteristiken von Microservices. Das Ziel ist es,
-aufgrund der Auseinandersetzung mit dem Architekturmuster die Entscheidung treffen zu können, ob Microservices
+aufgrund der Auseinandersetzung mit dem Architekturmuster, die Entscheidung treffen zu können, ob Microservices
 eine gute Wahl für die Softwarearchitektur dieser Arbeit sind. In \Cref{subsec:wasverstehtmanuntermicroservices}
 stellt sich die Frage, was Microservices eigentlich sind und was sie auszeichnet. In
 \Cref{subsec:vorundnachteile} werden Vor- und Nachteile einer Microservice-Infrastruktur
-debattiert.
+diskutiert.
 
 \subsection{Was versteht man unter Microservices?}
 \label{subsec:wasverstehtmanuntermicroservices}
