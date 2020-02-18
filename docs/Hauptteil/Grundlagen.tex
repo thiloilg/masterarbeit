@@ -34,11 +34,13 @@ Funktionalitäten anbieten, ist in der Vergangenheit stark gestiegen. So äußer
 "Webdesign: So steht es um Progressive-Web-Apps im Jahr 2020" von Dieter Petereit,
 der am 20. Januar 2020 auf t3n.de veröffentlicht wurde, über die Unterstützung der PWAs wie folgt:
 
-\blockquote{"Immerhin 93 Prozent aller Nutzer im weltweiten Netz verwenden einen Browser, der vollen Support
+\begin{quote}
+"Immerhin 93 Prozent aller Nutzer im weltweiten Netz verwenden einen Browser, der vollen Support
 für PWA bietet. Installieren könnten PWA immerhin bereits rund 86 Prozent aller Nutzer. Auch
 die Zielplattform der Installation ist nahezu frei wählbar. Insbesondere funktioniert es
 unter Windows ab Version 7, macOS, Linux, Xbox One, Android, iOS, iPadOS und natürlich Chrome OS,
-allerdings nicht mit jedem Browser."\cite{T3NPWASupport}}
+allerdings nicht mit jedem Browser."\cite{T3NPWASupport}
+\end{quote}
 
 Aus technologischer Sicht sind die
 Anforderungen, die es benötigt um eine PWA zu benutzten, also größtenteils gegeben.
@@ -296,9 +298,14 @@ Beinhaltet der Service eine Datenbank, benötigt es eine weitere Strategie der S
 wie Database Sharding oder Master-Slave Replica. Durch die Lastverteilung auf eigenständige Services
 wird der Schwellwert, ab welchem man horizontal skalieren muss, erst später erreicht.\footnote{Im Vergleich zu einem Monolith}
 Eberhard Wolff kritisiert den Performanzverlust, der durch die
-Kommunikation über die verteilten Systeme entsteht. So schreibt er wie folgt: "Aufrufe durch das Netzwerk
-sind deutlich langsamer als lokale Aufrufe. Aus reiner Performanz-Perspektive kann es sinnvoller sein,
-mehrere Microservices zusammenzulegen oder Technologien zu nutzen, die auf lokale Aufrufe setzen."\cite[S. 65, 3. Absatz]{MicroservicesBook}
+Kommunikation über die verteilten Systeme entsteht. So schreibt er wie folgt: 
+
+\begin{quote}
+"Aufrufe durch das Netzwerk sind deutlich langsamer als lokale Aufrufe.
+Aus reiner Performanz-Perspektive kann es sinnvoller sein, mehrere Microservices
+zusammenzulegen oder Technologien zu nutzen, die auf lokale Aufrufe setzen."\cite[S. 65, 3. Absatz]{MicroservicesBook}
+\end{quote}
+
 Um die Kommunikation zwischen den Services zu beschleunigen, werden daher Message Broker wie
 Apacke Kafta oder RabbitMQ verwendet. Nichtsdestotrotz kann die Performanz einer solchen
 Kommunikation im Regelfall nicht mit der internen Kommunikation eines einzelnen Programms schritthalten.
