@@ -29,5 +29,48 @@ das Zusammenspiel der einzelnen Komponenten.
 \section{Lasttests}
 
 \section{Übertragung}
+Um die Relevanz der Kompression von Daten zu verdeutlichen, führt diese Arbeit einen
+Vergleichstest des initialen Ladevorgangs der Frontendanwendung,
+einmal mit Gzip, Brotli und einmal ohne Kompression durch.
+
+Die Leistungstests
+werden mit dem Open-Source-Werkzeug Lighthouse durchgeführt.\footnote{https://developers.google.com/web/tools/lighthouse}
+Um den Unterschied der benötigten Zeit zum initialen Laden der Frontendanwendung
+besser zu verdeutlichen, wird der Datendurchlauf auf 1.638,4Kbps verringert.
+Die Frontendanwendung wird in einem nachgeahmten Nexus 5X ausgeführt.
+Für die Analyse wurden vier Metriken aus dem Testbericht entnommen.
+Die Ergebnisse des Leistungstests sind in Abbildung \ref{tab:lighthouseleistungstestdesinitialenladevorgangs}
+dargestellt.
+
+\begin{table}[h]
+    \begin{center}
+\begin{tabular}{l*{8}{r}}
+Metrik & Ohne Kompr. & Gzip & Brotli \\
+\hline
+Erstes Zeichnen von Inhalten & 6,2s  & 3,1s & 2,9s \\
+Erste CPU-Inaktivität        & 6,2s  & 4,3s & 4,1s \\
+Zeit für Interaktion         & 7,5s  & 4,3s & 4,1s \\
+Übertragungsgröße            & 1.172KB  &  553KB & 481KB \\
+\end{tabular}
+\end{center}
+\caption{Lighthouse Leistungstest des initialen Ladevorgangs}
+\label{tab:lighthouseleistungstestdesinitialenladevorgangs}
+\end{table}
+
+Die Zeit wird von der ersten vom Browser ausgehenden Anfrage gemessen.
+Lighthouse beschreibt die Metriken wie folgt: Unter dem ersten Zeichnen
+von Inhalten versteht man den ersten Zeitpunkt, an dem der Browser
+irgendeinen Inhalt zeichnet. Die erste CPU-Inaktivität ist
+der erste Zeitpunkt, an dem die Seite auf Benutzerinteraktionen reagieren könnte.
+Unter Zeit für Interaktion versteht man den Zeitpunkt, an dem alle Inhalte geladen ist.
+Jetzt kann die Seite zu jeder Interaktion schnell reagieren.\cite{WhatPerformanceMetricsMeasure}
+
+In Abbildung \ref{tab:lighthouseleistungstestdesinitialenladevorgangs} wird klar deutlich,
+dass Kompression gerade bei langsameren Internetverbindungen von großer Bedeutung ist.
+Es ist wichtig anzumerken, dass der Brotli-Kompressionsalgorithmus zwar eine größere
+Kompressionsrate besitzt, allerdings für die Kompression und Dekompression mehr Zeit
+benötigt.\cite{CompressionBenchmark} Für dynamische Inhalte sollte man also Gzip
+benutzen. Wichtig ist auch, dass Bilder je nach Format in der Regel bereits komprimiert wurden.
+Ein weiterer Kompressionsvorgang kann die Größe der Bilder vergrößern.
 
 \section{Umgesetzte Anforderungen}

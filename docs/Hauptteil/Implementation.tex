@@ -186,68 +186,28 @@ unkomprimiert circa bei 100Kb angesiedelt sei.\cite{SteveSoudersMakeJavaScriptFa
 Laut einer Statistik von Build With benutzten 88,07\% der Top 10k meinstbesuchtesten
 Webseiten des Internets jQuery.\footnote{Stand Februar 2020.\cite{BuildWithjQuery}}
 
-Um die Relevanz der Kompression von Daten zu verdeutlichen, führt diese Arbeit einen
-Vergleichstest des initialen Ladevorgangs der Frontendanwendung,
-einmal mit Gzip, Brotli und einmal ohne Kompression durch. Brotli ist eine
-von Zoltán Szabadka und Jyrki Alakuijala entwickeltes Kompressionsverfahren,
+Für die kompression der statischen Inhalte verwendet die Arbeit Brotli.
+Brotli ist eine von Zoltán Szabadka und Jyrki Alakuijala entwickeltes Kompressionsverfahren,
 dass auf die Entropiekodierung Huffman und dem verlustlosen
-Datenkompressionsverfahren LZ77 basiert.\cite{BrotliGoogleOpenSourceBlog} Die Leistungstests
-werden mit dem Open-Source-Werkzeug Lighthouse durchgeführt.\footnote{https://developers.google.com/web/tools/lighthouse}
-Um den Unterschied der benötigten Zeit zum initialen Laden der Frontendanwendung
-besser zu verdeutlichen, wird der Datendurchlauf auf 1.638,4Kbps verringert.
-Die Frontendanwendung wird in einem nachgeahmten Nexus 5X ausgeführt.
-Für die Analyse wurden vier Metriken aus dem Testbericht entnommen.
-Die Ergebnisse des Leistungstests sind in Abbildung \ref{tab:lighthouseleistungstestdesinitialenladevorgangs}
-dargestellt.
-
-\begin{table}[h]
-    \begin{center}
-\begin{tabular}{l*{8}{r}}
-Metrik & Ohne Kompr. & Gzip & Brotli \\
-\hline
-Erstes Zeichnen von Inhalten & 6,2s  & 3,1s & 2,9s \\
-Erste CPU-Inaktivität        & 6,2s  & 4,3s & 4,1s \\
-Zeit für Interaktion         & 7,5s  & 4,3s & 4,1s \\
-Übertragungsgröße            & 1.172KB  &  553KB & 481KB \\
-\end{tabular}
-\end{center}
-\caption{Lighthouse Leistungstest des initialen Ladevorgangs}
-\label{tab:lighthouseleistungstestdesinitialenladevorgangs}
-\end{table}
-
-Die Zeit wird von der ersten vom Browser ausgehenden Anfrage gemessen.
-Lighthouse beschreibt die Metriken wie folgt: Unter dem ersten Zeichnen
-von Inhalten versteht man den ersten Zeitpunkt, an dem der Browser
-irgendeinen Inhalt zeichnet. Die erste CPU-Inaktivität ist
-der erste Zeitpunkt, an dem die Seite auf Benutzerinteraktionen reagieren könnte.
-Unter Zeit für Interaktion versteht man den Zeitpunkt, an dem alle Inhalte geladen ist.
-Jetzt kann die Seite zu jeder Interaktion schnell reagieren.\cite{WhatPerformanceMetricsMeasure}
-
-In Abbildung \ref{tab:lighthouseleistungstestdesinitialenladevorgangs} wird klar deutlich,
-dass Kompression gerade bei langsameren Internetverbindungen von großer Bedeutung ist.
-Es ist wichtig anzumerken, dass der Brotli-Kompressionsalgorithmus zwar eine größere
-Kompressionsrate besitzt, allerdings für die Kompression und Dekompression mehr Zeit
-benötigt.\cite{CompressionBenchmark} Für dynamische Inhalte sollte man also Gzip
-benutzen. Wichtig ist auch, dass Bilder je nach Format in der Regel bereits komprimiert wurden.
-Ein weiterer Kompressionsvorgang kann die Größe der Bilder vergrößern.
-
-Die Arbeit verwendet wie bereits erwähnt einen Nginx Webserver für die
-Auslieferung von statischen Inhalten. Für die Zukunft sollte man die Nutzung
-eines CDNs in Betracht ziehen, um die weltweite Ladezeit zu optimieren.
+Datenkompressionsverfahren LZ77 basiert.\cite{BrotliGoogleOpenSourceBlog}
+Als Fallback wird Gzip verwendet. Standartmäßig unterstützt Nginx
+das Kompressionsverfahren Gzip. Die Arbeit fügt dem Nginx-Dockerfile ein Script
+hinzu, welches Brotli installiert. Außerdem wurde die \code{nginx.conf} Datei
+so angepasst, damit Nginx Brotli unterstützt.
 
 \subsection{Wahl der Datenbankarten}
 \label{subsec:wahlderdatenbankarten}
-Die Data Delivery API verwendet ein dokumentenorientiertes Datenbanksystem.
+Der Data Delivery Service verwendet ein dokumentenorientiertes Datenbanksystem.
 Hauptgrund hierfür ist die Tatsache, dass man nicht im Vorhinein weiß, wie das
 Datenschema auszusehen hat. Der Benutzer der Anwendung kann jegliche API
 auswählen, Daten abfragen und diese mithilfe einer JSON-Abfragesprache verarbeiten. Das Datenschema
-kann sich also während der Laufzeit des Programms verändern. Im Gegensatz hierzu steht die Resource
-Management API, welche auf eine relationale Datenstruktur aufgebaut ist. Die Schemata formen das
+kann sich also während der Laufzeit des Programms verändern. Im Gegensatz hierzu steht der Resource
+Management Service, welcher auf eine relationale Datenstruktur aufgebaut ist. Die Schemata formen das
 Erscheinungsbild der API und werden als CRUD-Operationen über eine REST-Schnittstelle enthüllt.
-Nun stellt sich aber die Frage, wieso man für die Resource Management API nicht auch eine
-No-SQL-Datenbank verwendet hat. Clemens Gull bringt die Kompromisse, welche man bei der
-Entscheidung zwischen einem relationalen und einem dokumentenorientierten DBMS
-eingehen muss, in seinem Buch "Wev-Applikationen entwickeln mit NoSQL" auf den Punkt:
+Es stellt sich die Frage, wieso der Resource Management Service nicht auch eine NoSQL-Datenbank verwendet.
+Clemens Gull bringt die Kompromisse, welche man bei der Entscheidung zwischen einem relationalen
+und einem dokumentenorientierten DBMS eingehen muss, in seinem Buch "Wev-Applikationen
+entwickeln mit NoSQL" auf den Punkt:
 
 \begin{quote}
 "Da RDBMS (relationale Datenbankmanagementsysteme, also konventionelle Datenbanken) sehr streng
@@ -261,9 +221,9 @@ Um die bessere Verfügbarkeit bei dokumentenorientierten DBMS zu garantieren, wi
 verzichtet. Durch die dadurch entstehende Redundanz in der Datenbank fällt es schwer,
 die Konsistenz der Daten zu garantieren. Außerdem ist der Schreibvorgang bei dokumentenorientierten
 DBMS wie MongoDB nur auf Dokumentenebene atomar.\cite{MongoDBAtomaritaet} Da die Konsistenz und Atomarität für
-Benutzerverwaltungsdaten von erheblicher relevant ist\footnote{Speziell bei sensiblen Transaktionen wie Zahlungsabläufen.}, 
-entscheidet sich die Arbeit für die Resource Management API ein RDBMS zu verwenden.
-Um das Performanzdefizit im vergleich zu dokumentbasierenden DBMS auszugleichen,
+Benutzerverwaltungsdaten von erheblicher Relevanz ist\footnote{Speziell bei sensiblen Transaktionen wie Zahlungsabläufen.}, 
+entscheidet sich die Arbeit im Fall des Resource Management Services für die Verwendung eines RDBMS.
+Um das Performanzdefizit im Vergleich zu dokumentbasierenden DBMS auszugleichen,
 werden Indices verwendet. Ein Datenbankindex ist ein Kompromiss, bei dem
 man Speicherplatz gegen Zugriffsgeschwindigkeit tauscht.\cite{YoutubePostgresIndexing}
 Mithilfe einer aktuell gehaltenen Indexstruktur\footnote{Beispielsweise Binärbäume, Hashtabellen und sortierte Abfolgen}
