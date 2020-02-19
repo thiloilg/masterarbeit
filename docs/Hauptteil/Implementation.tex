@@ -1,7 +1,19 @@
 \chapter{Implementation}
 \label{chap:implementation}
 In diesem Kapitel geht es um die Umsetzung der in \Cref{chap:konzept} erarbeiteten
-Konzepts. 
+Konzepts. Da die Arbeit einen CI/CD-Ansatz verfolgt, muss vor der Implementation
+der einzelnen Services die Infrastruktur und die Pipeline umgesetzt werden. 
+Wo Tests benötigt werden, werden diese vor der Realisierung der einzelnen
+Komponenten verwirklicht. Aufgrund dieser Erkenntnisse, ist das Kapitel der
+Implementation wie folgt gegliedert: In \Cref{sec:infrastruktur} geht es um
+die für die Entwicklung, die Testphase sowie die in Produktion laufende Anwendung
+benötigten Server. In \Cref{sec:gesamtsysten} geht es um den Aufbau der gesamten
+Anwendung. In \Cref{:sec:projektaufbau} wird der Aufbau des Projekts behandelt.
+In \Cref{sec:pipeline} wird die Implementation der stetigen Erstellung, Testung und
+Auslieferung der Gesamtanwendung beschrieben. In den folgenden Abschnitten wird die
+Implementation der von der Anforderungsanalyse geforderten Features erläutert.
+In \Cref{sec:frontendanwendung}
+
 
 \section{Infrastruktur}
 \label{sec:infrastruktur}
@@ -66,7 +78,7 @@ in der Gitlab CI Pipeline automatisiert. Eine genauere Beschreibung der
 Pipeline befindet sich in \Cref{sec:pipelinedesign}.
 
 \section{Gesamtsystem}
-\label{sec:systemdesign}
+\label{sec:gesamtsysten}
 In diesem Abschnitt wird das Grundkonzept aus \Cref{subsec:trennungvonlogic}
 über die Trennung von Logik weiter ausgebaut und daraus ein komplettes System
 entwickelt. Komponentenspezifische Implementierungsdetails
@@ -404,10 +416,13 @@ in der Buildpipeline von der Backendapi abhängig.
 \end{listing}
 
 \section{Frontendanwendung}
+\label{sec:frontendanwendung}
 
 \subsection{Android Anwendung}
+\label{subec:androidanwendung}
 
 \subsection{Zwischenspeicherstrategie im Service Worker}
+\label{subsec:zwischenspeicherstrategieimserviceworker}
 Ein Service Worker ist ein in JavaScript geschriebener,
 eventbasierter Proxy, welcher in einem separaten Thread im Browser
 läuft und an eine spezifische Origin gekoppelt ist. Er hat
@@ -465,11 +480,13 @@ Daraus folgende Zwischenspeicherstrategien:
  \end{description}
 
 \section{Plugins}
-
+\label{sec:plugins}
 
 \section{Resource Management Service}
+\label{sec:resourcemanagementservice}
 
 \section{Data Delivery Service}
+\label{sec:datadeliveryservice}
 
 \begin{figure}
     \label{figure:informationsaustauschdashboard}
