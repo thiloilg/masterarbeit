@@ -159,24 +159,19 @@ Ohne SSL/TLS-Verschlüsselung werden Funktionalitäten wie das hinzufügen der A
 von den Browsern nicht bereitgestellt. Verschlüsselungsschichten wie TLS und der Vorgänger
 SSL liegen zwischen der TCP-Schicht und HTTP/WS. Neben dem Public-Key-Verschlüsselungsverfahren
 muss für eine TLS-Verschlüsselung auch die Authentizität des Servers, mit dem kommuniziert wird,
-bestätigt sein. Hierfür benötigt man ein EV-TLS-Zertifikate\footnote{EV steht für Extended Validation}
-Mithilfe von Let's Encrypt, einer gemeinnützigen Zertifizierungsstelle, kann man EV-TLS-Zertifikate
-kostenlos über eine API beantragen. Die Arbeit hat sich unter anderem für Traefik entschieden,
+bestätigt sein. Hierfür wird ein EV-TLS-Zertifikate\footnote{EV steht für Extended Validation} benötigt.
+Mithilfe von Let's Encrypt, einer gemeinnützigen Zertifizierungsstelle, werden EV-TLS-Zertifikate
+kostenlos über eine API zur Verfügung gestellt. Die Arbeit hat sich unter anderem für Traefik entschieden,
 da der Reverse Proxy einen automatisierten Vorgang bereitstellt, indem EV-TLS-Zertifikate
 mithilfe von Let's Encrypt generiert werden.
 
-Ein Load Balancer entscheidet, wie die Serverlast unter den verschiedenen Services aufgeteilt wird.
-Das einfachste Lastverteilungsverfahren ist ein Round-Robin DNS, eine rotierende Verteilung
-der eingehenden Anfragen auf unterschiedliche IP-Adressen.\cite{CloudflareRoundRobinDNS} 
-Da die Aufrechterhaltung der WebSocket-Verbindungen der Data Delivery API gegenüber
+Der Load Balancer entscheidet, wie die Serverlast unter den verschiedenen Services aufgeteilt wird.
+Die Arbeit verwendet hier das über Docker Swarm bereitgestellte Lastverteilungsverfahren Round-Robin DNS,
+eine rotierende Verteilung der eingehenden Anfragen auf unterschiedliche IP-Adressen.\cite{CloudflareRoundRobinDNS} 
+Da die Aufrechterhaltung der WebSocket-Verbindungen des Data Delivery Services gegenüber
 den Clients allerdings nicht linear verlaufen wird,\footnote{Manche Benutzer beenden die Anwendung sofort, andere lassen Sie über Tage laufen.}
-empfiehlt sich hier die Implementierung einer anhand von Health-Checks basierenden
-Lastverteilungsverfahren. Man schaut in überschaubaren Abständen nach der aktuellen
-Lastverteilung und weist die Anfragen so dem am wenigsten überlasteten Service zu.
-Die Arbeit konzentriert sich hier auf die Ermöglichung eines solchen Verfahrens,
-indem die Schicht der Servicelogik zustandslos gestaltet wird. Somit ist eine
-horizontale Skalierung der Serviceinstanzen problemlos möglich. Mehr dazu in
-\Cref{subsec:authentifizierungsverfahren}.
+empfiehlt es sich für die Zukunft, die Implementierung eines Lastverteilungsverfahrens
+basierend auf Health-Checks zu verwenden.
 
 \subsection{Inhaltsauslieferung}
 \label{subsec:inhaltsauslieferung}
