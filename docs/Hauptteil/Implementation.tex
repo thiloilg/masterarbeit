@@ -226,8 +226,10 @@ entscheidet sich die Arbeit im Fall des Resource Management Services für die Ve
 Um das Performanzdefizit im Vergleich zu dokumentbasierenden DBMS auszugleichen,
 werden Indices verwendet. Ein Datenbankindex ist ein Kompromiss, bei dem
 man Speicherplatz gegen Zugriffsgeschwindigkeit tauscht.\cite{YoutubePostgresIndexing}
-Mithilfe einer aktuell gehaltenen Indexstruktur\footnote{Beispielsweise Binärbäume, Hashtabellen und sortierte Abfolgen}
-wird die Komplexität eines Spaltenzugriffs dezimiert.
+Mithilfe der aktuell gehaltenen Indexstruktur\footnote{Beispielsweise Binärbäume, Hashtabellen und sortierte Abfolgen}
+wird die Komplexität des Spaltenzugriffs dezimiert. Die Arbeit verwendet für den Resource Management Service
+PostgreSQL, eine Open Source Datenbank, die das Verwenden von Indices ermöglicht. Für den Data Delivery Service
+wird MongoDB verwendet. 
 
 \subsection{Überwachung und Wartung}
 \label{subsec:ueberwachungundwartung}
