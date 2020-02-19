@@ -22,17 +22,26 @@ des Services geschildert, welcher die Frontendanwendung mit den Daten versorgt.
 
 \section{Infrastruktur}
 \label{sec:infrastruktur}
-Wie in \Cref{sec:continuousdelivery} bereits angesprochen, beinhaltet die Infrastruktur
-der Arbeit einen Linux-Server, auf welchem Gitlab CE, Gitlab Runner und eine Docker Registry
-installiert sind. Des Weiteren benötigt es weitere Server, für die Testphase sowie für
-die Produktion. Die einzelnen Services werden einfachheitshalber mithilfe von Docker-Compose
-auf einem einzelnen Server ausgeführt. Das Ziel für die Zukunft ist es, die einzelnen
-Services auf einzelne Linux-Server zu verteilen. Dies soll mithilfe des Open Source IAC-Werkzeugs\footnote{IAC steht für Infrastructure as Code}
+Für die Entwicklung der Gesamtanwendung benötigt die Arbeit einen Linux-Server,
+auf dem Gitlab CE, Gitlab Runner und eine Docker Registry
+installiert sind. Des Weiteren benötigt es einen Server für die Testphase und die
+Produktion. Die einzelnen Services werden mit Docker Swarm\footnote{https://docs.docker.com/engine/swarm/},
+einem Orchestrierungssystem für Docker-Container, auf dem Produktivsystem ausgeführt. Das Ziel
+für die Zukunft ist es, multiple Instanzen der Services auf mehreren Linux-Servern zu verteilen.
+Dies soll mithilfe des Open Source IAC-Werkzeugs\footnote{IAC steht für Infrastructure as Code}
 Terraform über eine Cloudanbieter-API und dem Orchestrierungssystem Kubernetes automatisiert werden.
-Die Arbeit beschränkt sich allerdings auf drei Linux-Server. Einen für die Versionsverwaltung
-und den CI/CD-Prozess, einen für die Testphase sowie einen für die Produktion. 
+Die Arbeit beschränkt sich auf drei Linux-Server. Einen für die Versionsverwaltung
+und die CI/CD-Prozesse, einen für die Testphase und einen für das Ausführen der Anwendung in Produktion.
 Die drei Server werden von Hetzner, einem Cloudanbieter, bereitgestellt und haben Ubuntu 18.04
-vorinstalliert.\footnote{Die 3 Linuxserver haben 4 VCPUs, 16GB RAM und 160GB SSD-Speicher} 
+vorinstalliert. Der Server für die CI/CD-Prozesse und die Versionsverwaltung besitzt 4 VCPUs, 
+16GB RAM und  haben 4 VCPUs, 16GB RAM und 160GB SSD-Speicher.\footnote{Die Prozessorleistung
+kann aufgrund der Komplexität der Serverfarmen und dessen verschiedene Versionen von
+Prozessoren variieren. In der Regel sind es Intel Skylake Xeon
+CPUs mit 2.1 GHz.\cite{CPUusedInHetznerCLoud}}
+
+
+der Server für die Testphase 2 VCPU, 8GB RAM und 80GB SSD-Speicher und
+der Server für die Produktion hat 8 VCPUs, 32GB RAM, 240GB SSD-Speicher und ein 10GB Volume für Persistierung der Datenbankdaten.
 Neben den Servern benötigt es noch Volumes, um die Daten der Datenbanken zu persistieren.
 Die an die Server angebrachten Volumes werden mithilfe von Docker-Compose auf die für die
 Beständigkeit relevanten Ordner der Datenbank-Container zugewiesen. Die Zuweisung variiert
