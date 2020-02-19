@@ -34,29 +34,28 @@ Die Arbeit beschränkt sich auf drei Linux-Server. Einen für die Versionsverwal
 und die CI/CD-Prozesse, einen für die Testphase und einen für das Ausführen der Anwendung in Produktion.
 Die drei Server werden von Hetzner, einem Cloudanbieter, bereitgestellt und haben Ubuntu 18.04
 vorinstalliert. Der Server für die CI/CD-Prozesse und die Versionsverwaltung besitzt 4 VCPUs, 
-16GB RAM und  haben 4 VCPUs, 16GB RAM und 160GB SSD-Speicher.\footnote{Die Prozessorleistung
-kann aufgrund der Komplexität der Serverfarmen und dessen verschiedene Versionen von
-Prozessoren variieren. In der Regel sind es Intel Skylake Xeon
-CPUs mit 2.1 GHz.\cite{CPUusedInHetznerCLoud}}
-
-
-der Server für die Testphase 2 VCPU, 8GB RAM und 80GB SSD-Speicher und
-der Server für die Produktion hat 8 VCPUs, 32GB RAM, 240GB SSD-Speicher und ein 10GB Volume für Persistierung der Datenbankdaten.
+16GB RAM und  haben 4 VCPUs, 16GB RAM und 160GB SSD-Speicher.\footnote{Im Regelfall handelt es sich bei
+den VCPUs um Intel Skylake Xeon CPUs mit 2.1 GHz.\cite{CPUusedInHetznerCLoud}}
+Der Server der Testphase besitzt 2 VCPU, 8GB RAM und 80GB SSD-Speicher. Der für die Produktion
+ausgelegte Server besitzte 8 VCPUs, 32GB RAM und 240GB SSD-Speicher.
 Neben den Servern benötigt es noch Volumes, um die Daten der Datenbanken zu persistieren.
-Die an die Server angebrachten Volumes werden mithilfe von Docker-Compose auf die für die
+Die an die Server angebrachten Volumes werden mithilfe von Docker auf die für die
 Beständigkeit relevanten Ordner der Datenbank-Container zugewiesen. Die Zuweisung variiert
-je nach Datenbank. Um die Server über das Internet zu erreichen, benötigt es diverse Domains
-und Subdomains, die mithilfe von DNS-Records auf die vom Server bereitgestellten
-IPv4- und IPv6-Adressen verweisen.\footnote{Man kann die Server natürlich auch direkt über die IP-Adresse ansprechen.}
+je nach Datenbank.
 
-Die Domain \code{blicc.org} dient als Hauptdomain und wird in der Produktion verwendet. Der Name Blicc
-wurde zur representation des Produktes gewählt. Bei einer Verwendung der Anwendung als White-Label-Produkt
-wird der Name durch den der zu repräsentierenden Firma ersetzt. Der Name Blicc ist eine
-veränderte Form des deutschen Wortes "Blick". Der Name wurde daher verändert, da die Verfügbarkeit
-von "Blick" in den meisten Domainvariationen nicht mehr erhältlich war und zudem
-überteuert angeboten wurde. Die Domain für den Server der Testphase ist \code{testing-stage.org}.
-Die beiden Domains besitzten die Subdomains \code{api} und \code{delivery}. Die Subdomain \code{api} verweist
-auf die Resource Management API; die Subdomain \code{delivery} verweist auf die Data Delivery API.
+Um die Server über das Internet zu erreichen, benötigt es Domains
+und Subdomains, die mithilfe von DNS-Records auf die vom Server bereitgestellten
+IPv4- und IPv6-Adressen verweisen.\footnote{Man kann die Server natürlich auch direkt über
+die IP-Adresse ansprechen.} Die Domain \code{blicc.org} dient als
+Hauptdomain und wird in der Produktion verwendet. Der Name Blicc
+wurde zur Repräsentation des Produktes gewählt. Bei einer Verwendung der Anwendung
+als White-Label-Produkt wird der Name durch den der zu repräsentierenden Firma ersetzt.
+Der Name Blicc ist eine veränderte Form des deutschen Wortes "Blick". Der Name wurde
+daher verändert, da die Verfügbarkeit von "Blick" in den meisten Domainvariationen
+nicht mehr erhältlich war oder aber überteuert angeboten wurde. Die Domain für den
+Server der Testphase ist \code{testing-stage.org}. Die beiden Domains besitzten die
+Subdomains \code{api} und \code{delivery}. Die Subdomain \code{api} verweist auf
+den Resource Management Service; die Subdomain \code{delivery} auf die Data Delivery Service.
 Außerdem gibt es die \code{monitor} Subdomain, welche auf die Kontrollübersicht von Traefik
 verweist. Traefik dient als Reverse-Proxy und Load-Balancer, bietet zusätzlich allerdings
 auch noch geringe Überwachungsfunktionalitäten in einem webbasierten Dashboard an.
@@ -64,11 +63,12 @@ Dazu mehr in \Cref{subsec:reverseproxyundloadbalancer}.
 
 Die Docker Registry ist unter der Domain \code{registry.thiloilg.com}, Gitlab CE
 unter \code{gitlab.thiloilg.com} erreichbar. Die Repositories werden alle zusätzlich
-auf Github.com gespiegelt. Github.com dient als drittes Backup, falls die Repositories auf dem
+auf Github gespiegelt. Github dient als drittes Backup, falls die Repositories auf dem
 eigenen Gitlab Server und dem lokale Rechner verloren gehen. Mit dem Git-Befehl in
-Quellcode \ref{lst:gitalias} kann man sich einen Alias setzen, um zu allen Remote Repositories
-gleichzeitig zu pushen. Der senkrechte Strich im Linux Terminal, bekannt als "Pipe", trennt zwei Befehle in der
-Kommandozeile. Das Ergebnis des ersten Befehls wird an den zweiten Befehl weitergereicht.
+Quellcode \ref{lst:gitalias} kann ein Alias gesetzt werden, um zu allen Remote Repositories
+gleichzeitig zu pushen. Der senkrechte Strich im Linux Terminal, bekannt als "Pipe",
+trennt zwei Befehle in der Kommandozeile. Das Ergebnis des ersten Befehls wird
+an den zweiten Befehl weitergereicht.
 
 \begin{listing}
     \inputminted{sh}{snippets/sh/pushall.sh}
@@ -77,19 +77,19 @@ Kommandozeile. Das Ergebnis des ersten Befehls wird an den zweiten Befehl weiter
 \end{listing}
 
 Für das Aufsetzen der Server benötigt man drei Schritte.
-Als erstes verbindet man sich über SSH zu dem Server und richtet den die UFW
-ein.\footnote{UFW steht für Uncomplicated Firewall} Dabei öffnet man alle Ports,
+Als erstes verbindet man sich über SSH zu dem Server und richtet eine Firewall ein.
+Hierfür verwendet die Arbeit UFW, eine in Ubuntu vorinstallierte
+Firewall.\footnote{UFW steht für Uncomplicated Firewall} Dabei öffnet man alle Ports,
 die von den Anwendungen des Server benötigt werden. In der Regel sind das Port 80
 für HTTP und Port 443 für HTTPS. Aufgrunddessen, dass bei dem Gitlab CE Server
 Port 22 bereits für die SSH verbindung benötigt wird, musste der Gitlab Shell SSH
 Port auf 2222 verlegt werden. Als zweiten Schritt Installiert man alle nötigen
-Programme auf dem Server. Das wichtigste der Programme ist Docker CE. In Schritt
+Programme auf dem Server. Das wichtigste Programm ist Docker CE. In Schritt
 drei kopiert man mithilfe von SCP die \code{docker-compose.yml} Datei auf den
-Server und startet sie mit \code{docker-compose up}. In der Docker-Compose Datei
-stehen alle wichtigen Informationen, um ein kleines Docker-Cluster aufzuziehen.
-Bei dem Server für die Testphase sowie dem Produktionsserver ist dieser Prozess
-in der Gitlab CI Pipeline automatisiert. Eine genauere Beschreibung der
-Pipeline befindet sich in \Cref{sec:pipelinedesign}.
+Server und startet Docker Swarm mit \code{docker swarm init}. Daraufhin wird
+ein Stack mit den in der Docker-Compose Datei definierten Services aufgezogen.
+Dieser Prozess ist für den Test- sowie den Produktionsserver in der CI/CD-Pipeline
+automatisiert. Mehr dazu in \Cref{sec:pipeline}.
 
 \section{Gesamtsystem}
 \label{sec:gesamtsysten}
