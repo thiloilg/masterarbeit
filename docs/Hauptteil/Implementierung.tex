@@ -82,16 +82,35 @@ Für das Aufsetzen der Server benötigt man drei Schritte.
 Als erstes verbindet man sich über SSH zu dem Server und richtet eine Firewall ein.
 Hierfür verwendet die Arbeit UFW, eine in Ubuntu vorinstallierte
 Firewall.\footnote{UFW steht für Uncomplicated Firewall} Dabei öffnet man alle Ports,
-die von den Anwendungen des Server benötigt werden. In der Regel sind das Port 80
-für HTTP und Port 443 für HTTPS. Aufgrunddessen, dass bei dem Gitlab CE Server
+die von den Anwendungen des Server benötigt werden. Aufgrunddessen, dass bei dem Gitlab CE Server
 Port 22 bereits für die SSH verbindung benötigt wird, musste der Gitlab Shell SSH
-Port auf 2222 verlegt werden. Als zweiten Schritt Installiert man alle nötigen
-Programme auf dem Server. Das wichtigste Programm ist Docker CE. In Schritt
-drei kopiert man mithilfe von SCP die \code{docker-compose.yml} Datei auf den
-Server und startet Docker Swarm mit \code{docker swarm init}. Daraufhin wird
-ein Stack mit den in der Docker-Compose Datei definierten Services aufgezogen.
-Dieser Prozess ist für den Test- sowie den Produktionsserver in der CI/CD-Pipeline
-automatisiert. Mehr dazu in \Cref{sec:pipeline}.
+Port auf 2222 verlegt werden. In der Tabelle \ref{tab:geoeffneteportsderproduktionsserver}
+sieht man die geöffneten Ports der Produktionsserver.
+
+\begin{table}[h]
+    \begin{center}
+\begin{tabular}{rll}
+PORT & Protokoll & Verwendungszweck\\
+\hline
+22 & TCP & SSH\\
+80 & TCP & HTTP/WS\\
+443 & TCP & HTTPS/WSS\\
+2377 & TCP & Kommunikation zwischen Nodes\footnote{Nodes sind Manager- und Task-Server.}\\
+4789 & UDP & Ingress Netzwerk\\
+7946 & TCP/UDP & Kommunikation zwischen Instanzen\\
+\end{tabular}
+\end{center}
+\caption{Geöffnete Ports der Produktionsserver}
+\label{tab:geoeffneteportsderproduktionsserver}
+\end{table}
+
+Als zweiten Schritt werden Docker CE und Docker-Compose auf dem Server installiert.
+Als dritten Schnitt wird der Befehl \code{docker swarm init} auf dem Manager-Server
+ausgeführt. Die Task-Server werden daraufhin mit dem Manager-Server verbunden.
+Die restlichen Schritte sind alle von der Pipeline aus automatisiert. Die Pipeline
+kopiert mithilfe von SCP die \code{docker-compose.yml} Datei auf den Manager-Server,
+logt sich in die Docker Registry ein, zieht die neuen Images und startet das Cluster.
+Mehr dazu in \Cref{sec:pipeline}.
 
 \section{Gesamtsystem}
 \label{sec:gesamtsysten}
