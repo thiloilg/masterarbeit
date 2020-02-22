@@ -403,11 +403,22 @@ zu ermöglichen. Bei React-Bootstrap-Bibliothek werden für die Komponenten ganz
 die man dann ersetzen müsste. CSS-Tags hingegen lassen sich schneller überschreiben oder austauschen.
 Bis auf die Bibliotheken \code{jmespath.js} und \code{qrcode} wurde die komplette Funktionalität der Frontendanwendung
 selbst implementiert. Die Zustandsverwaltung wurde mit der Context API von React realisiert. 
-Immer wieder vorkommende Funktionalitäten wurden in 28 Hooks ausgelagert. So besitzt die Frontendanwendung
+Immer wieder vorkommende Funktionalitäten wurden in 28 React-Hooks ausgelagert. So besitzt die Frontendanwendung
 der Arbeit beispielsweise einen Hook für die Anordnung der bereits im Dashboard existierenden Diagramme, einen für
 die Positionierung neuer Diagramme und einen für das Zeichen der Kacheln, die beim Drag and Drop erscheinen.
-Desweiteren wurden externe Schnittstellen in Hooks verpackt, um so die Schnittstelle vor der Anwendung
-zu Abstrahieren.
+Des Weiteren wurden externe Schnittstellen in Hooks verpackt, um so die Schnittstelle vor der Anwendung
+zu Abstrahieren. Schnittstellen der Web Storage API wie \code{LocalStorage} und \code{SessionStorage}
+wurden so erweitert, dass ganze JavaScript-Objekte gespeichert werden können. Außerdem wird der Zustand zwischen
+der Anwendung und der Web Storage API synchronisiert. Verändert der Nutzer als beispielsweise die Sprache in einem
+Browser-Tab, wird diese auch in allen anderen Browser-Tabs geändert.
+
+Die zwei bedeutsamsten Hooks sind \code{useApiEndpoint} und \code{useDeliveryEndpoint}. Sie ermöglichen
+die Kommunikation zu den Mircoservices im Backend. Der \code{useApiEndpoint} Hook gibt die CRUD-Operationen,
+welche für die Kommunikation mit einer REST-API nötig sind, zurück. Der \code{useDeliveryEndpoint} Hook
+stellt eine \code{publish} sowie eine \code{subscribe} Funktion zur Verfügung. Die \code{useApiEndpoint}
+dient gleichzeitig als Middleware zwischen der Anwendung und dem Backend. So werden hier HTTP-Statuscodes
+abgefangen, um so bestimmte Aktionen durchzuführen. So wird im Falle eines abgelaufenen Authentifizierungstokens,
+ein neues beantragt.
 
 \subsection{Android Anwendung}
 \label{subec:androidanwendung}
