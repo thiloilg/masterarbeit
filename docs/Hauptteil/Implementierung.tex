@@ -38,7 +38,7 @@ vorinstalliert. Der Server für die CI/CD-Prozesse und die Versionsverwaltung be
 den VCPUs um Intel Skylake Xeon CPUs mit 2.1 GHz.\cite{CPUusedInHetznerCLoud}}
 Der Server der Testphase besitzt 2 VCPU, 8GB RAM und 80GB SSD-Speicher. Die für die Produktion
 ausgelegten Server besitzten 8 VCPUs, 32GB RAM und 240GB SSD-Speicher.
-Die Produktionsserver sind in einen Manager- und einen Task-Server aufgeteilt. Von dem Manager-Server
+Die Produktionsserver (Nodes) sind in einen Manager- und einen Task-Server aufgeteilt. Von dem Manager-Server
 aus können Instanzen hinzugefügt und auch wieder entfernt werden. Um die Daten zu persistieren,
 ist ein 10GB SSD Volumen an den Manager-Server angebunden. In der Docker-Compose-Datei werden
 Regeln definiert, die festlegen, dass die Datenbanken immer auf dem Manager-Server angelegt werden.
@@ -95,7 +95,7 @@ PORT & Protokoll & Verwendungszweck\\
 22 & TCP & SSH\\
 80 & TCP & HTTP/WS\\
 443 & TCP & HTTPS/WSS\\
-2377 & TCP & Kommunikation zwischen Nodes\footnote{Nodes sind Manager- und Task-Server.}\\
+2377 & TCP & Kommunikation zwischen Nodes\\
 4789 & UDP & Ingress Netzwerk\\
 7946 & TCP/UDP & Kommunikation zwischen Instanzen\\
 \end{tabular}
