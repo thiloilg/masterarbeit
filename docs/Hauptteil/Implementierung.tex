@@ -167,54 +167,46 @@ ist für die Auslieferung der statischen Dateien des Frontends verantwortlich.
 Anders, als bei einem Proxy, der den Client von dem Server versteckt, versteckt ein Reverse Proxy
 eine Serverinfrastruktur vor dem Client. Durch die Anonymisierung der Serverinfrastruktur
 sind Angriffe gegen spezifische Servertechnologien erschwert, da deren Schnittstelle
-nicht direkt mit der Außenwelt kommuniziert. In der Regel übernimmt der Reverse Proxy
-auch die SSL/TLS-Verschlüsselung. Des Weiteren kann er auch zur Verteilung der Serverlast,
-also als Load Balancer verwendet werden. Ein typisches Beispiel für einen Reverse Proxy
-ist ein Nginx Webserver. Die Arbeit benutzt als Reverse Proxy und Load Balancer die
-in Golang geschriebene Open Source Software Traefik.\footnote{https://docs.traefik.io/}
-Traefik unterstützt die Kommunikation mit Orchestrierungssystemen wie Kubernetes
-und Docker Swarm, und bietet additional auch noch automatisierte SSL/TLS-Verschlüsselung
-mithilfe von Let's Encrypt.\footnote{https://letsencrypt.org/} Laut einer Google Checklist,
-ist eine Verbindung über HTTPS Vorraussetzung für eine PWA.\cite{GooglePWAChecklist}
+nicht direkt mit der Außenwelt kommuniziert. Als Reverse Proxy verwendet die Arbeit
+die in Golang geschriebene Open Source Software Traefik.\footnote{https://docs.traefik.io/}
+Neben der Funktionalität als Reverse Proxy bietet Traefik eine
+SSL/TLS-Verschlüsselung über den Service Let's Encrypt an.\footnote{https://letsencrypt.org/}
+Laut einer Checklist von Google ist eine Verbindung über HTTPS
+Vorraussetzung für die Auslieferung einer PWA.\cite{GooglePWAChecklist}
 Ohne SSL/TLS-Verschlüsselung werden Funktionalitäten wie das hinzufügen der App zum Homescreen
 von den Browsern nicht bereitgestellt. Verschlüsselungsschichten wie TLS und der Vorgänger
 SSL liegen zwischen der TCP-Schicht und HTTP/WS. Neben dem Public-Key-Verschlüsselungsverfahren
 muss für eine TLS-Verschlüsselung auch die Authentizität des Servers, mit dem kommuniziert wird,
 bestätigt sein. Hierfür wird ein EV-TLS-Zertifikate\footnote{EV steht für Extended Validation} benötigt.
 Mithilfe von Let's Encrypt, einer gemeinnützigen Zertifizierungsstelle, werden EV-TLS-Zertifikate
-kostenlos über eine API zur Verfügung gestellt. Die Arbeit hat sich unter anderem für Traefik entschieden,
-da der Reverse Proxy einen automatisierten Vorgang bereitstellt, indem EV-TLS-Zertifikate
-mithilfe von Let's Encrypt generiert werden.
+kostenlos über eine API zur Verfügung gestellt. Die Arbeit hat sich für Traefik entschieden,
+da der Reverse Proxy einen automatisierten Vorgang bereitstellt, indem die EV-TLS-Zertifikate
+kurz vor dem Ablaufdatum über den von Let's Encrypt bereitgestellten Service aktualisiert werden.
 
-Der Load Balancer entscheidet, wie die Serverlast unter den verschiedenen Services aufgeteilt wird.
-Die Arbeit verwendet hier das über Docker Swarm bereitgestellte Lastverteilungsverfahren Round-Robin DNS,
-eine rotierende Verteilung der eingehenden Anfragen auf unterschiedliche IP-Adressen.\cite{CloudflareRoundRobinDNS} 
+Die Aufgabe des Load Balancers übernimmt das Orchestrierungssystem Docker Swarm. Swarm verwendet
+als Lastverteilungsverfahren Round-Robin, eine rotierende Verteilung der eingehenden Anfragen auf
+die unterschiedlichen Instanzen eines Services.\cite{CloudflareRoundRobinDNS}
 Da die Aufrechterhaltung der WebSocket-Verbindungen des Data Delivery Services gegenüber
 den Clients allerdings nicht linear verläuft,\footnote{Manche Benutzer beenden die Anwendung sofort, andere lassen Sie über Tage laufen.}
 empfiehlt es sich für die Zukunft, die Implementierung eines Lastverteilungsverfahrens
-basierend auf Health-Checks zu verwenden.
+basierend auf Health-Checks zu verwenden. Die Health-Checks könnten so die aktuelle
+Auslastung der Instanzen bereitstellen, anhand derer dann die Last gleichmäßig verteilt wird.
 
 \subsection{Inhaltsauslieferung}
 \label{subsec:inhaltsauslieferung}
 Die Inhaltsauslieferung ist dafür zuständig, statische Inhalte der Frontendanwendung
 an den Client auszuliefern. Die statischen Inhalte sind unter anderem
 HTML-, CSS- und JS-Dateien, JSON-Dateien wie das Web App Manifest sowie Bilddateien.
-Die Arbeit verwendet als Webserver Nginx. Steve Souders betont
-in einem Vortrag über die Performance von JavaScript, dass ein Drittel der im Browser
-geladenen First-Party-Scripts zwischen 90- und 100Kb nicht komprimiert werden.
-Das liege daran, dass jQuery, eine der meistgenutztesten JS-Bibliotheken,
-unkomprimiert circa bei 100Kb angesiedelt sei.\cite{SteveSoudersMakeJavaScriptFaster}
-Laut einer Statistik von Build With benutzten 88,07\% der Top 10k meinstbesuchtesten
-Webseiten des Internets jQuery.\footnote{Stand Februar 2020.\cite{BuildWithjQuery}}
-
-Für die kompression der statischen Inhalte verwendet die Arbeit Brotli.
-Brotli ist eine von Zoltán Szabadka und Jyrki Alakuijala entwickeltes Kompressionsverfahren,
+Die Arbeit verwendet als Webserver Nginx. Für die kompression der statischen
+Inhalte wird Brotli verwendet. Brotli ist eine von Zoltán Szabadka
+und Jyrki Alakuijala entwickeltes Kompressionsverfahren,
 dass auf die Entropiekodierung Huffman und dem verlustlosen
 Datenkompressionsverfahren LZ77 basiert.\cite{BrotliGoogleOpenSourceBlog}
-Als Fallback wird Gzip verwendet. Standartmäßig unterstützt Nginx
+Als Fallback verwendet die Arbeit Gzip. Standartmäßig unterstützt Nginx
 das Kompressionsverfahren Gzip. Die Arbeit fügt dem Nginx-Dockerfile ein Script
 hinzu, welches Brotli installiert. Außerdem wurde die \code{nginx.conf} Datei
-so angepasst, damit Nginx Brotli unterstützt.
+so angepasst, damit Nginx Brotli unterstützt. Der Geschwindigkeitsunterschied der
+beiden Kompressionsarten wird in \Cref{sec:uebertragung} dargestellt und ausgewertet.
 
 \subsection{Wahl der Datenbankarten}
 \label{subsec:wahlderdatenbankarten}
@@ -283,7 +275,7 @@ entfernt sowie der Cache entleert.
 
 \section{Projektaufbau}
 \label{sec:projektaufbau}
-
+Domain Driven Design
 //TODO: NEXT!!!
 
 \subsection{Monorepo und Git-Submodules}
@@ -403,6 +395,19 @@ in der Buildpipeline von der Backendapi abhängig.
 
 \section{Frontendanwendung}
 \label{sec:frontendanwendung}
+Die Frontendanwendung ist mit dem Frontendframework React geschrieben.
+Zur Visualisierung der GUI-Komponenten wird wie bereits in \Cref{subsec:zentralisierungderindividualisierbarkeit}
+erwähnt, das CSS-Framework Bootstrap verwendet. Die Arbeit hat sich bewusst gegen
+eine React-Bootstrap-Bibliothek entschieden, um ein schnelleres Auswechseln von CSS-Frameworks
+zu ermöglichen. Bei React-Bootstrap-Bibliothek werden für die Komponenten ganze Klassen importiert,
+die man dann ersetzen müsste. CSS-Tags hingegen lassen sich schneller überschreiben oder austauschen.
+Bis auf die Bibliotheken \code{jmespath.js} und \code{qrcode} wurde die komplette Funktionalität der Frontendanwendung
+selbst implementiert. Die Zustandsverwaltung wurde mit der Context API von React realisiert. 
+Immer wieder vorkommende Funktionalitäten wurden in 28 Hooks ausgelagert. So besitzt die Frontendanwendung
+der Arbeit beispielsweise einen Hook für die Anordnung der bereits im Dashboard existierenden Diagramme, einen für
+die Positionierung neuer Diagramme und einen für das Zeichen der Kacheln, die beim Drag and Drop erscheinen.
+Desweiteren wurden externe Schnittstellen in Hooks verpackt, um so die Schnittstelle vor der Anwendung
+zu Abstrahieren.
 
 \subsection{Android Anwendung}
 \label{subec:androidanwendung}
