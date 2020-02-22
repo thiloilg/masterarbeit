@@ -24,24 +24,26 @@ des Services geschildert, welcher die Frontendanwendung mit den Daten versorgt.
 \label{sec:infrastruktur}
 Für die Entwicklung der Gesamtanwendung benötigt die Arbeit einen Linux-Server,
 auf dem Gitlab CE, Gitlab Runner und eine Docker Registry
-installiert sind. Des Weiteren benötigt es einen Server für die Testphase und die
+installiert sind. Des Weiteren benötigt es einen Server für die Testphase und mehrere für die
 Produktion. Die einzelnen Services werden mit Docker Swarm\footnote{https://docs.docker.com/engine/swarm/},
-einem Orchestrierungssystem für Docker-Container, auf dem Produktivsystem ausgeführt. Das Ziel
-für die Zukunft ist es, multiple Instanzen der Services auf mehreren Linux-Servern zu verteilen.
-Dies soll mithilfe des Open Source IAC-Werkzeugs\footnote{IAC steht für Infrastructure as Code}
-Terraform über eine Cloudanbieter-API und dem Orchestrierungssystem Kubernetes automatisiert werden.
-Die Arbeit beschränkt sich auf drei Linux-Server. Einen für die Versionsverwaltung
-und die CI/CD-Prozesse, einen für die Testphase und einen für das Ausführen der Anwendung in Produktion.
-Die drei Server werden von Hetzner, einem Cloudanbieter, bereitgestellt und haben Ubuntu 18.04
+einem Orchestrierungssystem für Docker-Container, auf dem Produktivsystem ausgeführt. Je nach Skalierung
+werden die Instanzen der Services unter den in Produktion laufenden Servern aufgeteilt.
+In Zukunft soll die Integration von neuen Servern mithilfe des Open Source IAC-Werkzeugs\footnote{IAC steht für Infrastructure as Code}
+Terraform über eine Cloudanbieter-API automatisiert werden.
+Die Arbeit beschränkt sich auf vier Linux-Server. Einen für die Versionsverwaltung
+und die CI/CD-Prozesse, einen für die Testphase und zwei für das Ausführen der Anwendung in Produktion.
+Die vier Server werden von Hetzner, einem Cloudanbieter, bereitgestellt und haben Ubuntu 18.04
 vorinstalliert. Der Server für die CI/CD-Prozesse und die Versionsverwaltung besitzt 4 VCPUs, 
 16GB RAM und  haben 4 VCPUs, 16GB RAM und 160GB SSD-Speicher.\footnote{Im Regelfall handelt es sich bei
 den VCPUs um Intel Skylake Xeon CPUs mit 2.1 GHz.\cite{CPUusedInHetznerCLoud}}
-Der Server der Testphase besitzt 2 VCPU, 8GB RAM und 80GB SSD-Speicher. Der für die Produktion
-ausgelegte Server besitzte 8 VCPUs, 32GB RAM und 240GB SSD-Speicher.
-Neben den Servern benötigt es noch Volumes, um die Daten der Datenbanken zu persistieren.
-Die an die Server angebrachten Volumes werden mithilfe von Docker auf die für die
-Beständigkeit relevanten Ordner der Datenbank-Container zugewiesen. Die Zuweisung variiert
-je nach Datenbank.
+Der Server der Testphase besitzt 2 VCPU, 8GB RAM und 80GB SSD-Speicher. Die für die Produktion
+ausgelegten Server besitzten 8 VCPUs, 32GB RAM und 240GB SSD-Speicher.
+Die Produktionsserver sind in einen Manager- und einen Task-Server aufgeteilt. Von dem Manager-Server
+aus können Instanzen hinzugefügt und auch wieder entfernt werden. Um die Daten zu persistieren,
+ist ein 10GB SSD Volumen an den Manager-Server angebunden. In der Docker-Compose-Datei werden
+Regeln definiert, die festlegen, dass die Datenbanken immer auf dem Manager-Server angelegt werden.
+Die für die Speicherung der Daten relevanten Ordner der Datenbanken werden auf dem Volumen abgebildet.
+Dadurch wird sichergestellt, dass die Daten auf nach dem Herunterfahren des Docker-Clusters noch bestehen.
 
 Um die Server über das Internet zu erreichen, benötigt es Domains
 und Subdomains, die mithilfe von DNS-Records auf die vom Server bereitgestellten
