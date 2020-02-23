@@ -298,6 +298,8 @@ wie die Gliederung nach Dateiart sowie eine Ausgliederung oft benutzer Funktiona
 wurde die Gliederung der Order und der beinhalteten Dateien angepasst. Je nach Größe des Projekts ist eine andere Gliederung gefordert.
 So muss die Gliederung nach Dateiart bei ansteigender Komplexität durch ein DDD ausgetauscht werden.
 
+
+
 \subsection{Zentralisierung und Entkapselung}
 \label{subsec:zentralisierungundentkapselung}
 In diesem Abschnitt geht es um die Aufteilung des
@@ -473,7 +475,8 @@ ein JSON, das den Aufbau und die Einstellungen eines Dashboards darstellt.\footn
 Beispiel hierfür ist der Quellcodeausschnitt \ref{lst:jsondateizurspeicherungeinesdashboards}
 im Anhang unter "Weitere Quellcodeausschnitte".} Anhand dieser Informationen werden
 daraufhin zeitgleich in \( A_1 \) die benötigten Plugins von dem Resource Management Service
-und in \( B_1 \) die zu visualisierenden Daten von dem Data Delivery Service angefragt.
+und in \( B_1 \) die zu visualisierenden Daten von dem Data Delivery Service angefragt.\footnote{Das Anfragen der zu visualisierenden Daten erfolgt über die Publish-Funktion des 
+\code{useDeliveryEndpoint} Hooks.}
 Kommen die Plugins vor den zu visualisierenden Daten an, abbonieren diese über 
 den \code{useDeliveryEndpoint} Hook mithilfe der Data Source Id die für das Plugin relevanten
 Daten. Sobald diese ankommen, wird das durch das Plugin dargestellte Diagramm mit
@@ -501,6 +504,7 @@ Der \code{useModal} Hook gibt in einem Array zwei Funktionen zurück; eine zum �
 Schließen des Modals. Als Eingabeparameter erwartet der Hook ein Callback und ein Array. Der Callback
 gibt die anzuzeigende GUI-Komponente zurück. In das Array werden Referenzen übergeben, anhand derer
 der Hook weiß, wann er die GUI-Komponente neu rendern muss.
+
 
 
 \subsection{Android Anwendung}
