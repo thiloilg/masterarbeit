@@ -444,6 +444,20 @@ dient gleichzeitig als Middleware zwischen der Anwendung und dem Backend. So wer
 abgefangen, um so bestimmte Aktionen durchzuführen. Im Falle eines abgelaufenen Authentifizierungstokens,
 wird so ein neues beantragt. Daraufhin wird die Fehlgeschlagene Anfrage erneut ausgeführt.
 
+\begin{listing}
+    \inputminted{jsx}{snippets/jsx/useModalBeispiel.jsx}
+    \caption{Verwendung des \code{useModal} Hooks}
+    \label{lst:verwendungdesusemodalhooks}
+\end{listing}
+
+Zum Erstellen sowie als Sicherheitsabfrage vor der Löschung von Ressourcen verwendet die Arbeit Dialogfenster.
+Hierfür stellt die Arbeit den \code{useModal} Hook bereit. Ein Beispiel befindet sich in
+Quellcode \ref{lst:verwendungdesusemodalhooks}. Mithilfe des Hooks
+kann mit nur weniger Zeilen ein Dialogfenster samt Funktionalität in eine React-Komponente integriert werden.
+Der \code{useModal} Hook gibt in einem Array zwei Funktionen zurück; eine zum Öffnen und eine zum
+Schließen des Modals. Als Eingabeparameter erwartet der Hook ein Callback und ein Array. Der Callback
+gibt die anzuzeigende GUI-Komponente zurück. In das Array werden Referenzen übergeben, anhand derer
+der Hook weiß, wann er die GUI-Komponente neu rendern muss.
 
 
 \subsection{Android Anwendung}
