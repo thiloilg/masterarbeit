@@ -8,7 +8,7 @@ Komponenten verwirklicht. Aufgrund dieser Erkenntnisse, ist das Kapitel der
 Implementierung wie folgt gegliedert: In \Cref{sec:infrastruktur} geht es um
 die für die Entwicklung, die Testphase sowie die in Produktion laufende Anwendung
 benötigten Server. In \Cref{sec:gesamtsysten} geht es um den Aufbau der gesamten
-Anwendung. In \Cref{:sec:projektaufbau} wird der Aufbau des Projekts behandelt.
+Anwendung. In \Cref{sec:projektaufbau} wird der Aufbau des Projekts behandelt.
 In \Cref{sec:pipeline} wird die Implementierung der stetigen Erstellung, Testung und
 Auslieferung der Gesamtanwendung beschrieben. In den folgenden Abschnitten wird die
 Implementierung der von der Anforderungsanalyse geforderten Features erläutert.
@@ -38,12 +38,26 @@ vorinstalliert. Der Server für die CI/CD-Prozesse und die Versionsverwaltung be
 den VCPUs um Intel Skylake Xeon CPUs mit 2.1 GHz.\cite{CPUusedInHetznerCLoud}}
 Der Server der Testphase besitzt 2 VCPU, 8GB RAM und 80GB SSD-Speicher. Die für die Produktion
 ausgelegten Server besitzten 8 VCPUs, 32GB RAM und 240GB SSD-Speicher.
-Die Produktionsserver (Nodes) sind in einen Manager- und einen Task-Server aufgeteilt. Von dem Manager-Server
+Die Produktionsserver (Nodes) sind in einen Manager- und einen Worker-Node aufgeteilt. Von dem Manager-Node
 aus können Instanzen hinzugefügt und auch wieder entfernt werden. Um die Daten zu persistieren,
-ist ein 10GB SSD Volumen an den Manager-Server angebunden. In der Docker-Compose-Datei werden
+ist ein 10GB SSD Volumen an den Manager-Node angebunden. In der Docker-Compose-Datei werden
 Regeln definiert, die festlegen, dass die Datenbanken immer auf dem Manager-Server angelegt werden.
 Die für die Speicherung der Daten relevanten Ordner der Datenbanken werden auf dem Volumen abgebildet.
 Dadurch wird sichergestellt, dass die Daten auf nach dem Herunterfahren des Docker-Clusters noch bestehen.
+In Abbildung \ref{figure:dockerswarmcluster} ist das Docker Swarm Cluster der Arbeit zu sehen. Die Schlösser
+repräsentieren die Regeln, nach denen sich bestimmte Instanzen auf bestimmten Nodes befinden müssen.
+Alle weiteren Instanzen werden nach Auslastung auf die Nodes verteilt. In Abbildung \ref{figure:dockerswarmcluster}
+ist die Content Delivery (Nginx) und der Resource Management Service (API) auf zwei Instanzen skaliert.
+Der Data Delivery Service (Delivery) ist durch vier Instanzen repräsentiert.
+
+\begin{figure}
+    \begin{center}
+    \includegraphics[scale=0.2]{img/abbildungen/Cluster}
+    \end{center}
+    \caption{Docker Swarm Cluster}
+    \label{figure:dockerswarmcluster}
+\end{figure}
+
 
 Um die Server über das Internet zu erreichen, benötigt es Domains
 und Subdomains, die mithilfe von DNS-Records auf die vom Server bereitgestellten
@@ -106,7 +120,7 @@ PORT & Protokoll & Verwendungszweck\\
 
 Als zweiten Schritt werden Docker CE und Docker-Compose auf dem Server installiert.
 Als dritten Schnitt wird der Befehl \code{docker swarm init} auf dem Manager-Server
-ausgeführt. Die Task-Server werden daraufhin mit dem Manager-Server verbunden.
+ausgeführt. Die Worker-Server werden daraufhin mit dem Manager-Server verbunden.
 Die restlichen Schritte sind alle von der Pipeline aus automatisiert. Die Pipeline
 kopiert mithilfe von SCP die \code{docker-compose.yml} Datei auf den Manager-Server,
 logt sich in die Docker Registry ein, zieht die neuen Images und startet das Cluster.
