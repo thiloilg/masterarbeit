@@ -73,8 +73,8 @@ Server der Testphase ist \code{testing-stage.org}. Die beiden Domains besitzten 
 Subdomains \code{api} und \code{delivery}. Die Subdomain \code{api} verweist auf
 den Resource Management Service; die Subdomain \code{delivery} auf die Data Delivery Service.
 Außerdem gibt es die \code{monitor} Subdomain, welche auf die Kontrollübersicht von Traefik
-verweist. Traefik dient als Reverse-Proxy und Load-Balancer, bietet zusätzlich allerdings
-auch noch geringe Überwachungsfunktionalitäten in einem webbasierten Dashboard an.
+verweist. Traefik dient als Reverse-Proxy und bietet zusätzlich rudimentäre
+Überwachungsfunktionalitäten in einem webbasierten Dashboard an.
 Dazu mehr in \Cref{subsec:reverseproxyundloadbalancer}.
 
 Die Docker Registry ist unter der Domain \code{registry.thiloilg.com}, Gitlab CE
@@ -211,7 +211,7 @@ Auslastung der Instanzen bereitstellen, anhand derer dann die Last gleichmäßig
 Die Inhaltsauslieferung ist dafür zuständig, statische Inhalte der Frontendanwendung
 an den Client auszuliefern. Die statischen Inhalte sind unter anderem
 HTML-, CSS- und JS-Dateien, JSON-Dateien wie das Web App Manifest sowie Bilddateien.
-Die Arbeit verwendet als Webserver Nginx. Für die kompression der statischen
+Die Arbeit verwendet als zur Inhaltsauslieferung den Webserver Nginx. Für die Kompression der statischen
 Inhalte wird Brotli verwendet. Brotli ist eine von Zoltán Szabadka
 und Jyrki Alakuijala entwickeltes Kompressionsverfahren,
 dass auf die Entropiekodierung Huffman und dem verlustlosen
@@ -220,7 +220,7 @@ Als Fallback verwendet die Arbeit Gzip. Standartmäßig unterstützt Nginx
 das Kompressionsverfahren Gzip. Die Arbeit fügt dem Nginx-Dockerfile ein Script
 hinzu, welches Brotli installiert. Außerdem wurde die \code{nginx.conf} Datei
 so angepasst, damit Nginx Brotli unterstützt. Der Geschwindigkeitsunterschied der
-beiden Kompressionsarten wird in \Cref{sec:uebertragung} dargestellt und ausgewertet.
+beiden Kompressionsarten wird in \Cref{sec:uebertragung} verglichen.
 
 \subsection{Wahl der Datenbankarten}
 \label{subsec:wahlderdatenbankarten}
@@ -289,11 +289,17 @@ entfernt sowie der Cache entleert.
 
 \section{Projektaufbau}
 \label{sec:projektaufbau}
-Domain Driven Design
-//TODO: NEXT!!!
+Zur Entwicklung Gesamtanwendung verwendet die Arbeit VS Code. Es werden Git-Hooks
+verwendet um den Quellcode zu Formatierung und nach problematischen Entwurfsmustern
+zu suchen. Hierfür werden die Node.js Packages Prettier und Eslint verwendet.
+Für die Gliederung der Dateien verfolgt die Arbeit innerhalb der Anwendungen zum größten Teil die Herangehensweise des
+Domain-driven Designs (DDD). Um die Redundanz einzelner Funktionalitäten zu verringern, werden nichtsdestotrotz auch Herangehensweisen
+wie die Gliederung nach Dateiart sowie eine Ausgliederung oft benutzer Funktionalitäten in Bibliotheken verfolgt. Während der Entwicklung
+wurde die Gliederung der Order und der beinhalteten Dateien angepasst. Je nach Größe des Projekts ist eine andere Gliederung gefordert.
+So muss die Gliederung nach Dateiart bei ansteigender Komplexität durch ein DDD ausgetauscht werden.
 
-\subsection{Monorepo und Git-Submodules}
-\label{subsec:monorepoundsubmodules}
+\subsection{Zentralisierung und Entkapselung}
+\label{subsec:zentralisierungundentkapselung}
 In diesem Abschnitt geht es um die Aufteilung des
 Programmcodes in Repositories. Für die Versionsverwaltung
 wird Git verwendet. Die Arbeit entscheidet sich dazu,
@@ -319,8 +325,6 @@ Submodules gabeln\footnote{Unter "gabeln" oder auch "forken" versteht man
 das Erstellen einer eigenen Kopie eines Repositories, mit der unabhängig von
 der Versionierung der gegabelten Repository entwickelt werden kann.},
 um in ihrem eigenen Repository Diagramme für die Anwendung zu entwickeln.
-
-
 
 \section{Pipeline}
 \label{sec:pipeline}
