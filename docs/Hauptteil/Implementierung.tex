@@ -331,13 +331,9 @@ um in ihrem eigenen Repository Diagramme für die Anwendung zu entwickeln.
 Um eine stetige Softwareauslieferung zu ermöglichen, benötigt es einen automatisierten
 Prozess. Dieser Prozess muss sich um das Bauen, Testen und Ausliefern der einzelnen
 Container kümmern. In Abbildung \ref{figure:uebersichtueberdenstetigenauslieferungsprozess}
-sieht man eine Übersicht über den Auslieferungsprozess. An der X-Achse entlang sieht
-man die unterschiedlichen Umgebungen. Als erstes ist dort die Pipeline, ein in einem
-Gitlab Runner ausgelagerter Prozess, der ein vordefiniertes Script durchläuft.
-Damit der Gitlab Runner weiß, was er zu tun hat, werden in der \code{.gitlab-ci.yml}
-Datei einzelne Abschnitte und deren Aufgaben mithilfe der vereinfachten
-Auszeichnungssprache YAML definiert. Für jeden Abschnitt kann ein eigenes Docker-Image
-gewählt werden. Mehr dazu findet man in \Cref{subsec:stages}.
+ist eine Übersicht über den Auslieferungsprozess zu sehen. Entlang der X-Achse
+befinden sich die für den Auslieferungsprozess relevanten Umgebungen.
+Die Y-Achse steht für die Stages der Pipeline.
 
 \begin{figure}
     \begin{center}
@@ -347,33 +343,36 @@ gewählt werden. Mehr dazu findet man in \Cref{subsec:stages}.
     \label{figure:uebersichtueberdenstetigenauslieferungsprozess}
 \end{figure}
 
-An zweiter Stelle
-befindet sich die Docker Registry. Eine Docker Registry ist für die Umgebung
-einer Softwareanwendung das, was eine Git Repository für den Quellcode ist.
-Eine Docker Registry ist also eine Art Versionsverwaltung für Docker-Images.
-Hat man die Images einmal getestet, kann man davon ausgehen, dass es sich
-in ausgeliefertem Zustand genauso verhalten wird, wie dies beim Testen der Fall war.
-
-An dritter Stelle kommt die die Umgebung für die Qualitätssicherung.\footnote{Auf English Quality Assurance, abgekürzt QA.}
-Hier wird die Software nach ihrer Qualität getestet. Erst wenn sie eine
-zuvor definierte Qualitätsmerkmale aufweist, darf diese in die Produktionsumgebung
-ausgeliefert werden.
-
-An letzter Stelle kommt die Produktionsumgebung. Hier werden die laufenden Container durch
-die neuen Container, welche alle Tests erfolgreich absolviert haben, ersetzt. Die Produktionsumgebung
-unterscheidet sich von der QA-Umgebung daran, dass hier die einzelnen Container je nach Verarbeitungsmenge
-skaliert werden.
+Die erste Umgebung ist die Pipeline, ein in einem
+Gitlab Runner ausgelagerter Prozess, der ein vordefiniertes Script durchläuft.
+Damit der Gitlab Runner weiß, was er zu tun hat, werden in der \code{.gitlab-ci.yml}
+Datei einzelne Abschnitte und deren Aufgaben mithilfe der vereinfachten
+Auszeichnungssprache YAML definiert. Für jeden Abschnitt kann ein eigenes Docker-Image
+gewählt werden. Mehr dazu findet man in \Cref{subsec:stages}. An zweiter Stelle
+befindet sich die Docker Registry.\footnote{Eine Docker Registry ist eine Versionsverwaltung für Docker-Images.}
+Sind die Images getestet, ist davon auszugehen, dass sich diese auch
+in ausgeliefertem Zustand genauso verhalten werden, wie dies beim Testen
+der Fall war. Die Qualitätssicherung ist an dritter Stelle\footnote{Auf English Quality Assurance, abgekürzt QA.}
+Hier wird die Software nach ihrer Qualität getestet. Erst wenn sie alle
+zuvor definierten Qualitätsmerkmale aufweist, darf die Software in die Produktionsumgebung
+ausgeliefert werden. Die Produktionsumgebung unterscheidet sich von der QA-Umgebung
+nur geringfügig. Im Gegensatz zur QA werden hier die Daten in den Datenbanken persistiert und die
+einzelnen Container je nach benötigter Rechenleistung skaliert.
 
 \subsection{Stages}
 \label{subsec:stages}
-In Abbildung \ref{figure:uebersichtueberdenstetigenauslieferungsprozess} des vorherigen Abschnitts
-sieht man auf der Y-Achse die Stages, die die Pipeline bei dem Auslieferungsprozess durchläuft.
-Genauso wie das System der eigentlichen Anwendung besteht auch die Pipeline aus unterschiedlichen
-Docker-Containern. Somit ist jeder der Abschnitte unabhängig von dem Gesamtgeschehen der Pipeline.
-Öfter auftretende Funktionalitäten können in der Gitlab-CI-Pipeline in eigene Scripts ausgelagert
-werden. So verhindert man redundanten Quellcode in der Pipeline. Ein Beispiel hierfür
+Die drei in Abbildung \ref{figure:uebersichtueberdenstetigenauslieferungsprozess} dargestellten Stages sind
+die \mbox{Build-,} die \mbox{Test-,} sowie die Deploy-Stage. Genauso wie das Produktivsystem
+besteht auch die Pipeline aus unterschiedlichen Docker-Umgebungen. Die Test-Stage ist in eine Vorbereitungs-
+und einer Durchführungsphase unterteilt. In der Vorbereitungsphase wird das für die Tests
+benötigte Cluster erstellt. Die Durchführungsphase ist in zwei parallellaufende Prozesse
+unterteilt. Dies ist nötig, da die Integrationstests für den Resource Management Service
+eine Node.js-Umgebung und den Data Delivery Service eine Golang-Umgebung benötigen.
+
+Die Arbeit lagert öfter auftretende Funktionalitäten der Gitlab-CI-Pipeline in eigene Scripts aus.
+So wird redundanter Quellcode in der Pipeline verhindert. Ein Beispiel hierfür
 ist Quellcode \ref{lst:wiederverwendbarescriptsdergitlabci}. Das erste ausgelagerte
-Script ermöglicht das verwenden von SSH innerhalb der Pipeline. Somit kann sich
+Script ermöglicht die Verwendung von SSH innerhalb der Pipeline. Somit kann sich
 die pipeline mit dem Server verbinden, um die Docker-Compose Datei auf den Server
 zu kopieren und diese auszuführen. Das zweite Script ist dafür zuständig,
 sich in die Docker Registry einzuloggen. Dies ist nötig, um Docker-Container
@@ -385,9 +384,9 @@ in die Registry zu speichern und diese später vom Server aus wieder abzufragen.
     \label{lst:wiederverwendbarescriptsdergitlabci}
 \end{listing}
 
-Für die Build- und Deploy-Stage wird ein von Docker vorgefertigtes Git-Image verwendet.
-Die Test-Stage verwendet ein vorgefertigtes Node.js Image mit der Version 12. Dies ist notwendig,
-um die Integrationstests auszuführen, welche in JavaScript geschrieben sind.
+Für die Build- und Deploy-Stage wird ein von Docker vorgefertigtes Git-Image verwendet. Nach der Deploy-Stage
+kommt noch eine Seed-Stage. Sie aktualisiert die im Redis-Cache gespeicherten Plugins. Die Plugins können
+allerdings von außerhalb der Pipeline aktualisiert werden.
 
 \subsection{Health-Checks}
 \label{subsec:healthcheck}
