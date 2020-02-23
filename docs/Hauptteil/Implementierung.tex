@@ -390,20 +390,32 @@ allerdings von außerhalb der Pipeline aktualisiert werden.
 
 \subsection{Health-Checks}
 \label{subsec:healthcheck}
-In Microservice-Infrastrukturen sind die einzelnen Services eng miteinander verknüpft
-und voneinander abhängig. Um die Verfügbarkeit sicherzustellen, werden auf
-Serviceebene Healthcheckendpunkte bereitgestellt. Diese spiegeln den aktuellen
-Gesundheitszustand des jeweiligen Dienstes wieder. Ein Healthcheckendpunkt
+Um die Verfügbarkeit der Services sicherzustellen, werden auf
+Serviceebene Health-Check-Endpunkte bereitgestellt. Diese spiegeln den aktuellen
+Gesundheitszustand des jeweiligen Dienstes wieder. Ein Health-Check-Endpunkt
 ist speziell dann nützlich, wenn ein Dienst oder ein Verfahren von einem anderen
 abhängig ist. So ist beispielsweise die Backendapi von der Datenbank
-abhängig. Andererseits ist der Frontenddienst sowie das Apitestverfahren
-in der Buildpipeline von der Backendapi abhängig. 
+abhängig. Andererseits ist der Frontenddienst sowie die Integrationstests
+in der Test-Stage von der Backendapi abhängig. In der Arbeit wurden für alle Services
+rudimentäre Health-Checks implementiert, mithilfe derer die Produktionsserver ohne Ausfallzeit
+aktualisiert werden können. Bei einem Update fährt Docker Swarm die auszutauschende
+Instanz erst herunter, wenn eine neue betriebsbereit ist. Ob eine neue Instanz betriebsbereit ist,
+wird durch den Health-Check bestimmt. Für den Health-Check des Nginx-Containers ruft die Arbeit beispielsweise
+in einem Shell-Script den Befehl \code{service nginx status} auf. Ist das Resultat Positiv, wird
+das Script mit \code{0} beendet, andernfalls mit \code{1}. Bei den eigenen Services werden \code{/health-check}
+Routen bereitgestellt, die den Zustand des Services wiederspiegeln. Hier wird unter anderem geprüft, ob die Datenbanken
+und der Cache mit dem Service verbunden sind.
 
 \begin{listing}
-    \label{lst:healthcheck}
     \inputminted{sh}{snippets/sh/healthcheck.sh}
-    \caption{Healthcheckbeispiel in der Gitlab CI}
+    \caption{Warteschleife in Pipeline}
+    \label{lst:healthcheck}
 \end{listing}
+
+In der Gitlab-CI wird mithilfe eines kleinen Shell-Scripts eine Warteschleife ausgeführt, die mithilfe von
+\code{curl} den Health-Check-Endpunkt des jeweiligen Services abfragt. In Quellcode \ref{lst:healthcheck}
+ist ein solches Script zu sehen. Die Arbeit stellt so sicher, dass bei der Durchführung der Tests die
+benötigten Services funktionsbereit sind.
 
 \section{Frontendanwendung}
 \label{sec:frontendanwendung}
@@ -431,7 +443,6 @@ stellt eine \code{publish} sowie eine \code{subscribe} Funktion zur Verfügung. 
 dient gleichzeitig als Middleware zwischen der Anwendung und dem Backend. So werden hier HTTP-Statuscodes
 abgefangen, um so bestimmte Aktionen durchzuführen. So wird im Falle eines abgelaufenen Authentifizierungstokens,
 ein neues beantragt. Daraufhin wird die Fehlgeschlagene Anfrage erneut ausgeführt. 
-
 
 \subsection{Android Anwendung}
 \label{subec:androidanwendung}
