@@ -46,9 +46,9 @@ Die für die Speicherung der Daten relevanten Ordner der Datenbanken werden auf 
 Dadurch wird sichergestellt, dass die Daten auf nach dem Herunterfahren des Docker-Clusters noch bestehen.
 In Abbildung \ref{figure:dockerswarmcluster} ist das Docker Swarm Cluster der Arbeit zu sehen. Die Schlösser
 repräsentieren die Regeln, nach denen sich bestimmte Instanzen auf bestimmten Nodes befinden müssen.
-Alle weiteren Instanzen werden nach Auslastung auf die Nodes verteilt. In Abbildung \ref{figure:dockerswarmcluster}
-ist die Content Delivery (Nginx) und der Resource Management Service (API) auf zwei Instanzen skaliert.
-Der Data Delivery Service (Delivery) ist durch vier Instanzen repräsentiert.
+Alle weiteren Instanzen werden nach Auslastung auf die Nodes verteilt. Die Content Delivery (Nginx)
+und der Resource Management Service (API) sind auf zwei Instanzen skaliert. Vier Instanzen repräsentieren
+den Data Delivery Service (Delivery).
 
 \begin{figure}
     \begin{center}
