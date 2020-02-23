@@ -426,9 +426,17 @@ eine React-Bootstrap-Bibliothek entschieden, um ein schnelleres Auswechseln von 
 zu ermöglichen. Bei React-Bootstrap-Bibliothek werden für die Komponenten ganze Klassen importiert,
 die man dann ersetzen müsste. CSS-Tags hingegen lassen sich schneller überschreiben oder austauschen.
 Bis auf die Bibliotheken \code{jmespath.js} und \code{qrcode} wurde die komplette Funktionalität der Frontendanwendung
-selbst implementiert. Die Zustandsverwaltung wurde mit der Context API von React realisiert. 
-Immer wieder vorkommende Funktionalitäten wurden in React-Hooks ausgelagert. So besitzt die Frontendanwendung
-der Arbeit beispielsweise einen Hook für die Anordnung der bereits im Dashboard existierenden Diagramme, einen für
+selbst implementiert. Die Zustandsverwaltung wurde mit der Context API von React realisiert.
+Immer wieder vorkommende Funktionalitäten wurden in React-Hooks ausgelagert. Diese Hooks werden in einem
+\code{common} Ordner zusammen mit oft benutzten React-Komponenten ausgelagert. Die Routen der Frontendanwendung
+besitzten nur für die Seiten, die Ressourcen Anzeigen, den von REST bekannten Aufbau der URL-Pfade. Die Pfade
+wurden möglichst benutzerfreundlich benannt. So ist der URL-Pfad der Loginseite beispielsweise \code{/login}.
+Aus SEO-Gründen und der Benutzerfreundlichkeit wegen verändert sich der Titel sowie die Beschreibung je nach
+Seite der Frontendanwendung. Der Begriff Single-Page-Webanwendung bezieht sich hier nur auf das initiale Laden
+einer HTML-Seite. Die Frontendanwendung besitzt mehrere Seite, die alle über Suchmaschienen wie Google
+gefunden werden können.
+
+Die Frontendanwendung besitzt einen React-Hook für die Anordnung der bereits im Dashboard existierenden Diagramme, einen für
 die Positionierung neuer Diagramme und einen für das Zeichnen der farbigen Bereiche, die beim Drag and Drop erscheinen.
 Des Weiteren wurden externe Schnittstellen in Hooks verpackt, um so die Schnittstelle vor der Anwendung
 zu Abstrahieren. Schnittstellen der Web Storage API wie \code{LocalStorage} und \code{SessionStorage}
