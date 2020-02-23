@@ -452,6 +452,41 @@ dient gleichzeitig als Middleware zwischen der Anwendung und dem Backend. So wer
 abgefangen, um so bestimmte Aktionen durchzuführen. Im Falle eines abgelaufenen Authentifizierungstokens,
 wird so ein neues beantragt. Daraufhin wird die Fehlgeschlagene Anfrage erneut ausgeführt.
 
+\begin{figure}
+    \begin{center}
+    \includegraphics[scale=0.2]{img/abbildungen/InformationsaustauschDashboard}
+    \end{center}
+    \caption{Ablauf des Informationsaustausches eines Dashboards}
+    \label{figure:informationsaustauschdashboard}
+\end{figure}
+
+Der \code{useDeliveryEndpoint} Hook implementiert ein eigenes Publish/Subscribe-Verfahren.
+Um die Performance der Anwendung zu steigern, werden beim Ladevorgang eines Dashboards
+die Diagramme sowie die anzuzeigenden Daten parallel geladen. In Abbildung \ref{figure:informationsaustauschdashboard}
+ist der Informationsaustausch eines Dashboards dargestellt. Schritt eins und zwei steht
+für das anfangliche Laden der Frontendanwendung über einen CDN. Dies tritt nur ein,
+falls der Nutzer nicht bereits auf einer anderen Seite der Anwendung unterwegs war.
+In Schritt drei wird die Dashboard-Ressource von dem Resource Management Service angefragt.
+Die Dashboard-Ressource besteht neben den gewöhnlichen Feldern wie ID, Title, Beschreibung,
+Erstellungsdatum und Eigentümer aus einem Feld mit dem Namen "Data". Dieses Feld beinhaltet
+ein JSON, das den Aufbau und die Einstellungen eines Dashboards darstellt.\footnote{Ein
+Beispiel hierfür ist der Quellcodeausschnitt \ref{lst:jsondateizurspeicherungeinesdashboards}
+im Anhang unter "Weitere Quellcodeausschnitte".} Anhand dieser Informationen werden
+daraufhin zeitgleich in \( A_1 \) die benötigten Plugins von dem Resource Management Service
+und in \( B_1 \) die zu visualisierenden Daten von dem Data Delivery Service angefragt.
+Kommen die Plugins vor den zu visualisierenden Daten an, abbonieren diese über 
+den \code{useDeliveryEndpoint} Hook mithilfe der Data Source Id die für das Plugin relevanten
+Daten. Sobald diese ankommen, wird das durch das Plugin dargestellte Diagramm mit
+den Daten versorgt. Kommen allerdings die zu visualisierenden Daten vor dem Plugin an,
+speichert der \code{useDeliveryEndpoint} Hook die Daten und übergibt diese direkt beim
+ersten Aufruf der durch den \code{useDeliveryEndpoint} Hook bereitgestellten
+Subscribe-Funktion. \( n_3 \) steht für alle weiteren Schritte, die benötigt werden,
+um die Daten des Diagramms aktuell zu halten. Je nach definiertem Interval sendet
+der Data Delivery Service die Daten über die WebSocket-Verbindung zum Client.
+In die Subscribe-Funktion wird neben der Data Source Id ein Callback übergeben,
+der immer dann aufgerufen wird, wenn neue für das Plugin relevante Daten angekommen sind.
+Diese werden dann mithilfe des Plugins auf dem Bildschirm aktualisiert.
+
 \begin{listing}
     \inputminted{jsx}{snippets/jsx/useModalBeispiel.jsx}
     \caption{Verwendung des \code{useModal} Hooks}
@@ -466,7 +501,6 @@ Der \code{useModal} Hook gibt in einem Array zwei Funktionen zurück; eine zum �
 Schließen des Modals. Als Eingabeparameter erwartet der Hook ein Callback und ein Array. Der Callback
 gibt die anzuzeigende GUI-Komponente zurück. In das Array werden Referenzen übergeben, anhand derer
 der Hook weiß, wann er die GUI-Komponente neu rendern muss.
-
 
 
 \subsection{Android Anwendung}
@@ -539,11 +573,4 @@ Daraus folgende Zwischenspeicherstrategien:
 \section{Data Delivery Service}
 \label{sec:datadeliveryservice}
 
-\begin{figure}
-    \label{figure:informationsaustauschdashboard}
-    \begin{center}
-    \includegraphics[scale=0.2]{img/abbildungen/InformationsaustauschDashboard}
-    \end{center}
-    \caption{Ablauf des Informationsaustausches eines Dashboards}
-\end{figure}
 
