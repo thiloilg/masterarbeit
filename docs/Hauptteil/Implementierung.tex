@@ -551,64 +551,41 @@ Klick zu erreichen.
 
 \subsection{Zwischenspeicherstrategie im Service Worker}
 \label{subsec:zwischenspeicherstrategieimserviceworker}
-Ein Service Worker ist ein in JavaScript geschriebener,
-eventbasierter Proxy, welcher in einem separaten Thread im Browser
-läuft und an eine spezifische Origin gekoppelt ist. Er hat
-die Möglichkeit Anfragen zwischen der im Browser ausgeführten
-Anwendung und dem Server abzufangen und zu verarbeiten.
+Die Arbeit hat im Service Worker zwei Zwischenspeicherstrategien implementiert,
+um die Performance zu steigern und eine bedingte\footnote{Zum jetztigen Stand
+werden keine AJAX-Anfragen im Service Worker abgefangen. Ohne eine bestehende Internetverbindung
+können daher nur statische Inhalte abgerufen werden.}
+Verwendung der Anwendung ohne Internetverbindung zu ermöglichen. Hierfür werden die statischen Dateien in zwei
+Kategorien eingeteilt; Dateien mit und ohne Hash im Dateinamen (Siehe Tabelle \ref{tab:auflistungstatischerdateien}).
 
-Cache Only
-Network Only
-Cache First
-Network First
-Cache then Network
-Stale while Revalidate
-Generic Fallback
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{ll}
+Ohne Hash & Mit Hash\\
+\hline
+index.html & main.dd5a1ad0.chunk.css\\
+manifest.json & main.46e36a4b.chunk.js\\
+favicon.ico & 2.dc039c03.chunk.js\\
+\end{tabular}
+\end{center}
+\caption{Auflistung statischer Dateien}
+\label{tab:auflistungstatischerdateien}
+\end{table}
 
-\begin{description}
-    \item[Für den Zwischenspeicher des Browsers relevante Untergliederung]~\par
-    \begin{itemize}
-       \item Statische Dateien mit Hash
-       \begin{itemize}
-            \item main.dd5a1ad0.chunk.css
-            \item main.46e36a4b.chunk.js
-            \item 2.dc039c03.chunk.js
-       \end{itemize}
-       \item Statische Dateien ohne Hash
-       \begin{itemize}
-            \item index.html
-            \item manifest.json
-            \item favicon.ico
-       \end{itemize}
-       \item JSON Ressourcen von AJAX Anfragen
-    \end{itemize}
-\end{description}
-
-Daraus folgende Zwischenspeicherstrategien:
-
-\begin{description}
-    \item[Zwischenspeicherstrategie]~\par
-    \begin{enumerate}
-       \item Statische Dateien mit Hash
-       \begin{enumerate}
-          \item Zuerst aus dem Zwischenspeicher anfragen
-          \item Falls nicht vorhanden, aus dem Netzwerk laden und in den Zwischenspeicher ablegen
-       \end{enumerate}
-       \item Statische Dateien ohne Hash
-       \begin{enumerate}
-            \item Zuerst aus dem Netzwerk anfragen und in den Zwischenspeicher ablegen
-            \item Falls keine Netzwerkverbindung vorhanden, aus dem Zwischenspeicher laden
-        \end{enumerate}
-        \item JSON Ressourcen von AJAX Anfragen
-        \begin{enumerate}
-             \item Zuerst aus dem Netzwerk anfragen
-             \item Falls nicht vorhanden, Offline-Rückfallseite anzeigen 
-         \end{enumerate}
-    \end{enumerate}
- \end{description}
+Für Dateien mit Hash im Dateinamen schaut der Service Worker zuerst im Cache nach.
+Wurde die Anfrage bereits gecached, wird diese zurückgegeben. Andernfalls wird eine Anfrage über das
+Netzwerk versendet, die Antwort an die Anwendung weitergeleitet und im Cache gespeichert.
+Für statische Dateien ohne Hash im Dateinamen gehen die Anfragen immer zuerst gegen das Netzwerk und
+aktualisieren daraufhin den Cache. Im Falle, dass die Anwendung offline ist, wird die Anfrage aus
+dem Cache geladen. Besteht keine Internetverbindung und die Datei wurde noch nicht gecached, wird
+eine Fallback-Seite angezeigt. Das Cache-Limit ist auf fünfhundert Dateien gesetzt. Daraufhin wird der älteste
+Eintrag durch den neu hereingekommenen Eintrag ersetzt. Da sich die Hashes bei jeder neuen Version verändern,
+ist somit sichergestellt, dass der Nutzer bei bestehender Internetverbindung immer die aktuellste Version
+der Anwendung ausführt.
 
 \section{Plugins}
 \label{sec:plugins}
+Für 
 
 \begin{listing}
     \inputminted{js}{snippets/js/ChartExample.js}
