@@ -585,12 +585,21 @@ der Anwendung ausführt.
 
 \section{Plugins}
 \label{sec:plugins}
-Für 
+In Quellcode \ref{lst:pluginbeispieleinesliniendiagrammsmitchartjs} sieht man ein einfaches
+Beispiel für ein Plugin, das die bereitgestellten Daten in einem Liniendiagramm veranschaulicht.
+In dem Beispiel wird Chart.js als Visualisierungsbibliothek verwendet. Als Eingabeparameter
+bekommt jedes Plugin die initialen Daten, eine \code{onDataUpdate} Funktion, sowie die Möglichkeit,
+Einstellungen auszulesen und zu persistieren. Im Falle eines Updates, wird der in die
+\code{onDataUpdate} Funktion übergebene Callback mit den aktualisierten Daten aufgerufen.
+Der Rückgabewert eines Plugins muss entweder ein HTML-Element oder eine Zeichenkette an HTML-Quellcode
+sein. Mit der \code{setSettings} Funktion kann ein beliebiges JavaScript-Objekt gespeichert werden.
+Somit lassen sich Einstellungen wie die letzten vom Nutzer verwendeten Filteroptionen speichern.
+
 
 \begin{listing}
     \inputminted{js}{snippets/js/ChartExample.js}
     \caption{Pluginbeispiel eines Liniendiagramms mit Chart.js}
-    \label{lst:gitalias}
+    \label{lst:pluginbeispieleinesliniendiagrammsmitchartjs}
 \end{listing}
 
 \section{Resource Management Service}

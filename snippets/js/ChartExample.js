@@ -1,5 +1,5 @@
 export function ChartExample(
-    data = [],
+    data = {},
     onDataUpdate = () => {},
     settings = {},
     setSettings = () => {}
