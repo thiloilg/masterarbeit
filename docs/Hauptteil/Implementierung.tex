@@ -506,9 +506,11 @@ der Hook weiß, wann er die GUI-Komponente neu rendern muss.
 Die Frontendanwendung besitzt neben den Hooks auch hilfreiche React-Komponenten. So gibt es
 eine \code{ProtectedRoute}, welche den Benutzer umleistet, falls dieser keine Rechte für den
 angefragten URL-Pfad besitzt.\footnote{Hierbei ist anzumerken, dass die eigentliche Rechteverwaltung durch
-das Backend abgesichert ist.} 
+das Backend abgesichert ist.} Außerdem beinhaltet die Frontendanwendung Eingabevalidierung der Formulare
+sowie Fehlermeldungen in Form von kleinen Informationsfenstern, die sich rechts oben im Bildschirm ansammeln
+und nach fünf Sekunden verschwinden. 
 
-\subsection{Android Anwendung}
+\subsection{Installation}
 \label{subec:androidanwendung}
 
 \subsection{Zwischenspeicherstrategie im Service Worker}
@@ -575,7 +577,9 @@ Daraus folgende Zwischenspeicherstrategien:
 \section{Resource Management Service}
 \label{sec:resourcemanagementservice}
 
+\subsection{Authentifizierungsverfahren}
+\label{subsec:authentifizierungsverfahren}
+
 \section{Data Delivery Service}
 \label{sec:datadeliveryservice}
-
 
