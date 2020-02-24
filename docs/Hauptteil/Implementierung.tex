@@ -508,7 +508,29 @@ eine \code{ProtectedRoute}, welche den Benutzer umleistet, falls dieser keine Re
 angefragten URL-Pfad besitzt.\footnote{Hierbei ist anzumerken, dass die eigentliche Rechteverwaltung durch
 das Backend abgesichert ist.} Außerdem beinhaltet die Frontendanwendung Eingabevalidierung der Formulare
 sowie Fehlermeldungen in Form von kleinen Informationsfenstern, die sich rechts oben im Bildschirm ansammeln
-und nach fünf Sekunden verschwinden. 
+und nach fünf Sekunden verschwinden. Hat der angemeldete Nutzer Administrationsrechte, erscheint unter den
+Benutzereinstellungen ein Menüpunkt, über den die Aministrationsoberfläche erreichbar ist. Alle in der
+Frontendanwendung verwendeten Ressourcen können erstellt, angesehen, verändert und auch wieder gelöscht werden.
+Für bestimmte Operationen wie das Löschen eines Benutzers, wird, auch wenn der Benutzer bereits eingeloggt ist,
+ein zusätzliches Modal angezeigt, dass die Anmeldedaten abfragt. Um die initiale Zugriffssicherheit zu erhöhen,
+bietet die Anwendung eine Zwei-Faktor-Authentisierung. In \Cref{subsec:authentifizierungsverfahren} geht die
+Arbeit genauer auf das Authentifizierungsverfahren ein.
+
+\subsection{Seitenumbruch und Suche}
+\label{subsec:seitenumbruchundsuche}
+Um die jeweiligen Ressourcen, wie Beispielsweise ein spezielles Dashboard, auszuwählen, kann man über
+die Seitenleiste\footnote{Im installierten Modus werden die Ressourcen als Navigationsmenüs am unteren Bildschirmrand aufgelistet.}
+auf eine Übersicht der Ressourcen gelangen. Da nicht alle Ressourcen auf eine Seite passen, werden diese mithilfe
+einer Seitennavigation am unteren ende der Seite zugänglich gemacht. Je nachdem, wo sich der Benutzer befindet,
+kann dieser so ganz an den Anfang, ganz an das Ende, eine Seite vor, eine Seite zurück navigieren sowie aus einer geringen Anzahl
+an naheliegenden Seiten die passende auswählen. Die Anzahl der Seiten, zu denen eine direkte Navigation möglich ist, hängt von
+der Bildschirmgröße des Endgerätes ab. Die maximale Anzahl ist hierbei vier Seiten in jede Richtung. Der Seitenumbruch befindet sich
+bei zehn Ressourcen pro Seite. Bei einer größeren Anzahl an Ressourcen, kann das Navigieren durch
+die Seiten sehr viel Zeit in Anspruch nehmen. Hierfür hat die Arbeit eine Suchfunktion implementiert. Die Suchfunktion befindet sich
+in der oberen Navigationsleiste. Durch einen Zeichenvergleich des Titels der Ressource können so die passenden Ressourcen schneller gefunden
+werden. Die Suche zeigt die zehn besten Resultate in einem Drop-Down-Menü an. Für den Zeichenvergleich verwendet der Resource Management Service
+die von PostgreSQL angebotene Funktionalität zum Vergleichen von Zeichenketten. Ein Bildschirmschnappschuss der Suchfunktionalität befindet sich
+im Anhang unter "Screenshots".
 
 \subsection{Installation}
 \label{subec:androidanwendung}
