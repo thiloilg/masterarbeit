@@ -585,6 +585,20 @@ der Anwendung ausführt.
 
 \section{Plugins}
 \label{sec:plugins}
+Für die Implementation der Plugins wurde mit \code{Storybook}\footnote{https://storybook.js.org/}, einem Werkzeug
+zur Entwicklung von UI-Komponenten, eine Umgebung geschaffen, die die Umsetzung eines Plugin-Bundles vereinfacht.
+Für die Ausstellung der Plugin-Bundles wurden Scripte geschrieben, die die Auslieferung der Bundles unabhängig
+von dem Gesamtprojekt ermöglichen. In einer \code{.env} Datei im Wurzelverzeichnis des Git-Submodules "Plugins"
+müssen die Domain des Resource Management Services sowie die E-Mail-Adresse und das Password eines Benutzers mit
+der Rechtegruppe "Entwickler" oder "Admin" gesetzt sein. Mit einem einfachen \code{yarn deploy} können so
+die Entwickelten Plugin-Bundles ausgeliefert werden.
+
+\begin{listing}
+    \inputminted{js}{snippets/js/ChartExample.js}
+    \caption{Pluginbeispiel eines Liniendiagramms mit Chart.js}
+    \label{lst:pluginbeispieleinesliniendiagrammsmitchartjs}
+\end{listing}
+
 In Quellcode \ref{lst:pluginbeispieleinesliniendiagrammsmitchartjs} sieht man ein einfaches
 Beispiel für ein Plugin, das die bereitgestellten Daten in einem Liniendiagramm veranschaulicht.
 In dem Beispiel wird Chart.js als Visualisierungsbibliothek verwendet. Als Eingabeparameter
@@ -596,12 +610,6 @@ sein. Mit der \code{setSettings} Funktion kann ein beliebiges JavaScript-Objekt 
 Somit lassen sich Einstellungen wie die letzten vom Nutzer verwendeten Filteroptionen speichern.
 Zur Veranschaulichung hat die Arbeit mithilfe von Chart.js ein Liniendiagramm, ein Kuchendiagramm und
 ein Balkendiagramm implementiert.
-
-\begin{listing}
-    \inputminted{js}{snippets/js/ChartExample.js}
-    \caption{Pluginbeispiel eines Liniendiagramms mit Chart.js}
-    \label{lst:pluginbeispieleinesliniendiagrammsmitchartjs}
-\end{listing}
 
 \section{Resource Management Service}
 \label{sec:resourcemanagementservice}
