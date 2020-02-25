@@ -630,7 +630,19 @@ ein Balkendiagramm implementiert.
 
 \section{Resource Management Service}
 \label{sec:resourcemanagementservice}
-Der Resource Management Service wurde in Node.js mit dem 
+Der Resource Management Service wurde komplett testgetrieben entwickelt und besitzt
+für jeden HTTP-Statuscodes jeder REST-Route mindestens einen Integrationstest.\footnote{Abgesehen von 5xx Serverfehlern}
+Die Dokumentation der REST-API des Services basiert auf der OpenAPI 3.0
+Spezifikation\footnote{http://spec.openapis.org/oas/v3.0.0/}. Für die Umsetzung des Resource Management Services
+wurde die Laufzeitumgebung Node.js verwendet. Als Programmiergerüst verwendet die Arbeit Koa.js, den Nachfolger
+von Express.js.\footnote{https://koajs.com/} Verglichen zu Express.js ist Koa.js eher als eine Ansammlung
+an Middleware-Funktionalitäten zu betrachten\cite[2. Absatz]{ExpressVsKoa}. Aufgrund der daraus resultierenden
+Flexibilität, sowie der Tatsache, dass Koa.js verglichen zu anderen Frameworks wie Hapi und Express.js,
+mehr Anfragen pro Sekunde verarbeiten kann,\cite{ExpressVsKoaVsHapiPerformance}
+entscheidet sich die Arbeit für Koa.js. Als Programmiersprache verwendet der Resource Management Service
+TypeScript.
+
+
 
 \subsection{Authentifizierungsverfahren}
 \label{subsec:authentifizierungsverfahren}
