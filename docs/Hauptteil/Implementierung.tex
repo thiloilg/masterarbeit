@@ -678,12 +678,6 @@ die serverseitige Datenverarbeitung sowie die Auslieferung der Daten. Zur Kommun
 verwendet der Service die Gorilla WebSocket Bibliothek,\footnote{https://github.com/gorilla/websocket} zur Verarbeitung
 der Daten Go-JMESPath.\footnote{https://github.com/jmespath/go-jmespath} Die Arbeit hat sich im Falle des
 Data Delivery Services für Golang entschieden, da bereits bei der Gestaltung der Programmiersprache Wert auf
-das parallele Arbeiten mehrerer Prozesse gelegt wurde. 
-
-Gerade für das autrechterhalten einer WS-Verbindung
-und dem parallelen Verarbeiten von Daten ist die Auslagerung in mehrere Threads sowie die Kommunikation zwischen
- essentiell. Golang besitzt die sogenannte
-Goroutine, einen 
-
-So besitzt Golang als Syntax den Befehl \code{go}
-
+das parallele Arbeiten mehrerer Prozesse gelegt wurde. So ist es mithilfe einer Goroutine möglich,
+einen leichtgewichtigen, von der Golang Laufzeit verwalteten, Thread zu starten.
+Hierfür wird die Syntax \code{go} gefolgt von einer zu parallelisierenden Funktion benutzt.\cite{GoroutinesExample}
