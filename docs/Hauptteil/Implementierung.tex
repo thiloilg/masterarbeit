@@ -656,8 +656,20 @@ anhand der CRUD-Operationen in mehrere Dateien unterteilt.
 
 \subsection{Authentifizierungsverfahren und Rechteverwaltung}
 \label{subsec:authentifizierungsverfahrenundrechteverwaltung}
-
+Für das Authentifizierungsverfahren verwendet die Arbeit JSON Web Token (JWT). Das Entscheidungskriterium hierfür war,
+dass der Resource Management Service einfach skalierbar und somit zustandslos sein sollte. Das JWT wird auf der Clientseite
+in den Cookies mit den Flags \code{samesite=strict},\footnote{Als Schutz gegen CSRF-Attacken} \code{secure} und \code{httponly}
+gespeichert. Der Zeitstempel, der den Fälligkeitstermin repräsentiert, ist auf 15 Minuten gesetzt. Durch einen im LocalStorage
+als Verifizierung gespeicherten Hash, wird das JWT nach Ablauf automatisch erneuert. In dem JWT befindet sich die
+Benutzeridentifikationsnummer und die Benutzerrolle. Ein Nutzer kann eine der drei Benutzerrollen, Nutzer, Entwickler und
+Administrator besitzen. Es ist zu beachten, dass bei Veränderung der Benutzerrechte der Benutzer ein Zeitfenster von
+15 Minuten besitzt, in dem die alten Rechte immer noch gültig sind.\footnote{Zur Verhinderung dieser Problematik
+kann eine Sperrliste erstellt werden.} Für das Authentifizierungsverfahren als auch die Rechteverwaltung
+wurde eine Middleware implementiert. Dadurch, dass das die Benutzeridentifikationsnummer als auch die Benutzerrolle
+in dem JWT steht, spart sich der Resource Management Service eine Abfrage gegen die Datenbank, wo die Rechte des Benutzers
+abgefragt werden würden. Die Middeware zur Rechteverwaltung sichert nur den Zugriff der Benutzergruppen auf die Routen.
+Resourcen, die nur für den Besitzer zugänglich sein dürfen, werden in dem jeweiligen Kontroller vor unerlaubten
+Zugriffen beschützt.
 
 \section{Data Delivery Service}
 \label{sec:datadeliveryservice}
-
