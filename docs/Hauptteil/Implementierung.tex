@@ -665,7 +665,7 @@ Benutzeridentifikationsnummer und die Benutzerrolle. Ein Nutzer kann eine der dr
 Administrator besitzen. Es ist zu beachten, dass bei Veränderung der Benutzerrechte der Benutzer ein Zeitfenster von
 15 Minuten besitzt, in dem die alten Rechte immer noch gültig sind.\footnote{Zur Verhinderung dieser Problematik
 kann eine Sperrliste erstellt werden.} Für das Authentifizierungsverfahren als auch die Rechteverwaltung
-wurde eine Middleware implementiert. Dadurch, dass das die Benutzeridentifikationsnummer als auch die Benutzerrolle
+wurde eine Middleware implementiert. Dadurch, dass die Benutzeridentifikationsnummer als auch die Benutzerrolle
 in dem JWT steht, spart sich der Resource Management Service eine Abfrage gegen die Datenbank, wo die Rechte des Benutzers
 abgefragt werden würden. Die Middeware zur Rechteverwaltung sichert nur den Zugriff der Benutzergruppen auf die Routen.
 Resourcen, die nur für den Besitzer zugänglich sein dürfen, werden in dem jeweiligen Kontroller vor unerlaubten
