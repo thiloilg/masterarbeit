@@ -642,13 +642,14 @@ mehr Anfragen pro Sekunde verarbeiten kann,\cite{ExpressVsKoaVsHapiPerformance}
 entscheidet sich die Arbeit für Koa.js. Als Programmiersprache verwendet der Resource Management Service
 TypeScript.
 
-Die eingehenden Anfragen dem jeweiligen Router zugewiesen. Die Grundstruktur der Verarbeitung wird in den im Router
+Die eingehenden Anfragen werden dem jeweiligen Router zugewiesen. Die Grundstruktur der Verarbeitung ist in den im Router
 zugewiesenen Kontrollern definiert. Die Kommunikation mit der Datenbank übernehmen die in den Kontrollern aufgerufenen
 Services. Als Objektrelationale Abbildung (ORM) wird TypeORM verwendet. Oft vorkommende Transaktionen, wie beispielsweise
-die Abfrage eines zu einer E-Mail gehöhrenden Benutzers, werden indiziert. Die Arbeit speichert keine Passwörter in der
-Datenbank. Die Hashes, welche die Passwörter repräsentieren, werden mithilfe der Bibliothek \code{bcryptjs} erstellt.
-Geheime Felder wie die Hashes der Passwörter werden vor einfachen Select-Statements versteckt und nur bei
-expliziter Anfrage zurückgegeben. 
+die Abfrage eines zu einer E-Mail gehöhrenden Benutzers, sind indiziert. Die Arbeit speichert keine Passwörter in der
+Datenbank. Die Hashes, die die Passwörter repräsentieren, werden mithilfe der Bibliothek \code{bcryptjs} generiert.
+Geheime Felder wie die Hashes der Passwörter, sind vor einfachen Select-Statements versteckt und werden nur bei
+expliziter Anfrage zurückgegeben. Die Vorlagen für die bei der Registrierung versendeten E-Mails wurden mit
+der Template-Sprache Handlebars erstellt. 
 
 \subsection{Authentifizierungsverfahren}
 \label{subsec:authentifizierungsverfahren}
