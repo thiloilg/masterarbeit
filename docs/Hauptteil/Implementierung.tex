@@ -433,7 +433,7 @@ besitzten nur für die Seiten, die Ressourcen Anzeigen, den von REST bekannten A
 wurden möglichst benutzerfreundlich benannt. So ist der URL-Pfad der Loginseite beispielsweise \code{/login}.
 Aus SEO-Gründen und der Benutzerfreundlichkeit wegen verändert sich der Titel sowie die Beschreibung je nach
 Seite der Frontendanwendung. Der Begriff Single-Page-Webanwendung bezieht sich hier nur auf das initiale Laden
-einer HTML-Seite. Die Frontendanwendung besitzt mehrere Seite, die alle über Suchmaschienen wie Google
+einer HTML-Seite. Die Frontendanwendung besitzt mehrere Seite, die alle über Suchmaschinen wie Google
 gefunden werden können.
 
 \subsection{Funktionalitäten}
@@ -445,6 +445,21 @@ zu Abstrahieren. Schnittstellen der Web Storage API wie \code{LocalStorage} und 
 wurden so erweitert, dass ganze JavaScript-Objekte gespeichert werden können. Außerdem wird der Zustand zwischen
 der Anwendung und der Web Storage API synchronisiert. Verändert der Nutzer die Sprache in einem
 Browser-Tab, wird diese auch in allen anderen Browser-Tabs geändert.
+
+Zum Zeichnen der farbigen Bereiche, die beim ziehen der Typen "Chart" oder "Data Source" erscheinen,
+verwendet die Arbeit einen HTML-Canvas, der exakt über dem jeweiligen Plugin positioniert wird.
+Hierfür wird der \code{useDrawQuad} Hook verwendet. Zur Errechnung der Position, über der der Typ
+losgelassen wurde, werden die Canvas-Eckpunkte verwendet, um den zuletzt fokussierten Bereich zu bestimmen.
+Dies geschieht mithilfe des \code{useSelectAction} Hooks. Die Umsetzung orientiert sich eins zu eins an dem
+in \Cref{subsec:diagrammanordnungsverfahren} beschriebenen Verfahren. Der komplexeste Hook ist der
+\code{useArrangement} Hook. Anhand der aus dem \code{useSelectAction} resultierenden Aktion wird
+mithilfe des \code{useArrangement} Hooks das neue Plugin in die Baumstruktur, die die Positionierung
+der Plugins beinhaltet, eingefügt.\footnote{Die Plugins werden in der Baumstruktur durch Blätter (Knoten ohne Kinder) repräsentiert.}
+Für das Entfernen eines Plugins aus der Baumstruktur, benötigt es zwei Schritte: In Schritt eins wird
+das Blatt der Baumstruktur entfernt. Um zu verhindern, dass ein Knoten nur ein einzelnes Kind hat,
+werden in Schritt zwei die betroffenen Knoten aufgerückt. Für komplexe Funktionalitäten wie beispielsweise
+den \code{useArrangement} Hook, wurden vor der eigentlichen Implementierung zahlreiche Modultests definiert.
+Somit konnte sichergestellt werden, dass die Operationen auf er Datenstruktur keine Fehler aufweisen.
 
 Die zwei bedeutsamsten Hooks sind \code{useApiEndpoint} und \code{useDeliveryEndpoint}. Sie ermöglichen
 die Kommunikation zu den Mircoservices im Backend. Der \code{useApiEndpoint} Hook gibt die CRUD-Operationen,
