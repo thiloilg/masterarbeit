@@ -673,3 +673,10 @@ Zugriffen beschützt.
 
 \section{Data Delivery Service}
 \label{sec:datadeliveryservice}
+Der Data Delivery Service wurde in der Programmiersprache Golang geschrieben und kümmert sich um die Datenbeschaffung,
+die serverseitige Datenverarbeitung sowie die Auslieferung der Daten. Zur Kommunikation über das WebSocket-Protokoll
+verwendet der Service die Gorilla WebSocket Bibliothek,\footnote{https://github.com/gorilla/websocket} zur Verarbeitung
+der Daten Go-JMESPath.\footnote{https://github.com/jmespath/go-jmespath} Die Arbeit hat sich im Falle des
+Data Delivery Services für Golang entschieden, da bereits bei der Gestaltung der Programmiersprache Wert auf
+das parallele Arbeiten mehrerer Prozesse gelegt wurde. So besitzt Golang 
+
