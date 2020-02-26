@@ -10,25 +10,27 @@ auch Diskussionen, Analysen und Erörterungen der einzelnen Thematiken.
 \label{sec:progressivewebanwendung}
 Eine progressive Webanwendung (PWA) ist eine Webseite, die eine zunehmende Ansammlung
 an bestimmten Technologien, Strategien und Schnittstellen implementiert,
-die Merkmale bereitstellen, die ursprünglich nur native Anwendungen besaßen \cite{WikiPWA}.
+die Merkmale bereitstellen, die ursprünglich nur native Apps besaßen \cite{WikiPWA}.
 Eine der wichtigsten Browser-Technologien, die zur Entstehung der PWA beigetragen hat,
 ist der Service Worker (SW). Er ermöglicht der PWA auch ohne Internetverbindung zu funktionieren. Der 
 Service Worker ist ein parallel zu der Hauptanwendung laufender Prozess, der \mbox{HTTP-,} und je nach Browser,
 auch WebSocket-Anfragen abfangen, verarbeiten und versenden kann. Somit kann, trotz fehlender Internetverbindung,
 eine Antwort zurückgesendet werden.\cite{W3ServiceWorker}
 
-Progressive Webanwendungen als Alternative zu einer nativen Umsetzung ermöglichen mehr Freiheit gegenüber dem
-Plattformanbieter. Sobald die Möglichkeit besteht, PWAs mithilfe einer vom Browser angesteuerten API
+Progressive Webanwendungen als Alternative zu einer nativen Umsetzung ermöglichen mehr Freiheit gegenüber den
+Plattformanbietern. Sobald die Möglichkeit besteht, PWAs mithilfe einer vom Browser angesteuerten Programmierschnittstelle (API)
 auf dem Homescreen zu speichern, verliert der Plattformanbieter die Kontrolle,
 bestimmte PWAs zu verbieten. Dies ist bei nativen Anwendungen nicht der Fall. So löschte Apple in der Vergangenheit
 bereits große Mengen an Apps aus dem App Store.\footnote{Laut Heise.de löschte Apple im Oktober
 2016 rund 47.300 Apps aus dem App Store \cite{HeiseAppleLoeschtApps}.}
 Des Weiteren verlieren die Plattformanbieter die Gewinnbeteiligung an App-, Abo- und Ingame-Verkäufen,
-da die Zahlungsabwicklung nun nicht mehr über den vom Plattformanbieter bereitgestellten App Store
+da die Zahlungsabwicklung nicht mehr über den vom Plattformanbieter bereitgestellten App Store
 abgewickelt werden muss. Entwickler von Apps mussten in der Vergangenheit bis zu 30\% 
 ihrer Einnahmen abgeben.\cite{WinFutureEigenerAppStore} Daher ist davon auszugehen,
 dass Plattformanbieter ihren Fokus für neue Funktionalitäten primär ihren eigenen
-nativen Apps widmen werden. Nichtsdestotrotz hat sich in letzter Zeit einiges getan.
+nativen Apps widmen werden.
+
+Nichtsdestotrotz hat sich in letzter Zeit einiges getan.
 Gerade die Bandbreite der Plattform- und Browseranbieter, die für PWAs relevante
 Funktionalitäten anbieten, ist in der Vergangenheit stark gestiegen. So äußert sich der Artikel
 "Webdesign: So steht es um Progressive-Web-Apps im Jahr 2020" von Dieter Petereit,
@@ -43,27 +45,29 @@ allerdings nicht mit jedem Browser."\cite{T3NPWASupport}
 \end{quote}
 
 Aus technologischer Sicht sind die
-Anforderungen, die es benötigt um eine PWA zu benutzten, also größtenteils gegeben.
+Anforderungen, die es benötigt, um eine PWA zu benutzen, größtenteils gegeben.
 Aufgrund dessen davon auszugehen, dass PWAs native Apps ersetzen werden, ist allerdings
 falsch. Erst wenn Plattformanbieter einen Weg finden, finanziell von PWAs profitieren
 zu können, werden die Funktionalitäten in einem Maße unterstützt, die ihnen die Möglichkeit
 gibt, mit nativen Apps mithalten zu können. Der Schritt von einer Single-Page-Webanwendung (SPA) zu einer
 PWA ist allerdings ein leichter.\footnote{Wenn man sich auf die Hauptfunktionalitäten beschränkt.}
-Um die PWA auf dem Desktop speichern zu können, muss man ein Web-App-Manifest\footnote{
+Um die PWA auf dem Homescreen als auch Desktop speichern zu können, muss man ein Web-App-Manifest\footnote{
 Ein Beispiel eines Web-App-Manifests befindet sich unter Weitere Quellcodeausschnitte \ref{lst:webappmanifest}.}
 in das Stammverzeichnis des Webservers legen sowie einen Service Worker registrieren.
 Somit ist die Einstiegsebene für PWAs sehr gering. Gerade für Unternehmen,
-die bereits eine Webseite besitzen und nun dem Benutzer die Möglichkeit geben wollen,
-diese auf dem Homescreen zu speichern, offline zu verwenden und Benachrichtigung zu erhalten,
-ist eine PWA attraktiv. Ein Hauptkriterium für die Implementierung einer PWA ist, dass man bei der Entwicklung
+die bereits eine Webseite besitzen und dem Benutzer die Möglichkeit geben wollen,
+diese auf der Benutzeroberfläche zu speichern, offline zu verwenden und Benachrichtigung zu erhalten,
+ist eine PWA attraktiv.
+
+Ein Hauptkriterium für die Implementierung einer PWA ist, dass man bei der Entwicklung
 keine plattformspezifischen Lösungen benötigt. Somit sind die Kosten für die Entwicklung um einiges
 geringer. Verfügt man allerdings über die finanziellen Mittel und legt seinen Schwerpunkt unter anderem
-auf mobile Endgeräte, ergibt es aus Sicht der aktuellen Lage Sinn, neben einer aufgewerteten Webseite
+auf mobile Endgeräte, kann es durchaus Sinn machen, neben einer aufgewerteten Webseite
 auch native Apps anzubieten.
 
-In diesem Abschnitt wurden Merkmale wie das Speichern der Webseite auf dem Homescreen,
+In diesem Abschnitt wurden Merkmale, wie das Speichern der Webseite auf der Benutzeroberfläche,
 die Offlinefähigkeit sowie die Möglichkeit, Benachrichtigungen zu versenden, kurz angesprochen.
-In den folgenden drei Abschnitten wird es mehr ins Detail gehen. In \Cref{subsec:markmale}
+In den folgenden drei Abschnitten wird vermehrt ins Detail gegangen: In \Cref{subsec:markmale}
 werden die Merkmale einer PWA erörtert. In \Cref{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
 wird der unterstütze Funktionsumfang der zuvor erörterten Merkmale bei verschiedenen Browsern
 analysiert. In \Cref{subsec:trustedwebactivities} geht es um eine von Google vorgestellte Methode,
@@ -75,19 +79,19 @@ Es gibt keine genaue Definition, die besagt, welche Merkmale eine PWA beinhalten
 Der Begriff "Progressive Web App" wurde erstmals 2015 von Alex Russell in einem Blogpost
 verwendet.\cite{PWA2015} Die Idee hinter einer Webanwendung, bei der sich die Optik und Haptik
 wie die bei einer nativen App anfühlt, gab es allerdings bereits zuvor. So kündigte
-Steve Jobs bei der initialen iPhone Präsentation für Entwickler bereits die Möglichkeit
+Steve Jobs bereits 2007 bei der initialen iPhone Präsentation für Entwickler bereits die Möglichkeit
 an, solche Web 2.0 Apps mithilfe von Safari zu entwickeln.\footnote{https://www.youtube.com/watch?v=ZlE7dzoD6GA}
 Die Merkmale einer PWA haben sich demnach über die Jahre hinweg angesammelt. Was sind aber
 nun diese Merkmale? Alex Russell erwähnt in seinem Blogpost dazu Folgendes:
 Die PWA soll responsive und netzunabhängig sein, app-ähnliche Navigationsvorgänge bereitstellen,\footnote{Ohne Verwendung von Browser Tabs} 
-immer aktuell sein, über TLS ausgeliefert werden, durch Suchmaschinen als solche mithilfe
+immer aktuell sein, nur unter Verwendung der Transport Layer Security (TLS) ausgeliefert werden, durch Suchmaschinen als solche mithilfe
 des Web-App-Manifests auffindbar sein, plattformspezifische Funktionalitäten wie Push-Notifications
 verwenden sowie auf dem Homescreen installierbar, über Hyperlinks teilbar und ohne aufwendigen
 Installationsprozess verwendbar sein.\cite{PWA2015} Eine 2018 veröffentlichte, wissenschaftliche
-Arbeit von Thomas Steiner, über die Analyse von PWA-Merkmalen innerhalb eines WebViews\footnote{Ein Web View ist ein in einer nativen App eingebetteter Browser zur Darstellung von Webinhalten.},
-benennt fünfzehn für eine PWA relevante Merkmale, auf die sich die Analyse über den
-unterstützten Funktionsumfang von gängigen Browsern in \Cref{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
-beziehen wird.\cite{WhatIsInAWebView}
+Arbeit von Thomas Steiner, über die Analyse von Merkmalen einer PWA innerhalb eines WebViews\footnote{Ein Web View ist ein in einer nativen App eingebetteter Browser zur Darstellung von Webinhalten.},
+benennt fünfzehn für eine PWA relevante Merkmale. Die Analyse über den unterstützten Funktionsumfang
+von gängigen Browsern in \Cref{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
+bezieht sich auf diese Merkmale.\cite{WhatIsInAWebView}
 
 \subsection{Unterstützter Funktionsumfang gängiger Browser}
 \label{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
