@@ -277,25 +277,26 @@ an dem Begriff "Microservices" auf Google Trends konstant angestiegen.\cite{Micr
 Wenn der Begriff "Microservices" zum ersten Mal gehört wird, denkt man womöglich an das Architekturmuster
 "Serviceorientierte Architektur" (SOA). Der Begriff SOA wurde bereits 1996
 von Gartner, einem Unternehmen, das Forschung in der IT-Branche
-betreibt\footnote{https://www.gartner.com/en/about/}, verwendet.\cite{GartnerSOAPart1}
-SOA ist ein Erklärungsmodell zur Aufteilung von Geschäftslogik in einzelne Services.
-Was ist ein Microservices und was ist der Unterschied zu SOA?
-In dem Buch "Microservices" von Eberhard Wolff werden diese als Ansatz zur Modularisierung
-von Software definiert. Der Unterschied zu vorhandenen Architekturmustern beschreibt er wie folgt:
+betreibt\footnote{https://www.gartner.com/en/about/}, verwendet \cite{GartnerSOAPart1}.
+SOA ist ein Erklärungsmodell zur Aufteilung von Geschäftslogik in einzelne Services \cite{SOAManifesto}.
+
+Was sind Microservices und was ist der Unterschied zu SOA?
+In dem Buch "Microservices" von Eberhard Wolff werden Microservices als Ansatz zur Modularisierung
+von Software definiert. Den Unterschied zu vorhandenen Architekturmustern beschreibt Wolff wie folgt:
 "Das Neue: Microservices nutzen als Module einzelne
 Programme, die als eigene Prozesse laufen."\cite[S. 2]{MicroservicesBook}
 Durch neue Technologien wie Docker, eine Open-Source Software
 zur Kapselung von Prozessen in umgebungsunabhängige Instanzen, \cite{DockerOverview}
 ist es möglich, eine serviceorientierte Architektur flexibler
-zu gestalten. Docker stellt eine einheitliche Umgebung in
+zu gestalten. Softwarelösungen wie Docker stellen eine einheitliche Umgebung in
 allen Prozessstufen der stetigen Softwareauslieferung bereit.
-Ob in einer lokalen Entwicklungsumgebung oder in einem
+Ob in einer lokalen Entwicklungsumgebung oder beispielsweise in einem
 Kubernetes-Cluster, die Umgebung und somit das
 Verhalten der Anwendung ist gleich.\footnote{Von Einflussfaktoren
-wie veränderbaren Umgebungsvariablen und externen Schnittstellen abgesehen}
+wie veränderbaren Umgebungsvariablen und externen Schnittstellen abgesehen.}
 
 Das Wort "Microservice" beinhaltet den Wortteil "Micro",
-bekannt als Einheitenvorsatz für \(10^{-6}\). Die Komplexität eines Softwareprojektes
+bekannt als Einheitenvorsatz für Millionstel. Die Komplexität eines Softwareprojektes
 wird oftmals in Lines of Code (LOC) gemessen. Ausgehend
 von Diskussionen auf StackExchange siedelt sich ein komplexes Softwareprojekt bei
 ca. 2 Millionen LOC an.\cite{ProjectsizeStackexchange}
@@ -310,12 +311,12 @@ Serviceuntergliederung lieber nach der "...fachlichen Domäne richten".\cite[S. 
 \subsection{Vor- und Nachteile}
 \label{subsec:vorundnachteile}
 In \Cref{subsec:wasverstehtmanuntermicroservices} sind Microservices
-als einzelne, in einer Containervirtualisierung laufende Programme definiert. Sind diese Programme
-zustandslos, lassen sie sich einfach und effizient skalieren. Zustandslos bedeutet, dass zwei
-aufeinanderfolgende Abfragen nicht an die gleiche Instanz des Programms gesendet werden müssen.
+als einzelne, in einer Containervirtualisierung laufende Programme beschrieben. Sind diese Programme
+zustandslos, lassen sie sich einfach und effizient skalieren. Ein zustandloser Service hat die Eigenschaft, dass zwei
+aufeinanderfolgende Anfragen nicht an die gleiche Instanz des Programms gesendet werden müssen.
 Beinhaltet der Service eine Datenbank, benötigt es eine weitere Strategie der Skalierung
 wie Database Sharding oder Master-Slave Replica. Durch die Lastverteilung auf eigenständige Services
-wird der Schwellwert, ab welchem man horizontal skalieren muss, erst später erreicht.\footnote{Im Vergleich zu einem Monolith}
+wird der Schwellwert, ab welchem man horizontal skalieren muss, erst später erreicht.\footnote{Im Vergleich zu einem Monolith.}
 Eberhard Wolff kritisiert den Performanzverlust, der durch die
 Kommunikation über die verteilten Systeme entsteht. So schreibt er wie folgt: 
 
@@ -346,9 +347,9 @@ an Flexibilität, bezahlt dies aber mit einem Anstieg an Komplexität des Gesamt
 Continuous Delivery (CD) ist das Verfahren, Software in einem stetigen Zyklus auszuliefern.
 Neue Technologien, wie die Containervirtualisierungssoftware Docker,
 die im März 2013 von dotCloud ins Leben gerufen wurde \cite{DockerAbout2014}, vereinfachen
-den stetigen Softwareauslieferungsprozess enorm. So kann man in einem automatisierten
-Auslieferungsprozess, Images bauen, diese testen und selbige nach erfolgreichem
-Bestehen der Tests in der Produktion verwenden. Eberhard Wolff schreibt über das Ziel von Docker in
+den stetigen Softwareauslieferungsprozess enorm. So ist es möglich, in einem automatisierten
+Auslieferungsprozess, Schnappschüsse der Container (Images) zu erstellen, diese zu testen und selbige nach erfolgreichem
+Bestehen der Tests in der Produktion zu verwenden. Eberhard Wolff schreibt über das Ziel von Docker in
 seinem Buch "Continuous Delivery" Folgendes:
 
 \begin{quote}
@@ -359,12 +360,12 @@ von Servern mit identischen Images betrieben werden können."\cite[S. 56]{Contin
 \end{quote}
 
 Somit kann sichergestellt werden, dass die Software und deren Umgebung in der Testphase
-sowie in der Produktion die selbe ist. Immer mehr Anbieter stellen Werkzeuge für Continuous Integration (CI) zur Verfügung,
+sowie in der Produktion dieselbe ist. Immer mehr Anbieter stellen Werkzeuge für Continuous Integration (CI) zur Verfügung,
 die es ermöglichen eine CI/CD-Pipeline anhand von Konfigurationsdateien aufzuziehen. So bieten
 neben Travis CI, CircleCI und Jenkins nun auch Versionsverwaltungshosts wie Github und
 Gitlab CI-Werkzeuge an.\footnote{Github bietet seit 13. November 2019 eigene CI/CD-Werkzeuge an \cite{GithubCIToolsHeise}}
-Vorteile eines CI/CD-Ansatzes sind eine schnelle Feature-Auslieferung und somit schnellere Resonanz der Benutzer auf die Features,
-die Robustheit der Software durch stetiges Ausführen automatisierter Tests in der Pipeline, einfaches Zurückrollen
-der Version der Anwendung in der Produktion sowie einfaches Reproduzieren von Fehlern. Ein Nachteil eines CI/CD-Ansatzes ist
-der große Aufwand des initialen Aufbaus der automatisierten Prozesse. Bei komplexen Änderungen des Systems müssen zudem
-große Teile des automatisierten Prozesses angepasst werden.
+Ein Vorteil eines CI/CD-Ansatzes ist eine schnelle Feature-Auslieferung und somit eine schnellere Resonanz der Benutzer.
+Außerdem wirkt sich das stetige Ausführen automatisierter Tests in der Pipeline positiv auf die Robustheit der Software aus.
+Zwei weitere Vorteile sind das einfache Reproduzieren von Fehlern sowie das unkomplizierte Zurückrollen der ausgelieferten Version.
+Ein Nachteil eines CI/CD-Ansatzes ist der große Aufwand des initialen Aufbaus der automatisierten Prozesse.
+Bei komplexen Änderungen des Systems müssen zudem große Teile des automatisierten Prozesses angepasst werden.
