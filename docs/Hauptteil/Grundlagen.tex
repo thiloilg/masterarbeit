@@ -138,8 +138,20 @@ Anmeldedaten zu ermöglichen (Credential Management API).\cite[Abschnitt 2.3]{Wh
 Bei der Analyse wurden die neuesten Versionen relevanter Browser\footnote{Stand Januar 2020 (Internet Explorer 11, Edge 79, Firefox 72, Chrome 79, Safari 13, Opera 64, Safari iOS 13.2, Opera Mini 46, Android Browser Chromium 76, Opera Mobile 46, Chrome für Android 79, Firefox für Android 68, UC Browser für Android 12.12 und Samsung Internet 10.1) }
 begutachtet. Die Ergebnisse würden in zwei Tabellen aufgeteilt. In \Cref{tab:unterstutzterpwafunktionsumfangteil1}
 ist der unterstützte Funktionsumfang der Desktop-Browser dargestellt. Der unterstützte Funktionsumfang der Browser
-für mobile Endgeräte ist in \Cref{tab:unterstutzterpwafunktionsumfangteil2} aufgelistet. Die fünfzehn in \Cref{subsec:markmale}
-erwähnten Merkmale wurden auf achtzehn erweitert.
+für mobile Endgeräte ist in \Cref{tab:unterstutzterpwafunktionsumfangteil2} aufgelistet.
+
+Zwei der fünfzehn in \Cref{subsec:markmale} erwähnten Merkmale wurden
+in zwei Merkmale aufgeteilt. So gibt es zusätzlich zur Background Sync auch noch eine
+periodische Background Sync. Die Periodic Background Sync API, eine Erweiterung der Background
+Sync API, ist momentan noch in der Entwicklung und wird vorraussichtlich erst mit
+Chrome 80 veröffentlicht. Die API wird das Ausführen von Hintergrundaufgaben der SW
+in einem periodischen Interval ermöglichen.\cite{ChromeStatusPeriodicBackgroundSync}
+Die Web Share API ist in zwei Level unterteilt. In der Web Share API Level 1 war es
+nur möglich, Texte und Uniform Resource Locators (URLs) zu teilen. Mit der Web Share
+API Level 2 können nun auch Dateien geteilt werden.\cite{WebShareAPITwoChromeStatus}
+Zusätzlich zur Payment Request API wurde die Payment Handler API hinzugefügt. Mit dieser
+API ist es möglich, Zahlungsdaten, Lieferanschriften und Kontaktdaten, in einer durch
+den Service Worker gesteuerten Bedienungsoberfläche abzufragen.\cite{PaymentHandlerAPIGoogleDev}
 
 \begin{table}[h]
 \begin{center}
@@ -205,10 +217,7 @@ Analysiert man die Resultate von \Cref{tab:unterstutzterpwafunktionsumfangteil1}
 \Cref{tab:unterstutzterpwafunktionsumfangteil2}, wird klar ersichtlich, dass Chrome
 die PWA Entwicklung vorantreibt. Es überrascht auch kaum, dass der Internet Explorer,
 bei dem die Entwicklung im März 2015 eingestellt wurde, \cite{HeiseInternetExplorer} keine der PWA-Merkmale
-unterstützt. Die Periodic Background Sync API, eine Erweiterung der Background
-Sync API, ist momentan noch in der Entwicklung und wird vorraussichtlich erst mit
-Chrome 80 veröffentlicht. Die API wird das Ausführen von Hintergrundaufgaben der SW
-in einem periodischen Interval ermöglichen.\cite{ChromeStatusPeriodicBackgroundSync}
+unterstützt.
 Die A2HS-Funktionalität wird von allen mobilen Browsern unterstützt.\footnote{Von allen in dieser Auswertung betrachteten Browsern.}
 Bei den mobilen Browsern ist der unterstütze Funktionsumfang insgesamt größer als
 bei den Browsern für Desktop-Endgeräte. Ein Grund dafür ist, dass man sich bei den PWA-Merkmalen
