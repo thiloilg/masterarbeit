@@ -95,29 +95,29 @@ bezieht sich auf diese Merkmale.\cite{WhatIsInAWebView}
 
 \subsection{Unterstützter Funktionsumfang gängiger Browser}
 \label{subsec:unterstuetzterfunktionsumfanggaengigerbrowser}
-Um genauere Aussagen über den unterstützten Funktionsumfang von Mobile-
-und Desktop-Endgeräten zu bekommen, wurden die Desktop-Browser von ihrem mobilen
-Gegenstück getrennt. Zu der Recherche des Funktionsumfangs wird
+Um genauere Aussagen über den unterstützten Funktionsumfang von mobilen Endgeräten
+und Desktop-PCs zu bekommen, wurden die Desktop-Browser von ihrem mobilen
+Gegenstück getrennt betrachtet. Zu der Recherche des Funktionsumfangs wird
 der von Thomas Steiner aus der wissenschaftlichen Arbeit "What is
 in a Web View? An Analysis of Progressive Web App Features When the
 Means of Web Access is not a Web Browser" bereitgestellte
 PWA Feature Detector\footnote{https://github.com/tomayac/pwa-feature-detector/} sowie 
 die Webseite "Can I use"\footnote{https://caniuse.com/} verwendet.
-Der PWA Feature Detector ermittelt anhand von im JavaScript-HTML-DOM
+Der PWA Feature Detector ermittelt anhand von im HTML-DOM
 vorhandenen Feldern, ob der Browser bestimmte Merkmale unterstützt.
-Dabei werden neben den Feldern window, document und navigator
-auch Felder im Service Worker erkannt. Die Angaben können von dem
+Dabei werden neben den Feldern \code{window}, \code{document} und \code{navigator}
+auch Felder im Service Worker erkannt. Die Resultate der Analyse können von dem
 eigentlich unterstützten Funktionsumfang abweichen. Die von Thomas
-Steiner in seiner wissenschaftlichen Arbeit für relevant angesehenen
-Merkmale sind folgende: Offline Capabilities; hierbei wird nach
+Steiner für relevant angesehenen Merkmale sind folgende:
+Offline Capabilities; hierbei wird nach
 einer Unterstützung der Cache API gesucht. Push Notifications;
 ist die Push API unterstützt? Add to Homescreen; kann man PWAs auf
-dem Homescreen speichern (A2HS)? Background Sync; ist eine Unterstützung
-der Background Sync API vorhanden? Navigation Preload; die Möglichkeit
+dem Homescreen speichern (A2HS)? Background Sync; ermöglicht eine eventgetriebene Synchronisation
+zwischen dem Service Worker und der Anwendung. Navigation Preload; die Möglichkeit
 Ressourcen bereits während dem Hochfahren des SW vorzuladen
 (Navigation Preload Manager API). Silent Push; das Starten von durch das
 Backend ausgelösten Prozessen im Frontend, ohne den Benutzer
-durch eine Nachricht davon zu informieren (Web Budget API). 
+durch eine Nachricht davon zu informieren (Web Budget API).
 Storage Estimation; die Nachfrage nach genutztem Speicher sowie
 dessen Beschränkung (Storage Manager). Persistent Storage;
 das Speichern von Daten, die nur mit Anfrage an den Benutzer gelöscht
@@ -135,7 +135,7 @@ Zahlungsverfahren (Payment Request API). Credential Management;
 dem Benutzer die Verwendung von im Betriebssystem gehorteten
 Anmeldedaten zu ermöglichen (Credential Management API).\cite[Abschnitt 2.3]{WhatIsInAWebView}
 
-Bei der Analyse wurden die neuesten Versionen relevanter Browser\footnote{Stand Januar 2020 (Internet Explorer 11, Edge 79, Firefox 72, Chrome 79, Safari 13, Opera 64, Safari iOS 13.2, Opera Mini 46, Android Browser Chromium 76, Opera Mobile 46, Chrome für Android 79, Firefox für Android 68, UC Browser für Android 12.12 und Samsung Internet 10.1) }
+Bei der Analyse des unterstützten Funktionsumfangs wurden die neuesten Versionen relevanter Browser\footnote{Stand Januar 2020 (Internet Explorer 11, Edge 79, Firefox 72, Chrome 79, Safari 13, Opera 64, Safari iOS 13.2, Opera Mini 46, Android Browser Chromium 76, Opera Mobile 46, Chrome für Android 79, Firefox für Android 68, UC Browser für Android 12.12 und Samsung Internet 10.1) }
 begutachtet. Die Ergebnisse würden in zwei Tabellen aufgeteilt. In \Cref{tab:unterstutzterpwafunktionsumfangteil1}
 ist der unterstützte Funktionsumfang der Desktop-Browser dargestellt. Der unterstützte Funktionsumfang der Browser
 für mobile Endgeräte ist in \Cref{tab:unterstutzterpwafunktionsumfangteil2} aufgelistet.
@@ -217,18 +217,19 @@ Analysiert man die Resultate von \Cref{tab:unterstutzterpwafunktionsumfangteil1}
 \Cref{tab:unterstutzterpwafunktionsumfangteil2}, wird klar ersichtlich, dass Chrome
 die PWA Entwicklung vorantreibt. Es überrascht auch kaum, dass der Internet Explorer,
 bei dem die Entwicklung im März 2015 eingestellt wurde, \cite{HeiseInternetExplorer} keine der PWA-Merkmale
-unterstützt.
-Die A2HS-Funktionalität wird von allen mobilen Browsern unterstützt.\footnote{Von allen in dieser Auswertung betrachteten Browsern.}
+unterstützt. Die A2HS-Funktionalität wird von allen
+mobilen, in dieser Auswertung betrachteten Browsern unterstützt.
 Bei den mobilen Browsern ist der unterstütze Funktionsumfang insgesamt größer als
-bei den Browsern für Desktop-Endgeräte. Ein Grund dafür ist, dass man sich bei den PWA-Merkmalen
+bei den Browsern für Desktop-PCs. Ein Grund dafür ist, dass man sich bei den PWA-Merkmalen
 hauptsächlich an der Optik und Haptik von nativen Apps orientiert. Chrome ist aktuell
-der einzige Browser, bei dem man eine PWA auch auf einem Desktop-Endgerät installieren
+der einzige Browser, bei dem man eine PWA auch auf einem Desktop-PC installieren
 kann. Grundfunktionalitäten, wie  die Möglichkeit der Offlineverwendung, werden fast von allen
-Browsern unterstützt. Die wichtigste Erkenntnis dieser Auswertung ist folgende: Die einzelnen
+Browsern unterstützt. Die wichtigste Erkenntnis dieser Auswertung ist Folgende: Die einzelnen
 PWA-Merkmale müssen als Anreicherung betrachtet werden. Es ist nicht davon auszugehen, dass
 der Browser des Benutzers ein bestimmtes Merkmal unterstützt.
 
-Auch wichtig ist, sich den Browser-Marktanteil der eigenen Zielgruppe zu vergegenwärtigen.
+Um den unterstützten Funktionsumfang besser beurteilen zu können, ist es wichtig,
+sich den Browser-Marktanteil der eigenen Zielgruppe zu vergegenwärtigen.
 So verwenden laut StatCounter weltweit mehr als 50\% der Endbenutzer Google Chrome und besitzten somit
 alle PWA-Merkmale, die Chrome bereitstellt.\cite{StatCounterBrowserMarketShare}
 
@@ -240,11 +241,15 @@ Seit Google Chrome Version 72 bietet Google hierfür eine Lösung an.
 Mit sogenannten Trusted Web Activities (TWA) ist es möglich, PWAs auch in den App Store
 zu bringen. Eine TWA ist eine Methode, den Inhalt einer PWA in eine Android App mithilfe
 von Google Chromes Custom Tabs zu integrieren.\cite{TrustedWebActivitiesGoogle}
+
 Ein Verweis auf ein im Webserver liegendes Zertifikat stellt sicher,
 dass die Webseite und die App von dem gleichen Entwickler
 stammen. Ein Vorteil, gegenüber dem Einbinden einer PWA in einen WebView, ist es,
-dass der WebView und somit die native App nicht kontinuierlich aktualisiert werden müssen,
-um den Browser auf dem neuesten Stand zu halten.
+dass die TWA und somit die native App nicht kontinuierlich aktualisiert werden muss,
+um den Browser auf dem neuesten Stand zu halten. Bei einem WebView ist die Browser-Version in
+die Anwendung integriert. Eine TWA hingegen beinhaltet keinen eigenen Browser, sondern verwendet
+den Standartbrowser des Betriebssystems.
+
 Trusted Web Activities werden mit activity Tags in das Android-App-Manifest integriert. Für die Darstellung
 der TWA wird, wie auch bei der PWA, ein Browser verwendet. Das bringt Vor- und Nachteile mit sich.
 Ein Vorteil ist, dass die TWA Zugriff auf im Browser gespeicherte Daten wie den LocalStorage
