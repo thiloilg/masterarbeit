@@ -250,27 +250,25 @@ um den Browser auf dem neuesten Stand zu halten. Bei einem WebView ist die Brows
 die Anwendung integriert. Eine TWA hingegen beinhaltet keinen eigenen Browser, sondern verwendet
 den Standartbrowser des Betriebssystems.
 
-Trusted Web Activities werden mit activity Tags in das Android-App-Manifest integriert. Für die Darstellung
-der TWA wird, wie auch bei der PWA, ein Browser verwendet. Das bringt Vor- und Nachteile mit sich.
+Trusted Web Activities werden mit \code{activity} Tags in das Android-App-Manifest integriert. Die
+Ausführung der Anwendung im Browser bringt Vor- und Nachteile mit sich.
 Ein Vorteil ist, dass die TWA Zugriff auf im Browser gespeicherte Daten wie den LocalStorage
 hat. Ein schwerwiegender Nachteil ist allerdings, dass der installierte Browser des mobilen Endgerätes
-die Verwendung der TWA unterstützen muss. Tut er dies nicht, wird die Anwendung in einem sichtbaren
+die Verwendung der TWA unterstützen muss. Ist dies nicht der Fall, wird die Anwendung in einem sichtbaren
 Browser-Tab angezeigt. Andreas Domin erwähnt in einem Blogbeitrag auf Digital Pioneers eine Möglichkeit,
 dies zu umgehen: Hierfür "[...] wird nativer Java- oder Kotlin-Code benötigt, um zu überprüfen, ob Chrome
 (oder ein Browser, der Custom Tab unterstützt) installiert ist.
 Ist dem nicht so, kann eine alternative Technologie geladen werden:
 eine Webview zum Beispiel."\cite[2. Abschnitt]{TrustedWebActivitiesT3N}
-Trusted Web Activities werden aktuell allerdings nur von Google und somit Android unterstützt. Um die PWA
-in den App Store von Apple zu bringen, muss ohnehin eine WebView verwendet werden.
+Trusted Web Activities werden aktuell nur von Google und somit Android unterstützt. Um die PWA
+im App Store von Apple zu veröffentlichen, muss ohnehin eine WebView verwendet werden.
 
 \section{Microservices}
 \label{sec:microservices}
-In diesem Abschnitt geht es um die Charakteristiken von Microservices. Das Ziel ist es,
-aufgrund der Auseinandersetzung mit dem Architekturmuster, die Entscheidung treffen zu können, ob Microservices
-eine gute Wahl für die Softwarearchitektur dieser Arbeit sind. In \Cref{subsec:wasverstehtmanuntermicroservices}
-stellt sich die Frage, was Microservices eigentlich sind und was sie auszeichnet. In
-\Cref{subsec:vorundnachteile} werden Vor- und Nachteile einer Microservice-Infrastruktur
-diskutiert.
+Dieser Abschnitt setzt sich mit dem Architekturmuster "Microservices" auseinander.
+In \Cref{subsec:wasverstehtmanuntermicroservices} stellt sich die Frage, was Microservices
+eigentlich sind und was sie auszeichnet. Die Vor- und Nachteile einer Microservice-Infrastruktur
+werden in \Cref{subsec:vorundnachteile} diskutiert.
 
 \subsection{Was versteht man unter Microservices?}
 \label{subsec:wasverstehtmanuntermicroservices}
