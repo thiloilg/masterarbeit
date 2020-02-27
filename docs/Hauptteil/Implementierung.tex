@@ -678,6 +678,18 @@ die serverseitige Datenverarbeitung sowie die Auslieferung der Daten. Zur Kommun
 verwendet der Service die Gorilla WebSocket Bibliothek,\footnote{https://github.com/gorilla/websocket} zur Verarbeitung
 der Daten Go-JMESPath.\footnote{https://github.com/jmespath/go-jmespath} Die Arbeit hat sich im Falle des
 Data Delivery Services für Golang entschieden, da bereits bei der Gestaltung der Programmiersprache Wert auf
-das parallele Arbeiten mehrerer Prozesse gelegt wurde. So ist es mithilfe einer Goroutine möglich,
+das parallele Arbeiten mehrerer Prozesse gelegt wurde. So ist es mithilfe einer sogennanten Goroutine möglich,
 einen leichtgewichtigen, von der Golang Laufzeit verwalteten, Thread zu starten.\footnote{Hierfür
-wird der Syntax-Befehl \code{go} gefolgt von einer zu parallelisierenden Funktion benutzt.}\cite{GoroutinesExample}
+wird der Syntax-Befehl \code{go} gefolgt von einer zu parallelisierenden Funktion benutzt.\cite{GoroutinesExample}}
+Der Data Delivery Service verwendet zur Authentifizierung den gleichen JWT wie der Resource Management Service.
+Der Token wird bei dem Handshake zum Verbindungsaufbau des WebSocket-Protokolls übergeben. Für die Authentifizierung
+sowie das Logging ist in einer Middleware untergebracht. Zum hosten der Dokumentation sowie dem HTTP-Upgrade
+wird der Golang interne HTTP-Server des \code{net/http} Programmpakets verwendet. Der Data Delivery Service
+nimmt Anfragen, falls vorhanden, immer zuerst aus dem Cache. Daraufhin wird die Anfrage mit aktuellen Daten
+verarbeitet und ein Update an das Frontend gesendet. Um die Verbindung nicht zu blockieren, werden aufwendige
+Prozesse in Goroutinen ausgelagert. Der HTTP-Server weißt den einkommenden WebSocket-Verbindungen bereits
+eigene Goroutinen zu. Die Anfrage gegen den Cache wird noch in der selben Goroutine verarbeitet.
+Die Aktualisierungsschleife, die in einem gegebenen Interval den Prozess zur Datenaktualisierung startet,
+wird ebenfalls in einer eigenen Goroutine ausgelagert. Der Prozess zur Datenaktualisierung selbst wird
+auch in einer eigenen Goroutine ausgeführt. Die Daten werden angefragt, verarbeitet, an das Frontend geschickt
+und der Cache aktualisiert.
