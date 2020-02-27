@@ -7,13 +7,20 @@ Zwischen der Datenerfassung und dem Aha-Erlebnis, das beim Blick auf ein aufschl
 langer Weg. Die Arbeit findet in Zusammenarbeit mit der Firma GBO Datacomp statt, die Beispieldaten
 in Form einer REST-Schnittstelle zur Verfügung stellt. Die Aufgabe der Arbeit ist es, ein System zu schaffen,
 das die Daten performant und sicher transportiert, flexibel verarbeitet und dem Benutzer
-in einem webbasierten Dashboardingtool zugänglich macht. 
+in einem webbasierten Dashboardingtool zugänglich macht.
 
-Zur Umsetzung des Systems wird die Logik der Gesamtanwendung in einzelne Microservices
+Die Entwicklung eines solchen Systems ist eine echte Herausforderung.
+
+Zur Umsetzung des Systems wurde die Logik der Gesamtanwendung in einzelne Microservices
 unterteilt. Zur Verwaltung der Benutzerdaten bietet die Arbeit einen Node.js Server
 mit einer REST-Schnittstelle an. Die zu visualisierenden Daten werden in einem
 in Go geschriebenen Dienst verarbeitet und über das WebSocket-Protokoll an die
 Frontendanwendung gesendet. Das Frontend besteht aus einer progressiven Webanwendung,
 die ein agiles Verfahren zur Erstellung der Dashboards bereitstellt. Die zur Darstellung
 verwendeten Diagramme werden während der Laufzeit aus einem Redis-Cache zugeliefert.
+Die Services wurden so konstruiert, dass mehrere Instanzen ohne Probleme nebeneinander
+laufen können.
+
+Die Anwendung ist unter der Domain \code{blicc.org} sowie im Google Play Store erhältlich.
+
 
