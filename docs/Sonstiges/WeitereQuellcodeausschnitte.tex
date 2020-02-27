@@ -15,9 +15,9 @@ des Webservers einer progressiven Webanwendung liegen muss. Aus Platzgründen wu
 
 \newpage
 
-\section*{Resource Management API Routes}
-\label{sec:resourcemanagementapiroutes}
-Die Tabelle \ref{tab:resourcemanagementapiroutes} zeigt die
+\section*{Resource Management Service Routes}
+\label{sec:resourcemanagementserviceroutes}
+Die Tabelle \ref{tab:resourcemanagementserviceroutes} zeigt die
 Routen der REST-API des \code{Resource Management Services} in Zusammenhang
 mit den HTTP-Methoden. Dabei steht grundsätzlich \code{GET} für den Zugriff,
 \code{POST} für das Erstellen, \code{PUT} für das Aktualisieren und \code{DELETE}
@@ -51,18 +51,18 @@ Route & HTTP-Methods \\
 /users/:id/delete       & [POST]             \\
 \end{tabular}
 \end{center}
-\caption{Resource Management API Routes}
-\label{tab:resourcemanagementapiroutes}
+\caption{Resource Management Service Routes}
+\label{tab:resourcemanagementserviceroutes}
 \end{table}
 
 \newpage
 
-\section*{Data Delivery API Ein- und Ausgangsdaten}
-\label{sec:datadeliveryapieinundausgangsdaten}
+\section*{Data Delivery Service Ein- und Ausgangsdaten}
+\label{sec:datadeliveryserviceeinundausgangsdaten}
 
 Die folgenden zwei Quellcodeausschnitte \ref{lst:datadelvieryrequestbodybeispiel}
 und \ref{lst:datadeliveryresponsebodybeispiel} zeigen die Ein- und
-Ausgangsdaten einer Anfrage gegen die \code{Data Delivery API}.
+Ausgangsdaten einer Anfrage gegen den Data Delivery Service.
 
 \begin{listing}[h]
     \inputminted{jsx}{snippets/json/data-delivery-example/request.data-delivery.txt}
