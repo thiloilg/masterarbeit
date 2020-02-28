@@ -13,16 +13,13 @@ Die Entwicklung einer solchen Gesamtanwendung ist eine echte Herausforderung. Vo
 über die Softwarearchitektur bis hin zur Gestaltung der einzelnen Komponenten ist ein stetiges
 Verfahren abverlangt, das plant, realisiert, untersucht und verbessert.
 
-Zur Umsetzung wurde die Logik der Gesamtanwendung in einzelne Microservices
+Zur Umsetzung des Systems wurde die Logik der Gesamtanwendung in einzelne Microservices
 unterteilt. Zur Verwaltung der Benutzerdaten bietet die Arbeit einen Node.js Server
 mit einer REST-Schnittstelle an. Die zu visualisierenden Daten werden in einem
 in Go geschriebenen Dienst verarbeitet und über das WebSocket-Protokoll an die
 Frontendanwendung gesendet. Das Frontend besteht aus einer progressiven Webanwendung,
 die ein agiles Verfahren zur Erstellung der Dashboards bereitstellt. Die zur Darstellung
 verwendeten Diagramme werden während der Laufzeit aus einem Redis-Cache zugeliefert.
-Die Services wurden so konstruiert, dass mehrere Instanzen ohne Probleme nebeneinander
-laufen können.
 
-Die Anwendung ist unter der Domain \code{blicc.org} sowie im Google Play Store erhältlich.
-
-
+Das System wurde erfolgreich umgesetzt und getestet. Die Anwendung ist unter der Domain \code{blicc.org}
+sowie im Google Play Store erhältlich.
