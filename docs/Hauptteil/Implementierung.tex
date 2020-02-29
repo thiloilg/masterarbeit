@@ -671,6 +671,14 @@ abgefragt werden würden. Die Middeware zur Rechteverwaltung sichert nur den Zug
 Resourcen, die nur für den Besitzer zugänglich sein dürfen, werden in dem jeweiligen Kontroller vor unerlaubten
 Zugriffen beschützt.
 
+Um die Einstiegshürde für unbefugte Eindringlinge zu erhöhen, wurde eine Zwei-Faktor-Authentisierung
+implementiert. Der Benutzer kann diese in den Benutzereinstellungen aktivieren. Ist die Zwei-Faktor-Authentisierung aktiviert,
+wird beim Login neben dem Passwort ein sechsstelliger Pin abgefragt, den der Benutzer über eine Authentisierungsapplikation
+wie Authy\footnote{https://authy.com/} generieren kann. Bei der Aktivierung der Zwei-Faktor-Authentisierung, wird ein
+privater Schlüssel zwischen der Authentisierungsapplikation und dem Backend geteilt, mit dem in kombination mit
+der aktuellen Zeit ein Pin generiert und verifiziert werden kann. Die Abklingzeit für die Gültigkeit des Pins wurde
+auf eine Minute gesetzt.
+
 \section{Data Delivery Service}
 \label{sec:datadeliveryservice}
 Der Data Delivery Service wurde in der Programmiersprache Golang geschrieben und kümmert sich um die Datenbeschaffung,
