@@ -67,26 +67,7 @@ den Produktionsserver senden, der daraufhin die Docker-Images mit denen aus der 
 \section{Zuverlässigkeit}
 \label{sec:zuverlaessigkeit}
 
-
-\subsection{Testabdeckung}
-\label{subsec:testabdeckung}
-
-
-
-
-% Probleme: cookies verändern sich, Service Worker verändert sich, neue Felder in der Datenbank
-% Frontend und Backend etc, also allen verschiedenen Services
-
-\section{Skalierbarkeit der Services}
-\label{sec:skalierbarkeitderservices}
-
-\subsection{Lasttests}
-\label{subsec:lasttests}
-
-% stress test
-% edurance or consistent load tests => memory leaks, memory full because of logging
-% baseline test - compare tests over time
-
+% * Testabdeckung
 
 \section{Verfügbarkeit}
 \label{sec:verfuegbarkeit}
@@ -144,4 +125,18 @@ benötigt.\cite{CompressionBenchmark} Für dynamische Inhalte sollte man also Gz
 benutzen. Wichtig ist auch, dass Bilder je nach Format in der Regel bereits komprimiert wurden.
 Ein weiterer Kompressionsvorgang kann die Größe der Bilder vergrößern.
 
+
+
+\section{Robustheit}
+\label{sec:robustheit}
+
+% * Skalierbarkeit
+% * Lasttests
+
+% Probleme: cookies verändern sich, Service Worker verändert sich, neue Felder in der Datenbank
+% Frontend und Backend etc, also allen verschiedenen Services
+
+% stress test
+% edurance or consistent load tests => memory leaks, memory full because of logging
+% baseline test - compare tests over time
 
