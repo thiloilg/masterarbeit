@@ -3,15 +3,6 @@
 In diesem Kapitel soll die Software anhand von für die Softwareentwicklung relevanten Qualitätsmerkmalen
 ausgewertet werden. Laut Peter Liggesmeyer, dem Autor des Buches "Software-Qualität", sind diese
 Korrektheit, Vollständigkeit, Sicherheit, Zuverlässigkeit, Verfügbarkeit und Robustheit \cite[S. 5]{SoftwareQualitaet}.
-Die Arbeit fügt hier noch das Qualitätsmerkmal der Benutzerfreundlichkeit hinzu.
-
-% Die Auswertung des umgesetzten Systems ist in folgende Bereiche aufgeteilt:
-% Zuallererst werden die in \Cref{chap:anforderungsanalyse} die erarbeiteten Anforderungen
-% mit dem Istzustand der umgesetzten Funktionalitäten anhand von Qualitätsmerkmalen verglichen. In \Cref{subsec:testabdeckung}
-% wird die Testabdeckung beurteilt. Die Skalierbarkeit der Services wird in \Cref{sec:skalierbarkeitderservices}
-% mithilfe von Lasttests ausgewertet. Mit den Lighthouse Tests in \Cref{sec:lighthousetests} wird die Frontendanwendung
-% auf ihre Performanz, Zugänglichkeit, Suchmaschinenoptimierung und den Umfang der implementierten PWA-Funktionalitäten geprüft.
-% Zuallererst wird in \Cref{sec:sicherheit} die Sicherheit der Infrastruktur und derer Komponenten ausgewertet.
 
 \section{Korrektheit}
 \label{sec:korrektheit}
@@ -70,8 +61,12 @@ für die Zukunft, das JSON-Schema nie ganz anzuzeigen. Ziel ist es, das Schema s
 
 Der letzte Sicherheitsaspekt, den es anzusprechen gilt, ist die SSH-Verbindung aus der Pipeline heraus zu den Produktionsservern.
 Hat ein Eindringling Zugriff auf die Pipeline, hat er gleichzeitig Zugriff auf alle Produktionsserver. 
-Um dies zu vermeiden, können sogenannte WebHooks verwendet werden. So könnte die Pipeline eine Nachricht via WebHook an
+Um dies zu vermeiden, können WebHooks verwendet werden. So kann die Pipeline eine Nachricht via WebHook an
 den Produktionsserver senden, der daraufhin die Docker-Images mit denen aus der Docker Registry austauscht.
+
+\section{Zuverlässigkeit}
+\label{sec:zuverlaessigkeit}
+
 
 \subsection{Testabdeckung}
 \label{subsec:testabdeckung}
@@ -93,10 +88,9 @@ den Produktionsserver senden, der daraufhin die Docker-Images mit denen aus der 
 % baseline test - compare tests over time
 
 
+\section{Verfügbarkeit}
+\label{sec:verfuegbarkeit}
 
-
-\section{Lighthouse Tests}
-\label{sec:lighthousetests}
 
 Steve Souders betont
 in einem Vortrag über die Performanz von JavaScript, dass ein Drittel der im Browser
@@ -149,8 +143,5 @@ Kompressionsrate besitzt, allerdings für die Kompression und Dekompression mehr
 benötigt.\cite{CompressionBenchmark} Für dynamische Inhalte sollte man also Gzip
 benutzen. Wichtig ist auch, dass Bilder je nach Format in der Regel bereits komprimiert wurden.
 Ein weiterer Kompressionsvorgang kann die Größe der Bilder vergrößern.
-
-\section{Sicherheit}
-\label{sec:sicherheit}
 
 
