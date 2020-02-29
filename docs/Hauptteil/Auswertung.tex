@@ -50,8 +50,28 @@ kein Problem darstellen sollte.
 
 \section{Sicherheit}
 \label{sec:sicherheit}
-Auf die Sicherheit der Anwendung wurde besonders geachtet. Um die Eintrittsschwelle von unbefugten
-Eindringlingen zu verhindert, wurde ein 
+Auf die Sicherheit der Anwendung wurde besonders geachtet. So wurde wie bereits in der Implementierung erläutert, neben
+der JWT-Authentisierung auch eine TwoZwei-Faktor-Authentisierung implementiert. Außerdem wurden in dem Resource Management Service
+der Ein- und Ausgangsverkehr in beide Richtungen mithilfe des Koa Joi Routers validiert. Nichtsdestotrotz beinhaltet die Gesamtanwendung
+noch Schwachstellen, die es zu eliminieren gilt. Die Authentifizierung passiert wie in der Implementierung beschrieben
+über einen im HTTP-Header gesetzten JWT. Bei der WebSocket-Verbindung findet die Authentifizierung beim Handshake des
+Verbindungsaufbaus statt. Die Verbindung wird somit nicht getrennt, wenn der Token abläuft. Die Frontendanwendung
+schließt allerdings bei der Abmeldung eines Benutzers die WebSocket-Verbindung automatisch. Es wäre allerdings dennoch möglich,
+dass bei einer erfolgreichen XSS-Attacke, die WebSocket-Verbindung aufrecht gehalten wird, um so Daten zu stehlen.
+
+Ein weiterer Sachverhalt ist die Verwendung des \code{dangerouslySetInnerHTML} Feldes im React Frontend. Zur Verarbeitung
+der Daten wird ein Syntax-Highlighter verwendet, um die Ein- und Ausgangsdaten in Form des JSON-Schemas anzuzeigen.
+Da dieser allerdings in React zu langsam war, wurde er in nativem JavaScript implementiert und mithilfe des 
+\code{dangerouslySetInnerHTML} Feldes in den React Code eingebunden. Im Falle, dass die externe, als Datenquelle
+verwendete API, korrupte Daten ausliefert, könnten diese als Einstiegspunkt für eine XSS-Attacke verwendet werden.
+Wenn man allerdings die angezeigten Zeilen der Ein- und Ausgangsdaten auf eine moderate Anzahl begrenzt, kann ein
+in React geschriebener Syntax-Highlighter verwendet und somit die Schwachstelle umgangen werden. Die Arbeit plant
+für die Zukunft, das JSON-Schema nie ganz anzuzeigen. Ziel ist es, das Schema stückchenweise aufzuklappen.
+
+Der letzte Sicherheitsaspekt, den es anzusprechen gilt, ist die SSH-Verbindung aus der Pipeline heraus zu den Produktionsservern.
+Hat ein Eindringling Zugriff auf die Pipeline, hat er gleichzeitig Zugriff auf alle Produktionsserver. 
+Um dies zu vermeiden, können sogenannte WebHooks verwendet werden. So könnte die Pipeline eine Nachricht via WebHook an
+den Produktionsserver senden, der daraufhin die Docker-Images mit denen aus der Docker Registry austauscht.
 
 \subsection{Testabdeckung}
 \label{subsec:testabdeckung}
@@ -132,7 +152,5 @@ Ein weiterer Kompressionsvorgang kann die Größe der Bilder vergrößern.
 
 \section{Sicherheit}
 \label{sec:sicherheit}
-% * Websocket Verbindung nach auslauf des JWT schließen und neu öffnen
-% * WebHooks anstatt ssh in der Pipeline
-% * innerHTML in Syntax Perser
+
 
