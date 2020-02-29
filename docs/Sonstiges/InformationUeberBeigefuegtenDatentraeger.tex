@@ -1,25 +1,35 @@
 \chapter{Information über beigefügten Datenträger}
 \label{chap:informationueberbeigefuegtendatentraeger}
 Im Rückdeckel dieser Arbeit befindet sich eine SD-Karte. Diese beinhaltet
-die Masterarbeit in digitaler Form, die Codebasis der Microservice-Infrastruktur,
-Screenshots der Anwendungsoberfläche sowie Komponentendiagramme.
+die Masterarbeit in digitaler Form sowie den Quellcode der Gesamtanwendung.
 
+\begin{small}
 \begin{itemize}[noitemsep,nolistsep]
-    \item Quellcode
+    \item \textbf{Masterarbeit als PDF}
+    \item \textbf{Quellcode}
     \begin{itemize}[noitemsep,nolistsep]
-        \item /.vscode
-        \item /android
-        \item /api
-        \item /app
-        \item /certs
-        \item /db
-        \item /delivery
-        \item /docs
-        \item /mock-api
-        \item /mongo
-        \item /plugins
-        \item /redis
-        \item /scripts
+        \item \codeBold{/.vscode} VS Code Einstellungen für Debugging und Ordnersymbole
+        \item \codeBold{/android} Werkzeuge zur Verpackung der PWA in eine Android App
+        \item \codeBold{/api} Repository des Resource Management Services
+        \item \codeBold{/app} Repository der progressiven Webanwendung
+        \item \codeBold{/certs} Ablage der Zertifikate für die lokale Entwicklung
+        \item \codeBold{/db} PostgreSQL als Datenbank des Resource Management Services
+        \item \codeBold{/delivery} Repository des Data Delivery Services
+        \item \codeBold{/docs} Dokumentation der Gesamtanwendung
+        \item \codeBold{/mock-api} API-Mock für die Integrationstests
+        \item \codeBold{/mongo} MongoDB zur Speicherung der zu visualisierenden Daten
+        \item \codeBold{/plugins} Repository zur Einwicklung der Diagramme
+        \item \codeBold{/redis} In-Memory-Datenbank zur Auslieferung der Plugins
+        \item \codeBold{/scripts} Shell-Skripte zum Aufsetzen der Infrastruktur
     \end{itemize}
-    \item Masterarbeit als PDF
 \end{itemize}
+\end{small}
+
+\bigskip
+
+\begin{small}
+\begin{myboxi}[Hinweis]
+Die benötigten Schritte zum Aufsetzen der Gesamtanwendung sind in der 
+\code{README.md} Datei im Wurzelverzeichnis des Quellcode-Ordners beschrieben.
+\end{myboxi}
+\end{small}

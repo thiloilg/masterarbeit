@@ -2,6 +2,29 @@
 \usepackage[T1]{fontenc}
 \usepackage{scrhack}
 
+
+\usepackage{xcolor}
+\usepackage[tikz]{bclogo}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[many]{tcolorbox}
+
+\newtcolorbox{myboxi}[1][]{
+  breakable,
+  title=#1,
+  colback=white,
+  colbacktitle=white,
+  coltitle=black,
+  fonttitle=\bfseries,
+  bottomrule=-1pt,
+  toprule=-1pt,
+  leftrule=3pt,
+  rightrule=3pt,
+  titlerule=-1pt,
+  arc=0pt,
+  outer arc=0pt,
+  colframe=black,
+}
+
 \DeclareUnicodeCharacter{0374}{\"u}
 \DeclareUnicodeCharacter{0334}{\"U}
 \DeclareUnicodeCharacter{0366}{\"o}
@@ -88,7 +111,9 @@
 \def\cm{\checkmark}
 
 \newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\codeBold}[1]{\textbf{#1}}
 
 \raggedbottom
 
 \usepackage{enumitem}
+
