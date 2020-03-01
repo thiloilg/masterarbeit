@@ -140,19 +140,14 @@ kann man erkennen, dass das Gesamtsystem bereits ab hundert Anfragen pro Sekunde
 müssen.
 
 Die Lasttestresultate der JMeter-Tests sind auf der Abbildung \ref{figure:lasttestmitjmeter}
-zu erkennen.
-
-% * Skalierbarkeit
-% * Lasttests
-
-% Probleme: cookies verändern sich, Service Worker verändert sich, neue Felder in der Datenbank
-% Frontend und Backend etc, also allen verschiedenen Services
-
-% stress test
-% edurance or consistent load tests => memory leaks, memory full because of logging
-% baseline test - compare tests over time
-
-
+zu erkennen. Das Diagramm zeigt die Anzahl der jeweils empfangenen Statuscodes in Bezug
+auf die verstrichene Zeit. Der Lasttest wurde nach ca. 10 Minuten abgebrochen.
+Der Test führt folgendes Szenario sechzig mal in der Sekunde aus:
+Als erstes wird eine HTTPS-Anfrage an die \code{index.html} gesendet.
+Daraufhin loggt sich der Benutzer mit seinen Benutzerdaten ein.
+Sobald er eingeloggt ist, wird eine WebSocket-Verbindung eröffnet
+und auf eine Datenquelle abonniert. Nach Ankunft der ersten Daten der
+Datenquelle wird die WebSocket-Verbindung wieder geschlossen.
 
 \begin{figure}
     \begin{center}
@@ -163,3 +158,13 @@ zu erkennen.
 \end{figure}
 
 
+
+% * Skalierbarkeit
+% * Lasttests
+
+% Probleme: cookies verändern sich, Service Worker verändert sich, neue Felder in der Datenbank
+% Frontend und Backend etc, also allen verschiedenen Services
+
+% stress test
+% edurance or consistent load tests => memory leaks, memory full because of logging
+% baseline test - compare tests over time
