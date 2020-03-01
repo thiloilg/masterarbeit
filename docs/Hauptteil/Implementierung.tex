@@ -211,16 +211,59 @@ Auslastung der Instanzen bereitstellen, anhand derer dann die Last gleichmäßig
 Die Inhaltsauslieferung ist dafür zuständig, statische Inhalte der Frontendanwendung
 an den Client auszuliefern. Die statischen Inhalte sind unter anderem
 HTML-, CSS- und JS-Dateien, JSON-Dateien wie das Web App Manifest sowie Bilddateien.
-Die Arbeit verwendet als zur Inhaltsauslieferung den Webserver Nginx. Für die Kompression der statischen
-Inhalte wird Brotli verwendet. Brotli ist eine von Zoltán Szabadka
+Die Arbeit verwendet als zur Inhaltsauslieferung den Webserver Nginx.
+
+Um die Relevanz der Kompression von Daten zu verdeutlichen, führt diese Arbeit einen
+Vergleichstest des initialen Ladevorgangs der Frontendanwendung,
+einmal mit Gzip, Brotli\footnote{Brotli ist eine von Zoltán Szabadka
 und Jyrki Alakuijala entwickeltes Kompressionsverfahren,
 dass auf die Entropiekodierung Huffman und dem verlustlosen
-Datenkompressionsverfahren LZ77 basiert.\cite{BrotliGoogleOpenSourceBlog}
+Datenkompressionsverfahren LZ77 basiert.\cite{BrotliGoogleOpenSourceBlog}} und einmal ohne Kompression durch. 
+
+Die Leistungstests werden mit dem Open-Source-Werkzeug Lighthouse durchgeführt.\footnote{https://developers.google.com/web/tools/lighthouse}
+Um den Unterschied der benötigten Zeit zum initialen Laden der Frontendanwendung
+besser zu verdeutlichen, wird der Datendurchlauf auf 1.638,4Kbps verringert.
+Die Frontendanwendung wird in einem nachgeahmten Nexus 5X ausgeführt.
+Für die Analyse wurden vier Metriken aus dem Testbericht entnommen.
+Die Ergebnisse des Leistungstests sind in Abbildung \ref{tab:lighthouseleistungstestdesinitialenladevorgangs}
+dargestellt.
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{l*{8}{r}}
+Metrik & Ohne Kompr. & Gzip & Brotli \\
+\hline
+Erstes Zeichnen von Inhalten & 6,2s  & 3,1s & 2,9s \\
+Erste CPU-Inaktivität        & 6,2s  & 4,3s & 4,1s \\
+Zeit für Interaktion         & 7,5s  & 4,3s & 4,1s \\
+Übertragungsgröße            & 1.172KB  &  553KB & 481KB \\
+\end{tabular}
+\end{center}
+\caption{Lighthouse Leistungstest des initialen Ladevorgangs}
+\label{tab:lighthouseleistungstestdesinitialenladevorgangs}
+\end{table}
+
+Die Zeit wird von der ersten vom Browser ausgehenden Anfrage gemessen.
+Lighthouse beschreibt die Metriken wie folgt: Unter dem ersten Zeichnen
+von Inhalten versteht man den ersten Zeitpunkt, an dem der Browser
+irgendeinen Inhalt zeichnet. Die erste CPU-Inaktivität ist
+der erste Zeitpunkt, an dem die Seite auf Benutzerinteraktionen reagieren könnte.
+Unter Zeit für Interaktion versteht man den Zeitpunkt, an dem alle Inhalte geladen ist.
+Jetzt kann die Seite zu jeder Interaktion schnell reagieren.\cite{WhatPerformanceMetricsMeasure}
+
+In Abbildung \ref{tab:lighthouseleistungstestdesinitialenladevorgangs} wird klar deutlich,
+dass Kompression gerade bei langsameren Internetverbindungen von großer Bedeutung ist.
+Es ist wichtig anzumerken, dass der Brotli-Kompressionsalgorithmus zwar eine größere
+Kompressionsrate besitzt, allerdings für die Kompression und Dekompression mehr Zeit
+benötigt.\cite{CompressionBenchmark} Für dynamische Inhalte sollte man also Gzip
+benutzen. Wichtig ist auch, dass Bilder je nach Format in der Regel bereits komprimiert wurden.
+Ein weiterer Kompressionsvorgang kann die Größe der Bilder vergrößern \cite{CloudFlareCompressionDiscussion}.
+
+Für die Kompression der statischen Inhalte wird somit Brotli verwendet.
 Als Fallback verwendet die Arbeit Gzip. Standartmäßig unterstützt Nginx
 das Kompressionsverfahren Gzip. Die Arbeit fügt dem Nginx-Dockerfile ein Script
 hinzu, welches Brotli installiert. Außerdem wurde die \code{nginx.conf} Datei
-so angepasst, damit Nginx Brotli unterstützt. Der Geschwindigkeitsunterschied der
-beiden Kompressionsarten wird in \Cref{sec:uebertragung} verglichen.
+so angepasst, damit Nginx Brotli unterstützt.
 
 \subsection{Wahl der Datenbankarten}
 \label{subsec:wahlderdatenbankarten}
