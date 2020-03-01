@@ -97,6 +97,50 @@ Instanz verlegt.
 
 \section{Robustheit}
 \label{sec:robustheit}
+Um die Robustheit der Gesamtanwendung zu testen, führt die Arbeit zwei verschiedene
+Arten von Lasttests durch. Zum einen soll das Cluster auf maximale Auslastung getestet
+werden. Da eine große Anzahl an Anfragen versendet werden müssen,
+wird hierfür der Lasttestdienst Loader.io\footnote{https://loader.io/} verwendet.
+Bei den Anfragen handelt es sich um HTTPS-Anfragen, die gegen
+die 37KB große \code{index.html} der Frontendanwendung gehen.
+Als zweites wird ein Lasttest über zehn Minuten mithilfe der Open Source Software
+JMeter\footnote{https://jmeter.apache.org/} durchgeführt. Hier werden mehrere HTTPS- sowie
+WSS-Anfrage hintereinander ausgeführt, um das anfängliche Verhalten eines möglichen Benutzers nachzuahmen.
+Für den Test wurden fünf Server zu einem Cluster zusammengefügt. Die einzelnen Services wurden
+auf zehn Instanzen skaliert.
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{rrrrr}
+Anfragen/Sek. & Fehlerrate & min. & max. & durchschn. \\
+\hline
+100 &  0\% & 86ms & 419ms & 92ms \\
+250 &  0\% & 85ms & 549ms & 93ms \\
+500 &  0\% & 85ms & 907ms & 95ms \\
+1.000 &  0\% & 85ms & 8.431ms & 267ms \\
+2.500 &  1,2\% & 90ms & 15.858ms & 1.974ms \\
+5.000 &  8,9\% & 86ms & 19.994ms & 3.726ms \\
+\end{tabular}
+\end{center}
+\caption{Antwortzeiten der Lasttests mit Loader.io (1 Minute Laufzeit)}
+\label{tab:resultatdeslasttestsmitloaderio}
+\end{table}
+
+In Tabelle \ref{tab:resultatdeslasttestsmitloaderio} sieht man die Resultate
+der Lasttests mit Loader.io. Es wurden sechs Iterationen durchgeführt.
+Die Felder "min.", "max." und "durchschn." beziehen sich auf die minimale,
+maximale und durchschnittliche Antwortzeit, die die Server benötigen, um die
+Anfragen zu verarbeiten. Für die Lasttests wurden die HTTPS-Anfragen,
+die pro Sekunde abgesendet werden, von initial 100 auf bis zu 5.000 erhöht.
+Ab ca. 2.500 Anfragen pro Sekunde fängt das Cluster an, Antworten auf die
+Anfragen erst so spät zu versenden, dass die Antwort, die vom Client
+erwartete Maximalzeit überschreitet. Betrachtet man die maximale Antwortzeit,
+kann man erkennen, dass das Gesamtsystem bereits ab hundert Anfragen pro Sekunde
+überlastet ist. Ein Nutzer sollte keine acht Sekunden auf eine Antwort warten
+müssen.
+
+Die Lasttestresultate der JMeter-Tests sind auf der Abbildung \ref{figure:lasttestmitjmeter}
+zu erkennen.
 
 % * Skalierbarkeit
 % * Lasttests
@@ -108,11 +152,14 @@ Instanz verlegt.
 % edurance or consistent load tests => memory leaks, memory full because of logging
 % baseline test - compare tests over time
 
+
+
 \begin{figure}
     \begin{center}
-    \includegraphics[scale=0.4]{img/abbildungen/Loadtest}
+    \includegraphics[scale=0.4]{img/abbildungen/Lasttest}
     \end{center}
     \caption{Lasttest mit JMeter}
     \label{figure:lasttestmitjmeter}
 \end{figure}
+
 
