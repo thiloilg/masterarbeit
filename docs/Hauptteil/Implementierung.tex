@@ -187,7 +187,7 @@ Neben der Funktionalität als Reverse Proxy bietet Traefik eine
 SSL/TLS-Verschlüsselung über den Service Let's Encrypt an.\footnote{https://letsencrypt.org/}
 Laut einer Checklist von Google ist eine Verbindung über HTTPS
 Vorraussetzung für die Auslieferung einer PWA.\cite{GooglePWAChecklist}
-Ohne SSL/TLS-Verschlüsselung werden Funktionalitäten wie das hinzufügen der App zum Homescreen
+Ohne SSL/TLS-Verschlüsselung werden Funktionalitäten wie das Hinzufügen der App zum Startbildschirm
 von den Browsern nicht bereitgestellt. Verschlüsselungsschichten wie TLS und der Vorgänger
 SSL liegen zwischen der TCP-Schicht und HTTP/WS. Neben dem Public-Key-Verschlüsselungsverfahren
 muss für eine TLS-Verschlüsselung auch die Authentizität des Servers, mit dem kommuniziert wird,
@@ -533,7 +533,8 @@ ein JSON, das den Aufbau und die Einstellungen eines Dashboards darstellt.\footn
 Beispiel hierfür ist der Quellcodeausschnitt \ref{lst:jsondateizurspeicherungeinesdashboards}
 im Anhang unter "Weitere Quellcodeausschnitte".} Anhand dieser Informationen werden
 daraufhin zeitgleich in \( A_1 \) die benötigten Plugins von dem Resource Management Service
-und in \( B_1 \) die zu visualisierenden Daten von dem Data Delivery Service angefragt.\footnote{Das Anfragen der zu visualisierenden Daten erfolgt über die Publish-Funktion des 
+und in \( B_1 \) die zu visualisierenden Daten von dem Data Delivery Service angefragt.\footnote{Das Anfragen
+der zu visualisierenden Daten erfolgt über die Publish-Funktion des 
 \code{useDeliveryEndpoint} Hooks.}
 Kommen die Plugins vor den zu visualisierenden Daten an, abbonieren diese über 
 den \code{useDeliveryEndpoint} Hook mithilfe der Data Source Id die für das Plugin relevanten

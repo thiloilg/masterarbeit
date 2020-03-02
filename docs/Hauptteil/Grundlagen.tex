@@ -19,7 +19,7 @@ eine Antwort an das Frontend zurückzusenden.\cite{W3ServiceWorker}
 
 Progressive Webanwendungen als Alternative zu einer nativen Umsetzung ermöglichen mehr Freiheit gegenüber den
 Plattformanbietern. Sobald die Möglichkeit besteht, PWAs mithilfe einer vom Browser angesteuerten Programmierschnittstelle (API)
-auf dem Homescreen zu speichern, verliert der Plattformanbieter die Kontrolle,
+auf dem Startbildschirm zu speichern, verliert der Plattformanbieter die Kontrolle,
 bestimmte PWAs zu verbieten. Dies ist bei nativen Anwendungen nicht der Fall. So löschte Apple in der Vergangenheit
 bereits große Mengen an Apps aus dem App Store.\footnote{Laut Heise.de löschte Apple im Oktober
 2016 rund 47.300 Apps aus dem App Store \cite{HeiseAppleLoeschtApps}.}
@@ -86,7 +86,7 @@ nun diese Merkmale? Alex Russell erwähnt in seinem Blogpost dazu Folgendes:
 Die PWA soll responsive und netzunabhängig sein, app-ähnliche Navigationsvorgänge bereitstellen,\footnote{Ohne Verwendung von Browser Tabs} 
 immer aktuell sein, nur unter Verwendung der Transport Layer Security (TLS) ausgeliefert werden, durch Suchmaschinen als solche mithilfe
 des Web-App-Manifests auffindbar sein, plattformspezifische Funktionalitäten wie Push-Notifications
-verwenden sowie auf dem Homescreen installierbar, über Hyperlinks teilbar und ohne aufwendigen
+verwenden sowie auf dem Startbildschirm installierbar, über Hyperlinks teilbar und ohne aufwendigen
 Installationsprozess verwendbar sein.\cite{PWA2015} Eine 2018 veröffentlichte, wissenschaftliche
 Arbeit von Thomas Steiner, über die Analyse von Merkmalen einer PWA innerhalb eines WebViews\footnote{Ein Web View ist ein in einer nativen App eingebetteter Browser zur Darstellung von Webinhalten.},
 benennt fünfzehn für eine PWA relevante Merkmale. Die Analyse über den unterstützten Funktionsumfang
@@ -112,7 +112,7 @@ Steiner für relevant angesehenen Merkmale sind folgende:
 Offline Capabilities; hierbei wird nach
 einer Unterstützung der Cache API gesucht. Push Notifications;
 ist die Push API unterstützt? Add to Homescreen; kann man PWAs auf
-dem Homescreen speichern (A2HS)? Background Sync; ermöglicht eine eventgetriebene Synchronisation
+dem Startbildschirm speichern (A2HS)? Background Sync; ermöglicht eine eventgetriebene Synchronisation
 zwischen dem Service Worker und der Anwendung. Navigation Preload; die Möglichkeit
 Ressourcen bereits während dem Hochfahren des SW vorzuladen
 (Navigation Preload Manager API). Silent Push; das Starten von durch das
