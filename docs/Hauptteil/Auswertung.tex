@@ -139,23 +139,32 @@ kann man erkennen, dass das Gesamtsystem bereits ab hundert Anfragen pro Sekunde
 überlastet ist. Ein Nutzer sollte keine acht Sekunden auf eine Antwort warten
 müssen.
 
-Die Lasttestresultate der JMeter-Tests sind auf der Abbildung \ref{figure:lasttestmitjmeter}
-zu erkennen. Das Diagramm zeigt die Anzahl der jeweils empfangenen Statuscodes in Bezug
-auf die verstrichene Zeit. Der Lasttest wurde nach ca. 10 Minuten abgebrochen.
-Der Test führt folgendes Szenario sechzig mal in der Sekunde aus:
-Als erstes wird eine HTTPS-Anfrage an die \code{index.html} gesendet.
-Daraufhin loggt sich der Benutzer mit seinen Benutzerdaten ein.
-Sobald er eingeloggt ist, wird eine WebSocket-Verbindung eröffnet
-und auf eine Datenquelle abonniert. Nach Ankunft der ersten Daten der
-Datenquelle wird die WebSocket-Verbindung wieder geschlossen.
-
 \begin{figure}
     \begin{center}
-    \includegraphics[scale=0.4]{img/abbildungen/Lasttest}
+    \includegraphics[scale=0.15]{img/abbildungen/Antwortzeitdiagramm}
     \end{center}
     \caption{Lasttest mit JMeter}
     \label{figure:lasttestmitjmeter}
 \end{figure}
+
+Die Lasttestresultate der JMeter-Tests sind auf der Abbildung \ref{figure:lasttestmitjmeter}
+zu erkennen. Das Diagramm zeigt die Anzahl der jeweils empfangenen Statuscodes in Bezug
+auf die verstrichene Zeit. Der Lasttest wurde nach ca. 10 Minuten abgebrochen.
+Der Test führt folgendes Szenario fünfzig mal in der Sekunde aus:
+Als erstes wird eine HTTPS-Anfrage an die \code{index.html} gesendet.
+Daraufhin loggt sich der Benutzer mit seinen Benutzerdaten ein.
+Sobald er eingeloggt ist, läd der Benutzer über die Resource Management Service
+eine Liste der Dashboards. Als nächstes wird eine WebSocket-Verbindung eröffnet
+und auf eine Datenquelle abonniert. Nach Ankunft der ersten Daten der
+Datenquelle wird die WebSocket-Verbindung wieder geschlossen.
+
+Im Schaubild ist zu erkennen, dass das Cluster alle ca. 50 Sekunden einen Einbruch
+der Leistung ausweist. Die WebSocket-Verbindung schließt nicht immer ordnungsgemäß.
+Der HTTP-Statuscode 101 steht für den Protokollwechsel zu dem WebSocket-Protokoll.
+Bei einem erfolgreichen Schließen der Verbindung bekommt der Client den Close Code 1000.
+Aus den von JMeter aufgenommenen Reportkennzahlen geht hervor, dass sich die Antwortzeit
+der der Landing-Page bei ca. 
+
 
 
 
