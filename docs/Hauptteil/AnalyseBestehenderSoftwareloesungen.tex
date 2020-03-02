@@ -93,31 +93,29 @@ auf die verschiedenen Achsen der Diagramme vereinfacht.
 \label{sec:tableau}
 In diesem Abschnitt gilt es Tableau genauer zu betrachten. Tableau besitzt, wie auch Power BI und Qlik,
 eine Ansammlung an unterschiedlichen Diensten. So gibt es Tableau Desktop, das Equivalent zu Power BI
-Desktop, einen Tableau Server sowie native Apps. Bei der Datenbeschaffung bietet Tableau Desktop wie auch
-Power BI und Qlik Sense, neben dem Laden von lokalen Dateien und diversen spezifischen Datenbankschnittstellen,
-das Laden aus Datenbanken mit einer gängigen ODBC-Schnittstelle an. Daten können in Echtzeit
+Desktop, einen Tableau Server sowie eine native App. Bei der Datenbeschaffung bietet Tableau Desktop wie auch
+Power BI und Qlik Sense, neben dem Laden von lokalen Dateien das Laden aus Datenbanken
+mit einer gängigen ODBC-Schnittstelle an. Somit können Daten in Echtzeit
 über SQL-Statements abgefragt werden. Alternativ werden die Daten auf dem Betriebssystem, auf dem
 Tableau Desktop verwendet wird, persistiert und mithilfe der eigenen Data Engine agil aus dem
 vorgeladenen Arbeitsspeicher geladen.\cite[S. 50]{ProTableauBook}
 
-Tableau besitzt für die Aufbereitung der Daten Tableau Prep ein Werkzeug zur Durchführung der
-ETL-Prozesse.\footnote{https://www.tableau.com/de-de/products/prep} Unübersehbar positiv ist
-in Tableau Prep das agile Vorgehen zur Erstellung eines Flows. Ein Flow in Tableau Prep ist ein Programmablaufplan
-zur Verarbeitung eines Datenflusses. In einem Flow lassen sich per Drag and Drop Datenquellen sowie diverse Verarbeitungsmechanismen zu einem Programmablaufplan
+Tableau besitzt für die Aufbereitung der Daten Tableau Prep, ein Werkzeug zur Durchführung der
+ETL-Prozesse.\footnote{https://www.tableau.com/de-de/products/prep} Mithilfe dieser Software kann ein Benutzer
+durch ein agiles Vergehen sogenannte Flows erstellen. Ein Flow ist ein Programmablaufplan
+zur Verarbeitung eines Datenflusses. In einem Flow lassen sich per Drag and Drop
+Datenquellen sowie diverse Verarbeitungsmechanismen zu einem Programmablaufplan
 zusammensetzen. Verarbeitungsmechanismen sind SQL-Joins, verschiedene Mechanismen der Datenbereinigung,
-das Aufteilen und Zusammenfügen von Feldern sowie das Drehen von Tabellen anhand von definierbaren Drehpunkten.
-Die einzelnen Verarbeitungsmechanismen werden in dem Buch "Prepare Your Data for Tableau" von Tim Costello und
-Lori Blackshear genauer beschrieben.\cite{PrepareYourDataForTableauBook} Die Flows von Tableau Prep können,
-ähnlich wie die Dataflows von Power BI, gespeichert und unter Mitarbeitern geteilt werden. Als Datenstruktur
-scheint ein Flow ein gerichteter Graph zu sein, durch den Daten von einer zur anderen Seite durchfließen
-können. Es ist allerdings kein Wurzelgraph, da die Flows neben mehreren Datenquellen auch mehrere Datenausgaben
-haben können. Die Knoten des Graphen stellen die Verarbeitungsmechanismen dar. Die Darstellung ist sehr statisch
-aufgebaut. Es handelt sich hier also nicht wie bei der Datenmodellierung von Qlik um einen kraftgerichteter Graphen.
-Fährt man mit dem Mauszeiger über die Knoten des Graphen, lassen sich neue Knoten durch das Klicken auf ein
-auftauchendes Plus hinzufügen.
+das Aufteilen und Zusammenfügen von Feldern sowie das Drehen von Tabellen anhand
+von definierbaren Drehpunkten.\cite{PrepareYourDataForTableauBook} Die Flows von Tableau Prep können,
+ähnlich wie die Dataflows von Power BI, gespeichert und unter Mitarbeitern geteilt werden. Ein Flow ist ein gerichteter Graph,
+durch den Daten von einer zur anderen Seite durchfließen können. Bei einem Flow handelt es sich allerdings nicht um einen Wurzelgraph,
+da die Flows neben mehreren Datenquellen auch mehrere Datenausgaben besitzten können. Die Knoten des Graphen
+stellen die Verarbeitungsmechanismen dar. Fährt man mit dem Mauszeiger über einen dieser
+Knoten, lassen sich neue Knoten hinzufügen.
 
 Das Erstellen von Dashboards ist, wie auch bei Power BI und Qlik Sense, durch ein Drag and Drop Verfahren möglich.
 Die Daten sind wie bei Qlik Sense in Measures und Dimensions unterteilt. Bei der Platzierung der Diagramme auf dem
-Dashboard sind zwei Optionen möglich. Es gibt eine freie sowie eine an einem Raster fixierte Anordnung. Bei der fixierten
-Anordnung lassen sich die bereits auf dem Dashboard existierenden Diagramme vertikal sowie horizontal von dem neu 
-hinzugefügten Diagramm unterteilen.
+Dashboard können diese frei angeordnet werden. Eine weitere Option ermöglicht das an einem Raster fixierte Anordnen.
+Hierbei ist es möglich, bereits auf dem Dashboard positionierte Diagramme vertikal sowie horizontal zu unterteilen.
+Das bereits positioniert Diagramm gibt hierbei die Hälfte das Platzes an das neue Diagramm ab.
