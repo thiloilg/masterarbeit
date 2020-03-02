@@ -51,7 +51,7 @@ falsch. Erst wenn Plattformanbieter einen Weg finden, finanziell von PWAs profit
 zu können, werden die Funktionalitäten in einem Maße unterstützt, die ihnen die Möglichkeit
 gibt, mit nativen Apps mithalten zu können. Der Schritt von einer Single-Page-Webanwendung (SPA) zu einer
 PWA ist allerdings ein leichter.\footnote{Wenn man sich auf die Hauptfunktionalitäten beschränkt.}
-Um die PWA auf dem Homescreen als auch Desktop speichern zu können, muss man ein Web-App-Manifest\footnote{
+Um die PWA auf dem Desktop speichern zu können, muss man ein Web-App-Manifest\footnote{
 Ein Beispiel eines Web-App-Manifests befindet sich unter Weitere Quellcodeausschnitte \ref{lst:webappmanifest}.}
 in das Stammverzeichnis des Webservers legen sowie einen Service Worker registrieren.
 Somit ist die Einstiegsebene für PWAs sehr gering. Gerade für Unternehmen,
@@ -129,19 +129,19 @@ die Möglichkeit das perfekte Format von Inhalten anhand von
 Informationen, die vom Browser bereitgestellt werden, auszuliefern (Media Capabilities API).
 Device Memory; wie viel RAM stehen dem Betriebssystem zur
 Verfügung (Device Memory API)? Detect Native App; ist die native Version
-meiner Anwendung bereits installiert? Payment Request;
+der Anwendung bereits installiert? Payment Request;
 die Benutzung von durch das Betriebssystem bereitgestellten
 Zahlungsverfahren (Payment Request API). Credential Management;
 dem Benutzer die Verwendung von im Betriebssystem gehorteten
 Anmeldedaten zu ermöglichen (Credential Management API).\cite[Abschnitt 2.3]{WhatIsInAWebView}
 
-Bei der Analyse des unterstützten Funktionsumfangs wurden die neuesten Versionen relevanter Browser\footnote{Stand Januar 2020 (Internet Explorer 11, Edge 79, Firefox 72, Chrome 79, Safari 13, Opera 64, Safari iOS 13.2, Opera Mini 46, Android Browser Chromium 76, Opera Mobile 46, Chrome für Android 79, Firefox für Android 68, UC Browser für Android 12.12 und Samsung Internet 10.1) }
+Bei der Analyse des unterstützten Funktionsumfangs wurden die neuesten Versionen der Browser\footnote{Stand Januar 2020 (Internet Explorer 11, Edge 79, Firefox 72, Chrome 79, Safari 13, Opera 64, Safari iOS 13.2, Opera Mini 46, Android Browser Chromium 76, Opera Mobile 46, Chrome für Android 79, Firefox für Android 68, UC Browser für Android 12.12 und Samsung Internet 10.1) }
 begutachtet. Die Ergebnisse würden in zwei Tabellen aufgeteilt. In \Cref{tab:unterstutzterpwafunktionsumfangteil1}
 ist der unterstützte Funktionsumfang der Desktop-Browser dargestellt. Der unterstützte Funktionsumfang der Browser
 für mobile Endgeräte ist in \Cref{tab:unterstutzterpwafunktionsumfangteil2} aufgelistet.
 
-Zwei der fünfzehn in \Cref{subsec:markmale} erwähnten Merkmale wurden
-in zwei Merkmale aufgeteilt. So gibt es zusätzlich zur Background Sync auch noch eine
+Zwei der fünfzehn in \Cref{subsec:markmale} erwähnten Merkmale wurden aufgeteilt.
+So gibt es zusätzlich zur Background Sync noch eine
 periodische Background Sync. Die Periodic Background Sync API, eine Erweiterung der Background
 Sync API, ist momentan noch in der Entwicklung und wird vorraussichtlich erst mit
 Chrome 80 veröffentlicht. Die API wird das Ausführen von Hintergrundaufgaben der SW
