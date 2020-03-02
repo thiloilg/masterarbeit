@@ -122,14 +122,15 @@ Anfragen/Sek. & Fehlerrate & min. & max. & durchschn. \\
 5.000 &  8,9\% & 86ms & 19.994ms & 3.726ms \\
 \end{tabular}
 \end{center}
-\caption{Antwortzeiten der Lasttests mit Loader.io (1 Minute Laufzeit)}
+\caption{Antwortzeiten bei großer Auslastung}
 \label{tab:resultatdeslasttestsmitloaderio}
 \end{table}
 
 In Tabelle \ref{tab:resultatdeslasttestsmitloaderio} sieht man die Resultate
-der Lasttests mit Loader.io. Es wurden sechs Iterationen durchgeführt.
-Die Felder "min.", "max." und "durchschn." beziehen sich auf die minimale,
-maximale und durchschnittliche Antwortzeit, die die Server benötigen, um die
+der Lasttests mit Loader.io. Es wurden sechs Iterationen durchgeführt. Die Laufzeit der
+Iterationen betrug eine Minute. Die Felder "min.", "max." und "durchschn." beziehen
+sich auf die minimale, maximale und durchschnittliche
+Antwortzeit, die die Server benötigen, um die
 Anfragen zu verarbeiten. Für die Lasttests wurden die HTTPS-Anfragen,
 die pro Sekunde abgesendet werden, von initial 100 auf bis zu 5.000 erhöht.
 Ab ca. 2.500 Anfragen pro Sekunde fängt das Cluster an, Antworten auf die
@@ -143,13 +144,13 @@ müssen.
     \begin{center}
     \includegraphics[scale=0.125]{img/abbildungen/Antwortzeitdiagramm}
     \end{center}
-    \caption{Antwortzeiten (JMeter Lasttest)}
-    \label{figure:antwortzeitenjmeterlasttest}
+    \caption{Antwortzeiten über Zeit (JMeter Lasttest)}
+    \label{figure:antwortzeitenueberzeit}
 \end{figure}
 
-Die Lasttestresultate der JMeter-Tests sind auf der Abbildung \ref{figure:antwortzeitenjmeterlasttest}
+Die Lasttestresultate der JMeter-Tests sind auf der Abbildung \ref{figure:antwortzeitenueberzeit}
 zu erkennen. Das Diagramm zeigt die Anzahl der jeweils empfangenen Statuscodes in Bezug
-auf die verstrichene Zeit. Der Lasttest wurde nach ca. 10 Minuten abgebrochen.
+auf die verstrichene Zeit. Der Lasttest wurde nach 10 Minuten abgebrochen.
 Der Test führt folgendes Szenario zehn mal in der Sekunde aus:
 Als erstes wird eine HTTPS-Anfrage an die \code{index.html} gesendet.
 Daraufhin loggt sich der Benutzer mit seinen Benutzerdaten ein.
