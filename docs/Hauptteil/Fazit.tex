@@ -6,8 +6,9 @@ umgesetzt. Bei der Gestaltung der Softwarearchitektur wurde sehr viel Wert auf
 die Flexibilität der Anwendung gelegt. Durch die Trennung der einzelnen Komponenten
 wie die Datenverarbeitung, die Benutzerverwaltung und die Visualisierung der Daten
 in eigene Komponenten, ist es möglich, diese flexibel zu erweitern,
-getrennt zu skalieren und wenn nötig auszutauschen. Durch die Verwendung des
-Plugin-Ansatzes für die Visualisierung der Daten, sind dieser keine Grenzen gesetzt.
+getrennt zu skalieren und wenn nötig auszutauschen. 
+
+Die Verwendung des Plugin-Ansatzes sind der Visualisierung der Daten keine Grenzen gesetzt.
 So können neue Ansammlungen an Diagrammen mit komplett unabhängigen Frameworks und
 Bibliotheken entwickelt werden. Durch die Auslieferung der Daten über
 das WebSocket-Protokoll, können diese in Echtzeit im Frontend aktualisiert werden.
@@ -15,12 +16,13 @@ Durch die Verwendung der Technologien, die eine progressive Webanwendung mit sic
 wurde es ermöglicht, eine Anwendung für Desktop-PCs, Smartphones und Tablets aus einer einzigen
 Codebasis heraus zu entwickeln. Die Frontendanwendung wurde außerdem in dem Android App Store
 veröffentlicht und weißt native Charakteristiken wie die Navigationsbar am unteren
-Ende des Smartphone-Bildschirms auf. Durch verschiedene Caching-Strategien und Kompressionsalgorithmen
-wurde die Performanz des Gesamtsystems verbessert. Zudem wird das System in einem 
-stetigen Auslieferungsprozess aktualisiert, ohne das der Benutzer eigenhändig ein Update
-installieren muss. Dies gilt auch für die Android App. Durch eine aktivgeführte Dokumentation
-der Schnittstellen der einzelnen Services ist es möglich, diese ohne Einlesen in den Quellcode
-zu verwenden. Eine solide Abdeckung der Integrationstests sichert überdies die
+Ende des Smartphone-Bildschirms auf. 
+
+Caching-Strategien und Kompressionsalgorithmen steigern die Performanz des Gesamtsystems.
+Zudem wird das System in einem stetigen Auslieferungsprozess aktualisiert, ohne das
+der Benutzer eigenhändig ein Update installieren muss. Dies gilt auch für die Android App.
+Durch eine aktivgeführte Dokumentation der Schnittstellen der einzelnen Services
+ist es möglich, diese ohne Einlesen in den Quellcode zu verwenden. Eine solide Abdeckung der Integrationstests sichert überdies die
 Fehlerfreie Kommunikation der einzelnen Komponenten. Das Gesamtsystem wurde auf bis zu
 fünf Servern ausgeführt und bewiesen, dass das Gesamtsystem durchaus auch in der Produktion
 verwendet werden kann.

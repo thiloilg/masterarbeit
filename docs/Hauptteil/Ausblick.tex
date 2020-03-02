@@ -3,4 +3,29 @@
 
 Die Gesamtanwendung bietet ein solides Grundgerüst. Jede der einzelnen Komponenten
 kann an Funktionalitäten angereichert werden. Im Hinblick auf die nahe Zukunft, bietet es sich an,
-mehrere Sammlungen an Datenvisualisierungen in die Software zu integrieren.
+mehrere Sammlungen an Plugins zur Datenvisualisierung zur Verfügung zu stellen. Hier könnten
+zu den bereits existierenden, rudimentären Diagrammen auch weitere Visualisierungsarten ermöglicht
+werden. Für die benutzerfreundliche Erstellung einer Datenquelle und derer Verarbeitung
+sollte eine Validierung eingebaut werden, die dem Benutzer bescheid gibt, ob das Datenformat
+gültig ist. Die Eingangsdaten der Plugins können sehr flexibel sein. Hier muss an einem Standart
+gearbeitet werden, der den Aufbau der Daten klar definiert, allerdings auch genug Freiheit bietet,
+um komplexe Datenstrukturen darzustellen.
+
+Aus Sicht der Performanz des Systems ist der nächste
+Schritt, die statischen Dateien nicht mehr über eigene Nginx-Webserver, sondern über ein
+Content Delivery Netzwerk auszuliefern. Außerdem wird dadurch auch das Servercluster
+entlastet und kann sich so besser auf die einzelnen Backendservices konzentrieren.
+Um die Anwendung im Apple App Store zu veröffentlichen, gilt es, eine React Native
+App mit einem eingebetteten WebView zu implementieren. Anders als bei den TWAs, muss
+diese stetig aktualisiert werden. Dies ist nötig, um die Browserversion auf
+dem neuesten Stand zu halten. 
+
+Aufgrund dessen, dass die Anwendung bereits online Verfügbar ist,
+melden sich täglich neue Benutzer an. Da die Benutzung der Anwendung ohne kurze Einführung
+aktuell schwer zu bedienen ist, muss an der Benutzerfreundlichkeit gearbeitet werden. Zudem
+ist es wichtig, Tutorials in Videoform bereitzustellen, die den Endnutzern die Einarbeitung
+erleichtern.
+
+Der Plan für die Zukunft ist es, sich stärker an den Bedürfnissen der Kunden zu orientieren,
+um Funktionalitäten der Anwendung so benutzerfreundlich wie möglich zu gestalten.
+
