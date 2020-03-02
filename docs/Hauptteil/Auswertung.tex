@@ -167,17 +167,9 @@ braucht am zweitlängsten. Das Laden der Landing-Page liegt im Durchschnitt. Die
 die Liste der Dashboards sowie der Datentransfer der Beispieldaten über die WebSocket-Verbindung
 sind sehr performant.
 
-
-
-
-
-
-% * Skalierbarkeit
-% * Lasttests
-
-% Probleme: cookies verändern sich, Service Worker verändert sich, neue Felder in der Datenbank
-% Frontend und Backend etc, also allen verschiedenen Services
-
-% stress test
-% edurance or consistent load tests => memory leaks, memory full because of logging
-% baseline test - compare tests over time
+Die Lasttests bestätigen, dass eine solide Robustheit der Gesamtanwendung gegeben ist. Nichtsdestotrotz
+können einzelne Anfragen wie beispielsweise die Login-Route verbessert werden, um die Leistung
+der Gesamtanwendung zu steigern. Wie viele Benutzer ein solches Cluster mit fünf Servereinheiten
+bedienen kann, ist schwer einzuschätzen. Zum einen verteilt sich die Hauptlast je nach
+Benutzergruppe über mehrere Stunden am Tag. Zum anderen sind die in der Arbeit ausgeführten
+Lasttests nur schwer mit dem Verhalten echter Nutzer vergleichbar.
