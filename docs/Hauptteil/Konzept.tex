@@ -205,8 +205,8 @@ Im mobilen Format sollen die einzelnen Diagramme untereinander aufgelistet werde
 
 Die Diagramme sollen nach und nach per Drag and Drop in das Dashboard integriert werden. Dieses Verfahren
 wird in Abbildung \ref{figure:diagrammanaordnungsverfahren} dargestellt. \(a\) beschreibt den
-initialen Zustand eines leeren Dashboards. Hier kann man durch Drag and Drop das erste Diagramm dem Dashboard
-zuordnen. \(b\) beschreibt den Zustand des Dashboards mit genau einem enthaltenen Diagramm. Hier kann man das
+initialen Zustand eines leeren Dashboards. Hier kann der Benutzer durch Drag and Drop das erste Diagramm dem Dashboard
+zuordnen. \(b\) beschreibt den Zustand des Dashboards mit genau einem enthaltenen Diagramm. Von hier aus ist es möglich, das
 neue Diagramm in alle Richtungen einfügen. Dabei Teilt das bestehende Diagram den Platz mit dem neuen gleichmäßig
 auf. Bei der mittigen Positionierung wird das vorhandene Diagramm durch das neue ersetzt. \(c\) und \(d\)
 beschreiben den Zustand, bei dem sich mehr als ein Diagramm im Dashboard befindet. Wenn man im Zustand \(b\)
@@ -269,8 +269,8 @@ Der Einsatz einer neuen Technologie lässt sich in einem kleineren Rahmen testen
 
 Dabei sollen die Diagramme eines Dashboards als einzelne Services ausgelagert werden.
 Die Diagramme können so einzeln entwickelt und ausgeliefert werden. Aufgrund der
-gleichen Machenschaft der Schnittstellen der Diagramme, kann man diese Art des Code-Splittings auch als
-einen Plugin-Ansatz ansehen. Die Diagramme sollen über die In-Memory-Datenbank
+gleichen Machenschaft der Schnittstellen der Diagramme, ist es durchaus denkbar, diese Art des Code-Splittings als
+einen Plugin-Ansatz anzusehen. Die Diagramme sollen über die In-Memory-Datenbank
 Redis zur Verfügung gestellt werden. Die Diagramme werden mithilfe
 von Dynamic Imports\footnote{Dynamic Imports gibt es seit ES6 (ECMAScript 2015) \cite{DynamicImportsV8}}
 während der Laufzeit agil nachgeladen. Da immer nur die verwendeten Diagramme aus der In-Memory-Datenbank
