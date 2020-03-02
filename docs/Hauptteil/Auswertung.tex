@@ -141,7 +141,7 @@ müssen.
 
 \begin{figure}
     \begin{center}
-    \includegraphics[scale=0.15]{img/abbildungen/Antwortzeitdiagramm}
+    \includegraphics[scale=0.125]{img/abbildungen/Antwortzeitdiagramm}
     \end{center}
     \caption{Lasttest mit JMeter}
     \label{figure:lasttestmitjmeter}
@@ -150,7 +150,7 @@ müssen.
 Die Lasttestresultate der JMeter-Tests sind auf der Abbildung \ref{figure:lasttestmitjmeter}
 zu erkennen. Das Diagramm zeigt die Anzahl der jeweils empfangenen Statuscodes in Bezug
 auf die verstrichene Zeit. Der Lasttest wurde nach ca. 10 Minuten abgebrochen.
-Der Test führt folgendes Szenario fünfzig mal in der Sekunde aus:
+Der Test führt folgendes Szenario zehn mal in der Sekunde aus:
 Als erstes wird eine HTTPS-Anfrage an die \code{index.html} gesendet.
 Daraufhin loggt sich der Benutzer mit seinen Benutzerdaten ein.
 Sobald er eingeloggt ist, läd der Benutzer über die Resource Management Service
@@ -159,11 +159,15 @@ und auf eine Datenquelle abonniert. Nach Ankunft der ersten Daten der
 Datenquelle wird die WebSocket-Verbindung wieder geschlossen.
 
 Im Schaubild ist zu erkennen, dass das Cluster alle ca. 50 Sekunden einen Einbruch
-der Leistung ausweist. Die WebSocket-Verbindung schließt nicht immer ordnungsgemäß.
-Der HTTP-Statuscode 101 steht für den Protokollwechsel zu dem WebSocket-Protokoll.
-Bei einem erfolgreichen Schließen der Verbindung bekommt der Client den Close Code 1000.
-Aus den von JMeter aufgenommenen Reportkennzahlen geht hervor, dass sich die Antwortzeit
-der der Landing-Page bei ca. 
+der Leistung ausweist. Womöglich passiert dies durch einen von Docker Swarm ausgeführten
+Cron-Jobs. Interessant ist, dass die Log-In-Anfrage die längste Antwortzeit besitzt.
+Bei der Anmeldung wird das Password gegen den Passwort-Hash in der Datenbank verglichen,
+ein JWT generiert und als Cookie im Browser gesetzt. Das Aufbauen der WebSocket-Verbindung
+braucht am zweitlängsten. Das Laden der Landing-Page liegt im Durchschnitt. Die Anfrage gegen
+die Liste der Dashboards sowie der Datentransfer der Beispieldaten über die WebSocket-Verbindung
+sind sehr performant.
+
+
 
 
 
