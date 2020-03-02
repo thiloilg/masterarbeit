@@ -13,7 +13,7 @@ bereitgestellt. Diese Anforderungen werden in den Folgeabschnitten miteinbezogen
 
 \section{Wer ist die Zielgruppe?}
 \label{sec:weristmeinezielgruppe}
-Die in der Masterarbeit zu entwickelnde Softwarelösung
+Die in der Masterarbeit zu entwickelnde Software
 soll den Bestandskunden von GBO Datacomp eine moderne Möglichkeit geben, Daten 
 auf mobilen Endgeräten wie Tablets, Smartphones, aber auch auf Desktop PCs auswerten zu können.
 GBO Datacomp hat Kunden in den verschiedensten Branchen. So besitzt das Unternehmen
@@ -23,7 +23,7 @@ Zahntechnik, der Kundstoffverarbeitung, Holzindustrie und in der Möbelindustrie
 
 Eines der wichtigsten Produkte von GBO Datacomp ist BisoftMES, eine Software zur Erfassung von
 Maschinen- und Betriebsdaten. Diese Daten können Auftragsdaten, Schichtdaten und Maschinendaten sein.
-So können die Benutzer der Software Trendanalysen durchführen, Schicht- und Maschinendaten vergleichen und
+Die Anwendung ermöglicht den Benutzern, Trendanalysen durchführen, Schicht- und Maschinendaten vergleichen und
 Leistungskennzahlen auswerten, um so möglichen Störungen und Ausfällen im Betrieb vorzubeugen.
 
 Wer genau wird das agile Dashboard zur Betriebs- und Maschinendatenauswertung
@@ -31,7 +31,7 @@ benutzen? Dies kann sich je nach Betrieb unterscheiden. So interagieren von der
 Managementebene aus über den Produktionsleiter bis hin zum Schichtarbeiter Benutzer mit dem
 Dashboard. Eines der Dashboards könnte an einem speziell für die Softwarelösung
 installierten Bildschirm in einer Produktionshalle angezeigt werden. Anderenfalls könnte aber
-auch der Produktionsleiter in der Mittagspause mit seinem Handy die aktuellen Leistungskennzahlen 
+auch der Produktionsleiter in der Mittagspause mit seinem Smartphone die aktuellen Leistungskennzahlen 
 (KPIs) abrufen. Viele Produktionshallen besitzen alte Windows-Rechner, die nicht
 mit den neusten Browsern ausgestattet sind. Andere Betriebe besitzen Endgeräte mit Touchscreens.
 Fassen wir all diese möglichen Szenarien zusammen, wird uns eines sehr deutlich: Von der
@@ -46,21 +46,21 @@ zu visualisieren. Um dies zu ermöglichen, benötigt das Dashboard Daten. Diese 
 müssen aus einer Datenquelle geladen werden. GBO Datacomp stellt hierfür eine REST API
 zur Verfügung. Für eine Datenquelle ist somit gesorgt. Um die Daten innerhalb der Anwendung
 einem Dashboard zur Verfügung zu stellen, müssen die Daten zu einem passenden Format verarbeitet werden.
-Zu guter Letzt muss noch definiert werden, welche Daten in welchem Dashboard verwendet
+Überdies muss noch definiert werden, welche Daten in welchem Dashboard verwendet
 werden. Diese vier Funktionalitäten sind der Kern der Anwendung. In diesem Abschnitt
-werden zuerst die Anforderungen der Kernfunktionalitäten genauer analysiert. Daraufhin werden die Anforderungen
+werden zuerst die Anforderungen der Kernfunktionalitäten analysiert. Daraufhin werden die Anforderungen
 für die Authentifizierung der Benutzer, die Rechteverwaltung, die Auswahl der Sprache,
 die Navigation durch die Software, die Suche nach Ressourcen in der Anwendungen,
 die Filterung der darzustellenden Daten im Dashboard sowie die Möglichkeit,
 die Anwendung auch offline zu verwenden, erörtert.
 
-Was sind die Anforderungen für die Erstellung des agilen Dashboards? Die Anwendung und
+Was sind die Anforderungen an die agile Erstellung eines Dashboards? Die Anwendung und
 so auch die Erstellung des Dashboards sollte selbsterklärend sein. Daraus resultiert, 
-dass die Anwendung möglichst einfach aufgebaut werden sollte. Einstellungsmöglichkeiten,
+dass die Anwendung möglichst einfach aufgebaut werden muss. Einstellungsmöglichkeiten,
 die Nebenrollen in der Gesamtfunktionalität der Software darstellen, sollten von der
 Software selbst entschieden werden. Ein Beispiel hierfür ist die Justierung der
 einzelnen Komponenten eines Dashboards. Der Prozess der Erstellung eines Dashboards
-sollte wie folgt aussehen. Ein Benutzer kann in einem intuitiven Verfahren
+könnte wie folgt aussehen. Ein Benutzer kann in einem intuitiven Verfahren
 einzelne Komponenten auswählen und diese an bestimmte Positionen im Bildschirm
 ziehen. Des Weiteren kann er die Komponenten
 entfernen und ersetzen. Wirft man einen Blick auf andere BI Softwarelösungen,
