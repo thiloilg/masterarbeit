@@ -68,25 +68,24 @@ erstellt Qlik Sense ein vorgefertigtes Script im Data Load Editor. Dies gilt pri
 und kann je nach Belieben angepasst werden. Genauso wie Power BI benutzt auch Qlik Sense ein relationales
 Datenbankmodell zur Datenmodellierung innerhalb der Anwendung. Im Data Load Editor
 wird, so wie bei Power BI, das eingehende JSON mithilfe eines Scripts in eine Tabelle konvertiert.
-Der Bereich zur Datenmodellierung ist der Data Model Viewer.
-Hier werden mithilfe eines kraftgerichteten Graphs die Beziehungen zwischen den unterschiedlichen
-Tabellen verdeutlicht. Mit der Datenmodellierung von Qlik Sense ist es möglich, alle typischen SQL-Joins
+Der Bereich zur Datenmodellierung ist der Data Model Viewer. Ein kraftgerichteten Graph stellt die
+Beziehungen zwischen den Tabellen dar. Mit der Datenmodellierung von Qlik Sense ist es möglich, alle typischen SQL-Joins
 zwischen zwei Tabellen durchzuführen. So können Daten von einer API zusammen mit Daten aus einer SQL-Datenbank
 verbunden werden.
 
-Anders als bei Power BI, das von Microsoft selbst gehostet wird, kann man Qlik Sense nach dem Erwerben
-einer Lizenz selbst auf einem Windows Server hosten. Außerdem hat Qlik verschiedene APIs, die man
-verwenden kann, um die Anwendung selbst ohne die Verwendung der GUI vorzubereiten. So kann man Daten
-auf den Server vorladen, die man später mithilfe der Frontendanwendung auswerten wird. Anders als bei
-dem API Connector von Qlik Sense, den man über die GUI einstellt, kann man mit der Repository Main API
-die Anwendung komplett über eine Schnittstelle aus verwalten.\cite{QlikSenseRepositoryMainAPI}
-Das vereinfacht das Einbinden von Qlik Sense in eine bereits existierende IoT-Umgebung.
+Anders als bei Power BI, das von Microsoft selbst gehostet wird, ist es möglich, Qlik Sense nach dem Erwerben
+einer Lizenz auf einem eigenen Windows Server zu hosten. Qlik Sense bietet verschiedene APIs an,
+mit denen die Anwendung ohne die Verwendung der GUI vorbereitet werden kann. Somit können Daten
+auf einen Server vorgeladen werden, um diese später in der Frontendanwendung auswerten zu können. Anders als bei
+dem API Connector, der über die GUI eingestellt werden kann, ist es möglich, die Anwendung komplett über
+eine Schnittstelle (Repository Main API) zu verwalten.\cite{QlikSenseRepositoryMainAPI}
+Dies vereinfacht das Einbinden von Qlik Sense in eine bereits existierende IoT-Umgebung.
 
-Bei der Erstellung von Charts ähnelt Qlik dem Vorgehen von Power BI Desktop. Mit einem intuitiven
-Drag and Drop Verfahren können die Benutzer zuerst Diagrammtypen auf das Dashboard ziehen und
+Zur Erstellung eines Dashboards verwendet Qlik Sense ein intuitives Drag and Drop Verfahren,
+bei dem die Benutzer zuerst Diagrammtypen in die Arbeitsfäche ziehen und
 daraufhin Daten zuweisen. Bei der Datenzuweisung unterscheidet Qlik Sense zwischen Measures und
 Dimensions. Measures sind numerische Werte wie die Anzahl der verkauften Produkte oder der Jahresumsatz,
-Dimensions sind deskriptive Werte wie Monat, Jahr oder ProduktID.\cite{TutorialsSpotMeasuresDimensions}
+Dimensions sind deskriptive Werte wie Monat, Jahr oder die Identifikationsnummer eines Produktes.\cite{TutorialsSpotMeasuresDimensions}
 Durch die klare Trennung in numerische sowie descriptive Werte wird die Zuordnung der Daten
 auf die verschiedenen Achsen der Diagramme vereinfacht.
 
