@@ -239,8 +239,8 @@ Das größte Defizit einer PWA ist, dass diese nicht im App Store gefunden werde
 Für viele Nutzer ist es ungewohnt, PWAs direkt aus dem Browser heraus auf ihr mobiles Endgerät zu installieren.
 Seit Google Chrome Version 72 bietet Google hierfür eine Lösung an.
 Mit sogenannten Trusted Web Activities (TWA) ist es möglich, PWAs auch in den App Store
-zu bringen. Eine TWA ist eine Methode, den Inhalt einer PWA in eine Android App mithilfe
-von Google Chromes Custom Tabs zu integrieren.\cite{TrustedWebActivitiesGoogle}
+zu bringen. Eine TWA ist eine Methode, den Inhalt einer PWA in eine Android App\footnote{Dies ist mithilfe von Google Chromes Custom Tabs möglich.}
+zu integrieren.\cite{TrustedWebActivitiesGoogle}
 
 Ein Verweis auf ein im Webserver liegendes Zertifikat stellt sicher,
 dass die Webseite und die App von dem gleichen Entwickler
@@ -250,7 +250,7 @@ um den Browser auf dem neuesten Stand zu halten. Bei einem WebView ist die Brows
 die Anwendung integriert. Eine TWA hingegen beinhaltet keinen eigenen Browser, sondern verwendet
 den Standartbrowser des Betriebssystems.
 
-Trusted Web Activities werden mit \code{activity} Tags in das Android-App-Manifest integriert. Die
+Trusted Web Activities werden mit der Verwendung von \code{<activity>} Tags in das Android-App-Manifest integriert. Die
 Ausführung der Anwendung im Browser bringt Vor- und Nachteile mit sich.
 Ein Vorteil ist, dass die TWA Zugriff auf im Browser gespeicherte Daten wie den LocalStorage
 hat. Ein schwerwiegender Nachteil ist allerdings, dass der installierte Browser des mobilen Endgerätes
