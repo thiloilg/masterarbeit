@@ -1,23 +1,23 @@
 \chapter{Grundlagen}
 \label{chap:grundlagen}
-In dem Kapitel der Grundlagen werden die für die Arbeit relevanten Themen, progressive Webanwendungen in \Cref{sec:progressivewebanwendung},
+In den Grundlagen werden die für die Arbeit relevanten Themen, progressive Webanwendungen in \Cref{sec:progressivewebanwendung},
 Microservices in \Cref{sec:microservices} und kontinuierliche Integration und Auslieferung
 in \Cref{sec:kontinuierlicheintegrationundauslieferung} behandelt. Da die Arbeit teilweise noch
-sehr junge Technologien verwendet, beinhaltet das Kapitel der Grundlagen in den einzelnen Abschnitten
+sehr junge Technologien verwendet, beinhaltet das Grundlagenkapitel in den einzelnen Abschnitten
 auch Diskussionen, Analysen und Erörterungen der einzelnen Thematiken.
 
 \section{Progressive Webanwendung}
 \label{sec:progressivewebanwendung}
 Eine progressive Webanwendung (PWA) ist eine Webseite, die eine zunehmende Ansammlung
 an bestimmten Technologien, Strategien und Schnittstellen implementiert,
-die Merkmale bereitstellen, die ursprünglich nur native Apps besaßen \cite{WikiPWA}.
+die Merkmale bereitstellen, die ursprünglich nur native Apps besaßen. \cite{WikiPWA}
 Eine der wichtigsten Browser-Technologien, die zur Entstehung der PWA beigetragen hat,
 ist der Service Worker (SW). Er ermöglicht der PWA auch ohne Internetverbindung zu funktionieren. Der 
 Service Worker ist ein parallel zu der Hauptanwendung laufender Prozess, der \mbox{HTTP-,} und je nach Browser,
 auch WebSocket-Anfragen, abfängt, verarbeiten und versenden kann. Somit ist es möglich, trotz fehlender Internetverbindung
 eine Antwort an das Frontend zurückzusenden.\cite{W3ServiceWorker}
 
-Progressive Webanwendungen als Alternative zu einer nativen Umsetzung ermöglichen mehr Freiheit gegenüber den
+Progressive Webanwendungen als Alternative zu einer nativen Umsetzung ermöglichen größere Freiheit gegenüber den
 Plattformanbietern. Sobald die Möglichkeit besteht, PWAs mithilfe einer vom Browser angesteuerten Programmierschnittstelle (API)
 auf dem Startbildschirm zu speichern, verliert der Plattformanbieter die Kontrolle,
 bestimmte PWAs zu verbieten. Dies ist bei nativen Anwendungen nicht der Fall. So löschte Apple in der Vergangenheit
@@ -77,7 +77,7 @@ die es ermöglicht PWAs in den App Store zu bringen.
 \label{subsec:markmale}
 Es gibt keine genaue Definition, die besagt, welche Merkmale eine PWA beinhalten muss.
 Der Begriff "Progressive Web App" wurde erstmals 2015 von Alex Russell in einem Blogpost
-verwendet.\cite{PWA2015} Die Idee hinter einer Webanwendung, bei der sich die Optik und Haptik
+verwendet.\cite{PWA2015} Die Idee hinter einer Webanwendung bei der sich die Optik und Haptik,
 wie die bei einer nativen App anfühlt, gab es allerdings bereits zuvor. So kündigte
 Steve Jobs bereits 2007 bei der initialen iPhone Präsentation für Entwickler bereits die Möglichkeit
 an, solche Web 2.0 Apps mithilfe von Safari zu entwickeln.\footnote{https://www.youtube.com/watch?v=ZlE7dzoD6GA}
@@ -248,7 +248,7 @@ stammen. Ein Vorteil, gegenüber dem Einbinden einer PWA in einen WebView, ist e
 dass die TWA und somit die native App nicht kontinuierlich aktualisiert werden muss,
 um den Browser auf dem neuesten Stand zu halten. Bei einem WebView ist die Browser-Version in
 die Anwendung integriert. Eine TWA hingegen beinhaltet keinen eigenen Browser, sondern verwendet
-den Standartbrowser des Betriebssystems.
+den Standardbrowser des Betriebssystems.
 
 Trusted Web Activities werden mit der Verwendung von \code{<activity>} Tags in das Android-App-Manifest integriert. Die
 Ausführung der Anwendung im Browser bringt Vor- und Nachteile mit sich.

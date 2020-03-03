@@ -258,7 +258,7 @@ benutzen. Wichtig ist auch, dass Bilder je nach Format in der Regel bereits komp
 Ein weiterer Kompressionsvorgang kann die Größe der Bilder vergrößern \cite{CloudFlareCompressionDiscussion}.
 
 Für die Kompression der statischen Inhalte wird somit Brotli verwendet.
-Als Fallback verwendet die Arbeit Gzip. Standartmäßig unterstützt Nginx
+Als Fallback verwendet die Arbeit Gzip. Standardmäßig unterstützt Nginx
 das Kompressionsverfahren Gzip. Die Arbeit fügt dem Nginx-Dockerfile ein Script
 hinzu, welches Brotli installiert. Außerdem wurde die \code{nginx.conf} Datei
 so angepasst, damit Nginx Brotli unterstützt.
