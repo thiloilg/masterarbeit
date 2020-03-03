@@ -309,14 +309,14 @@ Zwischen der Anordnung und den Einstellungen des Dashboards soll eine UUID\footn
 einzigartiger Identifikator, der zufällig generiert wird. Aufgrund der Größe
 von 128-Bit ist eine Kollision sehr gering \cite{UUIDJavaSEDocs}.} 
 je Diagramm als Verweis benutzt werden. Dieses Konzept der Trennung zwischen
-der Anordnung und den Einstellungen des Dashboards soll verhindert, dass
+der Anordnung und den Einstellungen des Dashboards soll verhindern, dass
 alle Informationen in einer immer komplexeren Baumstruktur gespeichert werden.
-Außerdem können so Änderungen in dem Aufbau getrennt von den Änderungen in der
+Außerdem können so Änderungen im Aufbau getrennt von den Änderungen in der
 Einstellungen erkannt und darauf reagiert werden. Bei der Verwendung eines
 Frameworks wie React kann so unterschieden werden, ob nur einzelne Komponenten
-oder der komplette Aufbau des Dashboards gerendert werden muss.
+oder der komplette Aufbau des Dashboards gerendert werden müssen.
 
-Die ID der zu einem Dashboard zugewiesenen Datenquelle wird in dem Einstellungen
+Die ID, der zu einem Dashboard zugewiesenen Datenquelle, wird in den Einstellungen
 des jeweiligen Diagramms gespeichert. Jedes Diagramm hat die Möglichkeit,
 Einstellungen zu persistieren. So kann sich die Anwendung beispielsweise merken,
 welche Filteroptionen der Benutzer in einem bestimmten Diagramm als letztes verwendet
@@ -326,7 +326,7 @@ sollen auch in den Einstellungen des jeweiligen Diagramms gespeichert werden.
 
 \subsection{Weitere Speichermechanismen}
 \label{subsec:weiterespeichermechanismen}
-Typische Felder wie die ID, das Erstellungsdatum, der Titel und die Beschreibung einer Ressource,
+Typische Felder, wie die ID, das Erstellungsdatum, der Titel und die Beschreibung einer Ressource,
 werden in einer Datenbank gespeichert. Dadurch ist die Option gegeben, alle
 Ressourcen nach Erstellungsdatum zu sortieren. Die IDs der Ressourcen sind kompakt gehalten,
 da diese in der URL angezeigt werden. Hier ist das Konzept Folgendes: Eine achtstellige ID,
