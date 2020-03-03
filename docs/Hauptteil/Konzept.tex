@@ -28,9 +28,10 @@ die aus der Verarbeitung resultierende Datenmenge geringer als die der initialen
 Für die Flexibilität spricht, dass die Verarbeitung so nicht in neue Frontend-Anwendungen
 integriert werden muss.
 
-Die Logik der Benutzerverwaltung soll klar von der Datenbeschaffungs-, Verarbeitungs-
-und Zulieferungslogik getrennt sein. Es ist somit von zwei Services auszugehen:
-Dem \code{Resource Management Service}, der für die Verwaltung von Ressourcen wie Dashboards,
+Es ist von großer Bedeutung, dass die Logik der Benutzerverwaltung
+von der Datenbeschaffungs-, Verarbeitungs- und Zulieferungslogik getrennt ist.
+Es ist somit von zwei Services auszugehen: Dem \code{Resource Management Service},
+der für die Verwaltung von Ressourcen wie Dashboards,
 Diagrammen, Datenquellen und Benutzer zuständig ist, und dem \code{Data Delivery Service},
 der sich um die zu analysierenden Daten kümmert.
 
@@ -262,8 +263,8 @@ In dieser Arbeit wird auch für das Frontend ein Microservice-Ansatz verfolgt. M
 Microfrontend. Michael Geers schreibt dazu in einem Artikel auf Digital Pioneers Folgendes:
 
 \begin{quote}
-"Der Ansatz, der sich jetzt förmlich aufdrängt, ist die Umsetzung der Microservice-Idee
-auch im Frontend. Anstatt einer ­großen Single-Page-Applikation baut man mehrere unabhängige
+"Der Ansatz, der sich jetzt förmlich aufdrängt, ist die Umsetzung der Microservice\hyp{}Idee
+auch im Frontend. Anstatt einer ­großen Single\hyp{}Page\hyp{}Applikation baut man mehrere unabhängige
 Teilapplikationen, die miteinander kommunizieren. Diese sind dann deutlich einfacher zu verstehen.
 Der Einsatz einer neuen Technologie lässt sich in einem kleineren Rahmen testen."\cite{MicrofrontendT3N}
 \end{quote}
