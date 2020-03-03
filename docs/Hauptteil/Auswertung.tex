@@ -81,9 +81,10 @@ der Tests über die möglichen Ausfallgründe Bescheid wissen. Um Störfalle zu 
 Tests abzudecken. Zur Beurteilung der Zuverlässigkeit der Software wird in der vorliegenden Arbeit die
 Testabdeckung der einzelnen Komponenten des Systems betrachtet.
 
-Hier wurde sich bei der Implementierung der Tests primär auf Integrationstests fokussiert, um so die fehlerfreie 
-Zusammenarbeit der einzelnen Services sicherzustellen. Die Integrationstests gehen gegen die Schnittstellen der Services.
-Bei dem Resource Management Service sind alle Routen mit Tests abgedeckt. Für jede Route wurde die Rechteverwaltung,
+Um die fehlerfreie Zusammenarbeit der einzelnen Services sicherzustellen,
+wurde der Fokus auf die Implementierung der Integrationstests gelegt.
+Diese gehen gegen die Schnittstellen der Services. Bei dem Resource Management Service
+sind alle Routen mit Tests abgedeckt. Für jede Route wurde die Rechteverwaltung,
 die Authentisierung, die Validierung der Eingabe und Ausgabewerte sowie die Funktionalität der Route selbst getestet.
 Der Data Delivery Service hingegen besitzt zum aktuellen Stand nur rudimentäre Tests der Hauptfunktionalitäten.
 Hier wurden nicht wie bei dem Resource Management Service auf falsche Eingabewerte getestet. Außerdem fehlen die für
@@ -99,7 +100,7 @@ Um die Funktionalität der Lastenverteilung zu testen, wird in der Frontend-Anwe
 im Administrationsbereich die lokale Netzwerk-IP der aktuell verwendeten Instanz
 angezeigt. Bei dem mehrfachen Neuladen der Anwendung, rotiert diese
 durch alle Instanzen der Services. Der Lastverteiler funktioniert somit einwandfrei.
-Überdies wird der Verkehr im Fall eines Ausfalls einer Instanz auf eine gesunde
+Überdies wird der Verkehr im Falle eines Ausfalls einer Instanz auf eine gesunde
 Instanz verlegt.
 
 Um einen besseren Überblick über die Verfügbarkeit der einzelnen
@@ -141,10 +142,10 @@ Der Test führt folgendes Szenario einmal in der Sekunde aus:
 Als erstes wird eine HTTPS-Anfrage an die \code{index.html} gesendet.
 Zudem werden die nötigen CSS- und JS-Dateien geladen.
 Daraufhin loggt sich der Benutzer mit seinen Benutzerdaten ein.
-Sobald er eingeloggt ist, läd der Benutzer über die Resource Management Service
-eine Liste der Dashboards. Als nächstes wird eine WebSocket-Verbindung eröffnet
+Sobald er eingeloggt ist, läd der Benutzer über den Resource Management Service
+eine Liste der \foreignlanguage{english}{Dashboards}. Als nächstes wird eine WebSocket-Verbindung geöffnet
 und auf eine Datenquelle abonniert. Nach Ankunft der ersten Daten der
-Datenquelle wird die WebSocket-Verbindung wieder geschlossen.
+Datenquelle, wird die WebSocket-Verbindung wieder geschlossen.
 
 In Tabelle \ref{tab:groessedesdatenverkehrs} wird die Größe der versendeten und empfangenen 
 Daten einer einzelnen Abfolge an Anfragen und deren Antworten aufgelistet.
@@ -161,7 +162,7 @@ lange braucht. Bei der Anmeldung wird das Password gegen den Passwort-Hash in de
 ein JWT generiert und als Cookie im Browser gesetzt. Eine Leistungssteigerung durch Verbesserung
 des Log-In-Endpunktes ist denkbar. Die Landing-Page \code{index.html} sowie der Request-Body der
 Anfrage an die Dashboard Ressource besitzten ungefähr die gleiche größe. Dennoch ist interessanterweise
-der Node.js Server, der die Dashboards ausliefert um ein vierfaches schneller. Dies könnte daran liegen,
+der Node.js Server, der die \foreignlanguage{english}{Dashboards} ausliefert um ein vierfaches schneller. Dies könnte daran liegen,
 dass die Anfrage gegen die Landing-Page als erstes stattfindet und somit der HTTPS-Handshake
 mit einberechnet werden könnte.
 
