@@ -565,28 +565,28 @@ der Hook weiß, wann er die GUI-Komponente neu rendern muss.
 
 Die Frontend\hyp{}Anwendung besitzt auch neben
 den Hooks hilfreiche React\hyp{}Komponenten. So gibt es
-eine \code{ProtectedRoute}, welche den Benutzer umleistet, falls dieser keine Rechte für den
+eine \code{ProtectedRoute}, welche den Benutzer umleitet, falls dieser keine Rechte für den
 angefragten URL-Pfad besitzt.\footnote{Hierbei ist anzumerken, dass die eigentliche Rechteverwaltung durch
 das Backend abgesichert ist.} Außerdem beinhaltet die Frontend-Anwendung Eingabevalidierung der Formulare
 sowie Fehlermeldungen in Form von kleinen Informationsfenstern, die sich rechts oben im Bildschirm ansammeln
 und nach fünf Sekunden verschwinden. Hat der angemeldete Nutzer Administrationsrechte, erscheint unter den
-Benutzereinstellungen ein Menüpunkt, über den die Aministrationsoberfläche erreichbar ist. Alle in der
+Benutzereinstellungen ein Menüpunkt, über den die Administrationsoberfläche erreichbar ist. Alle in der
 Frontend-Anwendung verwendeten Ressourcen können erstellt, angesehen, verändert und auch wieder gelöscht werden.
-Für bestimmte Operationen wie das Löschen eines Benutzers, wird, auch wenn der Benutzer bereits eingeloggt ist,
+Für bestimmte Operationen, wie das Löschen eines Benutzers, wird, auch wenn der Benutzer bereits eingeloggt ist,
 ein zusätzliches Modal angezeigt, dass die Anmeldedaten abfragt. Um die initiale Zugriffssicherheit zu erhöhen,
 bietet die Anwendung eine Zwei-Faktor-Authentisierung. In \Cref{subsec:authentifizierungsverfahrenundrechteverwaltung} geht die
 Arbeit genauer auf das Authentifizierungsverfahren ein.
 
 \subsection{Seitenumbruch und Suche}
 \label{subsec:seitenumbruchundsuche}
-Um die jeweiligen Ressourcen, wie Beispielsweise ein spezielles Dashboard, auszuwählen, kann der Benutzer über
+Um die jeweiligen Ressourcen, wie beispielsweise ein spezielles Dashboard, auszuwählen, kann der Benutzer über
 die Seitenleiste\footnote{Im installierten Modus werden die Ressourcen als Navigationsmenüs am unteren Bildschirmrand aufgelistet.}
 auf eine Übersicht der Ressourcen gelangen. Da nicht alle Ressourcen auf eine Seite passen, werden diese mithilfe
-einer Seitennavigation am unteren ende der Seite zugänglich gemacht. Je nachdem, wo sich der Benutzer befindet,
+einer Seitennavigation am unteren Ende der Seite zugänglich gemacht. Je nachdem, wo sich der Benutzer befindet,
 kann dieser so ganz an den Anfang, ganz an das Ende, eine Seite vor, eine Seite zurück navigieren sowie aus einer geringen Anzahl
 an naheliegenden Seiten die passende auswählen. Die Anzahl der Seiten, zu denen eine direkte Navigation möglich ist, hängt von
-der Bildschirmgröße des Endgerätes ab. Die maximale Anzahl ist hierbei vier Seiten in jede Richtung. Der Seitenumbruch befindet sich
-bei zehn Ressourcen pro Seite. Bei einer größeren Anzahl an Ressourcen, kann das Navigieren durch
+der Bildschirmgröße des Endgerätes ab. Die maximale Anzahl beläuft sich hierbei auf vier Seiten in jede Richtung. Der Seitenumbruch befindet sich
+bei zehn Ressourcen pro Seite. Bei einer größeren Anzahl an Ressourcen kann das Navigieren durch
 die Seiten sehr viel Zeit in Anspruch nehmen. Hierfür hat die Arbeit eine Suchfunktion implementiert. Die Suchfunktion befindet sich
 in der oberen Navigationsleiste. Durch einen Zeichenvergleich des Titels der Ressource können so die passenden Ressourcen schneller gefunden
 werden. Die Suche zeigt die zehn besten Resultate in einem Drop-Down-Menü an. Für den Zeichenvergleich verwendet der Resource Management Service
@@ -595,10 +595,10 @@ im Anhang unter "Screenshots" in \Cref{figure:sucheundbearbeitungdesbenutzerprof
 
 \subsection{Installation}
 \label{subec:installation}
-Die Anwendung ist von dem Browser sowie von dem Google Play Store aus installierbar. Als Einstieg
+Die Anwendung ist vom Browser sowie vom Google Play Store aus installierbar. Als Einstieg
 in die Frontend-Anwendung bietet das Web App Manifest sowie das Android Manifest eine URL als Einstiegspunkt.
 Hier verwendet die Anwendung den Pfad \code{/installed}. Wird die progressive Webanwendung über diesen Pfad
-aufgerufen, wird ein Feld im SessionStorage gesetzt. Mithilfe eines \code{useInstalled} Hooks, kann innerhalb
+aufgerufen, wird ein Feld im SessionStorage gesetzt. Mithilfe eines \code{useInstalled} Hooks kann innerhalb
 der Anwendung nachgefragt werden, ob die Anwendung vom Nutzer installiert wurde oder nicht. Anhand dieser
 Information werden GUI-Komponenten angezeigt, die dem Nutzer ein natives Erscheinungsbild anbieten. So wird beispielsweise
 eine Werkzeugleiste am unteren Ende des Bildschirms angezeigt, die es den mobilen Nutzern ermöglicht,
@@ -606,7 +606,7 @@ einfach mit dem Daumen zwischen den Seiten für die Dashboards, Diagrammen und D
 Da sich die Seitenleiste, über die die Ressourcen im nicht-installierten Zustand erreichbar sind, bei mobilen
 Endgeräten über den Inhalt schiebt, benötigt die Navigation zur Liste der Ressourcen zwei Klicks. Dies ist
 bei der Desktop-Version nicht der Fall. Hier kann die Seitenleiste offen gelassen werden, wodurch nur ein Klick
-benötigt wird. Durch die Werkzeugleiste ist es mobilen Nutzern ermöglicht, die Liste der Ressourcen mit nur einem
+benötigt wird. Durch die Werkzeugleiste wird es mobilen Nutzern ermöglicht, die Liste der Ressourcen mit nur einem
 Klick zu erreichen.
 
 
@@ -614,7 +614,7 @@ Klick zu erreichen.
 \label{subsec:zwischenspeicherstrategie}
 Die Arbeit hat im Service Worker zwei Zwischenspeicherstrategien implementiert,
 um die Performanz zu steigern und eine bedingte\footnote{Zum jetztigen Stand
-werden keine AJAX-Anfragen im Service Worker abgefangen. Ohne eine bestehende Internetverbindung
+werden keine AJAX-Anfragen im Service Worker abgefangen. Ohne eine bestehende Internetverbindung,
 können daher nur statische Inhalte abgerufen werden.}
 Verwendung der Anwendung ohne Internetverbindung zu ermöglichen. Hierfür werden die statischen Dateien in zwei
 Kategorien eingeteilt; Dateien mit und ohne Hash im Dateinamen (Siehe Tabelle \ref{tab:auflistungstatischerdateien}).
@@ -636,7 +636,7 @@ favicon.ico & 2.dc039c03.chunk.js\\
 Für Dateien mit Hash im Dateinamen schaut der Service Worker zuerst im Cache nach.
 Wurde die Anfrage bereits gecached, wird diese zurückgegeben. Andernfalls wird eine Anfrage über das
 Netzwerk versendet, die Antwort an die Anwendung weitergeleitet und im Cache gespeichert.
-Für statische Dateien ohne Hash im Dateinamen gehen die Anfragen immer zuerst gegen das Netzwerk und
+Für statische Dateien ohne Hash im Dateinamen, gehen die Anfragen immer zuerst gegen das Netzwerk und
 aktualisieren daraufhin den Cache. Im Falle, dass die Anwendung offline ist, wird die Anfrage aus
 dem Cache geladen. Besteht keine Internetverbindung und die Datei wurde noch nicht gecached, wird
 eine Fallback-Seite angezeigt. Das Cache-Limit ist auf fünfhundert Dateien gesetzt. Daraufhin wird der älteste
@@ -652,7 +652,7 @@ Für die Ausstellung der Plugin-Bundles wurden Scripte geschrieben, die die Ausl
 von dem Gesamtprojekt ermöglichen. In einer \code{.env} Datei im Wurzelverzeichnis des Git-Submodules "Plugins"
 müssen die Domain des Resource Management Services sowie die E-Mail-Adresse und das Password eines Benutzers mit
 der Rechtegruppe "Entwickler" oder "Admin" gesetzt sein. Mit einem einfachen \code{yarn deploy} können so
-die Entwickelten Plugin-Bundles ausgeliefert werden.
+die entwickelten Plugin-Bundles ausgeliefert werden.
 
 \begin{listing}
     \inputminted{js}{snippets/js/ChartExample.js}
@@ -660,10 +660,10 @@ die Entwickelten Plugin-Bundles ausgeliefert werden.
     \label{lst:pluginbeispieleinesliniendiagrammsmitchartjs}
 \end{listing}
 
-In Quellcode \ref{lst:pluginbeispieleinesliniendiagrammsmitchartjs} sieht man ein einfaches
+In dem Quellcode \ref{lst:pluginbeispieleinesliniendiagrammsmitchartjs} sieht man ein einfaches
 Beispiel für ein Plugin, das die bereitgestellten Daten in einem Liniendiagramm veranschaulicht.
 In dem Beispiel wird Chart.js als Visualisierungsbibliothek verwendet. Als Eingabeparameter
-bekommt jedes Plugin die initialen Daten, eine \code{onDataUpdate} Funktion, sowie die Möglichkeit,
+bekommt jedes Plugin die initialen Daten, eine \code{onDataUpdate} Funktion sowie die Möglichkeit,
 Einstellungen auszulesen und zu persistieren. Im Falle eines Updates, wird der in die
 \code{onDataUpdate} Funktion übergebene Callback mit den aktualisierten Daten aufgerufen.
 Der Rückgabewert eines Plugins muss entweder ein HTML-Element oder eine Zeichenkette an HTML-Quellcode
@@ -675,13 +675,13 @@ ein Balkendiagramm implementiert.
 \section{Resource Management Service}
 \label{sec:resourcemanagementservice}
 Der Resource Management Service wurde komplett testgetrieben entwickelt und besitzt
-für jeden HTTP-Statuscodes jeder REST-Route mindestens einen Integrationstest.\footnote{Abgesehen von 5xx Serverfehlern}
+für jeden HTTP-Statuscode jeder REST-Route mindestens einen Integrationstest.\footnote{Abgesehen von 5xx Serverfehlern}
 Die Dokumentation der REST-API des Services basiert auf der OpenAPI 3.0
 Spezifikation\footnote{http://spec.openapis.org/oas/v3.0.0/}. Für die Umsetzung des Resource Management Services
 wurde die Laufzeitumgebung Node.js verwendet. Als Programmiergerüst verwendet die Arbeit Koa.js, den Nachfolger
 von Express.js.\footnote{https://koajs.com/} Verglichen zu Express.js ist Koa.js eher als eine Ansammlung
 an Middleware-Funktionalitäten zu betrachten\cite[2. Absatz]{ExpressVsKoa}. Aufgrund der daraus resultierenden
-Flexibilität, sowie der Tatsache, dass Koa.js verglichen zu anderen Frameworks wie Hapi und Express.js,
+Flexibilität sowie der Tatsache, dass Koa.js, verglichen zu anderen Frameworks wie Hapi und Express.js,
 mehr Anfragen pro Sekunde verarbeiten kann,\cite{ExpressVsKoaVsHapiPerformance}
 entscheidet sich die Arbeit für Koa.js. Als Programmiersprache verwendet der Resource Management Service
 TypeScript.
