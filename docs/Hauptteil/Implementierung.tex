@@ -1,6 +1,6 @@
 \chapter{Implementierung}
 \label{chap:implementierung}
-In diesem Kapitel geht es um die Umsetzung der in \Cref{chap:konzept} erarbeiteten
+In diesem Kapitel geht es um die Umsetzung des in \Cref{chap:konzept} erarbeiteten
 Konzepts. Da die Arbeit einen CI/CD-Ansatz verfolgt, muss vor der Implementierung
 der einzelnen Services die Infrastruktur und die Pipeline umgesetzt werden. 
 Wo Tests benötigt werden, werden diese vor der Realisierung der einzelnen
@@ -12,7 +12,7 @@ Anwendung. In \Cref{sec:projektaufbau} wird der Aufbau des Projekts behandelt.
 In \Cref{sec:pipeline} wird die Implementierung der stetigen Erstellung, Testung und
 Auslieferung der Gesamtanwendung beschrieben. In den folgenden Abschnitten wird die
 Implementierung der von der Anforderungsanalyse geforderten Features erläutert.
-In \Cref{sec:frontendanwendung} wird die Umsetzung der progressiven Webanwendung
+In \Cref{sec:frontendanwendung} wird die Umsetzung der progressiven \mbox{Webanwendung}
 mit dem Frontendframework React geschildert. In \Cref{sec:plugins} geht es um die
 Implementierung der für die Dashboards benötigten Plugins, die die Daten
 in Diagrammen visualisieren. In \Cref{sec:resourcemanagementservice} wird
@@ -34,7 +34,7 @@ Die Arbeit beschränkt sich auf vier Linux-Server. Einen für die Versionsverwal
 und die CI/CD-Prozesse, einen für die Testphase und zwei für das Ausführen der Anwendung in Produktion.
 Die vier Server werden von Hetzner, einem Cloudanbieter, bereitgestellt und haben Ubuntu 18.04
 vorinstalliert. Der Server für die CI/CD-Prozesse und die Versionsverwaltung besitzt 4 VCPUs, 
-16GB RAM und  haben 4 VCPUs, 16GB RAM und 160GB SSD-Speicher.\footnote{Im Regelfall handelt es sich bei
+16GB RAM und  hat 4 VCPUs, 16GB RAM und 160GB SSD-Speicher.\footnote{Im Regelfall handelt es sich bei
 den VCPUs um Intel Skylake Xeon CPUs mit 2.1 GHz.\cite{CPUusedInHetznerCLoud}}
 Der Server der Testphase besitzt 2 VCPU, 8GB RAM und 80GB SSD-Speicher. Die für die Produktion
 ausgelegten Server besitzten 8 VCPUs, 32GB RAM und 240GB SSD-Speicher.
@@ -43,7 +43,7 @@ aus können Instanzen hinzugefügt und auch wieder entfernt werden. Um die Daten
 ist ein 10GB SSD Volumen an den Manager-Node angebunden. In der Docker-Compose-Datei werden
 Regeln definiert, die festlegen, dass die Datenbanken immer auf dem Manager-Server angelegt werden.
 Die für die Speicherung der Daten relevanten Ordner der Datenbanken werden auf dem Volumen abgebildet.
-Dadurch wird sichergestellt, dass die Daten auf nach dem Herunterfahren des Docker-Clusters noch bestehen.
+Dadurch wird sichergestellt, dass die Daten auch nach dem Herunterfahren des Docker-Clusters noch bestehen.
 In Abbildung \ref{figure:dockerswarmcluster} ist das Docker Swarm Cluster der Arbeit zu sehen. Die Schlösser
 repräsentieren die Regeln, nach denen sich bestimmte Instanzen auf bestimmten Nodes befinden müssen.
 Alle weiteren Instanzen werden nach Auslastung auf die Nodes verteilt. Die Content Delivery (Nginx)
@@ -65,11 +65,11 @@ IPv4- und IPv6-Adressen verweisen.\footnote{Server sind natürlich auch
 direkt über IP-Adressen ansprechbar.} Die Domain \code{blicc.org} dient als
 Hauptdomain und wird in der Produktion verwendet. Der Name Blicc
 wurde zur Repräsentation des Produktes gewählt. Bei einer Verwendung der Anwendung
-als White-Label-Produkt wird der Name durch den der
+als White-Label-Produkt, wird der Name durch den der
 zu repräsentierenden Firma ersetzt. Die Domain für den
 Server der Testphase ist \code{testing-stage.org}. Die beiden Domains besitzten die
 Subdomains \code{api} und \code{delivery}. Die Subdomain \code{api} verweist auf
-den Resource Management Service; die Subdomain \code{delivery} auf die Data Delivery Service.
+den Resource Management Service; die Subdomain \code{delivery} auf den Data Delivery Service.
 Außerdem gibt es die \code{monitor} Subdomain, welche auf die Kontrollübersicht von Traefik
 verweist. Traefik dient als Reverse-Proxy und bietet zusätzlich rudimentäre
 Überwachungsfunktionalitäten in einem webbasierten Dashboard an.
@@ -79,7 +79,7 @@ Die Docker Registry ist unter der Domain \code{registry.thiloilg.com}, Gitlab CE
 unter \code{gitlab.thiloilg.com} erreichbar. Die Repositories werden alle zusätzlich
 auf Github gespiegelt. Github dient als drittes Backup, falls die Repositories auf dem
 eigenen Gitlab Server und dem lokale Rechner verloren gehen. Mit dem Git-Befehl in
-Quellcode \ref{lst:gitalias} kann ein Alias gesetzt werden, um zu allen Remote Repositories
+Quellcode \ref{lst:gitalias} kann ein Alias gesetzt werden, um auf alle Remote Repositories
 gleichzeitig zu pushen. Der senkrechte Strich im Linux Terminal, bekannt als "Pipe",
 trennt zwei Befehle in der Kommandozeile. Das Ergebnis des ersten Befehls wird
 an den zweiten Befehl weitergereicht.
@@ -92,10 +92,10 @@ an den zweiten Befehl weitergereicht.
 
 Für das Aufsetzen der Server benötigt man drei Schritte.
 Als erstes verbindet man sich über SSH zu dem Server und richtet eine Firewall ein.
-Hierfür verwendet die Arbeit UFW, eine in Ubuntu vorinstallierte
+Hierfür wird in der Arbeit UFW verwendet, eine in Ubuntu vorinstallierte
 Firewall.\footnote{UFW steht für Uncomplicated Firewall} Dabei öffnet man alle Ports,
 die von den Anwendungen des Server benötigt werden. Aufgrunddessen, dass bei dem Gitlab CE Server
-Port 22 bereits für die SSH verbindung benötigt wird, musste der Gitlab Shell SSH
+Port 22 bereits für die SSH-Verbindung benötigt wird, musste der Gitlab Shell SSH
 Port auf 2222 verlegt werden. In der Tabelle \ref{tab:geoeffneteportsderproduktionsserver}
 sieht man die geöffneten Ports der Produktionsserver.
 
@@ -121,15 +121,15 @@ Als dritten Schnitt wird der Befehl \code{docker swarm init} auf dem Manager-Ser
 ausgeführt. Die Worker-Server werden daraufhin mit dem Manager-Server verbunden.
 Die restlichen Schritte sind alle von der Pipeline aus automatisiert. Die Pipeline
 kopiert mithilfe von SCP die \code{docker-compose.yml} Datei auf den Manager-Server,
-logt sich in die Docker Registry ein, zieht die neuen Images und startet das Cluster.
+loggt sich in die Docker Registry ein, zieht die neuen Images und startet das Cluster.
 Mehr dazu in \Cref{sec:pipeline}.
 
 \section{Gesamtsystem}
 \label{sec:gesamtsysten}
 In diesem Abschnitt wird aus dem Konzept ein komplettes System
 entwickelt. Der Abschnitt fokussiert sich auf die Merkmale der Komponenten,
-die für das Gesamtsystem relevant sind. In \Cref{subsec:systemuebersicht} verschafft
-sich die Arbeit einen groben Überblick über das System. Anhand einer Grafik wird das Zusammenspiel
+die für das Gesamtsystem relevant sind. In \Cref{subsec:systemuebersicht} wird
+ein grober Überblick über das System gegeben. Anhand einer Grafik wird das Zusammenspiel
 der einzelnen Komponenten erläutert. In  \Cref{subsec:reverseproxyundloadbalancer}
 wird der Reverse Proxy und der Load Balancer behandelt. In \Cref{subsec:inhaltsauslieferung} wird
 die Inhaltsauslieferung vorgestellt. Dabei stellt sich die Frage,
@@ -149,7 +149,7 @@ unterhält sich das Frontend über HTTPS oder WSS mit dem Backend. Die HTTPS-Kom
 wird durch einen Service Worker interferiert, um das Frontend-Caching und die
 Offline-Funktionalität zu ermöglichen. Das WebSocket-Protokoll verbindet das Frontend
 über direktem Web mit dem Backend. Dies kann allerdings von Browser zu Browser variieren.
-Mache Versionen der Browser enthüllen die WebSocket-Kommunikation im SW, andere
+Manche Versionen der Browser enthüllen die WebSocket-Kommunikation im SW, andere
 nicht.\footnote{Siehe Diskussion auf Github, W3C Service Worker \cite{GithubIssueWebSocketExpose}}
 Die Kommunikation zwischen externen APIs und dem Backend kann über HTTP als auch
 HTTPS erfolgen. Zukünftige Kommunikationen über WebSockets oder QUIC\footnote{QUIC (Quick UDP Internet Connections) ist ein von Google entwickeltes, auf UDP basierendes Transportprotokoll.\cite{IETFQUICWhatsHappening} Die IETF arbeitet an einer Standardisierung des Internetprotokolls.\cite{DatatrakcerIETFQuic}}
@@ -179,10 +179,10 @@ ist für die Auslieferung der statischen Dateien des Frontends verantwortlich.
 Anders, als bei einem Proxy, der den Client von dem Server versteckt, versteckt ein Reverse Proxy
 eine Serverinfrastruktur vor dem Client. Durch die Anonymisierung der Serverinfrastruktur
 sind Angriffe gegen spezifische Servertechnologien erschwert, da deren Schnittstelle
-nicht direkt mit der Außenwelt kommuniziert. Als Reverse Proxy verwendet die Arbeit
-die in Golang geschriebene Open Source Software Traefik.\footnote{https://docs.traefik.io/}
+nicht direkt mit der Außenwelt kommuniziert. Als Reverse Proxy wird in der Arbeit,
+die in Golang geschriebene Open Source Software, Traefik verwendet.\footnote{https://docs.traefik.io/}
 Neben der Funktionalität als Reverse Proxy bietet Traefik eine
-SSL/TLS-Verschlüsselung über den Service Let's Encrypt an.\footnote{https://letsencrypt.org/}
+SSL/TLS-Verschlüsselung über den Service "Let's Encrypt" an.\footnote{https://letsencrypt.org/}
 Laut einer Checklist von Google ist eine Verbindung über HTTPS
 Vorraussetzung für die Auslieferung einer PWA.\cite{GooglePWAChecklist}
 Ohne SSL/TLS-Verschlüsselung werden Funktionalitäten wie das Hinzufügen der App zum Startbildschirm
@@ -190,10 +190,10 @@ von den Browsern nicht bereitgestellt. Verschlüsselungsschichten wie TLS und de
 SSL liegen zwischen der TCP-Schicht und HTTP/WS. Neben dem Public-Key-Verschlüsselungsverfahren
 muss für eine TLS-Verschlüsselung auch die Authentizität des Servers, mit dem kommuniziert wird,
 bestätigt sein. Hierfür wird ein EV-TLS-Zertifikate\footnote{EV steht für Extended Validation} benötigt.
-Mithilfe von Let's Encrypt, einer gemeinnützigen Zertifizierungsstelle, werden EV-TLS-Zertifikate
-kostenlos über eine API zur Verfügung gestellt. Die Arbeit hat sich für Traefik entschieden,
+Mithilfe von "Let's Encrypt", einer gemeinnützigen Zertifizierungsstelle, werden EV-TLS-Zertifikate
+kostenlos über eine API zur Verfügung gestellt. Die Entscheidung viel für Traefik,
 da der Reverse Proxy einen automatisierten Vorgang bereitstellt, indem die EV-TLS-Zertifikate
-kurz vor dem Ablaufdatum über den von Let's Encrypt bereitgestellten Service aktualisiert werden.
+kurz vor dem Ablaufdatum über den von "Let's Encrypt" bereitgestellten Service aktualisiert werden.
 
 Die Aufgabe des Load Balancers übernimmt das Orchestrierungssystem Docker Swarm. Swarm verwendet
 als Lastverteilungsverfahren Round-Robin, eine rotierende Verteilung der eingehenden Anfragen auf
@@ -208,19 +208,19 @@ Auslastung der Instanzen bereitstellen, anhand derer dann die Last gleichmäßig
 \label{subsec:inhaltsauslieferung}
 Die Inhaltsauslieferung ist dafür zuständig, statische Inhalte der Frontend-Anwendung
 an den Client auszuliefern. Die statischen Inhalte sind unter anderem
-HTML-, CSS- und JS-Dateien, JSON-Dateien wie das Web App Manifest sowie Bilddateien.
+HTML-, CSS- und JS-Dateien, JSON-Dateien, wie das Web App Manifest, sowie Bilddateien.
 Die Arbeit verwendet als zur Inhaltsauslieferung den Webserver Nginx.
 
-Um die Relevanz der Kompression von Daten zu verdeutlichen, führt diese Arbeit einen
+Um die Relevanz der Kompression von Daten zu verdeutlichen, wird in der Arbeit ein
 Vergleichstest des initialen Ladevorgangs der Frontend-Anwendung,
 einmal mit Gzip, Brotli\footnote{Brotli ist eine von Zoltán Szabadka
 und Jyrki Alakuijala entwickeltes Kompressionsverfahren,
-dass auf die Entropiekodierung Huffman und dem verlustlosen
-Datenkompressionsverfahren LZ77 basiert.\cite{BrotliGoogleOpenSourceBlog}} und einmal ohne Kompression durch. 
+das auf die Entropiekodierung Huffman und dem verlustlosen
+Datenkompressionsverfahren LZ77 basiert.\cite{BrotliGoogleOpenSourceBlog}} und einmal ohne Kompression durchgeführt. 
 
 Die Leistungstests werden mit dem Open-Source-Werkzeug Lighthouse durchgeführt.\footnote{https://developers.google.com/web/tools/lighthouse}
 Um den Unterschied der benötigten Zeit zum initialen Laden der Frontend-Anwendung
-besser zu verdeutlichen, wird der Datendurchlauf auf 1.638,4Kbps verringert.
+besser zu verdeutlichen, wird der Datendurchlauf auf \mbox{1.638,4Kbps} verringert.
 Die Frontend-Anwendung wird in einem nachgeahmten Nexus 5X ausgeführt.
 Für die Analyse wurden vier Metriken aus dem Testbericht entnommen.
 Die Ergebnisse des Leistungstests sind in Abbildung \ref{tab:lighthouseleistungstestdesinitialenladevorgangs}
@@ -246,7 +246,7 @@ Lighthouse beschreibt die Metriken wie folgt: Unter dem ersten Zeichnen
 von Inhalten versteht man den ersten Zeitpunkt, an dem der Browser
 irgendeinen Inhalt zeichnet. Die erste CPU-Inaktivität ist
 der erste Zeitpunkt, an dem die Seite auf Benutzerinteraktionen reagieren könnte.
-Unter Zeit für Interaktion versteht man den Zeitpunkt, an dem alle Inhalte geladen ist.
+Unter Zeit für Interaktion versteht man den Zeitpunkt, an dem alle Inhalte geladen sind.
 Jetzt kann die Seite zu jeder Interaktion schnell reagieren.\cite{WhatPerformanceMetricsMeasure}
 
 In Abbildung \ref{tab:lighthouseleistungstestdesinitialenladevorgangs} wird klar deutlich,
