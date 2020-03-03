@@ -88,25 +88,53 @@ Funktionalitäten mit Modultests abgedeckt.
 
 \section{Verfügbarkeit}
 \label{sec:verfuegbarkeit}
-Die Verfügbarkeit der Anwendung ist sehr hoch. Um die Funktionalität der Lastenverteilung
-zu testen, wird in der Frontendanwendung im Administrationsbereich die lokale Netzwerk-IP
-der aktuell verwendeten Instanz angezeit. Bei dem Neuladen der Anwendung, rotiert diese
+Um die Funktionalität der Lastenverteilung zu testen, wird in der Frontendanwendung
+im Administrationsbereich die lokale Netzwerk-IP der aktuell verwendeten Instanz
+angezeigt. Bei dem Neuladen der Anwendung, rotiert diese
 durch alle Instanzen der Services. Der Lastverteiler funktioniert somit einwandfrei.
 Überdies wird der Verkehr im Fall eines Ausfalls einer Instanz auf eine gesunde
-Instanz verlegt.
+Instanz verlegt. Um einen besseren Überblick über die Verfügbarkeit der einzelnen
+Services und derer Endpunkte zu bekommen, wird ein Lasttest über zehn Minuten mithilfe der Open Source Software
+JMeter\footnote{https://jmeter.apache.org/} durchgeführt. Hier werden mehrere HTTPS- sowie
+WSS-Anfrage hintereinander ausgeführt, um das anfängliche Verhalten eines möglichen Benutzers nachzuahmen.
+
+\begin{figure}
+    \begin{center}
+    \includegraphics[scale=0.125]{img/abbildungen/Antwortzeitdiagramm}
+    \end{center}
+    \caption{Antwortzeiten über Zeit (JMeter Lasttest)}
+    \label{figure:antwortzeitenueberzeit}
+\end{figure}
+
+Die Lasttestresultate der JMeter-Tests sind auf der Abbildung \ref{figure:antwortzeitenueberzeit}
+zu erkennen. Das Diagramm zeigt die Anzahl der jeweils empfangenen Statuscodes in Bezug
+auf die verstrichene Zeit. Die Gesamtanwendung wurde für 10 Minuten getestet.
+Der Test führt folgendes Szenario zehn mal in der Sekunde aus:
+Als erstes wird eine HTTPS-Anfrage an die \code{index.html} gesendet.
+Daraufhin loggt sich der Benutzer mit seinen Benutzerdaten ein.
+Sobald er eingeloggt ist, läd der Benutzer über die Resource Management Service
+eine Liste der Dashboards. Als nächstes wird eine WebSocket-Verbindung eröffnet
+und auf eine Datenquelle abonniert. Nach Ankunft der ersten Daten (ca. 23KB) der
+Datenquelle wird die WebSocket-Verbindung wieder geschlossen.
+
+Im Schaubild ist zu erkennen, dass das Cluster alle ca. 50 Sekunden einen Einbruch
+der Leistung ausweist. Womöglich passiert dies durch einen von Docker Swarm ausgeführten
+Cron-Job. Interessant ist, dass die Log-In-Anfrage die längste Antwortzeit besitzt.
+Bei der Anmeldung wird das Password gegen den Passwort-Hash in der Datenbank verglichen,
+ein JWT generiert und als Cookie im Browser gesetzt. Das Aufbauen der WebSocket-Verbindung
+benötigt die zweitlängste Zeit. Das Laden der Landing-Page liegt im Durchschnitt. Die Anfrage gegen
+die Liste der Dashboards sowie der Datentransfer der Beispieldaten über die WebSocket-Verbindung
+sind sehr performant.
 
 \section{Robustheit}
 \label{sec:robustheit}
-Um die Robustheit der Gesamtanwendung zu testen, führt die Arbeit zwei verschiedene
-Arten von Lasttests durch. Zum einen soll das Cluster auf maximale Auslastung getestet
-werden. Da eine große Anzahl an Anfragen versendet werden müssen,
+Um die Robustheit der Gesamtanwendung zu testen, führt die Arbeit
+einen speziellen Lasttests durch. Hierbei soll das Cluster auf maximale
+Auslastung getestet werden. Da eine große Anzahl an Anfragen versendet werden müssen,
 wird hierfür der Lasttestdienst Loader.io\footnote{https://loader.io/} verwendet.
 Bei den Anfragen handelt es sich um HTTPS-Anfragen, die gegen
-die 37KB große \code{index.html} der Frontendanwendung gehen.
-Als zweites wird ein Lasttest über zehn Minuten mithilfe der Open Source Software
-JMeter\footnote{https://jmeter.apache.org/} durchgeführt. Hier werden mehrere HTTPS- sowie
-WSS-Anfrage hintereinander ausgeführt, um das anfängliche Verhalten eines möglichen Benutzers nachzuahmen.
-Für den Test wurden fünf Server zu einem Cluster zusammengefügt. Die einzelnen Services wurden
+die 37KB große \code{index.html} der Frontendanwendung gehen. Für den Test
+wurden fünf Server zu einem Cluster zusammengefügt. Die einzelnen Services wurden
 auf zehn Instanzen skaliert.
 
 \begin{table}[h]
@@ -140,37 +168,8 @@ erkennen, dass das Gesamtsystem bereits ab tausend Anfragen pro Sekunde
 überlastet ist. Ein Nutzer sollte keine acht Sekunden auf eine Antwort warten
 müssen.
 
-\begin{figure}
-    \begin{center}
-    \includegraphics[scale=0.125]{img/abbildungen/Antwortzeitdiagramm}
-    \end{center}
-    \caption{Antwortzeiten über Zeit (JMeter Lasttest)}
-    \label{figure:antwortzeitenueberzeit}
-\end{figure}
-
-Die Lasttestresultate der JMeter-Tests sind auf der Abbildung \ref{figure:antwortzeitenueberzeit}
-zu erkennen. Das Diagramm zeigt die Anzahl der jeweils empfangenen Statuscodes in Bezug
-auf die verstrichene Zeit. Der Lasttest wurde nach 10 Minuten abgebrochen.
-Der Test führt folgendes Szenario zehn mal in der Sekunde aus:
-Als erstes wird eine HTTPS-Anfrage an die \code{index.html} gesendet.
-Daraufhin loggt sich der Benutzer mit seinen Benutzerdaten ein.
-Sobald er eingeloggt ist, läd der Benutzer über die Resource Management Service
-eine Liste der Dashboards. Als nächstes wird eine WebSocket-Verbindung eröffnet
-und auf eine Datenquelle abonniert. Nach Ankunft der ersten Daten der
-Datenquelle wird die WebSocket-Verbindung wieder geschlossen.
-
-Im Schaubild ist zu erkennen, dass das Cluster alle ca. 50 Sekunden einen Einbruch
-der Leistung ausweist. Womöglich passiert dies durch einen von Docker Swarm ausgeführten
-Cron-Jobs. Interessant ist, dass die Log-In-Anfrage die längste Antwortzeit besitzt.
-Bei der Anmeldung wird das Password gegen den Passwort-Hash in der Datenbank verglichen,
-ein JWT generiert und als Cookie im Browser gesetzt. Das Aufbauen der WebSocket-Verbindung
-braucht am zweitlängsten. Das Laden der Landing-Page liegt im Durchschnitt. Die Anfrage gegen
-die Liste der Dashboards sowie der Datentransfer der Beispieldaten über die WebSocket-Verbindung
-sind sehr performant.
-
-Die Lasttests bestätigen, dass eine solide Robustheit der Gesamtanwendung gegeben ist. Nichtsdestotrotz
-können einzelne Anfragen wie beispielsweise die Login-Route verbessert werden, um die Leistung
-der Gesamtanwendung zu steigern. Wie viele Benutzer ein solches Cluster mit fünf Servereinheiten
+Der Lasttest bestätigen, dass eine solide Robustheit der Gesamtanwendung gegeben ist.
+Wie viele Benutzer ein solches Cluster mit fünf Servereinheiten
 bedienen kann, ist schwer einzuschätzen. Zum einen verteilt sich die Hauptlast je nach
 Benutzergruppe über mehrere Stunden am Tag, zum anderen sind die in der Arbeit ausgeführten
 Lasttests nur schwer mit dem Verhalten echter Nutzer vergleichbar. Dies ist so,
