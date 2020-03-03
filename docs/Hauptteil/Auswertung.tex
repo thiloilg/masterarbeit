@@ -106,6 +106,22 @@ WSS-Anfrage hintereinander ausgeführt, um das anfängliche Verhalten eines mög
     \label{figure:antwortzeitenueberzeit}
 \end{figure}
 
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{lrr}
+Interaktion & Anfrage & Antwort \\
+\hline
+HTTPS: Landing-Page & \mytilde0,6KB & \mytilde2,9KB \\
+HTTPS: Sign-In &  \mytilde0,7KB &  \mytilde0,9KB \\
+HTTPS: Auflistung der Dashboards &   \mytilde0,6KB &  \mytilde2,9KB \\
+WSS: Verbindung öffnen &   \mytilde0,6KB &  \mytilde0,1KB \\
+WSS: Datenverkehr &   \mytilde0,2KB &  \mytilde23,3KB \\
+\end{tabular}
+\end{center}
+\caption{Größe des Datenverkehrs}
+\label{tab:resultatdeslasttestsmitloaderio}
+\end{table}
+
 Die Lasttestresultate der JMeter-Tests sind auf der Abbildung \ref{figure:antwortzeitenueberzeit}
 zu erkennen. Das Diagramm zeigt die Anzahl der jeweils empfangenen Statuscodes in Bezug
 auf die verstrichene Zeit. Die Gesamtanwendung wurde für 10 Minuten getestet.
@@ -114,7 +130,7 @@ Als erstes wird eine HTTPS-Anfrage an die \code{index.html} gesendet.
 Daraufhin loggt sich der Benutzer mit seinen Benutzerdaten ein.
 Sobald er eingeloggt ist, läd der Benutzer über die Resource Management Service
 eine Liste der Dashboards. Als nächstes wird eine WebSocket-Verbindung eröffnet
-und auf eine Datenquelle abonniert. Nach Ankunft der ersten Daten (ca. 23KB) der
+und auf eine Datenquelle abonniert. Nach Ankunft der ersten Daten der
 Datenquelle wird die WebSocket-Verbindung wieder geschlossen.
 
 Im Schaubild ist zu erkennen, dass das Cluster alle ca. 50 Sekunden einen Einbruch
@@ -133,7 +149,7 @@ einen speziellen Lasttests durch. Hierbei soll das Cluster auf maximale
 Auslastung getestet werden. Da eine große Anzahl an Anfragen versendet werden müssen,
 wird hierfür der Lasttestdienst Loader.io\footnote{https://loader.io/} verwendet.
 Bei den Anfragen handelt es sich um HTTPS-Anfragen, die gegen
-die 37KB große \code{index.html} der Frontendanwendung gehen. Für den Test
+die \code{index.html} der Frontendanwendung gehen. Für den Test
 wurden fünf Server zu einem Cluster zusammengefügt. Die einzelnen Services wurden
 auf zehn Instanzen skaliert.
 
