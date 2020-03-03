@@ -61,8 +61,8 @@ in nativem JavaScript implementiert und mithilfe des
 \code{dangerouslySetInnerHTML} Feldes in den React Code eingebunden. Gesetzt den Fall, dass die externe,
 als Datenquelle verwendete API korrupte Daten ausliefert, könnten diese als Einstiegspunkt für eine XSS-Attacke verwendet werden.
 Wenn man allerdings die angezeigten Zeilen der Ein- und Ausgangsdaten auf eine moderate Anzahl begrenzt, kann ein
-in React geschriebener Syntax-Highlighter verwendet und somit die Schwachstelle umgangen werden. Die Arbeit plant
-für die Zukunft, das JSON-Schema nie ganz anzuzeigen. Ziel ist es, das Schema stückchenweise aufzuklappen.
+in React geschriebener Syntax-Highlighter verwendet und somit die Schwachstelle umgangen werden. Für die Zukunft ist geplant,
+das JSON-Schema nie ganz anzuzeigen. Ziel ist es, das Schema stückchenweise aufzuklappen.
 
 Der letzte Sicherheitsaspekt, den es anzusprechen gilt, ist die SSH-Verbindung aus der Pipeline heraus zu den Produktionsservern.
 Hat ein Eindringling Zugriff auf die Pipeline, hat er gleichzeitig Zugriff auf alle Produktionsserver. 
@@ -73,15 +73,15 @@ den Produktionsserver senden, der daraufhin die Docker-Images mit denen aus der 
 \label{sec:zuverlaessigkeit}
 Um die Zuverlässigkeit einer Software zu bestimmen, wird oftmals ein Wert verwendet,
 der bestimmt, wie lang die Durchschnittszeit bis zum Ausfall des Systems ist.\cite[S. 9]{SoftwareQualitaet}
-Ein Softwaresystem kann viele Ausfallgründe haben. Der wohl einfachste ist eine zu hohe Auslastung des Systems.
+Ein Softwaresystem kann viele Ausfallgründe haben. Der wohl Einfachste ist eine zu hohe Auslastung des Systems.
 Dieser Ausfallgrund wird in \Cref{sec:robustheit} genauer betrachtet. Desweiteren kann ein System durch falsche
-Eingabewerte oder ein unerwartetes Verhalten eines Nutzers zum Ausfall gebracht werden. Mit automatisierten Langzeittests
+Eingabewerte, oder ein unerwartetes Verhalten eines Nutzers, zum Ausfall gebracht werden. Mit automatisierten Langzeittests
 sind diese zwei Ausfallgründe allerdings schwer zu berücksichtigen. So müsste der Entwickler bereits bei der Implementierung
-der Tests über die möglichen Ausfallgründe bescheid wissen. Um Störfalle zu verhindern, gilt es möglichst viele Szenarien mit
-Tests abzudecken. Zur beurteilung der Zuverlässigkeit der Software betrachtet die Arbeit die Testabdeckung der einzelnen Komponenten
-des Systems.
+der Tests über die möglichen Ausfallgründe Bescheid wissen. Um Störfalle zu verhindern, gilt es möglichst viele Szenarien mit
+Tests abzudecken. Zur Beurteilung der Zuverlässigkeit der Software wird in der vorliegenden Arbeit die
+Testabdeckung der einzelnen Komponenten des Systems betrachtet.
 
-Die Arbeit hat sich bei der Implementierung der Tests primär auf Integrationstests fokussiert, um so die fehlerfreie 
+Hier wurde sich bei der Implementierung der Tests primär auf Integrationstests fokussiert, um so die fehlerfreie 
 Zusammenarbeit der einzelnen Services sicherzustellen. Die Integrationstests gehen gegen die Schnittstellen der Services.
 Bei dem Resource Management Service sind alle Routen mit Tests abgedeckt. Für jede Route wurde die Rechteverwaltung,
 die Authentisierung, die Validierung der Eingabe und Ausgabewerte sowie die Funktionalität der Route selbst getestet.
