@@ -1,15 +1,16 @@
 \chapter{Konzept}
 \label{chap:konzept}
 \setcounter{footnote}{0}
-Dieses Kapitel ist aus der Sicht des Datenflusses organisiert. Als erstes
+Dieses Kapitel strukturiert sich nach dem Datenfluss, den die
+zu visualisierenden Daten durchlaufen. Als erstes
 gilt es die Daten zu beschaffen. Daraufhin werden sie verarbeitet und
-der Frontendanwendung zugeliefert. Dort werden die Daten den Dashboards
+der \foreignlanguage{english}{Frontendanwendung} zugeliefert. Dort werden die Daten den Dashboards
 und deren Diagrammen zugewiesen. In den Diagrammen werden die Daten
 visualisiert. Zuletzt werden die Einstellungen der Dashboards
 und die Zuweisung der Daten gespeichert.
 
 Der zuvor beschriebene Vorgang geht bereits davon aus, dass die Daten im Backend
-verarbeitet und daraufhin dem Frontend ausgeliefert werden. Die Arbeit entscheidet
+verarbeitet und daraufhin dem \foreignlanguage{english}{Frontend} ausgeliefert werden. Die Arbeit entscheidet
 sich hierfür aus drei Gründen. Sicherheit, Performanz und Flexibilität. Die URLs
 zum Abrufen der Daten sollen im Client einstellbar sein. Würde man die Anfragen an
 die externen APIs zur Beschaffung der Daten direkt aus dem Client heraus senden,
@@ -24,7 +25,7 @@ des Backendservers zur externen API ist in der Regel schneller als die Verbindun
 des Clients zum Server. Wenn das Backend die Daten bereits Verarbeitet, wird nur noch
 eine verdichtete Form der Daten an den Client gesendet.\footnote{Es ist davon auszugehen, dass
 die aus der Verarbeitung resultierende Datenmenge geringer als die der initialen Anfrage ist.}
-Für die Flexibilität spricht, dass die Verarbeitung so nicht in neue Frontendanwendungen
+Für die Flexibilität spricht, dass die Verarbeitung so nicht in neue \foreignlanguage{english}{Frontendanwendungen}
 integriert werden muss.
 
 Die Benutzerverwaltungslogik soll klar von der Datenbeschaffungs-, Verarbeitungs-
