@@ -8,20 +8,20 @@ Rubriken unterteilt: Funktionale sowie nicht-funktionale Anforderungen. Die
 nicht-funktionalen Anforderungen sind in die Unterabschnitte Gestaltung, Flexibilität
 und Codebasis gegliedert.
 
-GBO Datacomp hat seinerseits Anforderungen an die Software in Form eines Informationsblattes
+Gbo hat seinerseits Anforderungen an die Software in Form eines Informationsblattes
 bereitgestellt. Diese Anforderungen werden in den Folgeabschnitten miteinbezogen.
 
 \section{Wer ist die Zielgruppe?}
 \label{sec:weristmeinezielgruppe}
 Die in der Masterarbeit zu entwickelnde Software
-soll den Bestandskunden von GBO Datacomp eine moderne Möglichkeit geben, Daten 
+soll den Bestandskunden von Gbo eine moderne Möglichkeit geben, Daten 
 auf mobilen Endgeräten wie Tablets, Smartphones, aber auch auf Desktop PCs auswerten zu können.
-GBO Datacomp hat Kunden in den verschiedensten Branchen. So besitzt das Unternehmen
+Gbo hat Kunden in den verschiedensten Branchen. So besitzt das Unternehmen
 Kunden in der Automobilindustrie, in der Metall- und Gussindustrie, in der Lebensmittelindustrie,
 in der Steinverarbeitung, in der Verpackungsindustrie, in dem Druckgewerbe, in der
 Zahntechnik, der Kundstoffverarbeitung, Holzindustrie und in der Möbelindustrie.\cite{GBODatacompBranchenloesungen}
 
-Eines der wichtigsten Produkte von GBO Datacomp ist BisoftMES, eine Software zur Erfassung von
+Eines der wichtigsten Produkte von Gbo ist "bisoftMES", eine Software zur Erfassung von
 Maschinen- und Betriebsdaten. Diese Daten können Auftragsdaten, Schichtdaten und Maschinendaten sein.
 Die Anwendung ermöglicht den Benutzern, Trendanalysen durchführen, Schicht- und Maschinendaten vergleichen und
 Leistungskennzahlen auswerten, um so möglichen Störungen und Ausfällen im Betrieb vorzubeugen.
@@ -43,7 +43,7 @@ In diesem Abschnitt werden die Anforderungen an die Funktionalität der Software
 Die erste und bedeutsamste Funktionalität ist
 die möglichst agile Erstellung eines Dashboards. Die Aufgabe des Dashboards ist es, Daten
 zu visualisieren. Um dies zu ermöglichen, benötigt das Dashboard Daten. Diese Daten
-müssen aus einer Datenquelle geladen werden. GBO Datacomp stellt hierfür eine REST API
+müssen aus einer Datenquelle geladen werden. Gbo stellt hierfür eine REST API
 zur Verfügung. Für eine Datenquelle ist somit gesorgt. Um die Daten innerhalb der Anwendung
 einem Dashboard zur Verfügung zu stellen, müssen die Daten zu einem passenden Format verarbeitet werden.
 Überdies muss noch definiert werden, welche Daten in welchem Dashboard verwendet
@@ -106,13 +106,13 @@ XSS-Attacken und Fehlkonfigurationen von Sicherheitseinstellungen zu finden.\cit
 Um die Kundendaten vor Angriffen zu schützen, liegt es nahe, dass diese Sicherheitsrisiken bei der
 Entwicklung der Anwendung beachtet werden. Zum Funktionsumfang gehört dazu,
 dass ein Benutzer ein Konto sicher anlegen, sich anmelden, abmelden und sein Konto auch wieder
-löschen kann. Die Rechteverwaltung konzentriert sich laut GBO Datacomp vorerst auf die elementaren
+löschen kann. Die Rechteverwaltung konzentriert sich laut Gbo vorerst auf die elementaren
 Grundeigenschaften.
 
-Da GBO Datacomp ihre Softwarelösungen auch an nicht deutschsprachige Kunden verkauft, ist es notwendig,
+Da Gbo ihre Softwarelösungen auch an nicht deutschsprachige Kunden verkauft, ist es notwendig,
 die Anwendung multilingual zu gestalten. Die Funktionalität, die Sprache der Anwendung zu verändern,
 ist somit Teil der Anforderungen. Damit der Benutzer nicht bei jedem Besuch die Sprache neu einstellen
-muss, gilt es die Spracheinstellungen im Browser zu persistieren. GBO Datacomp merkt hier an, dass diese
+muss, gilt es die Spracheinstellungen im Browser zu persistieren. Gbo merkt hier an, dass diese
 unabhängig von denen des Browsers gespeichert werden müssen.
 
 Ein Benutzer will ohne großen Aufwand von einen Dashboard zu einem anderen gelangen. Er will seine Profileinstellungen
@@ -121,12 +121,12 @@ Hierfür benötigt die Anwendung eine benutzerfreundliche Navigation. Ist die An
 groß, muss die Anwendung einen automatischen Seitenumbruch einführen. Um die Suche nach speziellen
 Ressourcen zu erleichtern, ist eine zentrale Suche erwünscht.
 
-In der aktuellen BisoftMES Softwarelösung von GBO Datacomp ist es möglich, die für die Anzeige relevanten Daten filtern \cite[S. 14]{BisoftMESHandbuch}.
+In der aktuellen "bisoftMES" Softwarelösung von Gbo ist es möglich, die für die Anzeige relevanten Daten filtern \cite[S. 14]{BisoftMESHandbuch}.
 Es liegt nahe, dass diese Funktionalität auch bei einer webbasierten Anwendung von Benutzern erwartet wird. Die Möglichkeit, Daten
 anhand von Filterkriterien einzuschränken, ist somit Teil der Anforderung an die Funktionalität der Softwarelösung.
 
 Zuallerletzt gilt es die Anforderungen an die Anwendung im Falle einer fehlenden Netzwerkverbindung
-zu erörtern. GBO Datacomp erläutert in ihrem Informationsblatt, dass dem Benutzer
+zu erörtern. Gbo erläutert in ihrem Informationsblatt, dass dem Benutzer
 ermöglicht werden sollte, geladene Daten offline weiterzuverwenden. Dies sollte solang möglich sein,
 bis der Benutzer wieder Zugang zum Netzwerk erlangt. Bei Wiedererlangung der Netzwerkverbindung werden
 die Daten automatisch aktualisiert. Das An- und Abmelden muss über die Internetverbindung
@@ -150,10 +150,10 @@ Anforderungen an die Entwicklungsumgebung und den Entwicklungsprozess gestellt.
 Welche Anforderungen gibt es bei der Gestaltung der Anwendung, oder, noch spezieller, 
 der grafischen Oberfläche zu beachten? Wie bereits in der Zielgruppenanalyse in \Cref{sec:weristmeinezielgruppe}
 angemerkt, werden die verschiedensten Endgeräte auf die Software zugreifen.
-GBO Datacomp erwähnt in ihrem Informationsblatt die Fokussierung auf folgende
+Gbo erwähnt in ihrem Informationsblatt die Fokussierung auf folgende
 drei Gerätetypen: Desktop-PCs, Tablets und Smartphones. Es ist davon auszugehen, dass die
 Softwarelösung als Eingabeschnittstelle, neben der Maus und der Tastatur, auch mit einem Touchscreen
-gesteuert werden kann. GBO Datacomp weist speziell auf die unterschiedlichen Bildschirmgrößen
+gesteuert werden kann. Gbo weist speziell auf die unterschiedlichen Bildschirmgrößen
 hin. So soll die Anwendung auf verschiedene Bildschirmgrößen reagieren und den Inhalt je nach
 Größe zugänglich bereitstellen. Geräte des gleichen Typs sollen keine signifikanten Unterschiede
 in der Darstellung aufweisen.
@@ -169,10 +169,10 @@ mit 2,94\%, Opera mit 2,34\%, Edge mit 2,05\%, Internet Explorer mit 1,98\%, And
 Diese Kennzahlen geben einen groben Überblick über die aktuelle Lage des Marktes. Der Markt wird von
 Google und Microsoft Produkten dominiert. Allerdings variiert der Nutzungsanteil je nach Branche.
 Um ein besseres Bild über die verwendeten Technologien möglicher Kunden zu erhalten,
-lohnt es sich ein Blick auf die Produkte von GBO Datacomp selbst zu werfen.
-BisoftMES, eines der zentralen Produkte von GBO Datacomp, "ist eine unter Microsoft.net
+lohnt es sich ein Blick auf die Produkte von Gbo selbst zu werfen.
+"bisoftMES", eines der zentralen Produkte von Gbo, "ist eine unter Microsoft.net
 entwickelte Maschinen- und Betriebsdatenerfassungssoftware".\footnote{Aus dem BisoftMES Benutzerhandbuch \cite[S. 7]{BisoftMESHandbuch}}
-Es liegt nahe, dass auch die Bestandskunden von GBO Datacomp Produkte aus der Microsoft
+Es liegt nahe, dass auch die Bestandskunden von Gbo Produkte aus der Microsoft
 Produktpalette verwenden. Eine Unterstützung von Browsern wie Internet Explorer und Edge
 wäre daher wünschenswert.
 
@@ -182,7 +182,7 @@ werden kann. Beispiele dafür gibt es in der Softwareindustrie häufig. So biete
 Edition von Gitlab in den Einstellungen die Möglichkeit an, das Logo sowie das Farbschema der Anwendung
 zu individualisieren.\cite{GitlabDocs}
 
-GBO Datacomp beschreibt in den Anforderungen des zu Beginn der Arbeit überreichten
+Gbo beschreibt in den Anforderungen des zu Beginn der Arbeit überreichten
 Informationsblattes konkret, dass die Benutzbarkeit der Software ohne großen Schulungsaufwand möglich sein soll.
 Dies steht im klaren Kontrast zu konkurrierenden Softwarelösungen im BI Sektor.
 So bietet QlikTech, ein führendes Unternehmen im Bereich Business Intelligence,
@@ -213,7 +213,7 @@ Bereiche gliedern. Im ersten Bereich geht es um die Flexibilität der Software i
 Augenmerk auf den Umgang der Software mit der Beschaffenheit der Datenquellen und der Daten selbst gelegt. Im zweiten Bereich
 wird die Anforderung in Bezug auf die Flexibilität der Visualisierung der Daten erörtert.
 
-Die Datenquelle ist, wie bereits in \Cref{sec:funktionaleanforderungen} erwähnt, von GBO Datacomp als REST Schnittstelle
+Die Datenquelle ist, wie bereits in \Cref{sec:funktionaleanforderungen} erwähnt, von Gbo als REST Schnittstelle
 bereitgestellt. Über die API lassen sich Schichtdaten, Kennzahlen über die Gesamtanlageneffektivität (OEE), Arbeitsplätze
 sowie Arbeitsplatzgruppen abfragen. Ein typisches Szenario ist die Abfrage von aktuellen Schichtdaten eines bestimmten
 Arbeitsplatzes. Hierfür müssen zwei Aufrufe gegen die API durchgeführt werden. Zum einen muss ein Aufruf gegen die
@@ -222,11 +222,11 @@ in Bezug auf diesen Arbeitsplatz zu erlangen. Um bestimmte Daten zu erhalten, be
 Aufrufe gegen die API. Diese Aufrufe sind voneinander abhängig. Diese Erkenntnis ist für den späteren Gestaltungsprozess
 der Datenbeschaffung von großer Bedeutung.
 
-In einem Gespräch mit GBO Datacomp stellte sich Folgendes heraus. GBO Datacomp liefert unterschiedliche Versionen ihrer
+In einem Gespräch mit Gbo stellte sich Folgendes heraus. Gbo liefert unterschiedliche Versionen ihrer
 Softwarelösungen an unterschiedliche Kunden aus. Dabei variiert auch die Datenstruktur und somit die Beschaffenheit der
 Schnittstelle. Diese Beschaffenheit ist essentiell für die Softwarearchitektur dieser Arbeit. Es ist davon auszugehen,
-dass GBO Datacomp ihre Softwarelösungen über die nächsten Jahre hinweg immer weiter verändern und anpassen wird.
-Es ist gut möglich, dass GBO Datacomp Softwarelösungen in Zukunft komplett austauschen wird. Anzunehmen,
+dass Gbo ihre Softwarelösungen über die nächsten Jahre hinweg immer weiter verändern und anpassen wird.
+Es ist gut möglich, dass Gbo Softwarelösungen in Zukunft komplett austauschen wird. Anzunehmen,
 dass die Beschaffenheit der Schnittstelle unverändert bleibt, ist somit ein fataler Fehler. Nun gibt es zwei Optionen.
 Erstens: Man entwickelt für jede Änderung der Schnittstelle eine neue Version seiner Software. Zweitens:
 Die Information über die Beschaffenheit der Schnittstelle kommt in die Datenbank und nicht in den
@@ -255,7 +255,7 @@ der Software bereitzustellen, verfolgt diese Arbeit den Ansatz aus Option zwei.
 
 Die Anforderungen an die Flexibilität der Software in Bezug auf die Kommunikation mit Schnittstellen wurde
 ausführlich diskutiert. Wie sieht es aber mit der Anforderung an die Flexibilität der Daten selbst aus?
-Die von GBO Datacomp bereitgestellte REST API ist mit einer Swagger Dokumentation, basierend auf der
+Die von Gbo bereitgestellte REST API ist mit einer Swagger Dokumentation, basierend auf der
 OpenAPI-Specification 3.0, ausgestattet. Die Hierarchie einer Anfrage an eine Ressource kann mehrere Stufen von Objekten beinhalten.
 Bei der Anfrage an die OEE muss der Arbeitsplatz sowie eine Zeitspanne angegeben werden. Als Resultat bekommt man eine 
 in JSON formatierte Antwort. Auf der äußeren Ebene befindet sich ein Array, welches Objekte beinhaltet, die wieder ein
@@ -278,11 +278,11 @@ Die Software ist so flexibel zu gestalten, dass diese auch mit variablen Tiefen 
 
 Als nächstes werfen wir einen Blick auf die Flexibilität in Bezug auf die Visualisierung der Daten. Wie flexibel
 muss die Visualisierung der Daten sein? Mit was für einer Vielfalt an Diagrammen ist zu rechnen? Wie sieht es
-mit dem stetigen Hinzufügen neuer Diagramme aus? In dem von GBO Datacomp ausgehändigten Informationsblatt
+mit dem stetigen Hinzufügen neuer Diagramme aus? In dem von Gbo ausgehändigten Informationsblatt
 werden einige Datenvisualisierungen aufgezeigt. Zu den bedeutsamsten Diagrammen gehören Balkendiagramme,
 Säulendiagramme, Liniendiagramme, Kreisdiagramme, Ringdiagramme sowie additive Diagramme. Außerdem werden
 einzelne KPIs mit verschiedenen Visualisierungen dargestellt. So ändert sich die Farbe der OEE je nach
-Wert von grün über gelb bis hin zu rot. Aktuell verwendet GBO Datacomp für die Datenvisualisierung unter
+Wert von grün über gelb bis hin zu rot. Aktuell verwendet Gbo für die Datenvisualisierung unter
 anderem Grafana \footnote{https://grafana.com/}, eine in Golang geschriebene Open Source Software, die zur Analyse
 und Überwachung von Daten verwendet werden kann. Gerade bei der Individualisierbarkeit der Visualisierung
 von Daten sind bei Grafana kaum Grenzen gesetzt. Versetzt man sich in die Sicht des Kunden, sind \mbox{Feinjustierungen}
