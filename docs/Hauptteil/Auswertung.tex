@@ -10,8 +10,8 @@ Um die Korrektheit der Gesamtanwendung beurteilen zu können, muss das in der An
 Verhalten mit dem Verhalten des Istzustands verglichen werden. In der Anforderungsanalyse
 in \Cref{chap:anforderungsanalyse} wurden allerdings hauptsächlich Funktionalitäten und weniger deren 
 Verhalten behandelt. Da das Vorhalten der Software vor der Entwicklung des Konzepts nicht klar definiert wurde,
-ist es schwer, die Korrektheit der Anwendung zu beurteilen. Die in der Konzept-Phase erarbeiteten Verfahren
-wurden wie in dem Konzept entworfen auch in der Software schlussendlich umgesetzt. So wurden für
+ist es schwer, die Korrektheit der Anwendung zu beurteilen. Die in der Konzeptphase erarbeiteten Verfahren
+wurden, wie in dem Konzept entworfen, auch in der Software schlussendlich umgesetzt. So wurden für
 das Diagrammanordnungsverfahren ein vielfaches an Modultests implementiert, um das gewollte Verhalten auch in
 der Anwendung sicherzustellen. Das in den Konzepten erarbeitete Verhalten weicht nicht von dem der späteren
 Umsetzung ab. Dies ist auch für die Schritte des Datenstroms und den angeforderten Funktionalitäten der Fall.
@@ -24,9 +24,9 @@ erarbeiteten Funktionalitäten mit denen des Istzustands verglichen werden. Die 
 wurden alle umgesetzt. So kann die Gesamtanwendung Daten beschaffen, verarbeiten, Diagrammen zuweisen und darstellen.
 Da sich die Arbeit bei der Konzeption und Implementierung der Software auf die Qualitätsmerkmale Sicherheit,
 Zuverlässigkeit, Verfügbarkeit und Robustheit fokussiert hat, konnten nicht alle angeforderten Implementierungsdetails
-erfüllt werden. Die Authentifizierung, Rechteverwaltung, Sprachauswahl, Suche, Echtzeitübertragung der Daten wurden
+erfüllt werden. Die Authentifizierung, Rechteverwaltung, Sprachauswahl, Suche und Echtzeitübertragung der Daten wurden
 voll funktionsfähig umgesetzt. Nicht oder nur bedingt wurde die Offline-Funktionalität, die Benachrichtigung
-des Benutzers bei Übertretung eines vordefinierten Schwellwerts sowie die Filterung der Daten in den Diagrammen.
+des Benutzers bei Übertretung eines vordefinierten Schwellwerts sowie die Filterung der Daten in den Diagrammen umgesetzt.
 Die Offline-Funktionalität ist aktuell nur für statische Elemente der Anwendung gegeben. Die über das WebSocket-Protokoll
 übertragenen Daten werden aktuell nicht in der progressiven Webanwendung gespeichert. Dies ist allerdings aus technischer
 Sicht auch nur bedingt möglich, da das Speichervolumen von vom Browser bereitgestellten Speichermöglichkeiten
