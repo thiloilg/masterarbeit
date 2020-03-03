@@ -9,19 +9,19 @@ und deren Diagrammen zugewiesen. In den Diagrammen werden die Daten
 visualisiert. Zuletzt werden die Einstellungen der Dashboards
 und die Zuweisung der Daten gespeichert.
 
-Der zuvor beschriebene Vorgang geht bereits davon aus, dass die Daten im Backend
-verarbeitet und daraufhin dem \foreignlanguage{english}{Frontend} ausgeliefert werden. Die Arbeit entscheidet
-sich hierfür aus drei Gründen. Sicherheit, Performanz und Flexibilität. Die URLs
+Im zuvor beschriebenen Vorgang wird bereits davon ausgegangen, dass die Daten im Backend
+verarbeitet und daraufhin dem \foreignlanguage{english}{Frontend} ausgeliefert werden. Hierfür wird sich aus den
+folgenden drei Gründen entschieden: Sicherheit, Performanz und Flexibilität. Die URLs
 zum Abrufen der Daten sollen im Client einstellbar sein. Würde man die Anfragen an
 die externen APIs zur Beschaffung der Daten direkt aus dem Client heraus senden,
 müssen bei allen externen APIs CORS-Header für die eigene Origin gesetzt sein \cite{CORSW3C}.
 Des Weiteren bieten sich serverseitige Programmiersprachen besser zur Verhinderung
-von Attacken zur Einschleusung von schädlichem Quellcode an.\footnote{Bei
+von Attacken zur Einschleusung eines schädlichen Quellcodes an.\footnote{Bei
 Unmarshalling- und Validierungsverfahren ist Golang flexibler als das im Client ausgeführte JS.}
-Für die Performanz sprechen folgende Gründe: Das Endgeräte des Clients ist womöglich
+Für die Performanz sprechen folgende Gründe: Das Endgerät des Clients ist womöglich
 nicht zur Datenverarbeitung ausgelegt. Das mehrfache Berechnen der gleichen Anfrage
 kann im Backend einfach abgefangen und aus dem Cache genommen werden. Die Verbindung
-des Backendservers zur externen API ist in der Regel schneller als die Verbindung
+des \foreignlanguage{english}{Backendservers} zur externen API ist in der Regel schneller als die Verbindung
 des Clients zum Server. Wenn das Backend die Daten bereits Verarbeitet, wird nur noch
 eine verdichtete Form der Daten an den Client gesendet.\footnote{Es ist davon auszugehen, dass
 die aus der Verarbeitung resultierende Datenmenge geringer als die der initialen Anfrage ist.}
