@@ -88,12 +88,17 @@ Funktionalitäten mit Modultests abgedeckt.
 
 \section{Verfügbarkeit}
 \label{sec:verfuegbarkeit}
+Zur Auswertung der Verfügbarkeit wird zuerst die Lastenverteilung analysiert und daraufhin
+die Geschwindigkeit der Auslieferung über einen längeren Zeitraum getestet.
+
 Um die Funktionalität der Lastenverteilung zu testen, wird in der Frontendanwendung
 im Administrationsbereich die lokale Netzwerk-IP der aktuell verwendeten Instanz
-angezeigt. Bei dem Neuladen der Anwendung, rotiert diese
+angezeigt. Bei dem mehrfachen Neuladen der Anwendung, rotiert diese
 durch alle Instanzen der Services. Der Lastverteiler funktioniert somit einwandfrei.
 Überdies wird der Verkehr im Fall eines Ausfalls einer Instanz auf eine gesunde
-Instanz verlegt. Um einen besseren Überblick über die Verfügbarkeit der einzelnen
+Instanz verlegt.
+
+Um einen besseren Überblick über die Verfügbarkeit der einzelnen
 Services und derer Endpunkte zu bekommen, wird ein Lasttest über zehn Minuten mithilfe der Open Source Software
 JMeter\footnote{https://jmeter.apache.org/} durchgeführt. Hier werden mehrere HTTPS- sowie
 WSS-Anfrage hintereinander ausgeführt, um das anfängliche Verhalten eines Benutzers nachzuahmen.
@@ -126,10 +131,11 @@ WSS: Datenverkehr &   \mytilde0,2KB &  \mytilde23,3KB \\
 \end{table}
 
 Die Lasttestresultate der JMeter-Tests sind auf der Abbildung \ref{figure:antwortzeitenueberzeit}
-zu erkennen. Das Diagramm zeigt die Anzahl der jeweils empfangenen Statuscodes in Bezug
-auf die verstrichene Zeit. Die Gesamtanwendung wurde für 10 Minuten getestet.
-Der Test führt folgendes Szenario zehn mal in der Sekunde aus:
+zu erkennen. Das Diagramm zeigt die Zeit, die benötigt wird um eine bestimmte Anfrage zu beantworten, an.
+Die Gesamtanwendung wurde für 10 Minuten getestet.
+Der Test führt folgendes Szenario einmal in der Sekunde aus:
 Als erstes wird eine HTTPS-Anfrage an die \code{index.html} gesendet.
+Zudem werden die nötigen CSS- und JS-Dateien geladen.
 Daraufhin loggt sich der Benutzer mit seinen Benutzerdaten ein.
 Sobald er eingeloggt ist, läd der Benutzer über die Resource Management Service
 eine Liste der Dashboards. Als nächstes wird eine WebSocket-Verbindung eröffnet
@@ -137,18 +143,26 @@ und auf eine Datenquelle abonniert. Nach Ankunft der ersten Daten der
 Datenquelle wird die WebSocket-Verbindung wieder geschlossen.
 
 In Tabelle \ref{tab:groessedesdatenverkehrs} wird die Größe der versendeten und empfangenen 
-Daten einer einzelnen Abfolge an Anfragen und deren Antworten aufgelistet. Es ist anzumerken,
-dass nur die Endpunkte der Services getestet werden. Die eigentliche Frontendanwendung
-wird nur teilweise geladen und nicht ausgeführt. 
+Daten einer einzelnen Abfolge an Anfragen und deren Antworten aufgelistet.
 
-Im Schaubild ist zu erkennen, dass das Cluster alle ca. 50 Sekunden einen Einbruch
-der Leistung ausweist. Womöglich passiert dies durch einen von Docker Swarm ausgeführten
-Cron-Job. Interessant ist, dass die Log-In-Anfrage die längste Antwortzeit besitzt.
-Bei der Anmeldung wird das Password gegen den Passwort-Hash in der Datenbank verglichen,
-ein JWT generiert und als Cookie im Browser gesetzt. Das Aufbauen der WebSocket-Verbindung
-benötigt die zweitlängste Zeit. Das Laden der Landing-Page liegt im Durchschnitt. Die Anfrage gegen
-die Liste der Dashboards sowie der Datentransfer der Beispieldaten über die WebSocket-Verbindung
-sind sehr performant.
+In dem Schaubild der Abbildung \ref{figure:antwortzeitenueberzeit}
+sind kurzzeitige Höhepunkte in der Antwortzeit zu erkennen. Da sich diese
+in allen Services bemerkbar machen, ist davon auszugehen, dass dies
+entweder durch einen Cron-Job des Docker Swarm Clusters ausgelöst wurde oder auf einen
+Einbruch des Datenverkehrs der lokalen Internetverbindung des Testrechners zurückzuführen
+ist.
+
+Interessant ist, dass die Log-In-Anfrage trotz ihrer geringen Datentransfergröße verhältnismaßig
+lange braucht. Bei der Anmeldung wird das Password gegen den Passwort-Hash in der Datenbank verglichen,
+ein JWT generiert und als Cookie im Browser gesetzt. Eine Leistungssteigerung durch Verbesserung
+des Log-In-Endpunktes ist denkbar. Die Landing-Page \code{index.html} sowie der Request-Body der
+Anfrage an die Dashboard Ressource besitzten ungefähr die gleiche größe. Dennoch ist interessanterweise
+der Node.js Server, der die Dashboards ausliefert um ein vierfaches schneller. Dies könnte daran liegen,
+dass die Anfrage gegen die Landing-Page als erstes stattfindet und somit der HTTPS-Handshake
+mit einberechnet werden könnte.
+
+Alles in allem gab es keine Fehlermeldungen bei den Anfragen, was darauf hinweist, dass das System
+auch über längere Zeit eine hohe Verfügbarkeit aufweist.
 
 \section{Robustheit}
 \label{sec:robustheit}
@@ -185,12 +199,14 @@ sich auf die minimale, maximale und durchschnittliche
 Antwortzeit, die die Server benötigen, um die
 Anfragen zu verarbeiten. Für die Lasttests wurden die HTTPS-Anfragen,
 die pro Sekunde abgesendet werden, von initial 100 auf bis zu 5.000 erhöht.
+
 Ab ca. 2.500 Anfragen pro Sekunde fängt das Cluster an, Antworten auf die
 Anfragen erst so spät zu versenden, dass die Antwort, die vom Client
 erwartete Maximalzeit überschreitet. Bei Betrachtung der maximalen Antwortzeit ist zu
 erkennen, dass das Gesamtsystem bereits ab tausend Anfragen pro Sekunde
 überlastet ist. Ein Nutzer sollte keine acht Sekunden auf eine Antwort warten
-müssen.
+müssen. Bei fünfhundert abgehandelten Anfragen in der Sekunde bewegt sich die Durchschnittszeit
+bei unter 100 Millisekunden.
 
 Der Lasttest bestätigen, dass eine solide Robustheit der Gesamtanwendung gegeben ist.
 Wie viele Benutzer ein solches Cluster mit fünf Servereinheiten
