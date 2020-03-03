@@ -100,7 +100,7 @@ WSS-Anfrage hintereinander ausgeführt, um das anfängliche Verhalten eines Benu
 
 \begin{figure}
     \begin{center}
-    \includegraphics[scale=0.125]{img/abbildungen/Antwortzeitdiagramm2}
+    \includegraphics[scale=0.125]{img/abbildungen/Antwortzeitdiagramm3}
     \end{center}
     \caption{Antwortzeiten über Zeit (JMeter Lasttest)}
     \label{figure:antwortzeitenueberzeit}
@@ -112,6 +112,9 @@ WSS-Anfrage hintereinander ausgeführt, um das anfängliche Verhalten eines Benu
 Interaktion & Anfrage & Antwort \\
 \hline
 HTTPS: Landing-Page & \mytilde0,6KB & \mytilde2,9KB \\
+HTTPS: CSS & \mytilde0,6KB & \mytilde152,2KB \\
+HTTPS: JS Teil 1 & \mytilde0,6KB & \mytilde137,7KB \\
+HTTPS: JS Teil 2 & \mytilde0,6KB & \mytilde722,9KB \\
 HTTPS: Sign-In &  \mytilde0,7KB &  \mytilde0,9KB \\
 HTTPS: Auflistung der Dashboards &   \mytilde0,6KB &  \mytilde2,9KB \\
 WSS: Verbindung öffnen &   \mytilde0,6KB &  \mytilde0,1KB \\
@@ -136,7 +139,7 @@ Datenquelle wird die WebSocket-Verbindung wieder geschlossen.
 In Tabelle \ref{tab:groessedesdatenverkehrs} wird die Größe der versendeten und empfangenen 
 Daten einer einzelnen Abfolge an Anfragen und deren Antworten aufgelistet. Es ist anzumerken,
 dass nur die Endpunkte der Services getestet werden. Die eigentliche Frontendanwendung
-wird nicht ausgeführt. 
+wird nur teilweise geladen und nicht ausgeführt. 
 
 Im Schaubild ist zu erkennen, dass das Cluster alle ca. 50 Sekunden einen Einbruch
 der Leistung ausweist. Womöglich passiert dies durch einen von Docker Swarm ausgeführten
