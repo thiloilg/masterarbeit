@@ -310,9 +310,9 @@ Serviceuntergliederung lieber nach der "...fachlichen Domäne richten".\cite[S. 
 
 \subsection{Vor- und Nachteile}
 \label{subsec:vorundnachteile}
-In \Cref{subsec:wasverstehtmanuntermicroservices} sind Microservices
+In \Cref{subsec:wasverstehtmanuntermicroservices} werden Microservices
 als einzelne, in einer Containervirtualisierung laufende Programme beschrieben. Sind diese Programme
-zustandslos, lassen sie sich einfach und effizient skalieren. Ein zustandloser Service hat die Eigenschaft, dass zwei
+zustandslos, lassen sie sich einfach und effizient skalieren. Ein zustandsloser Service hat die Eigenschaft, dass zwei
 aufeinanderfolgende Anfragen nicht an die gleiche Instanz des Programms gesendet werden müssen.
 Beinhaltet der Service eine Datenbank, benötigt es eine weitere Strategie der Skalierung
 wie Database Sharding oder Master-Slave Replica. Durch die Lastverteilung auf eigenständige Services
@@ -360,12 +360,12 @@ von Servern mit identischen Images betrieben werden können."\cite[S. 56]{Contin
 \end{quote}
 
 Somit kann sichergestellt werden, dass die Software und deren Umgebung in der Testphase
-sowie in der Produktion dieselbe ist.
+sowie in der Produktion dieselben sind.
 
 Immer mehr Anbieter stellen Werkzeuge für Continuous Integration (CI) zur Verfügung,
 die es ermöglichen eine CI/CD-Pipeline anhand von Konfigurationsdateien aufzuziehen. So bieten
-neben Travis CI, CircleCI und Jenkins nun auch Versionsverwaltungshosts wie Github und
-Gitlab CI-Werkzeuge an.\footnote{Github bietet seit 13. November 2019 eigene CI/CD-Werkzeuge an \cite{GithubCIToolsHeise}}
+neben Travis CI, CircleCI und Jenkins nun auch Versionsverwaltungshosts, wie Github und
+Gitlab, CI-Werkzeuge an.\footnote{Github bietet seit dem 13. November 2019 eigene CI/CD-Werkzeuge an.\cite{GithubCIToolsHeise}}
 Ein Vorteil eines CI/CD-Ansatzes ist eine schnelle Feature-Auslieferung und somit eine schnellere Resonanz der Benutzer.
 Außerdem wirkt sich das stetige Ausführen automatisierter Tests in der Pipeline positiv auf die Robustheit der Software aus.
 Zwei weitere Vorteile sind das einfache Reproduzieren von Fehlern sowie das unkomplizierte Zurückrollen der ausgelieferten Version.
