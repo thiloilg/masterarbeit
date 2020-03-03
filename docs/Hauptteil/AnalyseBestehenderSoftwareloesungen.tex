@@ -15,12 +15,12 @@ der Datenmodellierung sowie der Erstellung von Dashboards liegen.
 Microsoft beschreibt ihr Produkt Power BI Desktop wie folgt: "Power BI Desktop ist eine kostenlose Anwendung,
 die Sie auf Ihrem lokalen Computer installieren können und die es Ihnen ermöglicht, eine Verbindung mit Ihren
 Daten herzustellen und diese zu transformieren und zu visualisieren."\cite{MicrosoftPowerBIDesktopDocs}
-Power BI Desktop ist eines der Produkte von Power BI. Außerdem bietet Power BI einen cloud-basierten Dienst
+Power BI Desktop ist eines der Produkte von Power BI. Außerdem bietet Power BI einen cloudbasierten Dienst
 und eine native App an.\cite{WikiPowerBI}
 
 Mit Power BI Desktop können Daten aus Dateien, aus Datenbanken sowie
-aus cloud-basierten Diensten geladen werden. In dem Buch "Pro Power BI Desktop"
-von Adam Aspin wird eine weitere Option zum Laden von Daten erwähnt: Die DirektQuery.
+aus cloudbasierten Diensten geladen werden. In dem Buch "Pro Power BI Desktop"
+von Adam Aspin wird eine weitere Option zum Laden von Daten erwähnt: die DirectQuery.
 Hierbei handelt es sich, anders als bei den zuvor genannten Möglichkeiten, um das direkte
 Abfragen von Daten gegen eine Datenquelle, ohne zuvor alle Daten in die Anwendung zu laden.\cite[S. 111]{ProPowerBIDesktop}
 Diese Art des Ladens wurde von den Entwicklern von Power BI unter anderem eingeschlagen,
@@ -34,8 +34,8 @@ Zu importierende Datenstrukturen, die nicht auf einem relationalen Datenbankmode
 in ein solches konvertiert. Hierfür wird die hauseigene Formelsprache Power Query M. benötigt.\footnote{"Power Query M ist eine funktionale Sprache,
 die Groß-/Kleinschreibung beachtet und F\# ähnlich ist."\cite{MicrosoftDocsPowerQueryFormelsprache}}
 
-Seit 2018 bietet Power BI für ihren cloud-basierten Dienst eine Self-Service-Datenaufbereitung unter dem Namen "Dataflows" an.\cite{MicrosoftDataflowsPreview}
-Mit diesen Dataflows können ETL-Prozesse\footnote{ETL steht für das Extrahieren, Transformieren und Laden von Daten}
+Seit 2018 bietet Power BI für ihren cloudbasierten Dienst eine Self-Service-Datenaufbereitung unter dem Namen "Dataflows" an.\cite{MicrosoftDataflowsPreview}
+Mit diesen Dataflows können ETL-Prozesse\footnote{ETL steht für das Extrahieren, Transformieren und Laden von Daten.}
 unkompliziert innerhalb von Power BI bewerkstelligt werden. Ein automatisierter Datenfluss,
 der die Daten in eine für die Visualisierung einheitliche Struktur vorbereitet, wird auch in dieser
 Arbeit notwendig sein.
@@ -46,20 +46,20 @@ der Benutzeroberfläche eine Werkzeugleiste an. Bei einem Klick auf eines der au
 Diagrammarten, wird das jeweilige zum Dashboard hinzugefügt. Das Diagramm wird 
 automatisch an einem freien Platz positioniert. Der Nutzer hat allerdings die Möglichkeit,
 dieses daraufhin zu verschieben und zu skalieren. Ist eines der Diagramme ausgewählt,
-erscheinen in der Werkzeugleiste je nach Diagrammart eine verschiedene Anzahl an Feldern,
+erscheinen in der Werkzeugleiste, je nach Diagrammart, eine unterschiedliche Anzahl an Feldern,
 zu welchen der Benutzer Daten zuweisen kann.
 
 \section{Qlik Sense}
 \label{sec:qliksense}
-Als nächstes werfen wir einen Blick auf die Softwarelösung Qlik Sense.
+Als nächstes wird die Softwarelösung Qlik Sense betrachtet.
 Das Laden von Daten ist bei Qlik Sense von Dateien, Datenbanken, Webseiten, FTP-Servern sowie von einer
 REST Schnittstelle aus möglich. Bei dem Laden der Daten von einer Webseite, wird die Seite nach einer Tabelle
 durchsucht und diese als Datenquelle verwendet.\cite[S. 17]{QlikSenseCookbook} Für das Laden von Daten von
 einer REST-API, bietet Qlik Sense einen sogenannten REST Connector an. Dieser kann sowohl das \mbox{JSON-,} als auch
-das XML-Format verarbeiten. In den Settings des REST Connectors können neben der URL auch ein
+das XML-Format verarbeiten. In den Settings des REST Connectors können neben der URL, auch ein
 Authentifizierungsschema ausgewählt werden.\cite[S. 23]{QlikSenseCookbook} Somit ist es möglich,
 eine API zu verwenden, bei der eine JWT-Authentifizierung vorausgesetzt ist. Qlik Sense besitzt
-eine eigene SQL ähnliche Skriptsprache. Im Data Load Editor
+eine eigene SQL-ähnliche Skriptsprache. Im Data Load Editor
 können mithilfe dieses Scripts Bearer-Token als Authorization Header gesetzt werden. Dies macht Qlik
 Sense in der Nutzung externer APIs sehr flexibel.
 
@@ -86,7 +86,7 @@ bei dem die Benutzer zuerst Diagrammtypen in die Arbeitsfäche ziehen und
 daraufhin Daten zuweisen. Bei der Datenzuweisung unterscheidet Qlik Sense zwischen Measures und
 Dimensions. Measures sind numerische Werte wie die Anzahl der verkauften Produkte oder der Jahresumsatz,
 Dimensions sind deskriptive Werte wie Monat, Jahr oder die Identifikationsnummer eines Produktes.\cite{TutorialsSpotMeasuresDimensions}
-Durch die klare Trennung in numerische sowie descriptive Werte wird die Zuordnung der Daten
+Durch die klare Trennung in numerische sowie descriptive Werte, wird die Zuordnung der Daten
 auf die verschiedenen Achsen der Diagramme vereinfacht.
 
 \section{Tableau}
