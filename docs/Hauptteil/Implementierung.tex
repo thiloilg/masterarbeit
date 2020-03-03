@@ -18,7 +18,7 @@ Implementierung der für die Dashboards benötigten Plugins, die die Daten
 in Diagrammen visualisieren. In \Cref{sec:resourcemanagementservice} wird
 die testgetriebene Entwicklung der für die Benutzerverwaltung benötigte REST-API
 dargestellt. Zuallerletzt wird in \Cref{sec:datadeliveryservice} die Implementierung
-des Services geschildert, welcher die Frontendanwendung mit den Daten versorgt.
+des Services geschildert, welcher die Frontend-Anwendung mit den Daten versorgt.
 
 \section{Infrastruktur}
 \label{sec:infrastruktur}
@@ -143,7 +143,7 @@ des Systems auseinander.
 \label{subsec:systemuebersicht}
 Die Abbildung \ref{figure:uebersichtueberdassystem} verschafft einen guten Überblick
 über das Zusammenspiel der einzelnen Komponenten. Im oberen Bereich sieht man die
-Frontendanwendung sowie eine Repräsentation einer externen API. Die Frontendanwendung
+Frontend-Anwendung sowie eine Repräsentation einer externen API. Die Frontend-Anwendung
 besteht aus dem Frontend sowie dem integrierten Plugin-System. Je nach Kommunikationsart
 unterhält sich das Frontend über HTTPS oder WSS mit dem Backend. Die HTTPS-Kommunikation
 wird durch einen Service Worker interferiert, um das Frontend-Caching und die
@@ -206,22 +206,22 @@ Auslastung der Instanzen bereitstellen, anhand derer dann die Last gleichmäßig
 
 \subsection{Inhaltsauslieferung}
 \label{subsec:inhaltsauslieferung}
-Die Inhaltsauslieferung ist dafür zuständig, statische Inhalte der Frontendanwendung
+Die Inhaltsauslieferung ist dafür zuständig, statische Inhalte der Frontend-Anwendung
 an den Client auszuliefern. Die statischen Inhalte sind unter anderem
 HTML-, CSS- und JS-Dateien, JSON-Dateien wie das Web App Manifest sowie Bilddateien.
 Die Arbeit verwendet als zur Inhaltsauslieferung den Webserver Nginx.
 
 Um die Relevanz der Kompression von Daten zu verdeutlichen, führt diese Arbeit einen
-Vergleichstest des initialen Ladevorgangs der Frontendanwendung,
+Vergleichstest des initialen Ladevorgangs der Frontend-Anwendung,
 einmal mit Gzip, Brotli\footnote{Brotli ist eine von Zoltán Szabadka
 und Jyrki Alakuijala entwickeltes Kompressionsverfahren,
 dass auf die Entropiekodierung Huffman und dem verlustlosen
 Datenkompressionsverfahren LZ77 basiert.\cite{BrotliGoogleOpenSourceBlog}} und einmal ohne Kompression durch. 
 
 Die Leistungstests werden mit dem Open-Source-Werkzeug Lighthouse durchgeführt.\footnote{https://developers.google.com/web/tools/lighthouse}
-Um den Unterschied der benötigten Zeit zum initialen Laden der Frontendanwendung
+Um den Unterschied der benötigten Zeit zum initialen Laden der Frontend-Anwendung
 besser zu verdeutlichen, wird der Datendurchlauf auf 1.638,4Kbps verringert.
-Die Frontendanwendung wird in einem nachgeahmten Nexus 5X ausgeführt.
+Die Frontend-Anwendung wird in einem nachgeahmten Nexus 5X ausgeführt.
 Für die Analyse wurden vier Metriken aus dem Testbericht entnommen.
 Die Ergebnisse des Leistungstests sind in Abbildung \ref{tab:lighthouseleistungstestdesinitialenladevorgangs}
 dargestellt.
@@ -459,28 +459,28 @@ In der Gitlab-CI wird mithilfe eines kleinen Shell-Scripts eine Warteschleife au
 ist ein solches Script zu sehen. Die Arbeit stellt so sicher, dass bei der Durchführung der Tests die
 benötigten Services funktionsbereit sind.
 
-\section{Frontendanwendung}
+\section{Frontend-Anwendung}
 \label{sec:frontendanwendung}
-Die Frontendanwendung ist mit dem Frontendframework React geschrieben.
+Die Frontend-Anwendung ist mit dem Frontendframework React geschrieben.
 Zur Visualisierung der GUI-Komponenten wird wie bereits in \Cref{subsec:zentralisierungderindividualisierbarkeit}
 erwähnt, das CSS-Framework Bootstrap verwendet. Die Arbeit hat sich bewusst gegen
 eine React-Bootstrap-Bibliothek entschieden, um ein schnelleres Auswechseln von CSS-Frameworks
 zu ermöglichen. Bei React-Bootstrap-Bibliothek werden für die Komponenten ganze Klassen importiert,
 die man dann ersetzen müsste. CSS-Tags hingegen lassen sich schneller überschreiben oder austauschen.
-Bis auf die Bibliotheken \code{jmespath.js} und \code{qrcode} wurde die komplette Funktionalität der Frontendanwendung
+Bis auf die Bibliotheken \code{jmespath.js} und \code{qrcode} wurde die komplette Funktionalität der Frontend-Anwendung
 selbst implementiert. Die Zustandsverwaltung wurde mit der Context API von React realisiert.
 Immer wieder vorkommende Funktionalitäten wurden in React-Hooks ausgelagert. Diese Hooks werden in einem
-\code{common} Ordner zusammen mit oft benutzten React-Komponenten ausgelagert. Die Routen der Frontendanwendung
+\code{common} Ordner zusammen mit oft benutzten React-Komponenten ausgelagert. Die Routen der Frontend-Anwendung
 besitzten nur für die Seiten, die Ressourcen Anzeigen, den von REST bekannten Aufbau der URL-Pfade. Die Pfade
 wurden möglichst benutzerfreundlich benannt. So ist der URL-Pfad der Loginseite beispielsweise \code{/login}.
 Aus SEO-Gründen und der Benutzerfreundlichkeit wegen verändert sich der Titel sowie die Beschreibung je nach
-Seite der Frontendanwendung. Der Begriff Single-Page-Webanwendung bezieht sich hier nur auf das initiale Laden
-einer HTML-Seite. Die Frontendanwendung besitzt mehrere Seite, die alle über Suchmaschinen wie Google
+Seite der Frontend-Anwendung. Der Begriff Single-Page-Webanwendung bezieht sich hier nur auf das initiale Laden
+einer HTML-Seite. Die Frontend-Anwendung besitzt mehrere Seite, die alle über Suchmaschinen wie Google
 gefunden werden können.
 
 \subsection{Funktionalitäten}
 \label{subsec:funktionalitaeten}
-Die Frontendanwendung besitzt einen React-Hook für die Anordnung der bereits im Dashboard existierenden Diagramme, einen für
+Die Frontend-Anwendung besitzt einen React-Hook für die Anordnung der bereits im Dashboard existierenden Diagramme, einen für
 die Positionierung neuer Diagramme und einen für das Zeichnen der farbigen Bereiche, die beim Drag and Drop erscheinen.
 Des Weiteren wurden externe Schnittstellen in Hooks verpackt, um so die Schnittstelle vor der Anwendung
 zu Abstrahieren. Schnittstellen der Web Storage API wie \code{LocalStorage} und \code{SessionStorage}
@@ -523,7 +523,7 @@ Der \code{useDeliveryEndpoint} Hook implementiert ein eigenes Publish/Subscribe-
 Um die Performanz der Anwendung zu steigern, werden beim Ladevorgang eines Dashboards
 die Diagramme sowie die anzuzeigenden Daten parallel geladen. In Abbildung \ref{figure:informationsaustauschdashboard}
 ist der Informationsaustausch eines Dashboards dargestellt. Schritt eins und zwei steht
-für das anfangliche Laden der Frontendanwendung über einen CDN. Dies tritt nur ein,
+für das anfangliche Laden der Frontend-Anwendung über einen CDN. Dies tritt nur ein,
 falls der Nutzer nicht bereits auf einer anderen Seite der Anwendung unterwegs war.
 In Schritt drei wird die Dashboard-Ressource von dem Resource Management Service angefragt.
 Die Dashboard-Ressource besteht neben den gewöhnlichen Feldern wie ID, Title, Beschreibung,
@@ -563,14 +563,14 @@ Schließen des Modals. Als Eingabeparameter erwartet der Hook ein Callback und e
 gibt die anzuzeigende GUI-Komponente zurück. In das Array werden Referenzen übergeben, anhand derer
 der Hook weiß, wann er die GUI-Komponente neu rendern muss.
 
-Die Frontendanwendung besitzt neben den Hooks auch hilfreiche React-Komponenten. So gibt es
+Die Frontend-Anwendung besitzt neben den Hooks auch hilfreiche React-Komponenten. So gibt es
 eine \code{ProtectedRoute}, welche den Benutzer umleistet, falls dieser keine Rechte für den
 angefragten URL-Pfad besitzt.\footnote{Hierbei ist anzumerken, dass die eigentliche Rechteverwaltung durch
-das Backend abgesichert ist.} Außerdem beinhaltet die Frontendanwendung Eingabevalidierung der Formulare
+das Backend abgesichert ist.} Außerdem beinhaltet die Frontend-Anwendung Eingabevalidierung der Formulare
 sowie Fehlermeldungen in Form von kleinen Informationsfenstern, die sich rechts oben im Bildschirm ansammeln
 und nach fünf Sekunden verschwinden. Hat der angemeldete Nutzer Administrationsrechte, erscheint unter den
 Benutzereinstellungen ein Menüpunkt, über den die Aministrationsoberfläche erreichbar ist. Alle in der
-Frontendanwendung verwendeten Ressourcen können erstellt, angesehen, verändert und auch wieder gelöscht werden.
+Frontend-Anwendung verwendeten Ressourcen können erstellt, angesehen, verändert und auch wieder gelöscht werden.
 Für bestimmte Operationen wie das Löschen eines Benutzers, wird, auch wenn der Benutzer bereits eingeloggt ist,
 ein zusätzliches Modal angezeigt, dass die Anmeldedaten abfragt. Um die initiale Zugriffssicherheit zu erhöhen,
 bietet die Anwendung eine Zwei-Faktor-Authentisierung. In \Cref{subsec:authentifizierungsverfahrenundrechteverwaltung} geht die
@@ -595,7 +595,7 @@ im Anhang unter "Screenshots" in \Cref{figure:sucheundbearbeitungderdatenquelle}
 \subsection{Installation}
 \label{subec:installation}
 Die Anwendung ist von dem Browser sowie von dem Google Play Store aus installierbar. Als Einstieg
-in die Frontendanwendung bietet das Web App Manifest sowie das Android Manifest eine URL als Einstiegspunkt.
+in die Frontend-Anwendung bietet das Web App Manifest sowie das Android Manifest eine URL als Einstiegspunkt.
 Hier verwendet die Anwendung den Pfad \code{/installed}. Wird die progressive Webanwendung über diesen Pfad
 aufgerufen, wird ein Feld im SessionStorage gesetzt. Mithilfe eines \code{useInstalled} Hooks, kann innerhalb
 der Anwendung nachgefragt werden, ob die Anwendung vom Nutzer installiert wurde oder nicht. Anhand dieser

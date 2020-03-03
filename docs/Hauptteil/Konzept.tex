@@ -4,7 +4,7 @@
 Dieses Kapitel strukturiert sich nach dem Datenfluss, den die
 zu visualisierenden Daten durchlaufen. Als erstes
 gilt es die Daten zu beschaffen. Daraufhin werden sie verarbeitet und
-der \foreignlanguage{english}{Frontendanwendung} zugeliefert. Dort werden die Daten den Dashboards
+der \foreignlanguage{english}{Frontend-Anwendung} zugeliefert. Dort werden die Daten den Dashboards
 und deren Diagrammen zugewiesen. In den Diagrammen werden die Daten
 visualisiert. Zuletzt werden die Einstellungen der Dashboards
 und die Zuweisung der Daten gespeichert.
@@ -25,7 +25,7 @@ des \foreignlanguage{english}{Backendservers} zur externen API ist in der Regel 
 des Clients zum Server. Wenn das Backend die Daten bereits Verarbeitet, wird nur noch
 eine verdichtete Form der Daten an den Client gesendet.\footnote{Es ist davon auszugehen, dass
 die aus der Verarbeitung resultierende Datenmenge geringer als die der initialen Anfrage ist.}
-Für die Flexibilität spricht, dass die Verarbeitung so nicht in neue \foreignlanguage{english}{Frontendanwendungen}
+Für die Flexibilität spricht, dass die Verarbeitung so nicht in neue Frontend-Anwendungen
 integriert werden muss.
 
 Die Benutzerverwaltungslogik soll klar von der Datenbeschaffungs-, Verarbeitungs-
@@ -77,7 +77,7 @@ ist es naheliegend, eine JSON-Abfragesprache für die Arbeit zu verwenden. Es wi
 JSON-Abfragesprache \code{JMESPath} verwendet.\footnote{http://jmespath.org/}
 Die Abfragesprache wurde von James Saryerwinnie ins Leben gerufen und wird aktuell von
 Amazon in ihrer Amazon Web Services CLI verwendet.\cite{AWSJMESPath} Eine Umsetzung von
-\code{JMESPath} gibt es in Golang als auch in JS. Somit ist es möglich, die Daten im
+\code{JMESPath} gibt es sowohl in Golang als auch in JS. Somit ist es möglich, die Daten im
 Frontend sowie Backend zu verarbeiten. Die Idee ist es, den Benutzern die Verarbeitung
 im Frontend zu ermöglichen. Dort kann der Benutzer die Daten passend verarbeiten und die
 gewollte Abfragezeichenfolge abspeichern. Diese wird dann bei der Darstellung des 
@@ -108,7 +108,7 @@ Beispiel: Das Array in Quellcode \ref{lst:jmespatheingangsdaten} beinhaltet zwei
 Daten.\footnote{Die Beispieldaten wurden simplifiziert.} In Quellcode \ref{lst:jmespathabfrage}
 sieht man eine Abfrage, anhand welcher die Daten verarbeitet werden. In Quellcode \ref{lst:jmespathausgangsdaten}
 sieht man das Endresultat der Abfrage. Die Werte der Felder \code{name}, \code{performance} und \code{quality}
-wurden mithilfe des Array-Selektor \code{[]} und des angehangenen Feldnamen ausgewählt.
+wurden mithilfe des Array-Selektors \code{[]} und des angehangenen Feldnamens ausgewählt.
 Das Format der Datenausgabe ist ein gültiger Datensatz für die Diagrammvisualisierungsbibliothek
 \code{chart.js}. Somit lassen sich die Eingangsdaten mithilfe eines sehr flexiblen Verfahrens
 in verwendbare Ausgabedaten transformieren.
@@ -144,9 +144,9 @@ Das Konzept der Datenübermittlung ist Folgendes: Besucht der Nutzer ein Dashboa
 abonnieren die einzelnen Diagramme die jeweiligen Kanäle, die die Datenquellen 
 repräsentieren (Siehe Abbildung \ref{figure:uebersichtderdatenauslieferung}).
 Außerdem wird eine Nachricht an den \code{Data Delivery Service} veröffentlicht,
-indem dieser darüber informiert wird, dass der Client jetzt bereit ist Daten zu empfangen.
+indem dieser darüber informiert wird, dass der Client jetzt bereit ist, Daten zu empfangen.
 Je nach angefragtem Interval sendet nun der \code{Data Delivery Service} verarbeitete
-Daten an das Frontend, die in der Frontendanwendung angezeigt werden. Um die
+Daten an das Frontend, die in der Frontend-Anwendung angezeigt werden. Um die
 Redundanz im Datenfluss zu verringern, werden die ausgehenden Nachrichten
 so gefiltert, dass für jede Datenquelle nur eine Nachricht versendet wird. Die ankommenden
 Nachrichten werden hingegen so verteilt, dass alle Diagramme mit der passenden Datenquelle
@@ -156,9 +156,9 @@ versorgt werden.
 \label{subsec:echtzeitauslieferung}
 Durch das Publish/Subscribe Architekturkonzept ist die Grundlage für die Echtzeitauslieferung
 bereits geschaffen. Die im Dashboard enthaltenen Diagramme warten auf ankommende Nachrichten,
-mit derer enthaltenen Daten sie ihre Visualisierung neuzeichnen. Der \code{Data Delivery Service}
+mit deren enthaltenen Daten sie ihre Visualisierung neuzeichnen. Der \code{Data Delivery Service}
 benötigt eine in einem separaten Prozess taktierte Ausführung einer Routine, die die Daten
-anhand eines gegebenen Intervals anfragt, verarbeitet und an die Frontendanwendung sendet.
+anhand eines gegebenen Intervals anfragt, verarbeitet und an die Frontend-Anwendung sendet.
 
 \subsection{Caching}
 \label{subsec:caching}
@@ -167,10 +167,10 @@ unangenehme Zeit in Anspruch nehmen. Um das initiale Warten beim Laden eines Das
 zu verringern, bietet sich folgende Caching-Strategie an: Bei einer Anfrage schaut
 der \code{Data Delivery Service} zuerst, ob es bereits einen Cache-Eintrag für die
 angefragte ID der Datenquelle gibt. Existiert dieser, wird eine sofortige Nachricht
-mit den Daten aus dem Cache an die Frontendanwendung geschickt. Existiert anfangs noch
+mit den Daten aus dem Cache an die Frontend-Anwendung geschickt. Existiert anfangs noch
 kein Cache-Eintrag, wird dieser Schritt übersprungen. Daraufhin werden
 die aktuellen Daten in einem separaten Prozess abgefragt, verarbeitet, der Cache
-aktualisiert und eine zweite Nachricht mit den aktuellen Daten an die Frontendanwendung
+aktualisiert und eine zweite Nachricht mit den aktuellen Daten an die Frontend-Anwendung
 geschickt. Der Key für den Cache-Eintrag soll hierbei aus der ID der Datenquelle sowie
 einem aus dem Request-Body generierten Hash zusammengesetzt werden. Somit werden
 Kollisionen zwischen unterschiedlichen Benutzern ausgeschlossen\footnote{Die ID der Datenquellen ist
@@ -236,21 +236,21 @@ dem jeweiligen Plugin oder innerhalb des Plugins selbst ermöglicht werden.
 
 \section{Darstellung}
 \label{sec:darstellung}
-Das Konzept der Darstellung der Frontendanwendung ist in zwei Abschnitte untergliedert.
+Das Konzept der Darstellung der Frontend-Anwendung ist in zwei Abschnitte untergliedert.
 In \Cref{subsec:zentralisierungderindividualisierbarkeit} wird ein Konzept für die
 zentralisierte Anpassung der Benutzeroberfläche erarbeitet. In \Cref{subsec:pluginverfahren}
-geht es um die ausgliederung der Gestaltung der einzelnen Diagramme aus der Frontendanwendung.
+geht es um die ausgliederung der Gestaltung der einzelnen Diagramme aus der Frontend-Anwendung.
 Somit soll mehr Flexibilität für die Umsetzung der einzelnen Diagramme geschaffen werden.
-Gleichermaßen soll die Komplexität der Frontendanwendung gering gehalten werden.
+Gleichermaßen soll die Komplexität der Frontend-Anwendung gering gehalten werden.
 
 \subsection{Zentralisierung der Individualisierbarkeit}
 \label{subsec:zentralisierungderindividualisierbarkeit}
-Für die Darstellung der Frontendanwendung wird das CSS-Framework Bootstrap verwendet.\footnote{https://getbootstrap.com/}
+Für die Darstellung der Frontend-Anwendung wird das CSS-Framework Bootstrap verwendet.\footnote{https://getbootstrap.com/}
 Die unkompilierte Form von Bootstrap ist in SASS geschrieben \cite[2. Abschnitt]{Bootstrap4punkt4}.
 Die Arbeit verfolgt den Ansatz, für die Individualisierbarkeit relevante Parameter an einem Ort
 zu zentralisieren. Diese Parameter sollen die Einstellungen von Bootstrap überschreiben und
 in eigene SASS- sowie JS-Dateien importiert und verwendete werden. Somit kann mit der Veränderung
-eines einzelnen Parameters die komplette Darstellung der Frontendanwendung angepasst werden.
+eines einzelnen Parameters die komplette Darstellung der Frontend-Anwendung angepasst werden.
 WebPack, ein statischer Modulebündler für JS, ermöglicht mithilfe des \code{sass-loader}\footnote{https://www.npmjs.com/package/sass-loader} Variablen
 aus SASS zu exportieren und daraufhin in JS zu importieren \cite{ShareSCSSwithJS}.
 
@@ -281,7 +281,7 @@ der Daten bereitstellen.
 Verwendete Bibliotheken können in die Plugins integriert werden. Somit ist es möglich, für die Visualisierung
 der Daten alle möglichen JS-Bibliotheken zu verwenden. So können Teile des Dashboards
 in \code{chart.js}\footnote{https://www.chartjs.org/} und andere Teile in \code{d3.js}\footnote{https://d3js.org/}
-umgesetzt werden. Die Bibliotheken selbst befinden sich nicht in der Frontendanwendung selbst,
+umgesetzt werden. Die Bibliotheken selbst befinden sich nicht in der Frontend-Anwendung selbst,
 sondern werden während der Laufzeit für die Diagramme, die diese verwenden, nachgeladen.
 Ein Problem hierbei ist, dass durch das Bündeln der Diagramme in Module, die Bibliotheken für jedes einzelne
 Modul gebündelt werden müssen. Somit werden bei einem Dashboard mit einer großen Anzahl an verschiedenen

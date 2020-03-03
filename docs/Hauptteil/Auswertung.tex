@@ -47,7 +47,7 @@ der Ein- und Ausgangsverkehr in beide Richtungen mithilfe des Koa Joi Routers va
 Daten werden über HTTPS als auch WSS ausgeliefert. \mbox{Nichtsdestotrotz} beinhaltet die Gesamtanwendung
 noch Schwachstellen, die es zu eliminieren gilt. Die Authentifizierung passiert wie in der Implementierung beschrieben
 über einen im HTTP-Header gesetzten JWT. Bei der WebSocket-Verbindung findet die Authentifizierung beim Handshake des
-Verbindungsaufbaus statt. Die Verbindung wird somit nicht getrennt, wenn der Token abläuft. Die Frontendanwendung
+Verbindungsaufbaus statt. Die Verbindung wird somit nicht getrennt, wenn der Token abläuft. Die Frontend-Anwendung
 schließt allerdings bei der Abmeldung eines Benutzers die WebSocket-Verbindung automatisch. Es wäre allerdings dennoch möglich,
 dass bei einer erfolgreichen XSS-Attacke, die WebSocket-Verbindung aufrecht gehalten wird, um so Daten zu stehlen.
 
@@ -91,7 +91,7 @@ Funktionalitäten mit Modultests abgedeckt.
 Zur Auswertung der Verfügbarkeit wird zuerst die Lastenverteilung analysiert und daraufhin
 die Geschwindigkeit der Auslieferung über einen längeren Zeitraum getestet.
 
-Um die Funktionalität der Lastenverteilung zu testen, wird in der Frontendanwendung
+Um die Funktionalität der Lastenverteilung zu testen, wird in der Frontend-Anwendung
 im Administrationsbereich die lokale Netzwerk-IP der aktuell verwendeten Instanz
 angezeigt. Bei dem mehrfachen Neuladen der Anwendung, rotiert diese
 durch alle Instanzen der Services. Der Lastverteiler funktioniert somit einwandfrei.
@@ -171,7 +171,7 @@ einen speziellen Lasttests durch. Hierbei soll das Cluster auf maximale
 Auslastung getestet werden. Da eine große Anzahl an Anfragen versendet werden müssen,
 wird hierfür der Lasttestdienst Loader.io\footnote{https://loader.io/} verwendet.
 Bei den Anfragen handelt es sich um HTTPS-Anfragen, die gegen
-die \code{index.html} der Frontendanwendung gehen. Für den Test
+die \code{index.html} der Frontend-Anwendung gehen. Für den Test
 wurden fünf Server zu einem Cluster zusammengefügt. Die einzelnen Services wurden
 auf zehn Instanzen skaliert.
 
