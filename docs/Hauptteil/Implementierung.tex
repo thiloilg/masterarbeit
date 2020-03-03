@@ -314,7 +314,7 @@ mithilfe der Identifikationsnummer des Datenbankeintrags statt. Die Info-Protoko
 wird über den \code{stdout} gelenkt. Die Error-Protokollebene wird des Weiteren in einer
 Logdatei persistiert. Für das Debugging muss die Debug-Protokollebene aktiviert werden.
 Als Logging-Bibliothek für den Resource Management Service verwendet die Arbeit den Winston
-Logger. Der HTTP-Verkehr wird mithilfe des Koa-Loggers\footnote{Koa ist ein HTTP Middleware Framework für Node.js} protokolliert und an den Winston
+Logger. Der HTTP-Verkehr wird mithilfe des Koa-Loggers\footnote{Koa ist ein HTTP Middleware Framework für Node.js.} protokolliert und an den Winston
 Logger weitergereicht. Datenbankverbinder sowie Logger werden mithilfe des Singleton-Pattern
 implementiert, um das ständige herunterreichen von Instanzen zu vermeiden. Der komfortabelste
 Weg in JavaScript ein Singleton zu erstellen, ist, indem man ein Objekt exportiert. JavaScript-Objekte
@@ -322,20 +322,20 @@ werden beim initialen Ladevorgang in den Cache gesetzt. JavaScript sorgt dafür,
 dass bei allen weiteren Zugriffen auf das Objekt, die selbe Instanz zurückgegeben wird \cite{NodeJsCaching}.
 
 Der Reverse Proxy Traefik stellt eine Übersicht über die im HTTP-Verkehr gesendeten 
-HTTP-Statuscodes. Die einzelnen Services besitzen Health-Checks, die den aktuellen
+HTTP-Statuscodes zur Verfügung. Die einzelnen Services besitzen Health-Checks, die den aktuellen
 Gesundheitsstatus der Serviceinstanz widerspiegeln. Um die Wartung der Services zu erleichtern,
 werden bei jedem Pipeline-Durchlauf unbenutzte Container, Netzwerke und Images
 entfernt sowie der Cache entleert.
 
 \section{Projektaufbau}
 \label{sec:projektaufbau}
-Zur Entwicklung Gesamtanwendung verwendet die Arbeit VS Code. Es werden Git-Hooks
+Zur Entwicklung der Gesamtanwendung verwendet die Arbeit VS Code. Es werden Git-Hooks
 verwendet um den Quellcode zu Formatierung und nach problematischen Entwurfsmustern
 zu suchen. Hierfür werden die Node.js Packages Prettier und Eslint verwendet.
 Für die Gliederung der Dateien verfolgt die Arbeit innerhalb der Anwendungen zum größten Teil die Herangehensweise des
 Domain-driven Designs (DDD). Um die Redundanz einzelner Funktionalitäten zu verringern, werden \mbox{nichtsdestotrotz} auch Herangehensweisen
 wie die Gliederung nach Dateiart sowie eine Ausgliederung oft benutzer Funktionalitäten in Bibliotheken verfolgt. Während der Entwicklung
-wurde die Gliederung der Order und der beinhalteten Dateien angepasst. Je nach Größe des Projekts ist eine andere Gliederung gefordert.
+wurde die Gliederung der Order und der beinhalteten Dateien angepasst. Je nach Größe des Projekts wird eine andere Gliederung gefordert.
 So muss die Gliederung nach Dateiart bei ansteigender Komplexität durch ein DDD ausgetauscht werden.
 
 \subsection{Zentralisierung und Entkapselung}
@@ -353,7 +353,7 @@ Entwicklern auch einen besseren Überblick über die einzelnen
 Projekte. Gerade im Fall von Microservices hat dieser
 Ansatz den Vorteil, dass Änderungen in mehreren Services,
 die miteinander verkoppelt sind, in einem Commit in die
-Versionsverwaltung eingecheckt werden können. Dies kann verbindlich sein,
+Versionsverwaltung eingecheckt werden können. Dies kann erforderlich sein,
 wenn Tests der Pipeline auf bestimmte Versionen der unterschiedlichen
 Services angewiesen sind. Bei der Veränderung einer API eines Services
 muss so beispielsweise gleichzeitig das Frontend angepasst werden.
@@ -389,11 +389,11 @@ Gitlab Runner ausgelagerter Prozess, der ein vordefiniertes Script durchläuft.
 Damit der Gitlab Runner weiß, was er zu tun hat, werden in der \code{.gitlab-ci.yml}
 Datei einzelne Abschnitte und deren Aufgaben mithilfe der vereinfachten
 Auszeichnungssprache YAML definiert. Für jeden Abschnitt kann ein eigenes Docker-Image
-gewählt werden. Mehr dazu findet man in \Cref{subsec:stages}. An zweiter Stelle
+gewählt werden. Mehr dazu in \Cref{subsec:stages}. An zweiter Stelle
 befindet sich die Docker Registry.\footnote{Eine Docker Registry ist eine Versionsverwaltung für Docker-Images.}
 Sind die Images getestet, ist davon auszugehen, dass sich diese auch
-in ausgeliefertem Zustand genauso verhalten werden, wie dies beim Testen
-der Fall war. Die Qualitätssicherung ist an dritter Stelle\footnote{Auf English Quality Assurance, abgekürzt QA.}
+im ausgelieferten Zustand genauso verhalten werden, wie dies beim Testen
+der Fall war. Die Qualitätssicherung steht an dritter Stelle\footnote{Auf English Quality Assurance, abgekürzt QA.}
 Hier wird die Software nach ihrer Qualität getestet. Erst wenn sie alle
 zuvor definierten Qualitätsmerkmale aufweist, darf die Software in die Produktionsumgebung
 ausgeliefert werden. Die Produktionsumgebung unterscheidet sich von der QA-Umgebung
@@ -405,7 +405,7 @@ einzelnen Container je nach benötigter Rechenleistung skaliert.
 Die drei in Abbildung \ref{figure:uebersichtueberdenstetigenauslieferungsprozess} dargestellten Stages sind
 die \mbox{Build-,} die \mbox{Test-,} sowie die Deploy-Stage. Genauso wie das Produktivsystem
 besteht auch die Pipeline aus unterschiedlichen Docker-Umgebungen. Die Test-Stage ist in eine Vorbereitungs-
-und einer Durchführungsphase unterteilt. In der Vorbereitungsphase wird das für die Tests
+und eine Durchführungsphase unterteilt. In der Vorbereitungsphase wird das für die Tests
 benötigte Cluster erstellt. Die Durchführungsphase ist in zwei parallellaufende Prozesse
 unterteilt. Dies ist nötig, da die Integrationstests für den Resource Management Service
 eine Node.js-Umgebung und den Data Delivery Service eine Golang-Umgebung benötigen.
@@ -414,7 +414,7 @@ Die Arbeit lagert öfter auftretende Funktionalitäten der Gitlab-CI-Pipeline in
 So wird redundanter Quellcode in der Pipeline verhindert. Ein Beispiel hierfür
 ist Quellcode \ref{lst:wiederverwendbarescriptsdergitlabci}. Das erste ausgelagerte
 Script ermöglicht die Verwendung von SSH innerhalb der Pipeline. Somit kann sich
-die pipeline mit dem Server verbinden, um die Docker-Compose Datei auf den Server
+die Pipeline mit dem Server verbinden, um die Docker-Compose Datei auf den Server
 zu kopieren und diese auszuführen. Das zweite Script ist dafür zuständig,
 sich in die Docker Registry einzuloggen. Dies ist nötig, um Docker-Container
 in die Registry zu speichern und diese später vom Server aus wieder abzufragen.
@@ -434,7 +434,7 @@ allerdings von außerhalb der Pipeline aktualisiert werden.
 Um die Verfügbarkeit der Services sicherzustellen, werden auf
 Serviceebene Health-Check-Endpunkte bereitgestellt. Diese spiegeln den aktuellen
 Gesundheitszustand des jeweiligen Dienstes wieder. Ein Health-Check-Endpunkt
-ist speziell dann nützlich, wenn ein Dienst oder ein Verfahren von einem anderen
+ist dann von Nutzen, wenn ein Dienst oder ein Verfahren von einem anderen
 abhängig ist. So ist beispielsweise die Backendapi von der Datenbank
 abhängig. Andererseits ist der Frontenddienst sowie die Integrationstests
 in der Test-Stage von der Backendapi abhängig. In der Arbeit wurden für alle Services
