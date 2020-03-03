@@ -67,14 +67,14 @@ Die Möglichkeit, Felder aus verschiedenen Ebenen einer JSON-Datei auszuwählen
 und in eine gewollte Ausgangsstruktur zu transformieren, ist mithilfe einer GUI nahezu
 unmöglich. Außerdem ist man mit einer Abfragesprache auch um einiges schneller als mit
 der Verwendung einer GUI. Allerdings benötigt die Verwendung einer Abfragesprache
-Einarbeitungszeit. \mbox{Nichtsdestotrotz} ist es für die Arbeit die einzige Möglichkeit,
+Einarbeitungszeit. \mbox{Nichtsdestotrotz} ist es hier die einzige Möglichkeit,
 die Flexibilität für die Datenverarbeitung sowie die Datenmodellierung der Daten
 beizubehalten.
 
 Softwarelösungen wie Power BI, Qlik und Tableau verwenden SQL-ähnliche Abfragesprachen.
 Da die Eingangsdaten im JSON-Format vorliegen und das Frontend in JS geschrieben wird,
-ist es naheliegend, eine JSON-Abfragesprache für die Arbeit zu verwenden. Die Arbeit
-verwendet hierfür die JSON-Abfragesprache \code{JMESPath}.\footnote{http://jmespath.org/}
+ist es naheliegend, eine JSON-Abfragesprache für die Arbeit zu verwenden. Es wird hier die
+JSON-Abfragesprache \code{JMESPath} verwendet.\footnote{http://jmespath.org/}
 Die Abfragesprache wurde von James Saryerwinnie ins Leben gerufen und wird aktuell von
 Amazon in ihrer Amazon Web Services CLI verwendet.\cite{AWSJMESPath} Eine Umsetzung von
 \code{JMESPath} gibt es in Golang als auch in JS. Somit ist es möglich, die Daten im
