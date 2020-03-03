@@ -96,7 +96,7 @@ durch alle Instanzen der Services. Der Lastverteiler funktioniert somit einwandf
 Instanz verlegt. Um einen besseren Überblick über die Verfügbarkeit der einzelnen
 Services und derer Endpunkte zu bekommen, wird ein Lasttest über zehn Minuten mithilfe der Open Source Software
 JMeter\footnote{https://jmeter.apache.org/} durchgeführt. Hier werden mehrere HTTPS- sowie
-WSS-Anfrage hintereinander ausgeführt, um das anfängliche Verhalten eines möglichen Benutzers nachzuahmen.
+WSS-Anfrage hintereinander ausgeführt, um das anfängliche Verhalten eines Benutzers nachzuahmen.
 
 \begin{figure}
     \begin{center}
@@ -119,7 +119,7 @@ WSS: Datenverkehr &   \mytilde0,2KB &  \mytilde23,3KB \\
 \end{tabular}
 \end{center}
 \caption{Größe des Datenverkehrs}
-\label{tab:resultatdeslasttestsmitloaderio}
+\label{tab:groessedesdatenverkehrs}
 \end{table}
 
 Die Lasttestresultate der JMeter-Tests sind auf der Abbildung \ref{figure:antwortzeitenueberzeit}
@@ -132,6 +132,11 @@ Sobald er eingeloggt ist, läd der Benutzer über die Resource Management Servic
 eine Liste der Dashboards. Als nächstes wird eine WebSocket-Verbindung eröffnet
 und auf eine Datenquelle abonniert. Nach Ankunft der ersten Daten der
 Datenquelle wird die WebSocket-Verbindung wieder geschlossen.
+
+In Tabelle \ref{tab:groessedesdatenverkehrs} wird die Größe der versendeten und empfangenen 
+Daten einer einzelnen Abfolge an Anfragen und deren Antworten aufgelistet. Es ist anzumerken,
+dass nur die Endpunkte der Services getestet werden. Die eigentliche Frontendanwendung
+wird nicht ausgeführt. 
 
 Im Schaubild ist zu erkennen, dass das Cluster alle ca. 50 Sekunden einen Einbruch
 der Leistung ausweist. Womöglich passiert dies durch einen von Docker Swarm ausgeführten
