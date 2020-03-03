@@ -29,12 +29,12 @@ Für die Flexibilität spricht, dass die Verarbeitung so nicht in neue \foreignl
 integriert werden muss.
 
 Die Benutzerverwaltungslogik soll klar von der Datenbeschaffungs-, Verarbeitungs-
-und Zulieferungslogik getrennt sein. Die Arbeit geht somit von zwei Services aus.
+und Zulieferungslogik getrennt sein. Es ist somit von zwei Services auszugehen:
 Dem \code{Resource Management Service}, der für die Verwaltung von Ressourcen wie Dashboards,
 Diagrammen, Datenquellen und Benutzer zuständig ist, und dem \code{Data Delivery Service},
 der sich um die zu analysierenden Daten kümmert.
 
-Die folgenden Abschnitte gehen genauer in das Konzept der Gesamtanwendung ein.
+Die folgenden Abschnitte gehen genauer auf das Konzept der Gesamtanwendung ein.
 In \Cref{sec:beschaffung} geht es um die Beschaffung der Daten. Die Erarbeitung eines Konzepts zur
 Verarbeitung der Daten in ein plausibles Format, findet in \Cref{sec:verarbeitung} statt.
 In \Cref{sec:zulieferung} geht es um ein Konzept, das
@@ -55,19 +55,19 @@ eine GET-Anfrage aus.
 
 \section{Verarbeitung}
 \label{sec:verarbeitung}
-Die Verarbeitung der Daten ist ein komplexes Verfahren. Die bereits in der
+Die Verarbeitung der Daten ist ein komplexes Verfahren. Wie bereits in der
 Anforderungsanalyse erwähnt, liefert die API von Gbo die Daten im
-JSON-Format aus. Die Arbeit entscheidet sich zur Datenverarbeitung für die
-Verwendung einer Abfragesprache. In \Cref{chap:analysebestehendersoftwareloesungen}
+JSON-Format aus. Es wird sich entschieden,
+für die Datenverarbeitung eine Abfragesprache zu verwenden. In \Cref{chap:analysebestehendersoftwareloesungen}
 wurden drei bestehende Softwarelösungen im Bereich der Datenvisualisierung von
 Betriebsdaten analysiert. Dabei verwendete jede der Lösungen eine Abfragesprache,
 um komplexere Datentransformationen durchzuführen. Bei der Implementierung einer
-GUI zur Definition der Verarbeitungsweise der Daten kommt man schnell an seine Grenzen.
+GUI zur Definition der Verarbeitungsweise der Daten werden einem schnell Grenzen aufgezeigt.
 Die Möglichkeit, Felder aus verschiedenen Ebenen einer JSON-Datei auszuwählen
 und in eine gewollte Ausgangsstruktur zu transformieren, ist mithilfe einer GUI nahezu
-unmöglich. Außerdem ist mit einer Abfragesprache auch um einiges schneller als mit
+unmöglich. Außerdem ist man mit einer Abfragesprache auch um einiges schneller als mit
 der Verwendung einer GUI. Allerdings benötigt die Verwendung einer Abfragesprache
-Einarbeitungszeit. Nichtsdestotrotz ist es für die Arbeit die einzige Möglichkeit,
+Einarbeitungszeit. \mbox{Nichtsdestotrotz} ist es für die Arbeit die einzige Möglichkeit,
 die Flexibilität für die Datenverarbeitung sowie die Datenmodellierung der Daten
 beizubehalten.
 
@@ -106,7 +106,7 @@ Um die Datenverarbeitung mithilfe von \code{JMESPath} zu verdeutlichen, folgt ei
 Beispiel: Das Array in Quellcode \ref{lst:jmespatheingangsdaten} beinhaltet zwei Ressourcen;
 \code{Maschine 1} und \code{Maschine 2}. Es repräsentiert die durch die REST-API empfangenen
 Daten.\footnote{Die Beispieldaten wurden simplifiziert.} In Quellcode \ref{lst:jmespathabfrage}
-sieht man eine Abfrage, anhand welcher die Daten Verarbeitet werden. In Quellcode \ref{lst:jmespathausgangsdaten}
+sieht man eine Abfrage, anhand welcher die Daten verarbeitet werden. In Quellcode \ref{lst:jmespathausgangsdaten}
 sieht man das Endresultat der Abfrage. Die Werte der Felder \code{name}, \code{performance} und \code{quality}
 wurden mithilfe des Array-Selektor \code{[]} und des angehangenen Feldnamen ausgewählt.
 Das Format der Datenausgabe ist ein gültiger Datensatz für die Diagrammvisualisierungsbibliothek

@@ -44,7 +44,7 @@ kein Problem darstellen sollte.
 Auf die Sicherheit der Anwendung wurde besonders geachtet. So wurde wie bereits in der Implementierung erläutert, neben
 der JWT-Authentisierung auch eine TwoZwei-Faktor-Authentisierung implementiert. Außerdem wurden in dem Resource Management Service
 der Ein- und Ausgangsverkehr in beide Richtungen mithilfe des Koa Joi Routers validiert. Die Anwendung sowie die dafür benötigten
-Daten werden über HTTPS als auch WSS ausgeliefert. Nichtsdestotrotz beinhaltet die Gesamtanwendung
+Daten werden über HTTPS als auch WSS ausgeliefert. \mbox{Nichtsdestotrotz} beinhaltet die Gesamtanwendung
 noch Schwachstellen, die es zu eliminieren gilt. Die Authentifizierung passiert wie in der Implementierung beschrieben
 über einen im HTTP-Header gesetzten JWT. Bei der WebSocket-Verbindung findet die Authentifizierung beim Handshake des
 Verbindungsaufbaus statt. Die Verbindung wird somit nicht getrennt, wenn der Token abläuft. Die Frontendanwendung
