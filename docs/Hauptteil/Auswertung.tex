@@ -41,19 +41,23 @@ kein Problem darstellen sollte.
 
 \section{Sicherheit}
 \label{sec:sicherheit}
-Auf die Sicherheit der Anwendung wurde besonders geachtet. So wurde wie bereits in der Implementierung erläutert, neben
-der JWT-Authentisierung auch eine TwoZwei-Faktor-Authentisierung implementiert. Außerdem wurden in dem Resource Management Service
+Auf die Sicherheit der Gesamtanwendung wurde besonders geachtet. So
+wurde wie bereits in der Implementierung erläutert, neben
+der JWT\hyp{}Authentisierung auch eine TwoZwei\hyp{}Faktor\hyp{}Authentisierung
+implementiert. Außerdem wurden in dem Resource Management Service
 der Ein- und Ausgangsverkehr in beide Richtungen mithilfe des Koa Joi Routers validiert. Die Anwendung sowie die dafür benötigten
 Daten werden über HTTPS als auch WSS ausgeliefert. \mbox{Nichtsdestotrotz} beinhaltet die Gesamtanwendung
 noch Schwachstellen, die es zu eliminieren gilt. Die Authentifizierung passiert wie in der Implementierung beschrieben
 über einen im HTTP-Header gesetzten JWT. Bei der WebSocket-Verbindung findet die Authentifizierung beim Handshake des
 Verbindungsaufbaus statt. Die Verbindung wird somit nicht getrennt, wenn der Token abläuft. Die Frontend-Anwendung
 schließt allerdings bei der Abmeldung eines Benutzers die WebSocket-Verbindung automatisch. Es wäre allerdings dennoch möglich,
-dass bei einer erfolgreichen XSS-Attacke, die WebSocket-Verbindung aufrecht gehalten wird, um so Daten zu stehlen.
+dass bei einer erfolgreichen XSS\hyp{}Attacke, die WebSocket\hyp{}Verbindung aufrecht gehalten wird, um so Daten zu stehlen.
 
-Ein weiterer Sachverhalt ist die Verwendung des \code{dangerouslySetInnerHTML} Feldes im React Frontend. Zur Verarbeitung
-der Daten wird ein Syntax-Highlighter verwendet, um die Ein- und Ausgangsdaten in Form des JSON-Schemas anzuzeigen.
-Da dieser allerdings in React zu langsam war, wurde er in nativem JavaScript implementiert und mithilfe des 
+Die Verwendung von \code{dangerouslySetInnerHTML} ist ein weiterer Sachverhalt. Zur Verarbeitung
+der Daten wird ein Syntax-Highlighter verwendet, um die Ein- und
+Ausgangsdaten in Form des JSON-Schemas anzuzeigen.
+Da dieser allerdings in React zu langsam war, wurde er
+in nativem JavaScript implementiert und mithilfe des 
 \code{dangerouslySetInnerHTML} Feldes in den React Code eingebunden. Im Falle, dass die externe, als Datenquelle
 verwendete API, korrupte Daten ausliefert, könnten diese als Einstiegspunkt für eine XSS-Attacke verwendet werden.
 Wenn man allerdings die angezeigten Zeilen der Ein- und Ausgangsdaten auf eine moderate Anzahl begrenzt, kann ein

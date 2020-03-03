@@ -116,8 +116,9 @@ PORT & Protokoll & Verwendungszweck\\
 \label{tab:geoeffneteportsderproduktionsserver}
 \end{table}
 
-Als zweiten Schritt werden Docker CE und Docker-Compose auf dem Server installiert.
-Als dritten Schnitt wird der Befehl \code{docker swarm init} auf dem Manager-Server
+Als Zweites werden Docker CE und Docker\hyp{}Compose
+auf dem Server installiert. Als dritten Schnitt wird der Befehl
+\code{docker} \code{swarm} \code{init} auf dem Manager-Server
 ausgeführt. Die Worker-Server werden daraufhin mit dem Manager-Server verbunden.
 Die restlichen Schritte sind alle von der Pipeline aus automatisiert. Die Pipeline
 kopiert mithilfe von SCP die \code{docker-compose.yml} Datei auf den Manager-Server,
@@ -143,7 +144,7 @@ des Systems auseinander.
 \label{subsec:systemuebersicht}
 Die Abbildung \ref{figure:uebersichtueberdassystem} verschafft einen guten Überblick
 über das Zusammenspiel der einzelnen Komponenten. Im oberen Bereich sieht man die
-Frontend-Anwendung sowie eine Repräsentation einer externen API. Die Frontend-Anwendung
+Frontend\hyp{}Anwendung sowie eine Repräsentation einer externen API. Die Frontend\hyp{}Anwendung
 besteht aus dem Frontend sowie dem integrierten Plugin-System. Je nach Kommunikationsart
 unterhält sich das Frontend über HTTPS oder WSS mit dem Backend. Die HTTPS-Kommunikation
 wird durch einen Service Worker interferiert, um das Frontend-Caching und die
@@ -264,7 +265,7 @@ den Nginx Docker-Container installiert und in der \code{nginx.conf} aktiviert we
 
 \subsection{Wahl der Datenbankarten}
 \label{subsec:wahlderdatenbankarten}
-Der Data Delivery Service verwendet ein dokumentenorientiertes Datenbanksystem.
+Der Data Delivery Service verwendet ein Datenbanksystem, das dokumentenorientiert ist.
 Hauptgrund hierfür ist die Tatsache, dass man nicht im Vorhinein weiß, wie das
 Datenschema auszusehen hat. Der Benutzer der Anwendung kann jegliche API
 auswählen, Daten abfragen und diese mithilfe einer JSON-Abfragesprache verarbeiten. Das Datenschema
@@ -435,16 +436,16 @@ Um die Verfügbarkeit der Services sicherzustellen, werden auf
 Serviceebene Health-Check-Endpunkte bereitgestellt. Diese spiegeln den aktuellen
 Gesundheitszustand des jeweiligen Dienstes wieder. Ein Health-Check-Endpunkt
 ist dann von Nutzen, wenn ein Dienst oder ein Verfahren von einem anderen
-abhängig ist. So ist beispielsweise die Backendapi von der Datenbank
+abhängig ist. So ist beispielsweise die Backend-API von der Datenbank
 abhängig. Andererseits ist der Frontenddienst sowie die Integrationstests
-in der Test-Stage von der Backendapi abhängig. In der Arbeit wurden für alle Services
+in der Test-Stage von der Backend-API abhängig. In der vorliegenden Arbeit wurden für alle Services
 rudimentäre Health-Checks implementiert, mithilfe derer die Produktionsserver ohne Ausfallzeit
 aktualisiert werden können. Bei einem Update fährt Docker Swarm die auszutauschende
 Instanz erst herunter, wenn eine neue betriebsbereit ist. Ob eine neue Instanz betriebsbereit ist,
-wird durch den Health-Check bestimmt. Für den Health-Check des Nginx-Containers ruft die Arbeit beispielsweise
-in einem Shell-Script den Befehl \code{service nginx status} auf. Ist das Resultat Positiv, wird
+wird durch den Health-Check bestimmt. Für den Health-Check des Nginx-Containers wird in der Arbeit beispielsweise
+in einem Shell-Script der Befehl \code{service nginx status} aufgerufen. Ist das Resultat positiv, wird
 das Script mit \code{0} beendet, andernfalls mit \code{1}. Bei den eigenen Services werden \code{/health-check}
-Routen bereitgestellt, die den Zustand des Services wiederspiegeln. Hier wird unter anderem geprüft, ob die Datenbanken
+Routen bereitgestellt, die den Zustand des Services widerspiegeln. Hier wird unter anderem geprüft, ob die Datenbanken
 und der Cache mit dem Service verbunden sind.
 
 \begin{listing}
@@ -461,10 +462,10 @@ benötigten Services funktionsbereit sind.
 \section{Frontend-Anwendung}
 \label{sec:frontendanwendung}
 Die Frontend-Anwendung ist mit dem Frontendframework React geschrieben.
-Zur Visualisierung der GUI-Komponenten wird wie bereits in \Cref{subsec:zentralisierungderindividualisierbarkeit}
+Zur Visualisierung der GUI-Komponenten wird, wie bereits in \Cref{subsec:zentralisierungderindividualisierbarkeit}
 erwähnt, das CSS-Framework Bootstrap verwendet. Die Arbeit hat sich bewusst gegen
 eine React-Bootstrap-Bibliothek entschieden, um ein schnelleres Auswechseln von CSS-Frameworks
-zu ermöglichen. Bei React-Bootstrap-Bibliothek werden für die Komponenten ganze Klassen importiert,
+zu ermöglichen. Bei einer React-Bootstrap-Bibliothek werden für die Komponenten ganze Klassen importiert,
 die man dann ersetzen müsste. CSS-Tags hingegen lassen sich schneller überschreiben oder austauschen.
 Bis auf die Bibliotheken \code{jmespath.js} und \code{qrcode} wurde die komplette Funktionalität der Frontend-Anwendung
 selbst implementiert. Die Zustandsverwaltung wurde mit der Context API von React realisiert.
@@ -474,7 +475,7 @@ besitzten nur für die Seiten, die Ressourcen Anzeigen, den von REST bekannten A
 wurden möglichst benutzerfreundlich benannt. So ist der URL-Pfad der Loginseite beispielsweise \code{/login}.
 Aus SEO-Gründen und der Benutzerfreundlichkeit wegen verändert sich der Titel sowie die Beschreibung je nach
 Seite der Frontend-Anwendung. Der Begriff Single-Page-Webanwendung bezieht sich hier nur auf das initiale Laden
-einer HTML-Seite. Die Frontend-Anwendung besitzt mehrere Seite, die alle über Suchmaschinen wie Google
+einer HTML-Seite. Die Frontend-Anwendung besitzt mehrere Seiten, die alle über Suchmaschinen wie Google
 gefunden werden können.
 
 \subsection{Funktionalitäten}
@@ -482,33 +483,33 @@ gefunden werden können.
 Die Frontend-Anwendung besitzt einen React-Hook für die Anordnung der bereits im Dashboard existierenden Diagramme, einen für
 die Positionierung neuer Diagramme und einen für das Zeichnen der farbigen Bereiche, die beim Drag and Drop erscheinen.
 Des Weiteren wurden externe Schnittstellen in Hooks verpackt, um so die Schnittstelle vor der Anwendung
-zu Abstrahieren. Schnittstellen der Web Storage API wie \code{LocalStorage} und \code{SessionStorage}
+zu abstrahieren. Schnittstellen der Web Storage API wie \code{LocalStorage} und \code{SessionStorage}
 wurden so erweitert, dass ganze JavaScript-Objekte gespeichert werden können. Außerdem wird der Zustand zwischen
 der Anwendung und der Web Storage API synchronisiert. Verändert der Nutzer die Sprache in einem
 Browser-Tab, wird diese auch in allen anderen Browser-Tabs geändert.
 
-Zum Zeichnen der farbigen Bereiche, die beim ziehen der Typen "Chart" oder "Data Source" erscheinen,
+Zum Zeichnen der farbigen Bereiche, die beim Ziehen der Typen "Chart" oder "Data Source" erscheinen,
 verwendet die Arbeit einen HTML-Canvas, der exakt über dem jeweiligen Plugin positioniert wird.
-Hierfür wird der \code{useDrawQuad} Hook verwendet. Zur Errechnung der Position, über der der Typ
+Hierfür wird der \code{useDrawQuad} Hook verwendet. Zur Errechnung der Position, über die der Typ
 losgelassen wurde, werden die Canvas-Eckpunkte verwendet, um den zuletzt fokussierten Bereich zu bestimmen.
 Dies geschieht mithilfe des \code{useSelectAction} Hooks. Die Umsetzung orientiert sich eins zu eins an dem
 in \Cref{subsec:diagrammanordnungsverfahren} beschriebenen Verfahren. Der komplexeste Hook ist der
-\code{useArrangement} Hook. Anhand der aus dem \code{useSelectAction} resultierenden Aktion wird
+\code{useArrangement} Hook. Anhand der aus dem \code{useSelectAction} Hook resultierenden Aktion wird
 mithilfe des \code{useArrangement} Hooks das neue Plugin in die Baumstruktur, die die Positionierung
 der Plugins beinhaltet, eingefügt.\footnote{Die Plugins werden in der Baumstruktur durch Blätter (Knoten ohne Kinder) repräsentiert.}
 Für das Entfernen eines Plugins aus der Baumstruktur, benötigt es zwei Schritte: In Schritt eins wird
 das Blatt der Baumstruktur entfernt. Um zu verhindern, dass ein Knoten nur ein einzelnes Kind hat,
-werden in Schritt zwei die betroffenen Knoten aufgerückt. Für komplexe Funktionalitäten wie beispielsweise
+werden in Schritt zwei die betroffenen Knoten aufgerückt. Für komplexe Funktionalitäten, wie beispielsweise
 den \code{useArrangement} Hook, wurden vor der eigentlichen Implementierung zahlreiche Modultests definiert.
-Somit konnte sichergestellt werden, dass die Operationen auf er Datenstruktur keine Fehler aufweisen.
+Somit konnte sichergestellt werden, dass die Operationen auf der Datenstruktur keine Fehler aufweisen.
 
-Die zwei bedeutsamsten Hooks sind \code{useApiEndpoint} und \code{useDeliveryEndpoint}. Sie ermöglichen
+Die zwei bedeutsamsten Hooks sind die zwei folgenden Hooks: \code{useApiEndpoint} und \code{useDeliveryEndpoint}. Sie ermöglichen
 die Kommunikation zu den Mircoservices im Backend. Der \code{useApiEndpoint} Hook gibt die CRUD-Operationen,
 welche für die Kommunikation mit einer REST-API nötig sind, zurück. Der \code{useDeliveryEndpoint} Hook
 stellt eine \code{publish} sowie eine \code{subscribe} Funktion zur Verfügung. Die \code{useApiEndpoint} Hook
 dient gleichzeitig als Middleware zwischen der Anwendung und dem Backend. So werden hier HTTP-Statuscodes
 abgefangen, um so bestimmte Aktionen durchzuführen. Im Falle eines abgelaufenen Authentifizierungstokens,
-wird so ein neues beantragt. Daraufhin wird die Fehlgeschlagene Anfrage erneut ausgeführt.
+wird so ein neues beantragt. Daraufhin wird die fehlgeschlagene Anfrage erneut ausgeführt.
 
 \begin{figure}
     \begin{center}
@@ -521,12 +522,12 @@ wird so ein neues beantragt. Daraufhin wird die Fehlgeschlagene Anfrage erneut a
 Der \code{useDeliveryEndpoint} Hook implementiert ein eigenes Publish/Subscribe-Verfahren.
 Um die Performanz der Anwendung zu steigern, werden beim Ladevorgang eines Dashboards
 die Diagramme sowie die anzuzeigenden Daten parallel geladen. In Abbildung \ref{figure:informationsaustauschdashboard}
-ist der Informationsaustausch eines Dashboards dargestellt. Schritt eins und zwei steht
+ist der Informationsaustausch eines Dashboards dargestellt. Schritt eins und zwei stehen
 für das anfangliche Laden der Frontend-Anwendung über einen CDN. Dies tritt nur ein,
 falls der Nutzer nicht bereits auf einer anderen Seite der Anwendung unterwegs war.
 In Schritt drei wird die Dashboard-Ressource von dem Resource Management Service angefragt.
-Die Dashboard-Ressource besteht neben den gewöhnlichen Feldern wie ID, Title, Beschreibung,
-Erstellungsdatum und Eigentümer aus einem Feld mit dem Namen "Data". Dieses Feld beinhaltet
+Die Dashboard-Ressource besteht neben den gewöhnlichen Feldern, wie ID, Title, Beschreibung,
+Erstellungsdatum und Eigentümer, aus einem Feld mit dem Namen "Data". Dieses Feld beinhaltet
 ein JSON, das den Aufbau und die Einstellungen eines Dashboards darstellt.\footnote{Ein
 Beispiel hierfür ist der Quellcodeausschnitt \ref{lst:jsondateizurspeicherungeinesdashboards}
 im Anhang unter "Weitere Quellcodeausschnitte".} Anhand dieser Informationen werden
@@ -539,7 +540,7 @@ den \code{useDeliveryEndpoint} Hook mithilfe der Data Source Id die für das Plu
 Daten. Sobald diese ankommen, wird das durch das Plugin dargestellte Diagramm mit
 den Daten versorgt. Kommen allerdings die zu visualisierenden Daten vor dem Plugin an,
 speichert der \code{useDeliveryEndpoint} Hook die Daten und übergibt diese direkt beim
-ersten Aufruf der durch den \code{useDeliveryEndpoint} Hook bereitgestellten
+ersten Aufruf, der durch den \code{useDeliveryEndpoint} Hook bereitgestellten
 Subscribe-Funktion. \( n_3 \) steht für alle weiteren Schritte, die benötigt werden,
 um die Daten des Diagramms aktuell zu halten. Je nach definiertem Interval sendet
 der Data Delivery Service die Daten über die WebSocket-Verbindung zum Client.
@@ -562,7 +563,8 @@ Schließen des Modals. Als Eingabeparameter erwartet der Hook ein Callback und e
 gibt die anzuzeigende GUI-Komponente zurück. In das Array werden Referenzen übergeben, anhand derer
 der Hook weiß, wann er die GUI-Komponente neu rendern muss.
 
-Die Frontend-Anwendung besitzt neben den Hooks auch hilfreiche React-Komponenten. So gibt es
+Die Frontend\hyp{}Anwendung besitzt auch neben
+den Hooks hilfreiche React\hyp{}Komponenten. So gibt es
 eine \code{ProtectedRoute}, welche den Benutzer umleistet, falls dieser keine Rechte für den
 angefragten URL-Pfad besitzt.\footnote{Hierbei ist anzumerken, dass die eigentliche Rechteverwaltung durch
 das Backend abgesichert ist.} Außerdem beinhaltet die Frontend-Anwendung Eingabevalidierung der Formulare
@@ -589,7 +591,7 @@ die Seiten sehr viel Zeit in Anspruch nehmen. Hierfür hat die Arbeit eine Suchf
 in der oberen Navigationsleiste. Durch einen Zeichenvergleich des Titels der Ressource können so die passenden Ressourcen schneller gefunden
 werden. Die Suche zeigt die zehn besten Resultate in einem Drop-Down-Menü an. Für den Zeichenvergleich verwendet der Resource Management Service
 die von PostgreSQL angebotene Funktionalität zum Vergleichen von Zeichenketten. Ein Bildschirmschnappschuss der Suchfunktionalität befindet sich
-im Anhang unter "Screenshots" in \Cref{figure:sucheundbearbeitungderdatenquelle}.
+im Anhang unter "Screenshots" in \Cref{figure:sucheundbearbeitungdesbenutzerprofils}.
 
 \subsection{Installation}
 \label{subec:installation}
