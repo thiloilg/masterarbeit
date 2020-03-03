@@ -695,7 +695,7 @@ Die Hashes, die die Passwörter repräsentieren, werden mithilfe der Bibliothek 
 Geheime Felder wie die Hashes der Passwörter, sind vor einfachen Select-Statements versteckt und werden nur bei
 expliziter Anfrage zurückgegeben. Die Vorlagen für die bei der Registrierung versendeten E-Mails wurden mit
 der Template-Sprache Handlebars erstellt. Das Testing-Framework Jest wurde zur Realisierung der Integrationstests
-verwendet. Aufgrund der Komplexität der Integrationstests, wurden die Tests für eine Route in einen unterordner
+verwendet. Aufgrund der Komplexität der Integrationstests, wurden die Tests für eine Route in einen Unterordner
 anhand der CRUD-Operationen in mehrere Dateien unterteilt.
 
 \subsection{Authentifizierungsverfahren und Rechteverwaltung}
@@ -705,13 +705,13 @@ dass der Resource Management Service einfach skalierbar und somit zustandslos se
 in den Cookies mit den Flags \code{samesite=strict},\footnote{Als Schutz gegen CSRF-Attacken} \code{secure} und \code{httponly}
 gespeichert. Der Zeitstempel, der den Fälligkeitstermin repräsentiert, ist auf 15 Minuten gesetzt. Durch einen im LocalStorage
 als Verifizierung gespeicherte UUID, wird das JWT nach Ablauf automatisch erneuert. In dem JWT befindet sich die
-Benutzeridentifikationsnummer und die Benutzerrolle. Ein Nutzer kann eine der drei Benutzerrollen, Nutzer, Entwickler und
+Benutzeridentifikationsnummer und die Benutzerrolle. Ein Nutzer kann eine der drei Benutzerrollen Nutzer, Entwickler und
 Administrator besitzen. Es ist zu beachten, dass bei Veränderung der Benutzerrechte der Benutzer ein Zeitfenster von
 15 Minuten besitzt, in dem die alten Rechte immer noch gültig sind.\footnote{Zur Verhinderung dieser Problematik
 kann eine Sperrliste erstellt werden.} Für das Authentifizierungsverfahren als auch die Rechteverwaltung
 wurde eine Middleware implementiert. Dadurch, dass die Benutzeridentifikationsnummer als auch die Benutzerrolle
 in dem JWT steht, spart sich der Resource Management Service eine Abfrage gegen die Datenbank, wo die Rechte des Benutzers
-abgefragt werden würden. Die Middeware zur Rechteverwaltung sichert nur den Zugriff der Benutzergruppen auf die Routen.
+abgefragt werden würden. Die Middleware zur Rechteverwaltung sichert nur den Zugriff der Benutzergruppen auf die Routen.
 Resourcen, die nur für den Besitzer zugänglich sein dürfen, werden in dem jeweiligen Kontroller vor unerlaubten
 Zugriffen beschützt.
 
@@ -719,7 +719,7 @@ Um die Einstiegshürde für unbefugte Eindringlinge zu erhöhen, wurde eine Zwei
 implementiert. Der Benutzer kann diese in den Benutzereinstellungen aktivieren. Ist die Zwei-Faktor-Authentisierung aktiviert,
 wird beim Login neben dem Passwort ein sechsstelliger Pin abgefragt, den der Benutzer über eine Authentisierungsapplikation
 wie Authy\footnote{https://authy.com/} generieren kann. Bei der Aktivierung der Zwei-Faktor-Authentisierung, wird ein
-privater Schlüssel zwischen der Authentisierungsapplikation und dem Backend geteilt, mit dem in kombination mit
+privater Schlüssel zwischen der Authentisierungsapplikation und dem Backend geteilt, mit dem in Kombination mit
 der aktuellen Zeit ein Pin generiert und verifiziert werden kann. Die Abklingzeit für die Gültigkeit des Pins wurde
 auf eine Minute gesetzt.
 
@@ -730,17 +730,17 @@ die serverseitige Datenverarbeitung sowie die Auslieferung der Daten. Zur Kommun
 verwendet der Service die Gorilla WebSocket Bibliothek,\footnote{https://github.com/gorilla/websocket} zur Verarbeitung
 der Daten Go-JMESPath.\footnote{https://github.com/jmespath/go-jmespath} Die Arbeit hat sich im Falle des
 Data Delivery Services für Golang entschieden, da bereits bei der Gestaltung der Programmiersprache Wert auf
-das parallele Arbeiten mehrerer Prozesse gelegt wurde. So ist es mithilfe einer sogennanten Goroutine möglich,
+das parallele Arbeiten mehrerer Prozesse gelegt wurde. So ist es mithilfe einer sogenannten Goroutine möglich,
 einen leichtgewichtigen, von der Golang Laufzeit verwalteten, Thread zu starten.\footnote{Hierfür
-wird der Syntax-Befehl \code{go} gefolgt von einer zu parallelisierenden Funktion benutzt.\cite{GoroutinesExample}}
+wird der Syntax-Befehl \code{go}, gefolgt von einer zu parallelisierenden Funktion, benutzt.\cite{GoroutinesExample}}
 Der Data Delivery Service verwendet zur Authentifizierung den gleichen JWT wie der Resource Management Service.
-Der Token wird bei dem Handshake zum Verbindungsaufbau des WebSocket-Protokolls übergeben. Für die Authentifizierung
+Der Token wird bei dem Handshake zum Verbindungsaufbau des WebSocket-Protokolls übergeben. Die Authentifizierung
 sowie das Logging ist in einer Middleware untergebracht. Zum hosten der Dokumentation sowie dem HTTP-Upgrade
 wird der Golang interne HTTP-Server des \code{net/http} Programmpakets verwendet. Der Data Delivery Service
 nimmt Anfragen, falls vorhanden, immer zuerst aus dem Cache. Daraufhin wird die Anfrage mit aktuellen Daten
 verarbeitet und ein Update an das Frontend gesendet. Um die Verbindung nicht zu blockieren, werden aufwendige
-Prozesse in Goroutinen ausgelagert. Der HTTP-Server weißt den einkommenden WebSocket-Verbindungen bereits
-eigene Goroutinen zu. Die Anfrage gegen den Cache wird noch in der selben Goroutine verarbeitet.
+Prozesse in Goroutinen ausgelagert. Der HTTP-Server weist den einkommenden WebSocket-Verbindungen bereits
+eigene Goroutinen zu. Die Anfrage gegen den Cache wird noch in derselben Goroutine verarbeitet.
 Die Aktualisierungsschleife, die in einem gegebenen Interval den Prozess zur Datenaktualisierung startet,
 wird ebenfalls in einer eigenen Goroutine ausgelagert. Der Prozess zur Datenaktualisierung selbst wird
 auch in einer eigenen Goroutine ausgeführt. Die Daten werden angefragt, verarbeitet, an das Frontend geschickt
