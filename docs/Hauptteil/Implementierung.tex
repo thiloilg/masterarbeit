@@ -249,7 +249,7 @@ der erste Zeitpunkt, an dem die Seite auf Benutzerinteraktionen reagieren könnt
 Unter Zeit für Interaktion versteht man den Zeitpunkt, an dem alle Inhalte geladen sind.
 Jetzt kann die Seite zu jeder Interaktion schnell reagieren.\cite{WhatPerformanceMetricsMeasure}
 
-In Abbildung \ref{tab:lighthouseleistungstestdesinitialenladevorgangs} wird klar deutlich,
+In Abbildung \ref{tab:lighthouseleistungstestdesinitialenladevorgangs} wird deutlich,
 dass Kompression gerade bei langsameren Internetverbindungen von großer Bedeutung ist.
 Es ist wichtig anzumerken, dass der Brotli-Kompressionsalgorithmus zwar eine größere
 Kompressionsrate besitzt, allerdings für die Kompression und Dekompression mehr Zeit
@@ -258,10 +258,9 @@ benutzen. Wichtig ist auch, dass Bilder je nach Format in der Regel bereits komp
 Ein weiterer Kompressionsvorgang kann die Größe der Bilder vergrößern \cite{CloudFlareCompressionDiscussion}.
 
 Für die Kompression der statischen Inhalte wird somit Brotli verwendet.
-Als Fallback verwendet die Arbeit Gzip. Standardmäßig unterstützt Nginx
-das Kompressionsverfahren Gzip. Die Arbeit fügt dem Nginx-Dockerfile ein Script
-hinzu, welches Brotli installiert. Außerdem wurde die \code{nginx.conf} Datei
-so angepasst, damit Nginx Brotli unterstützt.
+Als Fallback wird in der Arbeit Gzip verwendet. Standardmäßig unterstützt Nginx
+das Kompressionsverfahren Gzip. Brotli musste mit einem selbstangefertigten Script in
+den Nginx Docker-Container installiert und in der \code{nginx.conf} aktiviert werden.
 
 \subsection{Wahl der Datenbankarten}
 \label{subsec:wahlderdatenbankarten}
