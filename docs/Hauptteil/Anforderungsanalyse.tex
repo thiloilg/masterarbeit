@@ -140,7 +140,7 @@ eine Offline-Rückfallseite bereitzustellen.
 \section{Nicht-funktionale Anforderungen}
 \label{sec:nichtfunktionaleanforderungen}
 In diesem Abschnitt werden die nicht-funktionalen Anforderungen analysiert.
-In \Cref{subsec:gestaltung} geht es um die graphische Benutzeroberfäche sowie
+In \Cref{subsec:gestaltung} geht es um die grafische Benutzeroberfläche sowie
 deren Benutzerfreundlichkeit. In \Cref{subsec:flexibilitaet} wird die geforderte
 Flexibilität an die Softwarelösung erörtert. Zuallerletzt werden im \Cref{subsec:codebasis}
 Anforderungen an die Entwicklungsumgebung und den Entwicklungsprozess gestellt.
@@ -169,7 +169,7 @@ mit 2,94\%, Opera mit 2,34\%, Edge mit 2,05\%, Internet Explorer mit 1,98\%, And
 Diese Kennzahlen geben einen groben Überblick über die aktuelle Lage des Marktes. Der Markt wird von
 Google und Microsoft Produkten dominiert. Allerdings variiert der Nutzungsanteil je nach Branche.
 Um ein besseres Bild über die verwendeten Technologien möglicher Kunden zu erhalten,
-lohnt es sich ein Blick auf die Produkte von Gbo selbst zu werfen.
+lohnt es sich einen Blick auf die Produkte von Gbo selbst zu werfen.
 "bisoftMES", eines der zentralen Produkte von Gbo, "ist eine unter Microsoft.net
 entwickelte Maschinen- und Betriebsdatenerfassungssoftware".\footnote{Aus dem BisoftMES Benutzerhandbuch \cite[S. 7]{BisoftMESHandbuch}}
 Es liegt nahe, dass auch die Bestandskunden von Gbo Produkte aus der Microsoft
@@ -189,8 +189,8 @@ So bietet QlikTech, ein führendes Unternehmen im Bereich Business Intelligence,
 weltweit Kurse für ihr Softwareprodukt Qlik Sense an. Die Kurse haben in der
 Regel eine Zeitspanne zwischen drei bis fünf Tagen \cite{QlikSenseTraining}.
 Dies ist auch verständlich, angesichts der Tatsache, dass QlikTech in einigen
-ihrer Produkte eine eigene SQL ähnliche Skriptsprache verwenden \cite{QlikSenseScriptLanguage}.
-Um eine klare, selbsterklärende Gestaltung der Anwendung zu erlangen,
+ihrer Produkte eine eigene SQL-ähnliche Skriptsprache verwenden \cite{QlikSenseScriptLanguage}.
+Um eine klare, selbsterklärende Gestaltung der Anwendung zu erhalten,
 muss an der Komplexität der Funktionalität gespart werden. Des Weiteren
 gilt es darauf zu achten, dass eine klare Abstraktion der Funktionalitäten
 gegeben ist. Um den Lernaufwand zu verringern, müssen bekannte Technologien
@@ -262,7 +262,7 @@ in JSON formatierte Antwort. Auf der äußeren Ebene befindet sich ein Array, we
 Array und Objekte beinhalten. Analysiert man die Antworten aller abzufragenden Routen der bereitgestellten REST API anhand der Kardinalität,
 kommt man auf folgendes Resultat: Die gefundenen Kardinalitäten beschränken sich auf \(1:1\) und \(1:N\). Dies ergibt auch
 durchaus Sinn, da ohne Verweise auf einzigartige Identifikatoren innerhalb der JSON Datenstruktur keine weiteren
-Kardinalitäten darstellbar sind.\footnote{Bei dieser Aussage werden untypische Implementierung,
+Kardinalitäten darstellbar sind.\footnote{Bei dieser Aussage werden untypische Implementierungen,
 die ohne weitere Informationen nicht eindeutig zu verstehen sind, ausgeschlossen.}
 Daraus zu schlussfolgern, dass es keine \(N:N\)-Beziehung geben wird, ist allerdings falsch.
 So können Ressourcen unterschiedlicher Abfragen untereinander durchaus \(N:N\)-Beziehungen beinhalten. Bei der Erstellung
@@ -286,10 +286,10 @@ Wert von grün über gelb bis hin zu rot. Aktuell verwendet Gbo für die Datenvi
 anderem Grafana \footnote{https://grafana.com/}, eine in Golang geschriebene Open Source Software, die zur Analyse
 und Überwachung von Daten verwendet werden kann. Gerade bei der Individualisierbarkeit der Visualisierung
 von Daten sind bei Grafana kaum Grenzen gesetzt. Versetzt man sich in die Sicht des Kunden, sind \mbox{Feinjustierungen}
-an dem Aussehen und der Darstellung der Diagramme für den Kunden selbst von zweitrangiger Bedeutung.
+an das Aussehen und der Darstellung der Diagramme für den Kunden selbst von zweitrangiger Bedeutung.
 Wichtiger für den Kunden ist, dass er alle relevanten Daten klar strukturiert vor sich hat. Um die Anordnung
 der unterschiedlichen Diagramme zu gewährleisten, reicht ein robustes, selbsterklärendes Verfahren aus.
-Auf der anderen Seite ist auch genau das ein entscheidender Vorteil von Grafana. Gerade durch die
+Genau das ist auch ein entscheidender Vorteil von Grafana. Gerade durch die
 Individualisierbarkeit in vielen Bereichen der Funktionalität der Software, müssen Veränderungen nicht
 direkt in der Codebasis vorgenommen werden. Die Flexibilität dieser Arbeit soll sich jedoch auf die
 Erstellung neuer Diagramme konzentrieren. Grafana entkapselt bestimmte Teile der Logik der Software
@@ -323,7 +323,7 @@ von Webseiten können mit Lighthouse, einem Open-Source Werkzeug von Google, get
 Lighthouse testet Performanz, Zugänglichkeit, optimale Vorgehensweisen, SEO und die Unterstützung
 des Funktionsumfangs von PWAs.
 
-Wo sind Tests zwingend erforderlich und wo sind sie überflüssig? Um diese Frage zu beantworten, muss
+Wo sind Tests zwingend erforderlich und wo sind sie überflüssig? Um diese Fragen zu beantworten, muss
 man die Vor- und Nachteile, die Tests mit sich bringen, abwägen. Was sind diese Vor- und Nachteile?
 Tests sind von Grund auf essentiell für die Qualitätssicherung der Software. Allerdings bringen sie auch
 einen Implementierungsaufwand mit sich. Dieser ist bei dem Lösen von komplexen Problemen um einiges kleiner
@@ -338,12 +338,12 @@ Im Frontend sollten vorerst nur komplexe Problemstellungen getestet werden. Auf 
 zu Qualitätsmerkmalen der Anwendung sollte großen Wert gelegt werden. Um die Softwarequalität kontinuierlich
 zu sichern, müssen die Tests in den automatisierten Softwareauslieferungsprozess eingebunden werden. 
 So sollte kein Merge auf den Master möglich sein, wenn nicht die CI-Pipeline fehlerfrei durchlaufen wurde.
-Zu den zuvor als relevant definierten Testarten gilt die Aussage aus dem Buch Clean Code von Robert C. Martin:
+Zu den zuvor als relevant definierten Testarten gilt die Aussage aus dem Buch "Clean Code" von Robert C. Martin:
 "Die Tests sind solange unzureichend, wie es Bedingungen gibt, die nicht von den Tests geprüft werden,
 oder Brechnungen, die nicht validiert werden."\cite[S. 370]{CleanCode}
 
 Um die Anwendung in einer realen Umgebung zu testen, benötigt es die Methoden CI/CD
-zu praktizieren. Somit ist es möglich, eine Phase der Pipeline der Qualitätssicherung zu widmen.
+zu praktizieren. Somit ist es möglich eine Phase der Pipeline, der Qualitätssicherung zu widmen.
 So können Product Owner die Software vor der Auslieferung noch einmal überprüfen. Außerdem
 entlastet CI/CD den Rechner der Entwickler, da so die Tests automatisiert auf einem Server
 ausgeführt werden. Natürlich werden bestimmte Tests, wie beispielsweise Modultests, auch 
