@@ -58,10 +58,11 @@ durchsucht und diese als Datenquelle verwendet.\cite[S. 17]{QlikSenseCookbook} F
 einer REST-API, bietet Qlik Sense einen sogenannten "REST Connector" an. Dieser kann sowohl das \mbox{JSON-,} als auch
 das XML-Format verarbeiten. In den Einstellungen des "REST Connectors" können neben der URL, auch ein
 Authentifizierungsschema ausgewählt werden.\cite[S. 23]{QlikSenseCookbook} Somit ist es möglich,
-eine API zu verwenden, bei der eine JWT-Authentifizierung vorausgesetzt ist. Qlik Sense besitzt
-eine eigene SQL-ähnliche Skriptsprache. Im Data Load Editor
-können mithilfe dieses Scripts Bearer-Token als Authorization Header gesetzt werden. Dies macht Qlik
-Sense in der Nutzung externer APIs sehr flexibel.
+eine API zu verwenden, bei der eine JSON Web Token Authentifizierung vorausgesetzt ist. In einem sogenannten
+"Data Load Editor" können hithilfe eines BNF-Code Scripts,\footnote{"Die Syntax der Qlik Sense Befehlszeile
+und die Skriptsyntax entsprechen in ihrer Notation dem Backus-Naur-Formalismus, auch BNF-Code genannt."\cite{QlikSenseScriptLanguage}}
+Bearer-Token als Authorization Header gesetzt werden. Dies macht Qlik Sense in der Nutzung externer
+APIs sehr flexibel.
 
 Als Nächstes wenden wir uns der Aufbereitung der Daten zu. Nach der Auswahl einer Datenquelle
 erstellt Qlik Sense ein vorgefertigtes Script im Data Load Editor. Dies gilt primär als Orientierungspunkt
