@@ -51,8 +51,8 @@ In Abbildung \ref{figure:dockerswarmcluster} ist das Docker Swarm Cluster zu seh
 dieser Arbeit aufgesetzt wurde. Die Schlösser repräsentieren die Regeln, nach denen sich
 bestimmte Instanzen auf bestimmten Nodes befinden müssen. Alle weiteren Instanzen
 werden nach Auslastung auf die Nodes verteilt. Die Content Delivery (Nginx)
-und der Resource Management Service (API) sind auf zwei Instanzen skaliert. Vier Instanzen repräsentieren
-den Data Delivery Service (Delivery).
+und der "Resource Management Service" (API) sind auf zwei Instanzen skaliert. Vier Instanzen repräsentieren
+den "Data Delivery Service" (Delivery).
 
 \begin{figure}
     \begin{center}
@@ -73,7 +73,7 @@ als White-Label-Produkt, wird der Name durch den der
 zu repräsentierenden Firma ersetzt. Die Domain für den
 Server der Testphase ist \code{testing-stage.org}. Die beiden Domains besitzten die
 Subdomains \code{api} und \code{delivery}. Die Subdomain \code{api} verweist auf
-den Resource Management Service; die Subdomain \code{delivery} auf den Data Delivery Service.
+den "Resource Management Service"; die Subdomain \code{delivery} auf den "Data Delivery Service".
 Außerdem gibt es die \code{monitor} Subdomain, welche auf die Kontrollübersicht von Traefik
 verweist. Traefik dient als Reverse-Proxy und bietet zusätzlich rudimentäre
 Überwachungsfunktionalitäten in einem webbasierten Dashboard an.
@@ -201,7 +201,7 @@ kurz vor dem Ablaufdatum über den von "Let's Encrypt" bereitgestellten Service 
 Das Orchestrierungssystem Docker Swarm (Swarm) übernimmt die Aufgabe des Load Balancers. Swarm verwendet
 als Lastverteilungsverfahren Round-Robin, eine rotierende Verteilung der eingehenden Anfragen auf
 die unterschiedlichen Instanzen eines Services.\cite{CloudflareRoundRobinDNS}
-Da die Aufrechterhaltung der WebSocket-Verbindungen des \code{Data Delivery Services} gegenüber
+Da die Aufrechterhaltung der WebSocket-Verbindungen des "Data Delivery Services" gegenüber
 den Clients allerdings nicht linear verläuft,\footnote{Manche Benutzer beenden die Anwendung sofort, andere lassen Sie über Tage laufen.}
 empfiehlt es sich für die Zukunft, die Implementierung eines Lastverteilungsverfahrens
 basierend auf Health-Checks zu verwenden. Die Health-Checks könnten so die aktuelle
@@ -267,16 +267,16 @@ den Nginx Docker-Container installiert und in der \code{nginx.conf} aktiviert we
 
 \subsection{Wahl der Datenbankarten}
 \label{subsec:wahlderdatenbankarten}
-Der \code{Data Delivery Service} verwendet ein Datenbanksystem, das dokumentenorientiert ist.
+Der "Data Delivery Service" verwendet ein Datenbanksystem, das dokumentenorientiert ist.
 Hauptgrund hierfür ist die Tatsache, dass man nicht im Vorhinein weiß, wie das
 Datenschema auszusehen hat. Der Benutzer der Anwendung kann jegliche API
 auswählen, Daten abfragen und diese mithilfe einer JSON-Abfragesprache verarbeiten. Das Datenschema
-kann sich also während der Laufzeit des Programms verändern. Im Gegensatz hierzu steht der Resource
-Management Service, welcher auf eine relationale Datenstruktur aufgebaut ist. Die Schemata formen das
+kann sich also während der Laufzeit des Programms verändern. Im Gegensatz hierzu steht der "Resource
+Management Service", welcher auf eine relationale Datenstruktur aufgebaut ist. Die Schemata formen das
 Erscheinungsbild der API und werden als CRUD-Operationen über eine REST-Schnittstelle enthüllt.
-Es stellt sich die Frage, wieso der Resource Management Service nicht auch eine NoSQL-Datenbank verwendet.
+Es stellt sich die Frage, wieso der "Resource Management Service" nicht auch eine NoSQL-Datenbank verwendet.
 Clemens Gull bringt die Kompromisse, welche man bei der Entscheidung zwischen einem relationalen
-und einem dokumentenorientierten DBMS eingehen muss, in seinem Buch "Wev-Applikationen
+und einem dokumentenorientierten DBMS eingehen muss, in seinem Buch "Web-Applikationen
 entwickeln mit NoSQL" auf den Punkt:
 
 \begin{quote}
@@ -292,13 +292,13 @@ verzichtet. Durch die dadurch entstehende Redundanz in der Datenbank fällt es s
 die Konsistenz der Daten zu garantieren. Außerdem ist der Schreibvorgang bei dokumentenorientierten
 DBMS wie MongoDB nur auf Dokumentenebene atomar.\cite{MongoDBAtomaritaet} Da die Konsistenz und Atomarität für
 Benutzerverwaltungsdaten von erheblicher Relevanz ist\footnote{Speziell bei sensiblen Transaktionen wie Zahlungsabläufen.}, 
-entscheidet sich die Arbeit im Fall des Resource Management Services für die Verwendung eines RDBMS.
+entscheidet sich die Arbeit im Fall des "Resource Management Services" für die Verwendung eines RDBMS.
 Um das Performanzdefizit im Vergleich zu dokumentbasierenden DBMS auszugleichen,
 werden Indices verwendet. Ein Datenbankindex ist ein Kompromiss, bei dem
 man Speicherplatz gegen Zugriffsgeschwindigkeit tauscht.\cite{YoutubePostgresIndexing}
 Mithilfe der aktuell gehaltenen Indexstruktur\footnote{Beispielsweise Binärbäume, Hashtabellen und sortierte Abfolgen}
-wird die Komplexität des Spaltenzugriffs dezimiert. Die Arbeit verwendet für den Resource Management Service
-PostgreSQL, eine Open Source Datenbank, die das Verwenden von Indices ermöglicht. Für den Data Delivery Service
+wird die Komplexität des Spaltenzugriffs dezimiert. Die Arbeit verwendet für den "Resource Management Service"
+PostgreSQL, eine Open Source Datenbank, die das Verwenden von Indices ermöglicht. Für den "Data Delivery Service"
 wird MongoDB verwendet. 
 
 \subsection{Überwachung und Wartung}
@@ -316,7 +316,7 @@ Kundenspezifische Informationen werden nicht offengelegt. Verweise auf Nutzer fi
 mithilfe der Identifikationsnummer des Datenbankeintrags statt. Die Info-Protokollebene
 wird über den \code{stdout} gelenkt. Die Error-Protokollebene wird des Weiteren in einer
 Logdatei persistiert. Für das Debugging muss die Debug-Protokollebene aktiviert werden.
-Als Logging-Bibliothek für den Resource Management Service verwendet die Arbeit den Winston
+Als Logging-Bibliothek für den "Resource Management Service" verwendet die Arbeit den Winston
 Logger. Der HTTP-Verkehr wird mithilfe des Koa-Loggers\footnote{Koa ist ein HTTP Middleware Framework für Node.js.} protokolliert und an den Winston
 Logger weitergereicht. Datenbankverbinder sowie Logger werden mithilfe des Singleton-Pattern
 implementiert, um das ständige herunterreichen von Instanzen zu vermeiden. Der komfortabelste
@@ -410,8 +410,8 @@ die \mbox{Build-,} die \mbox{Test-,} sowie die Deploy-Stage. Genauso wie das Pro
 besteht auch die Pipeline aus unterschiedlichen Docker-Umgebungen. Die Test-Stage ist in eine Vorbereitungs-
 und eine Durchführungsphase unterteilt. In der Vorbereitungsphase wird das für die Tests
 benötigte Cluster erstellt. Die Durchführungsphase ist in zwei parallellaufende Prozesse
-unterteilt. Dies ist nötig, da die Integrationstests für den Resource Management Service
-eine Node.js-Umgebung und den Data Delivery Service eine Golang-Umgebung benötigen.
+unterteilt. Dies ist nötig, da die Integrationstests für den "Resource Management Service"
+eine Node.js-Umgebung und den "Data Delivery Service" eine Golang-Umgebung benötigen.
 
 Die Arbeit lagert öfter auftretende Funktionalitäten der Gitlab-CI-Pipeline in eigene Scripts aus.
 So wird redundanter Quellcode in der Pipeline verhindert. Ein Beispiel hierfür
@@ -527,14 +527,14 @@ die Diagramme sowie die anzuzeigenden Daten parallel geladen. In Abbildung \ref{
 ist der Informationsaustausch eines Dashboards dargestellt. Schritt eins und zwei stehen
 für das anfangliche Laden der Frontend-Anwendung über einen CDN. Dies tritt nur ein,
 falls der Nutzer nicht bereits auf einer anderen Seite der Anwendung unterwegs war.
-In Schritt drei wird die Dashboard-Ressource von dem Resource Management Service angefragt.
+In Schritt drei wird die Dashboard-Ressource von dem "Resource Management Service" angefragt.
 Die Dashboard-Ressource besteht neben den gewöhnlichen Feldern, wie ID, Title, Beschreibung,
 Erstellungsdatum und Eigentümer, aus einem Feld mit dem Namen "Data". Dieses Feld beinhaltet
 ein JSON, das den Aufbau und die Einstellungen eines Dashboards darstellt.\footnote{Ein
 Beispiel hierfür ist der Quellcodeausschnitt \ref{lst:jsondateizurspeicherungeinesdashboards}
 im Anhang unter "Weitere Quellcodeausschnitte".} Anhand dieser Informationen werden
-daraufhin zeitgleich in \( A_1 \) die benötigten Plugins von dem Resource Management Service
-und in \( B_1 \) die zu visualisierenden Daten von dem Data Delivery Service angefragt.\footnote{Das Anfragen
+daraufhin zeitgleich in \( A_1 \) die benötigten Plugins von dem "Resource Management Service"
+und in \( B_1 \) die zu visualisierenden Daten von dem "Data Delivery Service" angefragt.\footnote{Das Anfragen
 der zu visualisierenden Daten erfolgt über die Publish-Funktion des 
 \code{useDeliveryEndpoint} Hooks.}
 Kommen die Plugins vor den zu visualisierenden Daten an, abbonieren diese über 
@@ -545,7 +545,7 @@ speichert der \code{useDeliveryEndpoint} Hook die Daten und übergibt diese dire
 ersten Aufruf, der durch den \code{useDeliveryEndpoint} Hook bereitgestellten
 Subscribe-Funktion. \( n_3 \) steht für alle weiteren Schritte, die benötigt werden,
 um die Daten des Diagramms aktuell zu halten. Je nach definiertem Interval sendet
-der Data Delivery Service die Daten über die WebSocket-Verbindung zum Client.
+der "Data Delivery Service" die Daten über die WebSocket-Verbindung zum Client.
 In die Subscribe-Funktion wird neben der Data Source Id ein Callback übergeben,
 der immer dann aufgerufen wird, wenn neue für das Plugin relevante Daten angekommen sind.
 Diese werden dann mithilfe des Plugins auf dem Bildschirm aktualisiert.
@@ -591,7 +591,7 @@ der Bildschirmgröße des Endgerätes ab. Die maximale Anzahl beläuft sich hier
 bei zehn Ressourcen pro Seite. Bei einer größeren Anzahl an Ressourcen kann das Navigieren durch
 die Seiten sehr viel Zeit in Anspruch nehmen. Hierfür hat die Arbeit eine Suchfunktion implementiert. Die Suchfunktion befindet sich
 in der oberen Navigationsleiste. Durch einen Zeichenvergleich des Titels der Ressource können so die passenden Ressourcen schneller gefunden
-werden. Die Suche zeigt die zehn besten Resultate in einem Drop-Down-Menü an. Für den Zeichenvergleich verwendet der Resource Management Service
+werden. Die Suche zeigt die zehn besten Resultate in einem Drop-Down-Menü an. Für den Zeichenvergleich verwendet der "Resource Management Service"
 die von PostgreSQL angebotene Funktionalität zum Vergleichen von Zeichenketten. Ein Bildschirmschnappschuss der Suchfunktionalität befindet sich
 im Anhang unter "Screenshots" in \Cref{figure:sucheundbearbeitungdesbenutzerprofils}.
 
@@ -652,7 +652,7 @@ Für die Implementation der Plugins wurde mit \code{Storybook}\footnote{https://
 zur Entwicklung von UI-Komponenten, eine Umgebung geschaffen, die die Umsetzung eines Plugin-Bundles vereinfacht.
 Für die Ausstellung der Plugin-Bundles wurden Scripte geschrieben, die die Auslieferung der Bundles unabhängig
 von dem Gesamtprojekt ermöglichen. In einer \code{.env} Datei im Wurzelverzeichnis des Git-Submodules "Plugins"
-müssen die Domain des Resource Management Services sowie die E-Mail-Adresse und das Password eines Benutzers mit
+müssen die Domain des "Resource Management Services" sowie die E-Mail-Adresse und das Password eines Benutzers mit
 der Rechtegruppe "Entwickler" oder "Admin" gesetzt sein. Mit einem einfachen \code{yarn deploy} können so
 die entwickelten Plugin-Bundles ausgeliefert werden.
 
@@ -676,16 +676,16 @@ ein Balkendiagramm implementiert.
 
 \section{Resource Management Service}
 \label{sec:resourcemanagementservice}
-Der Resource Management Service wurde komplett testgetrieben entwickelt und besitzt
+Der "Resource Management Service" wurde komplett testgetrieben entwickelt und besitzt
 für jeden HTTP-Statuscode jeder REST-Route mindestens einen Integrationstest.\footnote{Abgesehen von 5xx Serverfehlern}
 Die Dokumentation der REST-API des Services basiert auf der OpenAPI 3.0
-Spezifikation\footnote{http://spec.openapis.org/oas/v3.0.0/}. Für die Umsetzung des Resource Management Services
+Spezifikation\footnote{http://spec.openapis.org/oas/v3.0.0/}. Für die Umsetzung des "Resource Management Services"
 wurde die Laufzeitumgebung Node.js verwendet. Als Programmiergerüst verwendet die Arbeit Koa.js, den Nachfolger
 von Express.js.\footnote{https://koajs.com/} Verglichen zu Express.js ist Koa.js eher als eine Ansammlung
 an Middleware-Funktionalitäten zu betrachten\cite[2. Absatz]{ExpressVsKoa}. Aufgrund der daraus resultierenden
 Flexibilität sowie der Tatsache, dass Koa.js, verglichen zu anderen Frameworks wie Hapi und Express.js,
 mehr Anfragen pro Sekunde verarbeiten kann,\cite{ExpressVsKoaVsHapiPerformance}
-entscheidet sich die Arbeit für Koa.js. Als Programmiersprache verwendet der Resource Management Service
+entscheidet sich die Arbeit für Koa.js. Als Programmiersprache verwendet der "Resource Management Service"
 TypeScript.
 
 Die eingehenden Anfragen werden dem jeweiligen Router zugewiesen.\footnote{Die vorhandenen CRUD-Operationen der Routen sind
@@ -703,7 +703,7 @@ anhand der CRUD-Operationen in mehrere Dateien unterteilt.
 \subsection{Authentifizierungsverfahren und Rechteverwaltung}
 \label{subsec:authentifizierungsverfahrenundrechteverwaltung}
 Für das Authentifizierungsverfahren verwendet die Arbeit JSON Web Token (JWT). Das Entscheidungskriterium hierfür war,
-dass der Resource Management Service einfach skalierbar und somit zustandslos sein sollte. Das JWT wird auf der Clientseite
+dass der "Resource Management Service" einfach skalierbar und somit zustandslos sein sollte. Das JWT wird auf der Clientseite
 in den Cookies mit den Flags \code{samesite=strict},\footnote{Als Schutz gegen CSRF-Attacken} \code{secure} und \code{httponly}
 gespeichert. Der Zeitstempel, der den Fälligkeitstermin repräsentiert, ist auf 15 Minuten gesetzt. Durch einen im LocalStorage
 als Verifizierung gespeicherte UUID, wird das JWT nach Ablauf automatisch erneuert. In dem JWT befindet sich die
@@ -712,7 +712,7 @@ Administrator besitzen. Es ist zu beachten, dass bei Veränderung der Benutzerre
 15 Minuten besitzt, in dem die alten Rechte immer noch gültig sind.\footnote{Zur Verhinderung dieser Problematik
 kann eine Sperrliste erstellt werden.} Für das Authentifizierungsverfahren als auch die Rechteverwaltung
 wurde eine Middleware implementiert. Dadurch, dass die Benutzeridentifikationsnummer als auch die Benutzerrolle
-in dem JWT steht, spart sich der Resource Management Service eine Abfrage gegen die Datenbank, wo die Rechte des Benutzers
+in dem JWT steht, spart sich der "Resource Management Service" eine Abfrage gegen die Datenbank, wo die Rechte des Benutzers
 abgefragt werden würden. Die Middleware zur Rechteverwaltung sichert nur den Zugriff der Benutzergruppen auf die Routen.
 Resourcen, die nur für den Besitzer zugänglich sein dürfen, werden in dem jeweiligen Kontroller vor unerlaubten
 Zugriffen beschützt.
@@ -727,18 +727,18 @@ auf eine Minute gesetzt.
 
 \section{Data Delivery Service}
 \label{sec:datadeliveryservice}
-Der Data Delivery Service wurde in der Programmiersprache Golang geschrieben und kümmert sich um die Datenbeschaffung,
+Der "Data Delivery Service" wurde in der Programmiersprache Golang geschrieben und kümmert sich um die Datenbeschaffung,
 die serverseitige Datenverarbeitung sowie die Auslieferung der Daten. Zur Kommunikation über das WebSocket-Protokoll
 verwendet der Service die Gorilla WebSocket Bibliothek,\footnote{https://github.com/gorilla/websocket} zur Verarbeitung
 der Daten Go-JMESPath.\footnote{https://github.com/jmespath/go-jmespath} Die Arbeit hat sich im Falle des
-Data Delivery Services für Golang entschieden, da bereits bei der Gestaltung der Programmiersprache Wert auf
+"Data Delivery Services" für Golang entschieden, da bereits bei der Gestaltung der Programmiersprache Wert auf
 das parallele Arbeiten mehrerer Prozesse gelegt wurde. So ist es mithilfe einer sogenannten Goroutine möglich,
 einen leichtgewichtigen, von der Golang Laufzeit verwalteten, Thread zu starten.\footnote{Hierfür
 wird der Syntax-Befehl \code{go}, gefolgt von einer zu parallelisierenden Funktion, benutzt.\cite{GoroutinesExample}}
-Der Data Delivery Service verwendet zur Authentifizierung den gleichen JWT wie der Resource Management Service.
+Der "Data Delivery Service" verwendet zur Authentifizierung den gleichen JWT wie der "Resource Management Service".
 Der Token wird bei dem Handshake zum Verbindungsaufbau des WebSocket-Protokolls übergeben. Die Authentifizierung
 sowie das Logging ist in einer Middleware untergebracht. Zum hosten der Dokumentation sowie dem HTTP-Upgrade
-wird der Golang interne HTTP-Server des \code{net/http} Programmpakets verwendet. Der Data Delivery Service
+wird der Golang interne HTTP-Server des \code{net/http} Programmpakets verwendet. Der "Data Delivery Service"
 nimmt Anfragen, falls vorhanden, immer zuerst aus dem Cache. Daraufhin wird die Anfrage mit aktuellen Daten
 verarbeitet und ein Update an das Frontend gesendet. Um die Verbindung nicht zu blockieren, werden aufwendige
 Prozesse in Goroutinen ausgelagert. Der HTTP-Server weist den einkommenden WebSocket-Verbindungen bereits

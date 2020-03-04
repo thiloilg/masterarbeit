@@ -44,7 +44,7 @@ kein Problem darstellen sollte.
 Auf die Sicherheit der Gesamtanwendung wurde besonders geachtet. So
 wurde, wie bereits in der Implementierung erläutert, neben
 der JWT\hyp{}Authentisierung auch eine TwoZwei\hyp{}Faktor\hyp{}Authentisierung
-implementiert. Außerdem wurden in dem Resource Management Service
+implementiert. Außerdem wurden in dem "Resource Management Service"
 der Ein- und Ausgangsverkehr in beide Richtungen mithilfe des Koa Joi Routers validiert. Die Anwendung sowie die dafür benötigten
 Daten werden über HTTPS als auch WSS ausgeliefert. \mbox{Nichtsdestotrotz} beinhaltet die Gesamtanwendung
 noch Schwachstellen, die es zu eliminieren gilt. Die Authentifizierung passiert, wie in der Implementierung beschrieben,
@@ -83,11 +83,11 @@ Testabdeckung der einzelnen Komponenten des Systems betrachtet.
 
 Um die fehlerfreie Zusammenarbeit der einzelnen Services sicherzustellen,
 wurde der Fokus auf die Implementierung der Integrationstests gelegt.
-Diese gehen gegen die Schnittstellen der Services. Bei dem Resource Management Service
+Diese gehen gegen die Schnittstellen der Services. Bei dem "Resource Management Service"
 sind alle Routen mit Tests abgedeckt. Für jede Route wurde die Rechteverwaltung,
 die Authentisierung, die Validierung der Eingabe und Ausgabewerte sowie die Funktionalität der Route selbst getestet.
-Der Data Delivery Service hingegen besitzt zum aktuellen Stand nur rudimentäre Tests der Hauptfunktionalitäten.
-Hier wurden nicht wie bei dem Resource Management Service auf falsche Eingabewerte getestet. Außerdem fehlen die für
+Der "Data Delivery Service" hingegen besitzt zum aktuellen Stand nur rudimentäre Tests der Hauptfunktionalitäten.
+Hier wurden nicht wie bei dem "Resource Management Service" auf falsche Eingabewerte getestet. Außerdem fehlen die für
 die Gesamtanwendung wichtigen End-To-End-Tests. Betrachtet man die progressive Webanwendung, wurden dort nur komplexe
 Funktionalitäten mit Modultests abgedeckt.
 
@@ -142,7 +142,7 @@ Der Test führt folgendes Szenario einmal in der Sekunde aus:
 Als Erstes wird eine HTTPS-Anfrage an die \code{index.html} gesendet.
 Zudem werden die nötigen CSS- und JS-Dateien geladen.
 Daraufhin loggt sich der Benutzer mit seinen Benutzerdaten ein.
-Sobald er eingeloggt ist, läd der Benutzer über den Resource Management Service
+Sobald er eingeloggt ist, läd der Benutzer über den "Resource Management Service"
 eine Liste der \foreignlanguage{english}{Dashboards}. Als Nächstes wird eine WebSocket-Verbindung geöffnet
 und auf eine Datenquelle abonniert. Nach Ankunft der ersten Daten der
 Datenquelle, wird die WebSocket-Verbindung wieder geschlossen.

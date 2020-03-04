@@ -30,9 +30,9 @@ integriert werden muss.
 
 Es ist von großer Bedeutung, dass die Logik der Benutzerverwaltung
 von der Datenbeschaffungs-, Verarbeitungs- und Zulieferungslogik getrennt ist.
-Es ist somit von zwei Services auszugehen: Dem \code{Resource Management Service},
+Es ist somit von zwei Services auszugehen: Dem "Resource Management Service",
 der für die Verwaltung von Ressourcen wie Dashboards,
-Diagrammen, Datenquellen und Benutzer zuständig ist, und dem \code{Data Delivery Service},
+Diagrammen, Datenquellen und Benutzer zuständig ist, und dem "Data Delivery Service",
 der sich um die zu analysierenden Daten kümmert.
 
 Die folgenden Abschnitte gehen genauer auf das Konzept der Gesamtanwendung ein.
@@ -48,10 +48,10 @@ Zuletzt wird in \Cref{sec:speicherung} die Speicherung der Dashboards behandelt.
 \section{Beschaffung}
 \label{sec:beschaffung}
 Die Datenbeschaffung selbst behandelt das Verfahren, zu analysierende Daten
-von einer externen API zu dem \code{Data Delivery Service} zu transportieren.
+von einer externen API zu dem "Data Delivery Service" zu transportieren.
 Hier bieten sich Open Source Message Broker wie RabbitMQ\footnote{https://www.rabbitmq.com/} und Apache Kafka\footnote{https://kafka.apache.org/} an.
 Aktuell stellt Gbo hierfür allerdings eine REST-API zur Verfügung.
-Für den Datentransport von der REST-API zu dem \code{Data Delivery Service} reicht somit
+Für den Datentransport von der REST-API zu dem "Data Delivery Service" reicht somit
 eine GET-Anfrage aus.
 
 \section{Verarbeitung}
@@ -84,7 +84,7 @@ Amazon in ihrer Amazon Web Services CLI verwendet.\cite{AWSJMESPath} Eine Umsetz
 Frontend sowie Backend zu verarbeiten. Die Idee ist es, den Benutzern die Verarbeitung
 im Frontend zu ermöglichen. Dort kann der Benutzer die Daten passend verarbeiten und die
 gewollte Abfragezeichenfolge abspeichern. Die Zeichenfolge wird dann bei der Darstellung des 
-Dashboards in der Datenanfrage an den Data Delivery Service mitgesendet.
+Dashboards in der Datenanfrage an den "Data Delivery Service" mitgesendet.
 Die weitere Verarbeitung findet dann im Backend statt.
 
 \begin{listing}[]
@@ -120,7 +120,7 @@ in verwendbare Ausgabedaten transformieren.
 \label{sec:zulieferung}
 Das Konzept der Zulieferung der Daten ist in drei Abschnitte
 unterteilt. In \Cref{subsec:datenuebermittlungskonzept} wird das Datenübermittlungskonzept
-zwischen dem Client und dem \code{Data Delivery Service} vorgestellt.
+zwischen dem Client und dem "Data Delivery Service" vorgestellt.
 Die Liveübertragung wird in \Cref{subsec:echtzeitauslieferung} behandelt. 
 Außerdem wird in \Cref{subsec:caching} ein Konzept zur Leistungssteigerung der Datenauslieferung
 erarbeitet.
@@ -146,9 +146,9 @@ Server-Sent Events selbst sind allerdings nur unidirektional \cite[2. Abschnitt]
 Das Konzept der Datenübermittlung ist Folgendes: Besucht der Nutzer ein Dashboard,
 abonnieren die einzelnen Diagramme die jeweiligen Kanäle, die die Datenquellen 
 repräsentieren (Siehe Abbildung \ref{figure:uebersichtderdatenauslieferung}).
-Außerdem wird eine Nachricht an den \code{Data Delivery Service} veröffentlicht,
+Außerdem wird eine Nachricht an den "Data Delivery Service" veröffentlicht,
 indem dieser darüber informiert wird, dass der Client jetzt bereit ist, Daten zu empfangen.
-Je nach angefragtem Interval sendet nun der \code{Data Delivery Service} verarbeitete
+Je nach angefragtem Interval sendet nun der "Data Delivery Service" verarbeitete
 Daten an das Frontend, die in den Dashboards angezeigt werden. 
 In der Abbildung \ref{figure:uebersichtderdatenauslieferung} wird das Prinzip
 der Filterung und Verteilung der Anfragen dargestellt.
@@ -161,7 +161,7 @@ versorgt werden.
 \label{subsec:echtzeitauslieferung}
 Durch das Publish/Subscribe Architekturkonzept ist die Grundlage für die Echtzeitauslieferung
 bereits geschaffen. Die im Dashboard enthaltenen Diagramme warten auf ankommende Nachrichten,
-mit deren enthaltenen Daten sie ihre Visualisierung neuzeichnen. Der \code{Data Delivery Service}
+mit deren enthaltenen Daten sie ihre Visualisierung neuzeichnen. Der "Data Delivery Service"
 benötigt eine in einem separaten Prozess taktierte Ausführung einer Routine, die die Daten
 anhand eines gegebenen Intervals anfragt, verarbeitet und an die Frontend-Anwendung sendet.
 
@@ -170,7 +170,7 @@ anhand eines gegebenen Intervals anfragt, verarbeitet und an die Frontend-Anwend
 Der initiale Lade-, Verarbeitungs- und Auslieferungsprozess kann eine für den Benutzer
 unangenehme Zeit in Anspruch nehmen. Um das initiale Warten beim Laden eines Dashboards
 zu verringern, bietet sich folgende Caching-Strategie an: Bei einer Anfrage schaut
-der \code{Data Delivery Service} zuerst, ob es bereits einen Cache-Eintrag für die
+der "Data Delivery Service" zuerst, ob es bereits einen Cache-Eintrag für die
 angefragte ID der Datenquelle gibt. Existiert dieser, wird eine sofortige Nachricht
 mit den Daten aus dem Cache an die Frontend-Anwendung geschickt. Existiert anfangs noch
 kein Cache-Eintrag, wird dieser Schritt übersprungen. Daraufhin werden
@@ -336,12 +336,12 @@ Typische Felder, wie die ID, das Erstellungsdatum, der Titel und die Beschreibun
 werden in einer Datenbank gespeichert. Dadurch ist die Option gegeben, alle
 Ressourcen nach Erstellungsdatum zu sortieren. Die IDs der Ressourcen sind kompakt gehalten,
 da diese in der URL angezeigt werden. Eine achtstellige ID, welche Klein- sowie Großbuchstaben
-und Zahlen beinhalten kann, wird vom \code{Ressource Management Service}
+und Zahlen beinhalten kann, wird vom "Ressource Management Service"
 generiert. Daraufhin wird in der Datenbank geschaut, ob diese bereits existiert. Wenn nicht,
 wird diese als ID für die neue, anzulegende Ressource verwendet. Falls die ID bereits existiert,
 wird eine neue generiert und das Verfahren fängt wieder von vorne an, bis eine einzigartige ID gefunden wird.
 
-Die CRUD-Operationen sollen für jede Ressource über den \code{Ressource Management Service}
+Die CRUD-Operationen sollen für jede Ressource über den "Ressource Management Service"
 in Form einer REST-API zur Verfügung gestellt werden. Für die Repräsentation der Plugins
 in der URL sollen Slugs\footnote{Von Menschen lesbare, aneinandergereihte Buchstaben, Worte, Binde- und Unterstriche,
 die eine Ressource beschreiben \cite{SlugTermDjango}.} verwendet werden.
