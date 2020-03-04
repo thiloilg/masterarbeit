@@ -291,20 +291,21 @@ Um die bessere Verfügbarkeit bei dokumentenorientierten DBMS zu garantieren, wi
 verzichtet. Durch die dadurch entstehende Redundanz in der Datenbank fällt es schwer,
 die Konsistenz der Daten zu garantieren. Außerdem ist der Schreibvorgang bei dokumentenorientierten
 DBMS wie MongoDB nur auf Dokumentenebene atomar.\cite{MongoDBAtomaritaet} Da die Konsistenz und Atomarität für
-Benutzerverwaltungsdaten von erheblicher Relevanz ist\footnote{Speziell bei sensiblen Transaktionen wie Zahlungsabläufen.}, 
-entscheidet sich die Arbeit im Fall des "Resource Management Services" für die Verwendung eines RDBMS.
+Benutzerverwaltungsdaten von erheblicher Relevanz sind\footnote{Speziell bei sensiblen Transaktionen wie Zahlungsabläufen.},
+wurde sich im Rahmen dieser Arbeit im Fall des "Resource Management Services" für die Verwendung eines RDBMS entschieden.
 Um das Performanzdefizit im Vergleich zu dokumentbasierenden DBMS auszugleichen,
-werden Indices verwendet. Ein Datenbankindex ist ein Kompromiss, bei dem
+werden Indizes verwendet. Ein Datenbankindex ist ein Kompromiss, bei dem
 man Speicherplatz gegen Zugriffsgeschwindigkeit tauscht.\cite{YoutubePostgresIndexing}
 Mithilfe der aktuell gehaltenen Indexstruktur\footnote{Beispielsweise Binärbäume, Hashtabellen und sortierte Abfolgen}
 wird die Komplexität des Spaltenzugriffs dezimiert. Die Arbeit verwendet für den "Resource Management Service"
-PostgreSQL, eine Open Source Datenbank, die das Verwenden von Indices ermöglicht. Für den "Data Delivery Service"
+PostgreSQL, eine Open Source Datenbank, die das Verwenden von Indizes ermöglicht. Für den "Data Delivery Service"
 wird MongoDB verwendet. 
 
 \subsection{Überwachung und Wartung}
 \label{subsec:ueberwachungundwartung}
 Essentiell für die Überwachung der Services ist eine solide Protokollierung.
-Die Arbeit beschränkt sich hier auf drei Protokollebenen; Error, Info und Debug.
+Für die in der Arbeit zu entwickelnde Software werden folgende
+Protokollebenen verwendet: Error, Info und Debug.
 Error ist die tiefste Ebene. Hier werden die während der Laufzeit des Programms
 stattgefundenen Fehler protokolliert. Auf der Info-Protokollebene sieht man
 aufschlussreiche Informationen über den Service. Hier wird beispielsweise
