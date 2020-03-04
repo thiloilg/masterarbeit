@@ -489,14 +489,14 @@ gefunden werden können.
 \label{subsec:funktionalitaeten}
 Die Frontend-Anwendung besitzt einen React-Hook für die Anordnung der bereits im Dashboard existierenden Diagramme, einen für
 die Positionierung neuer Diagramme und einen für das Zeichnen der farbigen Bereiche, die beim Drag and Drop erscheinen.
-Des Weiteren wurden externe Schnittstellen in Hooks verpackt, um so die Schnittstelle vor der Anwendung
+Des Weiteren wurden externe Schnittstellen in Hooks verpackt, um so die Schnittstelle von der Anwendung
 zu abstrahieren. Schnittstellen der Web Storage API wie \code{LocalStorage} und \code{SessionStorage}
 wurden so erweitert, dass ganze JavaScript-Objekte gespeichert werden können. Außerdem wird der Zustand zwischen
 der Anwendung und der Web Storage API synchronisiert. Verändert der Nutzer die Sprache in einem
 Browser-Tab, wird diese auch in allen anderen Browser-Tabs geändert.
 
 Zum Zeichnen der farbigen Bereiche, die beim Ziehen der Typen "Chart" oder "Data Source" erscheinen,
-verwendet die Arbeit einen HTML-Canvas, der exakt über dem jeweiligen Plugin positioniert wird.
+wird ein HTML-Canvas, der über dem jeweiligen Plugin positioniert wird, verwendet.
 Hierfür wird der \code{useDrawQuad} Hook verwendet. Zur Errechnung der Position, über die der Typ
 losgelassen wurde, werden die Canvas-Eckpunkte verwendet, um den zuletzt fokussierten Bereich zu bestimmen.
 Dies geschieht mithilfe des \code{useSelectAction} Hooks. Die Umsetzung orientiert sich eins zu eins an dem
