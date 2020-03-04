@@ -21,17 +21,18 @@ des Services geschildert, welcher die Frontend-Anwendung mit den Daten versorgt.
 
 \section{Infrastruktur}
 \label{sec:infrastruktur}
-Für die Entwicklung der Gesamtanwendung benötigt die Arbeit einen Linux-Server,
-auf dem Gitlab CE, Gitlab Runner und eine Docker Registry
-installiert sind. Des Weiteren benötigt es einen Server für die Testphase und mehrere für die
-Produktion. Die einzelnen Services werden mit Docker Swarm\footnote{https://docs.docker.com/engine/swarm/},
+Für die Entwicklung der Gesamtanwendung wird ein Linux-Server benötigt, auf dem Gitlab CE,
+Gitlab Runner und eine Docker Registry installiert sind. Des Weiteren benötigt es einen
+Server für die Testphase und mehrere für die Produktion. Die einzelnen
+Services werden mit Docker Swarm\footnote{https://docs.docker.com/engine/swarm/},
 einem Orchestrierungssystem für Docker-Container, auf dem Produktivsystem ausgeführt. Je nach Skalierung
 werden die Instanzen der Services unter den in Produktion laufenden Servern aufgeteilt.
 In Zukunft soll die Integration von neuen Servern mithilfe des Open Source IAC-Werkzeugs\footnote{IAC steht für Infrastructure as Code}
 Terraform über eine Cloudanbieter-API automatisiert werden.
-Die Arbeit beschränkt sich auf vier Linux-Server. Einen für die Versionsverwaltung
+
+Insgesamt werden vier Linux-Server verwendet. Einen für die Versionsverwaltung
 und die CI/CD-Prozesse, einen für die Testphase und zwei für das Ausführen der Anwendung in Produktion.
-Die vier Server werden von Hetzner, einem Cloudanbieter, bereitgestellt und haben Ubuntu 18.04
+Die vier Server werden von Hetzner\footnote{https://www.hetzner.de/}, einem Cloudanbieter, bereitgestellt und haben Ubuntu 18.04
 vorinstalliert. Der Server für die CI/CD-Prozesse und die Versionsverwaltung besitzt 4 VCPUs, 
 16GB RAM und  hat 4 VCPUs, 16GB RAM und 160GB SSD-Speicher.\footnote{Im Regelfall handelt es sich bei
 den VCPUs um Intel Skylake Xeon CPUs mit 2.1 GHz.\cite{CPUusedInHetznerCLoud}}
@@ -43,7 +44,7 @@ ist ein 10GB SSD Volumen an den Manager-Node angebunden. In der Docker-Compose-D
 Regeln definiert, die festlegen, dass die Datenbanken immer auf dem Manager-Server angelegt werden.
 Die für die Speicherung der Daten relevanten Ordner der Datenbanken werden auf dem Volumen abgebildet.
 Dadurch wird sichergestellt, dass die Daten auch nach dem Herunterfahren des Docker-Clusters noch bestehen.
-In Abbildung \ref{figure:dockerswarmcluster} ist das Docker Swarm Cluster der Arbeit zu sehen. Die Schlösser
+In Abbildung \ref{figure:dockerswarmcluster} ist das Docker Swarm Cluster zu sehen. Die Schlösser
 repräsentieren die Regeln, nach denen sich bestimmte Instanzen auf bestimmten Nodes befinden müssen.
 Alle weiteren Instanzen werden nach Auslastung auf die Nodes verteilt. Die Content Delivery (Nginx)
 und der Resource Management Service (API) sind auf zwei Instanzen skaliert. Vier Instanzen repräsentieren
