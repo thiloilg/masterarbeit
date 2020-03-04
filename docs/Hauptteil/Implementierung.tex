@@ -1,23 +1,22 @@
 \chapter{Implementierung}
 \label{chap:implementierung}
 In diesem Kapitel geht es um die Umsetzung des in \Cref{chap:konzept} erarbeiteten
-Konzepts. Da die Arbeit einen CI/CD-Ansatz verfolgt, muss vor der Implementierung
+Konzepts. Da im Rahmen dieser Arbeit ein CI/CD-Ansatz verfolgt wird, muss vor der Implementierung
 der einzelnen Services die Infrastruktur und die Pipeline umgesetzt werden. 
-Wo Tests benötigt werden, werden diese vor der Realisierung der einzelnen
-Komponenten verwirklicht. Aufgrund dieser Erkenntnisse, ist das Kapitel der
-Implementierung wie folgt gegliedert: In \Cref{sec:infrastruktur} geht es um
+Des Weiteren werden die benötigten Tests vor der Realisierung der einzelnen Komponenten selbst verwirklicht.
+Aufgrund dieser Erkenntnisse, ist das Kapitel der Implementierung wie
+folgt gegliedert: In \Cref{sec:infrastruktur} geht es um
 die für die Entwicklung, die Testphase sowie die in Produktion laufende Anwendung
-benötigten Server. In \Cref{sec:gesamtsysten} geht es um den Aufbau der gesamten
-Anwendung. In \Cref{sec:projektaufbau} wird der Aufbau des Projekts behandelt.
-In \Cref{sec:pipeline} wird die Implementierung der stetigen Erstellung, Testung und
-Auslieferung der Gesamtanwendung beschrieben. In den folgenden Abschnitten wird die
-Implementierung der von der Anforderungsanalyse geforderten Features erläutert.
-In \Cref{sec:frontendanwendung} wird die Umsetzung der progressiven \mbox{Webanwendung}
-mit dem Frontendframework React geschildert. In \Cref{sec:plugins} geht es um die
-Implementierung der für die Dashboards benötigten Plugins, die die Daten
-in Diagrammen visualisieren. In \Cref{sec:resourcemanagementservice} wird
-die testgetriebene Entwicklung der für die Benutzerverwaltung benötigte REST-API
-dargestellt. Zuallerletzt wird in \Cref{sec:datadeliveryservice} die Implementierung
+benötigten Server. Der Aufbau der Gesamtanwendung wird in \Cref{sec:gesamtsysten} behandelt.
+Daraufhin wird in \Cref{sec:projektaufbau} der Projektaufbau geschildert.
+In \Cref{sec:pipeline} wird die Implementierung der stetigen
+Auslieferung der Gesamtanwendung beschrieben. Die Umsetzung der
+progressiven \mbox{Webanwendung} mit dem Frontend-Framework React
+findet in \Cref{sec:frontendanwendung} statt. In \Cref{sec:plugins} geht es um die
+Implementierung der für die Dashboards benötigten Plugins, welche die Daten
+in Diagrammen visualisieren. Außerdem wird in \Cref{sec:resourcemanagementservice}
+die testgetriebene Entwicklung der für die Benutzerverwaltung benötigte REST-API dargestellt.
+Zuletzt wird in \Cref{sec:datadeliveryservice} die Implementierung
 des Services geschildert, welcher die Frontend-Anwendung mit den Daten versorgt.
 
 \section{Infrastruktur}
