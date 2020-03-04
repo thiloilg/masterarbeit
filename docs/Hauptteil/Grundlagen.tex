@@ -79,12 +79,12 @@ die es ermöglicht PWAs in den App Store zu bringen.
 Es gibt keine genaue Definition, die besagt, welche Merkmale eine PWA beinhalten muss.
 Der Begriff "Progressive Web App" wurde erstmals 2015 von Alex Russell in einem Blogpost
 verwendet.\cite{PWA2015} Die Idee hinter einer Webanwendung bei der sich die Optik und Haptik,
-wie die bei einer nativen App anfühlt, gab es allerdings bereits zuvor. So kündigte
+wie die bei einer nativen App anfühlen, gab es allerdings bereits zuvor. So kündigte
 Steve Jobs bereits 2007 bei der initialen iPhone Präsentation für Entwickler bereits die Möglichkeit
-an, solche Web 2.0 Apps mithilfe von Safari zu entwickeln.\footnote{https://www.youtube.com/watch?v=ZlE7dzoD6GA}
+an, solche Web 2.0 Apps mithilfe von Safari zu entwickeln.\cite{SteveJobsIphonePresentation}
 Die Merkmale einer PWA haben sich demnach über die Jahre hinweg angesammelt. Was sind aber
 nun diese Merkmale? Alex Russell erwähnt in seinem Blogpost dazu Folgendes:
-Die PWA soll responsive und netzunabhängig sein, app-ähnliche Navigationsvorgänge bereitstellen,\footnote{Ohne Verwendung von Browser Tabs} 
+Die PWA soll responsive und offline verwendbar sein, app-ähnliche Navigationsvorgänge bereitstellen,\footnote{Ohne Verwendung von Browser Tabs.} 
 immer aktuell sein, nur unter Verwendung der Transport Layer Security (TLS) ausgeliefert werden, durch Suchmaschinen als solche mithilfe
 des Web-App-Manifests auffindbar sein, plattformspezifische Funktionalitäten wie Push-Notifications
 verwenden sowie auf dem Startbildschirm installierbar, über Hyperlinks teilbar und ohne aufwendigen
@@ -109,7 +109,7 @@ vorhandenen Feldern, ob der Browser bestimmte Merkmale unterstützt.
 Dabei werden neben den Feldern \code{window}, \code{document} und \code{navigator}
 auch Felder im Service Worker erkannt. Die Resultate der Analyse können von dem
 eigentlich unterstützten Funktionsumfang abweichen. Die von Thomas
-Steiner für relevant angesehenen Merkmale sind folgende:
+Steiner für relevant angesehenen Merkmale sind Folgende:
 Offline Capabilities; hierbei wird nach
 einer Unterstützung der Cache API gesucht. Push Notifications;
 ist die Push API unterstützt? Add to Home Screen; ist es möglich, PWAs auf
