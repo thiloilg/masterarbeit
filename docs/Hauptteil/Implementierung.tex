@@ -38,12 +38,15 @@ vorinstalliert. Der Server für die CI/CD-Prozesse und die Versionsverwaltung be
 den VCPUs um Intel Skylake Xeon CPUs mit 2.1 GHz.\cite{CPUusedInHetznerCLoud}}
 Der Server der Testphase besitzt 2 VCPU, 8GB RAM und 80GB SSD-Speicher. Die für die Produktion
 ausgelegten Server besitzten 8 VCPUs, 32GB RAM und 240GB SSD-Speicher.
+
+
 Die Produktionsserver (Nodes) sind in einen Manager- und einen Worker-Node aufgeteilt. Von dem Manager-Node
 aus können Instanzen hinzugefügt und auch wieder entfernt werden. Um die Daten zu persistieren,
 ist ein 10GB SSD Volumen an den Manager-Node angebunden. In der Docker-Compose-Datei werden
 Regeln definiert, die festlegen, dass die Datenbanken immer auf dem Manager-Server angelegt werden.
 Die für die Speicherung der Daten relevanten Ordner der Datenbanken werden auf dem Volumen abgebildet.
 Dadurch wird sichergestellt, dass die Daten auch nach dem Herunterfahren des Docker-Clusters noch bestehen.
+
 In Abbildung \ref{figure:dockerswarmcluster} ist das Docker Swarm Cluster zu sehen. Die Schlösser
 repräsentieren die Regeln, nach denen sich bestimmte Instanzen auf bestimmten Nodes befinden müssen.
 Alle weiteren Instanzen werden nach Auslastung auf die Nodes verteilt. Die Content Delivery (Nginx)
