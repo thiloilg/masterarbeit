@@ -604,7 +604,8 @@ im Anhang unter "Screenshots" in \Cref{figure:sucheundbearbeitungdesbenutzerprof
 Die Anwendung ist vom Browser sowie vom Google Play Store aus installierbar. Als Einstieg
 in die Frontend-Anwendung bietet das Web App Manifest sowie das Android Manifest eine URL als Einstiegspunkt.
 Hier verwendet die Anwendung den Pfad \code{/installed}. Wird die progressive Webanwendung über diesen Pfad
-aufgerufen, wird ein Feld im SessionStorage gesetzt. Mithilfe eines \code{useInstalled} Hooks kann innerhalb
+aufgerufen, wird ein Feld im SessionStorage gesetzt, das die Information über
+den installierten Zustand speichert. Mithilfe eines \code{useInstalled} Hooks kann innerhalb
 der Anwendung nachgefragt werden, ob die Anwendung vom Nutzer installiert wurde oder nicht. Anhand dieser
 Information werden GUI-Komponenten angezeigt, die dem Nutzer ein natives Erscheinungsbild anbieten. So wird beispielsweise
 eine Werkzeugleiste am unteren Ende des Bildschirms angezeigt, die es den mobilen Nutzern ermöglicht,
