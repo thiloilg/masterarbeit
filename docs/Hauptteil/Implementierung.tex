@@ -441,7 +441,7 @@ Serviceebene Health-Check-Endpunkte bereitgestellt. Diese spiegeln den aktuellen
 Gesundheitszustand des jeweiligen Dienstes wieder. Ein Health-Check-Endpunkt
 ist dann von Nutzen, wenn ein Dienst oder ein Verfahren von einem anderen
 abhängig ist. So ist beispielsweise die Backend-API von der Datenbank
-abhängig. Andererseits ist der Frontenddienst sowie die Integrationstests
+abhängig. Andererseits sind der Frontenddienst sowie die Integrationstests
 in der Test-Stage von der Backend-API abhängig. In der vorliegenden Arbeit wurden für alle Services
 rudimentäre Health-Checks implementiert, mithilfe derer die Produktionsserver ohne Ausfallzeit
 aktualisiert werden können. Bei einem Update fährt Docker Swarm die auszutauschende
@@ -460,8 +460,8 @@ und der Cache mit dem Service verbunden sind.
 
 In der Gitlab-CI wird mithilfe eines kleinen Shell-Skripts eine Warteschleife ausgeführt, die mithilfe von
 \code{curl} den Health-Check-Endpunkt des jeweiligen Services abfragt. In Quellcode \ref{lst:healthcheck}
-ist ein solches Skript zu sehen. Die Arbeit stellt so sicher, dass bei der Durchführung der Tests die
-benötigten Services funktionsbereit sind.
+ist ein solches Skript zu sehen. Mithilfe des Skripts wird sichergestellt, dass bei der Durchführung
+der Tests die benötigten Services funktionsbereit sind.
 
 \section{Frontend-Anwendung}
 \label{sec:frontendanwendung}
