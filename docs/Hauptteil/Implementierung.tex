@@ -513,10 +513,10 @@ Somit konnte sichergestellt werden, dass die Operationen auf der Datenstruktur k
 Die zwei bedeutsamsten Hooks sind die zwei folgenden Hooks: \code{useApiEndpoint} und \code{useDeliveryEndpoint}. Sie ermöglichen
 die Kommunikation zu den Mircoservices im Backend. Der \code{useApiEndpoint} Hook gibt die CRUD-Operationen,
 welche für die Kommunikation mit einer REST-API nötig sind, zurück. Der \code{useDeliveryEndpoint} Hook
-stellt eine \code{publish} sowie eine \code{subscribe} Funktion zur Verfügung. Die \code{useApiEndpoint} Hook
+stellt eine \code{publish} sowie eine \code{subscribe} Funktion zur Verfügung. Der \code{useApiEndpoint} Hook
 dient gleichzeitig als Middleware zwischen der Anwendung und dem Backend. So werden hier HTTP-Statuscodes
-abgefangen, um so bestimmte Aktionen durchzuführen. Im Falle eines abgelaufenen Authentifizierungstokens,
-wird so ein neues beantragt. Daraufhin wird die fehlgeschlagene Anfrage erneut ausgeführt.
+abgefangen, um bestimmte Aktionen durchzuführen. Im Falle eines abgelaufenen Authentifizierungstokens,
+wird ein neues beantragt. Daraufhin wird die fehlgeschlagene Anfrage erneut ausgeführt.
 
 \begin{figure}
     \begin{center}
@@ -530,19 +530,19 @@ Der \code{useDeliveryEndpoint} Hook implementiert ein eigenes Publish/Subscribe-
 Um die Performanz der Anwendung zu steigern, werden beim Ladevorgang eines Dashboards
 die Diagramme sowie die anzuzeigenden Daten parallel geladen. In Abbildung \ref{figure:informationsaustauschdashboard}
 ist der Informationsaustausch eines Dashboards dargestellt. Schritt eins und zwei stehen
-für das anfangliche Laden der Frontend-Anwendung über einen CDN. Dies tritt nur ein,
+für das anfängliche Laden der Frontend-Anwendung über einen CDN. Dies tritt nur ein,
 falls der Nutzer nicht bereits auf einer anderen Seite der Anwendung unterwegs war.
 In Schritt drei wird die Dashboard-Ressource von dem "Resource Management Service" angefragt.
 Die Dashboard-Ressource besteht neben den gewöhnlichen Feldern, wie ID, Title, Beschreibung,
 Erstellungsdatum und Eigentümer, aus einem Feld mit dem Namen "Data". Dieses Feld beinhaltet
-ein JSON, das den Aufbau und die Einstellungen eines Dashboards darstellt.\footnote{Ein
+ein JSON-Objekt, das den Aufbau und die Einstellungen eines Dashboards darstellt.\footnote{Ein
 Beispiel hierfür ist der Quellcodeausschnitt \ref{lst:jsondateizurspeicherungeinesdashboards}
 im Anhang unter "Weitere Quellcodeausschnitte".} Anhand dieser Informationen werden
 daraufhin zeitgleich in \( A_1 \) die benötigten Plugins von dem "Resource Management Service"
 und in \( B_1 \) die zu visualisierenden Daten von dem "Data Delivery Service" angefragt.\footnote{Das Anfragen
 der zu visualisierenden Daten erfolgt über die Publish-Funktion des 
 \code{useDeliveryEndpoint} Hooks.}
-Kommen die Plugins vor den zu visualisierenden Daten an, abbonieren diese über 
+Kommen die Plugins vor den zu visualisierenden Daten an, abonnieren diese über 
 den \code{useDeliveryEndpoint} Hook mithilfe der Data Source Id die für das Plugin relevanten
 Daten. Sobald diese ankommen, wird das durch das Plugin dargestellte Diagramm mit
 den Daten versorgt. Kommen allerdings die zu visualisierenden Daten vor dem Plugin an,
@@ -561,8 +561,8 @@ Diese werden dann mithilfe des Plugins auf dem Bildschirm aktualisiert.
     \label{lst:verwendungdesusemodalhooks}
 \end{listing}
 
-Zum Erstellen sowie als Sicherheitsabfrage vor der Löschung von Ressourcen verwendet die Arbeit Dialogfenster.
-Hierfür stellt die Arbeit den \code{useModal} Hook bereit. Ein Beispiel befindet sich in
+Zum Erstellen sowie als Sicherheitsabfrage vor der Löschung von Ressourcen werden Dialogfenster verwendet.
+Hierfür wird ein \code{useModal} Hook bereitgestellt. Ein Beispiel befindet sich in
 Quellcode \ref{lst:verwendungdesusemodalhooks}. Mithilfe des Hooks
 kann mit nur weniger Zeilen ein Dialogfenster samt Funktionalität in eine React-Komponente integriert werden.
 Der \code{useModal} Hook gibt in einem Array zwei Funktionen zurück; eine zum Öffnen und eine zum
@@ -574,15 +574,14 @@ Die Frontend\hyp{}Anwendung besitzt auch neben
 den Hooks hilfreiche React\hyp{}Komponenten. So gibt es
 eine \code{ProtectedRoute}, welche den Benutzer umleitet, falls dieser keine Rechte für den
 angefragten URL-Pfad besitzt.\footnote{Hierbei ist anzumerken, dass die eigentliche Rechteverwaltung durch
-das Backend abgesichert ist.} Außerdem beinhaltet die Frontend-Anwendung Eingabevalidierung der Formulare
+das Backend abgesichert ist.} Außerdem beinhaltet die Frontend-Anwendung Eingabevalidierungen der Formulare
 sowie Fehlermeldungen in Form von kleinen Informationsfenstern, die sich rechts oben im Bildschirm ansammeln
 und nach fünf Sekunden verschwinden. Hat der angemeldete Nutzer Administrationsrechte, erscheint unter den
 Benutzereinstellungen ein Menüpunkt, über den die Administrationsoberfläche erreichbar ist. Alle in der
 Frontend-Anwendung verwendeten Ressourcen können erstellt, angesehen, verändert und auch wieder gelöscht werden.
 Für bestimmte Operationen, wie das Löschen eines Benutzers, wird, auch wenn der Benutzer bereits eingeloggt ist,
-ein zusätzliches Modal angezeigt, dass die Anmeldedaten abfragt. Um die initiale Zugriffssicherheit zu erhöhen,
-bietet die Anwendung eine Zwei-Faktor-Authentisierung. In \Cref{subsec:authentifizierungsverfahrenundrechteverwaltung} geht die
-Arbeit genauer auf das Authentifizierungsverfahren ein.
+ein zusätzliches Dialogfenster angezeigt, dass die Anmeldedaten abfragt. Um die initiale Zugriffssicherheit zu erhöhen,
+bietet die Anwendung eine Zwei-Faktor-Authentisierung.
 
 \subsection{Seitenumbruch und Suche}
 \label{subsec:seitenumbruchundsuche}
@@ -594,8 +593,8 @@ kann dieser so ganz an den Anfang, ganz an das Ende, eine Seite vor, eine Seite 
 an naheliegenden Seiten die passende auswählen. Die Anzahl der Seiten, zu denen eine direkte Navigation möglich ist, hängt von
 der Bildschirmgröße des Endgerätes ab. Die maximale Anzahl beläuft sich hierbei auf vier Seiten in jede Richtung. Der Seitenumbruch befindet sich
 bei zehn Ressourcen pro Seite. Bei einer größeren Anzahl an Ressourcen kann das Navigieren durch
-die Seiten sehr viel Zeit in Anspruch nehmen. Hierfür hat die Arbeit eine Suchfunktion implementiert. Die Suchfunktion befindet sich
-in der oberen Navigationsleiste. Durch einen Zeichenvergleich des Titels der Ressource können so die passenden Ressourcen schneller gefunden
+die Seiten sehr viel Zeit in Anspruch nehmen. Hierfür wurde eine Suchfunktion implementiert. Die Suchfunktion befindet sich
+in der oberen Navigationsleiste. Durch einen Zeichenvergleich des Titels können die passenden Ressourcen schneller gefunden
 werden. Die Suche zeigt die zehn besten Resultate in einem Drop-Down-Menü an. Für den Zeichenvergleich verwendet der "Resource Management Service"
 die von PostgreSQL angebotene Funktionalität zum Vergleichen von Zeichenketten. Ein Bildschirmschnappschuss der Suchfunktionalität befindet sich
 im Anhang unter "Screenshots" in \Cref{figure:sucheundbearbeitungdesbenutzerprofils}.
