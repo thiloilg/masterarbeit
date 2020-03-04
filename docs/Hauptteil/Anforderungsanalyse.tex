@@ -242,9 +242,9 @@ Bei der Anfrage an die OEE muss der Arbeitsplatz sowie eine Zeitspanne angegeben
 in JSON formatierte Antwort. Auf der äußeren Ebene befindet sich ein Array, welches Objekte beinhaltet, die wieder ein
 Array und Objekte beinhalten. Analysiert man die Antworten aller abzufragenden Routen der bereitgestellten REST API anhand der Kardinalität,
 kommt man auf folgendes Resultat: Die gefundenen Kardinalitäten beschränken sich auf \(1:1\) und \(1:N\).
-Eine \(N:N\)-Beziehungen ist durch Verweise auf einzigartige Identifikatoren innerhalb einer JSON\hyp{}Datenstruktur abbildbar.
-Des Weiteren können mehrere Abfragen untereinander \(N:N\)-Beziehungen beinhalten. Bei der Konzipierung
-einer flexiblen Anwendung müssen daher mögliche \(N:N\)-Beziehungen berücksichtigt werden.
+Eine \(N:M\)-Beziehungen ist durch Verweise auf einzigartige Identifikatoren innerhalb einer JSON\hyp{}Datenstruktur abbildbar.
+Des Weiteren können mehrere Abfragen untereinander \(N:M\)-Beziehungen beinhalten. Bei der Konzipierung
+einer flexiblen Anwendung müssen daher mögliche \(N:M\)-Beziehungen berücksichtigt werden.
 
 Bei einer Anfrage an einen Endpunkt der API, kann das zurückgelieferte JSON-Objekt verschiedene Tiefen aufweisen. 
 Um die Anforderung an die Flexibilität der Software in Bezug auf die Tiefe der zu verarbeitenden JSON-Objekte zu
