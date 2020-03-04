@@ -59,16 +59,16 @@ einer REST-API, bietet Qlik Sense einen sogenannten "REST Connector" an. Dieser 
 das XML-Format verarbeiten. In den Einstellungen des "REST Connectors" können neben der URL, auch ein
 Authentifizierungsschema ausgewählt werden.\cite[S. 23]{QlikSenseCookbook} Somit ist es möglich,
 eine API zu verwenden, bei der eine JSON Web Token Authentifizierung vorausgesetzt ist. In einem sogenannten
-"Data Load Editor" können hithilfe eines BNF-Code Scripts\footnote{"Die Syntax der Qlik Sense Befehlszeile
+"Data Load Editor" können hithilfe eines BNF-Code Skripts\footnote{"Die Syntax der Qlik Sense Befehlszeile
 und die Skriptsyntax entsprechen in ihrer Notation dem Backus-Naur-Formalismus, auch BNF-Code genannt."\cite{QlikSenseScriptLanguage}}
 Bearer-Token als Authorization Header gesetzt werden. Dies macht Qlik Sense in der Nutzung externer
 APIs sehr flexibel.
 
 Als Nächstes wenden wir uns der Aufbereitung der Daten zu. Nach der Auswahl einer Datenquelle
-erstellt Qlik Sense ein vorgefertigtes Script im Data Load Editor. Dies gilt primär als Orientierungspunkt
+erstellt Qlik Sense ein vorgefertigtes Skript im "Data Load Editor". Dies gilt primär als Orientierungspunkt
 und kann je nach Belieben angepasst werden. Genauso wie Power BI benutzt auch Qlik Sense ein relationales
-Datenbankmodell zur Datenmodellierung innerhalb der Anwendung. Im Data Load Editor
-wird, so wie bei Power BI, das eingehende JSON mithilfe eines Scripts in eine Tabelle konvertiert.
+Datenbankmodell zur Datenmodellierung innerhalb der Anwendung. Im "Data Load Editor"
+wird, so wie bei Power BI, das eingehende JSON mithilfe eines Skripts in eine Tabelle konvertiert.
 Der Bereich zur Datenmodellierung ist der Data Model Viewer. Ein kraftgerichteten Graph stellt die
 Beziehungen zwischen den Tabellen dar. Mit der Datenmodellierung von Qlik Sense ist es möglich, alle typischen SQL-Joins
 zwischen zwei Tabellen durchzuführen. So können Daten von einer API zusammen mit Daten aus einer SQL-Datenbank
@@ -87,7 +87,7 @@ bei dem die Benutzer zuerst Diagrammtypen in die Arbeitsfäche ziehen und
 daraufhin Daten zuweisen. Bei der Datenzuweisung unterscheidet Qlik Sense zwischen Measures und
 Dimensions. Measures sind numerische Werte wie die Anzahl der verkauften Produkte oder der Jahresumsatz,
 Dimensions sind deskriptive Werte wie Monat, Jahr oder die Identifikationsnummer eines Produktes.\cite{TutorialsSpotMeasuresDimensions}
-Durch die klare Trennung in numerische sowie descriptive Werte, wird die Zuordnung der Daten
+Durch die klare Trennung in numerische sowie deskriptive Werte, wird die Zuordnung der Daten
 auf die verschiedenen Achsen der Diagramme vereinfacht.
 
 \section{Tableau}
