@@ -499,12 +499,12 @@ Zum Zeichnen der farbigen Bereiche, die beim Ziehen der Typen "Chart" oder "Data
 wird ein HTML-Canvas, der über dem jeweiligen Plugin positioniert wird, verwendet.
 Hierfür wird der \code{useDrawQuad} Hook verwendet. Zur Errechnung der Position, über die der Typ
 losgelassen wurde, werden die Canvas-Eckpunkte verwendet, um den zuletzt fokussierten Bereich zu bestimmen.
-Dies geschieht mithilfe des \code{useSelectAction} Hooks. Die Umsetzung orientiert sich eins zu eins an dem
+Dies geschieht mithilfe des \code{useSelectAction} Hooks. Die Umsetzung orientiert sich an dem
 in \Cref{subsec:diagrammanordnungsverfahren} beschriebenen Verfahren. Der komplexeste Hook ist der
 \code{useArrangement} Hook. Anhand der aus dem \code{useSelectAction} Hook resultierenden Aktion wird
-mithilfe des \code{useArrangement} Hooks das neue Plugin in die Baumstruktur, die die Positionierung
+mithilfe des \code{useArrangement} Hooks das neue Plugin in die Baumstruktur, welche die Positionierung
 der Plugins beinhaltet, eingefügt.\footnote{Die Plugins werden in der Baumstruktur durch Blätter (Knoten ohne Kinder) repräsentiert.}
-Für das Entfernen eines Plugins aus der Baumstruktur, benötigt es zwei Schritte: In Schritt eins wird
+Für das Entfernen eines Plugins aus der Baumstruktur benötigt es zwei Schritte: In Schritt eins wird
 das Blatt der Baumstruktur entfernt. Um zu verhindern, dass ein Knoten nur ein einzelnes Kind hat,
 werden in Schritt zwei die betroffenen Knoten aufgerückt. Für komplexe Funktionalitäten, wie beispielsweise
 den \code{useArrangement} Hook, wurden vor der eigentlichen Implementierung zahlreiche Modultests definiert.
