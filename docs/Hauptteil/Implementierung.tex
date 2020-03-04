@@ -198,7 +198,7 @@ kostenlos über eine API zur Verfügung gestellt. Die Entscheidung viel für Tra
 da der Reverse Proxy einen automatisierten Vorgang bereitstellt, indem die EV-TLS-Zertifikate
 kurz vor dem Ablaufdatum über den von "Let's Encrypt" bereitgestellten Service aktualisiert werden.
 
-Die Aufgabe des Load Balancers übernimmt das Orchestrierungssystem Docker Swarm. Swarm verwendet
+Das Orchestrierungssystem Docker Swarm (Swarm) übernimmt die Aufgabe des Load Balancers. Swarm verwendet
 als Lastverteilungsverfahren Round-Robin, eine rotierende Verteilung der eingehenden Anfragen auf
 die unterschiedlichen Instanzen eines Services.\cite{CloudflareRoundRobinDNS}
 Da die Aufrechterhaltung der WebSocket-Verbindungen des \code{Data Delivery Services} gegenüber
