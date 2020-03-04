@@ -641,11 +641,11 @@ favicon.ico & 2.dc039c03.chunk.js\\
 \end{table}
 
 Für Dateien mit Hash im Dateinamen schaut der Service Worker zuerst im Cache nach.
-Wurde die Anfrage bereits gecached, wird diese zurückgegeben. Andernfalls wird eine Anfrage über das
+Liegt die Anfrage im Zwischenspeicher, wird diese zurückgegeben. Andernfalls wird eine Anfrage über das
 Netzwerk versendet, die Antwort an die Anwendung weitergeleitet und im Cache gespeichert.
 Für statische Dateien ohne Hash im Dateinamen, gehen die Anfragen immer zuerst gegen das Netzwerk und
 aktualisieren daraufhin den Cache. Im Falle, dass die Anwendung offline ist, wird die Anfrage aus
-dem Cache geladen. Besteht keine Internetverbindung und die Datei wurde noch nicht gecached, wird
+dem Cache geladen. Besteht keine Internetverbindung und die Datei liegt nicht im Zwischenspeicher, wird
 eine Fallback-Seite angezeigt. Das Cache-Limit ist auf fünfhundert Dateien gesetzt. Daraufhin wird der älteste
 Eintrag durch den neu hereingekommenen Eintrag ersetzt. Da sich die Hashes bei jeder neuen Version verändern,
 ist somit sichergestellt, dass der Nutzer bei bestehender Internetverbindung immer die aktuellste Version
