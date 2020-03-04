@@ -151,7 +151,7 @@ besteht aus dem Frontend sowie dem integrierten Plugin-System. Je nach Kommunika
 unterhält sich das Frontend über HTTPS oder WSS mit dem Backend. Die HTTPS-Kommunikation
 wird durch einen Service Worker interferiert, um das Frontend-Caching und die
 Offline-Funktionalität zu ermöglichen. Das WebSocket-Protokoll verbindet das Frontend
-über direktem Web mit dem Backend. Dies kann allerdings von Browser zu Browser variieren.
+über direktem Weg mit dem Backend. Dies kann allerdings von Browser zu Browser variieren.
 Manche Versionen der Browser enthüllen die WebSocket-Kommunikation im SW, andere
 nicht.\footnote{Siehe Diskussion auf Github, W3C Service Worker \cite{GithubIssueWebSocketExpose}}
 Die Kommunikation zwischen externen APIs und dem Backend kann über HTTP als auch
@@ -168,18 +168,18 @@ sind denkbar.
 
 Das Backend und dessen Microservice-Infrastruktur wird durch einen Reverse Proxy vom Internet versteckt.
 In dieser Zwischenschicht befinden sich unter anderem ein Load Balancer sowie ein Monitoring System.
-Das Backend ist in drei Services unterteilt; den Data Delivery Service, den Resource Management Service
-und den Content Delivery Service. Der Data Delivery Service sowie der Resource Management Service sind jeweils
-in drei Container unterteilt. Der wichtigste Container führt die Servicelogik aus. In der zweiten
+Das Backend ist in drei Services unterteilt; den "Data Delivery Service", den "Resource Management Service"
+und den "Content Delivery Service". Der "Data Delivery Service" sowie der "Resource Management Service" sind jeweils
+in drei Container unterteilt. Der erste und wichtigste Container führt die Servicelogik aus. In der zweiten
 Schicht befindet sich eine In-Memory-Datenbank, die für das Caching verantwortlich ist. Zuallerletzt
 kommt eine Datenbank, um den Fortbestand der Daten zu sichern. Die Caching-Strategie sowie die Art der
 Datenbank variiert je nach Anforderung an den Service. Für die Langzeitspeicherung der Daten wird je nach Service
-eine dokumentenorientiertes als auch ein relationales Datenbanksystem verwendet. Der Content Delivery Service
+eine dokumentenorientiertes als auch ein relationales Datenbanksystem verwendet. Der "Content Delivery Service"
 ist für die Auslieferung der statischen Dateien des Frontends verantwortlich.
 
 \subsection{Reverse Proxy und Load Balancer}
 \label{subsec:reverseproxyundloadbalancer}
-Anders, als bei einem Proxy, der den Client von dem Server versteckt, versteckt ein Reverse Proxy
+Anders als bei einem Proxy, der den Client von dem Server versteckt, versteckt ein Reverse Proxy
 eine Serverinfrastruktur vor dem Client. Durch die Anonymisierung der Serverinfrastruktur
 sind Angriffe gegen spezifische Servertechnologien erschwert, da deren Schnittstelle
 nicht direkt mit der Außenwelt kommuniziert. Als Reverse Proxy wird in der Arbeit,
@@ -201,7 +201,7 @@ kurz vor dem Ablaufdatum über den von "Let's Encrypt" bereitgestellten Service 
 Die Aufgabe des Load Balancers übernimmt das Orchestrierungssystem Docker Swarm. Swarm verwendet
 als Lastverteilungsverfahren Round-Robin, eine rotierende Verteilung der eingehenden Anfragen auf
 die unterschiedlichen Instanzen eines Services.\cite{CloudflareRoundRobinDNS}
-Da die Aufrechterhaltung der WebSocket-Verbindungen des Data Delivery Services gegenüber
+Da die Aufrechterhaltung der WebSocket-Verbindungen des \code{Data Delivery Services} gegenüber
 den Clients allerdings nicht linear verläuft,\footnote{Manche Benutzer beenden die Anwendung sofort, andere lassen Sie über Tage laufen.}
 empfiehlt es sich für die Zukunft, die Implementierung eines Lastverteilungsverfahrens
 basierend auf Health-Checks zu verwenden. Die Health-Checks könnten so die aktuelle
@@ -267,7 +267,7 @@ den Nginx Docker-Container installiert und in der \code{nginx.conf} aktiviert we
 
 \subsection{Wahl der Datenbankarten}
 \label{subsec:wahlderdatenbankarten}
-Der Data Delivery Service verwendet ein Datenbanksystem, das dokumentenorientiert ist.
+Der \code{Data Delivery Service} verwendet ein Datenbanksystem, das dokumentenorientiert ist.
 Hauptgrund hierfür ist die Tatsache, dass man nicht im Vorhinein weiß, wie das
 Datenschema auszusehen hat. Der Benutzer der Anwendung kann jegliche API
 auswählen, Daten abfragen und diese mithilfe einer JSON-Abfragesprache verarbeiten. Das Datenschema
