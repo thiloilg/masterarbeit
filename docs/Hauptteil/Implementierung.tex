@@ -701,9 +701,9 @@ zugewiesenen Kontrollern definiert. Die Kommunikation mit der Datenbank überneh
 Services. Als objektrelationale Abbildung (ORM) wird TypeORM verwendet. Oft vorkommende Transaktionen, wie beispielsweise
 die Abfrage eines zu einer E-Mail gehöhrenden Benutzers, sind indiziert. Es werden keine Passwörter in der Datenbank gespeichert.
 Die Hashes, die die Passwörter repräsentieren, werden mithilfe der Bibliothek \code{bcryptjs} generiert.
-Geheime Felder wie die Hashes der Passwörter, sind vor einfachen Select-Statements versteckt und werden nur bei
+Geheime Felder, wie die Hashes der Passwörter, sind vor einfachen Select-Statements versteckt und werden nur bei
 expliziter Anfrage zurückgegeben. Die Vorlagen für die bei der Registrierung versendeten E-Mails wurden mit
-der Template-Sprache Handlebars erstellt. Das Testing-Framework Jest wurde zur Realisierung der Integrationstests
+der Template-Sprache Handlebars\footnote{https://handlebarsjs.com/} erstellt. Das Testing-Framework Jest\footnote{https://jestjs.io/} wurde zur Realisierung der Integrationstests
 verwendet. Aufgrund der Komplexität der Integrationstests, wurden die Tests für eine Route in einen Unterordner
 anhand der CRUD-Operationen in mehrere Dateien unterteilt.
 
