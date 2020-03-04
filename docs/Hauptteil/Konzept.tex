@@ -244,25 +244,26 @@ dem jeweiligen Plugin oder innerhalb des Plugins selbst ermöglicht werden.
 Das Konzept zur Darstellung der Frontend-Anwendung ist in zwei Abschnitte untergliedert.
 In \Cref{subsec:zentralisierungderindividualisierbarkeit} wird ein Konzept für die
 zentralisierte Anpassung der Benutzeroberfläche erarbeitet. Die Ausgliederung der einzelnen
-Diagramme aus der Frontend-Anwendung wird in \Cref{subsec:pluginverfahren} behandelt,
+Diagramme aus der Frontend-Anwendung wird in \Cref{subsec:pluginverfahren} behandelt.
 Mit der Ausgliederung soll mehr Flexibilität für die Umsetzung der einzelnen Diagramme geschaffen werden.
 Gleichermaßen soll die Komplexität der Frontend-Anwendung gering gehalten werden.
 
 \subsection{Zentralisierung der Individualisierbarkeit}
 \label{subsec:zentralisierungderindividualisierbarkeit}
 Für die Darstellung der Frontend-Anwendung wird das CSS-Framework Bootstrap verwendet.\footnote{https://getbootstrap.com/}
-Die unkompilierte Form von Bootstrap ist in SASS geschrieben \cite[2. Abschnitt]{Bootstrap4punkt4}.
+Die unkompilierte Form von Bootstrap ist in der Stylesheet-Sprache SASS geschrieben \cite[2. Abschnitt]{Bootstrap4punkt4}.
 Es wird in dieser Arbeit der Ansatz verfolgt, für die Individualisierbarkeit relevante Parameter an einem Ort
 zu zentralisieren. Diese Parameter sollen die Einstellungen von Bootstrap überschreiben und
 in eigene SASS- sowie JS-Dateien importiert und verwendet werden. Somit kann mit der Veränderung
 eines einzelnen Parameters die komplette Darstellung der Frontend-Anwendung angepasst werden.
-WebPack, ein statischer Modulebündler für JS, ermöglicht mithilfe des \code{sass-loader}\footnote{https://www.npmjs.com/package/sass-loader} Variablen
+WebPack, ein statischer Modulbündler für JS, ermöglicht mithilfe des \code{sass-loader}\footnote{https://www.npmjs.com/package/sass-loader} Variablen
 aus SASS zu exportieren und daraufhin in JS zu importieren \cite{ShareSCSSwithJS}.
 
 \subsection{Pluginverfahren}
 \label{subsec:pluginverfahren}
-In dieser Arbeit wird auch für das Frontend ein Microservice-Ansatz verfolgt. Man spricht hier von einem
-Microfrontend. Michael Geers schreibt dazu in einem Artikel auf Digital Pioneers Folgendes:
+In dieser Arbeit wird auch für das Frontend ein Microservice-Ansatz verfolgt.
+Hier wird von einem Microfrontend gesprochen. Michael Geers schreibt dazu
+in einem Artikel auf Digital Pioneers Folgendes:
 
 \begin{quote}
 "Der Ansatz, der sich jetzt förmlich aufdrängt, ist die Umsetzung der Microservice\hyp{}Idee
@@ -274,8 +275,10 @@ Der Einsatz einer neuen Technologie lässt sich in einem kleineren Rahmen testen
 Dabei sollen die Diagramme eines Dashboards als einzelne Services ausgelagert werden.
 Die Diagramme können so einzeln entwickelt und ausgeliefert werden. Aufgrund der
 gleichen Machenschaft der Schnittstellen der Diagramme, ist es durchaus denkbar, diese Art des Code-Splittings als
-einen Plugin-Ansatz anzusehen. Die Diagramme sollen über die In-Memory-Datenbank
-Redis zur Verfügung gestellt werden. Die Diagramme werden mithilfe
+einen Plugin-Ansatz anzusehen. Genauso wie bei Plugins, besitzten die Funktionen, welche die
+Diagramme darstellen, eine einheitliche Signatur.
+
+Die Diagramme sollen über die In-Memory-Datenbank Redis zur Verfügung gestellt werden. Die Diagramme werden mithilfe
 von Dynamic Imports\footnote{Dynamic Imports gibt es seit ES6 (ECMAScript 2015) \cite{DynamicImportsV8}}
 während der Laufzeit agil nachgeladen. Da immer nur die verwendeten Diagramme aus der In-Memory-Datenbank
 geladen werden, kann die Webanwendung eine nahezu unendliche Auswahl an möglichen Diagrammen zur Visualisierung
