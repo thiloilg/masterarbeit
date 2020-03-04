@@ -30,7 +30,7 @@ werden die Instanzen der Services unter den in Produktion laufenden Servern aufg
 In Zukunft soll die Integration von neuen Servern mithilfe des Open Source IAC-Werkzeugs\footnote{IAC steht für Infrastructure as Code}
 Terraform über eine Cloudanbieter-API automatisiert werden.
 
-Insgesamt werden vier Linux-Server verwendet. Einen für die Versionsverwaltung
+Insgesamt werden vier Linux-Server verwendet: Einen für die Versionsverwaltung
 und die CI/CD-Prozesse, einen für die Testphase und zwei für das Ausführen der Anwendung in Produktion.
 Die vier Server werden von Hetzner\footnote{https://www.hetzner.de/}, einem Cloudanbieter, bereitgestellt und haben Ubuntu 18.04
 vorinstalliert. Der Server für die CI/CD-Prozesse und die Versionsverwaltung besitzt 4 VCPUs, 
@@ -77,7 +77,6 @@ den Resource Management Service; die Subdomain \code{delivery} auf den Data Deli
 Außerdem gibt es die \code{monitor} Subdomain, welche auf die Kontrollübersicht von Traefik
 verweist. Traefik dient als Reverse-Proxy und bietet zusätzlich rudimentäre
 Überwachungsfunktionalitäten in einem webbasierten Dashboard an.
-Dazu mehr in \Cref{subsec:reverseproxyundloadbalancer}.
 
 Die Docker Registry ist unter der Domain \code{registry.thiloilg.com}, Gitlab CE
 unter \code{gitlab.thiloilg.com} erreichbar. Die Repositories werden alle zusätzlich
@@ -94,7 +93,7 @@ an den zweiten Befehl weitergereicht.
     \label{lst:gitalias}
 \end{listing}
 
-Für das Aufsetzen der Server benötigt man drei Schritte.
+Für das Aufsetzen der Server benötigt man drei Schritte:
 Als Erstes verbindet man sich über SSH zu dem Server und richtet eine Firewall ein.
 Hierfür wird in der Arbeit UFW verwendet, eine in Ubuntu vorinstallierte
 Firewall.\footnote{UFW steht für Uncomplicated Firewall} Dabei öffnet man alle Ports,
