@@ -57,8 +57,8 @@ eine GET-Anfrage aus.
 \section{Verarbeitung}
 \label{sec:verarbeitung}
 Die Verarbeitung der Daten ist ein komplexes Verfahren. Wie bereits in der
-Anforderungsanalyse erwähnt, liefert die API von Gbo die Daten im
-JSON-Format aus. Es wird sich entschieden,
+Anforderungsanalyse erwähnt, liefert die API die Daten im
+JSON-Format aus. Im Rahmen dieser Arbeit wurde sich entschieden,
 für die Datenverarbeitung eine Abfragesprache zu verwenden. In \Cref{chap:analysebestehendersoftwareloesungen}
 wurden drei bestehende Softwarelösungen im Bereich der Datenvisualisierung von
 Betriebsdaten analysiert. Dabei verwendete jede der Lösungen eine Abfragesprache,
@@ -66,7 +66,9 @@ um komplexere Datentransformationen durchzuführen. Bei der Implementierung eine
 GUI zur Definition der Verarbeitungsweise der Daten werden einem schnell Grenzen aufgezeigt.
 Die Möglichkeit, Felder aus verschiedenen Ebenen einer JSON-Datei auszuwählen
 und in eine gewollte Ausgangsstruktur zu transformieren, ist mithilfe einer GUI nahezu
-unmöglich. Außerdem ist man mit einer Abfragesprache auch um einiges schneller als mit
+unmöglich.
+
+Außerdem ist man mit einer Abfragesprache auch um einiges schneller als mit
 der Verwendung einer GUI. Allerdings benötigt die Verwendung einer Abfragesprache
 Einarbeitungszeit. \mbox{Nichtsdestotrotz} ist es hier die einzige Möglichkeit,
 die Flexibilität für die Datenverarbeitung sowie die Datenmodellierung der Daten
@@ -81,7 +83,7 @@ Amazon in ihrer Amazon Web Services CLI verwendet.\cite{AWSJMESPath} Eine Umsetz
 \code{JMESPath} gibt es sowohl in Golang als auch in JS. Somit ist es möglich, die Daten im
 Frontend sowie Backend zu verarbeiten. Die Idee ist es, den Benutzern die Verarbeitung
 im Frontend zu ermöglichen. Dort kann der Benutzer die Daten passend verarbeiten und die
-gewollte Abfragezeichenfolge abspeichern. Diese wird dann bei der Darstellung des 
+gewollte Abfragezeichenfolge abspeichern. Die Zeichenfolge wird dann bei der Darstellung des 
 Dashboards in der Datenanfrage an den Data Delivery Service mitgesendet.
 Die weitere Verarbeitung findet dann im Backend statt.
 
@@ -110,8 +112,8 @@ Daten.\footnote{Die Beispieldaten wurden simplifiziert.} In Quellcode \ref{lst:j
 sieht man eine Abfrage, anhand welcher die Daten verarbeitet werden. In Quellcode \ref{lst:jmespathausgangsdaten}
 sieht man das Endresultat der Abfrage. Die Werte der Felder \code{name}, \code{performance} und \code{quality}
 wurden mithilfe des Array-Selektors \code{[]} und des angehangenen Feldnamens ausgewählt.
-Das Format der Datenausgabe ist ein gültiger Datensatz für die Diagrammvisualisierungsbibliothek
-\code{chart.js}. Somit lassen sich die Eingangsdaten mithilfe eines sehr flexiblen Verfahrens
+Das Format der Datenausgabe beschreibt einen für die Diagrammvisualisierungsbibliothek
+\code{chart.js} gültigen Datensatz. Somit lassen sich die Eingangsdaten mithilfe eines sehr flexiblen Verfahrens
 in verwendbare Ausgabedaten transformieren.
 
 \section{Zulieferung}
