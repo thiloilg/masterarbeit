@@ -262,7 +262,7 @@ Ein weiterer Kompressionsvorgang kann die Größe der Bilder vergrößern \cite{
 
 Für die Kompression der statischen Inhalte wird somit Brotli verwendet.
 Als Fallback wird in der Arbeit Gzip verwendet. Standardmäßig unterstützt Nginx
-das Kompressionsverfahren Gzip. Brotli musste mit einem selbstangefertigten Script in
+das Kompressionsverfahren Gzip. Brotli musste mit einem selbstangefertigten Skript in
 den Nginx Docker-Container installiert und in der \code{nginx.conf} aktiviert werden.
 
 \subsection{Wahl der Datenbankarten}
@@ -390,7 +390,7 @@ In vertikalen Richtung reihen sich die Stages der Pipeline aneinander.
 \end{figure}
 
 Die erste Umgebung ist die Pipeline, ein in einem
-Gitlab Runner ausgelagerter Prozess, der ein vordefiniertes Script durchläuft.
+Gitlab Runner ausgelagerter Prozess, der ein vordefiniertes Skript durchläuft.
 Damit der Gitlab Runner weiß, was er zu tun hat, werden in der \code{.gitlab-ci.yml}
 Datei einzelne Abschnitte und deren Aufgaben mithilfe der vereinfachten
 Auszeichnungssprache YAML definiert. Für jeden Abschnitt kann ein eigenes Docker-Image
@@ -415,18 +415,18 @@ benötigte Cluster erstellt. Die Durchführungsphase ist in zwei parallellaufend
 unterteilt. Dies ist nötig, da die Integrationstests für den "Resource Management Service"
 eine Node.js-Umgebung und den "Data Delivery Service" eine Golang-Umgebung benötigen.
 
-Die Arbeit lagert öfter auftretende Funktionalitäten der Gitlab-CI-Pipeline in eigene Scripts aus.
+Die Arbeit lagert öfter auftretende Funktionalitäten der Gitlab-CI-Pipeline in eigene Skripts aus.
 So wird redundanter Quellcode in der Pipeline verhindert. Ein Beispiel hierfür
 ist Quellcode \ref{lst:wiederverwendbarescriptsdergitlabci}. Das erste ausgelagerte
-Script ermöglicht die Verwendung von SSH innerhalb der Pipeline. Somit kann sich
+Skript ermöglicht die Verwendung von SSH innerhalb der Pipeline. Somit kann sich
 die Pipeline mit dem Server verbinden, um die Docker-Compose Datei auf den Server
-zu kopieren und diese auszuführen. Das zweite Script ist dafür zuständig,
+zu kopieren und diese auszuführen. Das zweite Skript ist dafür zuständig,
 sich in die Docker Registry einzuloggen. Dies ist nötig, um Docker-Container
 in die Registry zu speichern und diese später vom Server aus wieder abzufragen.
 
 \begin{listing}
     \inputminted{yaml}{snippets/yml/reusable_scripts.yml}
-    \caption{Wiederverwendbare Scripts der Gitlab-CI}
+    \caption{Wiederverwendbare Skripts der Gitlab-CI}
     \label{lst:wiederverwendbarescriptsdergitlabci}
 \end{listing}
 
@@ -447,8 +447,8 @@ rudimentäre Health-Checks implementiert, mithilfe derer die Produktionsserver o
 aktualisiert werden können. Bei einem Update fährt Docker Swarm die auszutauschende
 Instanz erst herunter, wenn eine neue betriebsbereit ist. Ob eine neue Instanz betriebsbereit ist,
 wird durch den Health-Check bestimmt. Für den Health-Check des Nginx-Containers wird in der Arbeit beispielsweise
-in einem Shell-Script der Befehl \code{service nginx status} aufgerufen. Ist das Resultat positiv, wird
-das Script mit \code{0} beendet, andernfalls mit \code{1}. Bei den eigenen Services werden \code{/health-check}
+in einem Shell-Skript der Befehl \code{service nginx status} aufgerufen. Ist das Resultat positiv, wird
+das Skript mit \code{0} beendet, andernfalls mit \code{1}. Bei den eigenen Services werden \code{/health-check}
 Routen bereitgestellt, die den Zustand des Services widerspiegeln. Hier wird unter anderem geprüft, ob die Datenbanken
 und der Cache mit dem Service verbunden sind.
 
@@ -458,9 +458,9 @@ und der Cache mit dem Service verbunden sind.
     \label{lst:healthcheck}
 \end{listing}
 
-In der Gitlab-CI wird mithilfe eines kleinen Shell-Scripts eine Warteschleife ausgeführt, die mithilfe von
+In der Gitlab-CI wird mithilfe eines kleinen Shell-Skripts eine Warteschleife ausgeführt, die mithilfe von
 \code{curl} den Health-Check-Endpunkt des jeweiligen Services abfragt. In Quellcode \ref{lst:healthcheck}
-ist ein solches Script zu sehen. Die Arbeit stellt so sicher, dass bei der Durchführung der Tests die
+ist ein solches Skript zu sehen. Die Arbeit stellt so sicher, dass bei der Durchführung der Tests die
 benötigten Services funktionsbereit sind.
 
 \section{Frontend-Anwendung}
@@ -652,7 +652,7 @@ der Anwendung ausführt.
 \label{sec:plugins}
 Für die Implementation der Plugins wurde mit \code{Storybook}\footnote{https://storybook.js.org/}, einem Werkzeug
 zur Entwicklung von UI-Komponenten, eine Umgebung geschaffen, die die Umsetzung eines Plugin-Bundles vereinfacht.
-Für die Ausstellung der Plugin-Bundles wurden Scripte geschrieben, die die Auslieferung der Bundles unabhängig
+Für die Ausstellung der Plugin-Bundles wurden Skripte geschrieben, die die Auslieferung der Bundles unabhängig
 von dem Gesamtprojekt ermöglichen. In einer \code{.env} Datei im Wurzelverzeichnis des Git-Submodules "Plugins"
 müssen die Domain des "Resource Management Services" sowie die E-Mail-Adresse und das Password eines Benutzers mit
 der Rechtegruppe "Entwickler" oder "Admin" gesetzt sein. Mit einem einfachen \code{yarn deploy} können so
