@@ -394,12 +394,11 @@ Gitlab Runner ausgelagerter Prozess, der ein vordefiniertes Skript durchläuft.
 Damit der Gitlab Runner weiß, was er zu tun hat, werden in der \code{.gitlab-ci.yml}
 Datei einzelne Abschnitte und deren Aufgaben mithilfe der vereinfachten
 Auszeichnungssprache YAML definiert. Für jeden Abschnitt kann ein eigenes Docker-Image
-gewählt werden. Mehr dazu in \Cref{subsec:stages}. An zweiter Stelle
-befindet sich die Docker Registry.\footnote{Eine Docker Registry ist eine Versionsverwaltung für Docker-Images.}
+gewählt werden. An zweiter Stelle befindet sich die Docker Registry.\footnote{Eine Docker Registry ist eine Versionsverwaltung für Docker-Images.}
 Sind die Images getestet, ist davon auszugehen, dass sich diese auch
 im ausgelieferten Zustand genauso verhalten werden, wie dies beim Testen
-der Fall war. Die Qualitätssicherung steht an dritter Stelle\footnote{Auf English Quality Assurance, abgekürzt QA.}
-Hier wird die Software nach ihrer Qualität getestet. Erst wenn sie alle
+der Fall war. Die Qualitätssicherung steht an dritter Stelle\footnote{Auf English Quality Assurance, abgekürzt QA.}.
+Hier wird die Software auf ihre Qualität getestet. Erst wenn sie alle
 zuvor definierten Qualitätsmerkmale aufweist, darf die Software in die Produktionsumgebung
 ausgeliefert werden. Die Produktionsumgebung unterscheidet sich von der QA-Umgebung
 nur geringfügig. Im Gegensatz zur QA werden hier die Daten in den Datenbanken persistiert und die
