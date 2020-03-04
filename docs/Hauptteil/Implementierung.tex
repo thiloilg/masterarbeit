@@ -610,7 +610,7 @@ der Anwendung nachgefragt werden, ob die Anwendung vom Nutzer installiert wurde 
 Information werden GUI-Komponenten angezeigt, die dem Nutzer ein natives Erscheinungsbild anbieten. So wird beispielsweise
 eine Werkzeugleiste am unteren Ende des Bildschirms angezeigt, die es den mobilen Nutzern ermöglicht,
 einfach mit dem Daumen zwischen den Seiten für die Dashboards, Diagrammen und Datenquellen zu wechseln.
-Da sich die Seitenleiste, über die die Ressourcen im nicht-installierten Zustand erreichbar sind, bei mobilen
+Da sich die Seitenleiste, über welche die Ressourcen im nicht-installierten Zustand erreichbar sind, bei mobilen
 Endgeräten über den Inhalt schiebt, benötigt die Navigation zur Liste der Ressourcen zwei Klicks. Dies ist
 bei der Desktop-Version nicht der Fall. Hier kann die Seitenleiste offen gelassen werden, wodurch nur ein Klick
 benötigt wird. Durch die Werkzeugleiste wird es mobilen Nutzern ermöglicht, die Liste der Ressourcen mit nur einem
@@ -619,11 +619,11 @@ Klick zu erreichen.
 
 \subsection{Zwischenspeicherstrategie}
 \label{subsec:zwischenspeicherstrategie}
-Die Arbeit hat im Service Worker zwei Zwischenspeicherstrategien implementiert,
-um die Performanz zu steigern und eine bedingte\footnote{Zum jetztigen Stand
+Im Service Worker wurden zwei Zwischenspeicherstrategien implementiert,
+um die Performanz zu steigern und eine bedingte Verwendung der Anwendung
+ohne Internetverbindung zu ermöglichen.\footnote{Zum jetztigen Stand
 werden keine AJAX-Anfragen im Service Worker abgefangen. Ohne eine bestehende Internetverbindung,
-können daher nur statische Inhalte abgerufen werden.}
-Verwendung der Anwendung ohne Internetverbindung zu ermöglichen. Hierfür werden die statischen Dateien in zwei
+können daher nur statische Inhalte abgerufen werden.} Hierfür werden die statischen Dateien in zwei
 Kategorien eingeteilt; Dateien mit und ohne Hash im Dateinamen (Siehe Tabelle \ref{tab:auflistungstatischerdateien}).
 
 \begin{table}[h]
