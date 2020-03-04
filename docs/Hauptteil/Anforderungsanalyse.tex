@@ -65,17 +65,17 @@ einzelnen Komponenten eines Dashboards. Der Prozess der Erstellung eines Dashboa
 könnte wie folgt aussehen. Ein Benutzer kann in einem intuitiven Verfahren
 einzelne Komponenten auswählen und diese an bestimmte Positionen im Bildschirm
 ziehen. Des Weiteren kann er die Komponenten
-entfernen und ersetzen. Wirft man einen Blick auf andere BI Softwarelösungen,
-stellt man fest, dass die Anzahl der Komponenten der Anwendung im Laufe der Zeit
+entfernen und ersetzen. Bei der Betrachtung anderer BI Softwarelösungen,
+ist festzustellen, dass die Anzahl der Komponenten der Anwendung im Laufe der Zeit
 stetig anwachsen kann. Somit sollte die Anwendung die effiziente Auswahl aus einer großen
 Anzahl an Komponenten ermöglichen.
 
 Was sind die Anforderungen an das Laden der Daten in die Anwendung? Neben der Flexibilität,
 die in \Cref{subsec:flexibilitaet} erörtert wird, muss das Laden von Daten schnell und zuverlässig
-sein. Typische Vorgehensweisen der Anwender sind das Auswerten von Maschinendaten. Dabei kann es
+sein. Ein typischer Anwendungsfall ist das Auswerten von Maschinendaten. Dabei kann es
 sich um die Auslastung sowie um Stör- und Ausfälle der Maschinen handeln. Es ist bedeutsam,
 dass der Anwender rechtzeitig von diesen Ereignissen informiert wird. Unsere
-Aufmerksamkeit gilt also auch der zeitnahen Aktualisierung der Daten in den Dashboards. Nur
+Aufmerksamkeit gilt daher auch der zeitnahen Aktualisierung der Daten in den Dashboards. Nur
 so kann sichergestellt werden, dass der Anwender schnell genug auf in den Daten erkenntliche
 Ereignisse reagieren kann. Es liegt nahe, den Benutzer
 über bestimmte Ereignisse per Benachrichtigung zu informieren. Ein möglicher Szenario wäre,
@@ -83,11 +83,10 @@ dem Benutzer eine Benachrichtigung zuzusenden, sobald ein bestimmter Schwellwert
 wird.
 
 Welche Anforderungen sind für die Verarbeitung der Daten notwendig? Daten können Fehler oder Lücken
-beinhalten. So kann in einer Spalte, die das ISO Datumsformat beinhalten, fälschlicherweise ein
-ungültiger Wert vorkommen oder dieser komplett fehlen. Für ein minimal überlebensfähiges
+beinhalten. So kann ein Wert, der das ISO Datumsformat repräsentiert, fälschlicherweise
+ungültig sein oder komplett fehlen. Für ein minimal überlebensfähiges
 Produkt (MVP) sollte es ausreichen, diese Unreinheiten so zu behandeln, dass die Anwendung
-eine informationsreiche Fehlerwarnung an den Benutzer überliefert oder alternativ einen Standardwert
-für fehlende Felder definiert.
+eine informationsreiche Fehlerwarnung an den Benutzer überliefert.
 
 Wie werden die Dashboards mit den nötigen Daten versorgt? Grundsätzlich ist davon auszugehen,
 dass die Anwendung einen Zuweisungsmechanismus bereitstellt. Um von einer komplexeren, eingehenden
