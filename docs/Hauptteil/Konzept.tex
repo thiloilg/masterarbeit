@@ -209,18 +209,18 @@ Im mobilen Format sollen die einzelnen Diagramme untereinander aufgelistet werde
     \label{figure:diagrammanaordnungsverfahren}
 \end{figure}
 
-Die Diagramme sollen nach und nach per Drag and Drop in das Dashboard integriert werden. Dieses Verfahren
+Die Diagramme sollen nacheinander per Drag and Drop in das Dashboard integriert werden. Dieses Verfahren
 wird in Abbildung \ref{figure:diagrammanaordnungsverfahren} dargestellt: \(a\) beschreibt den
 initialen Zustand eines leeren Dashboards. Hier kann der Benutzer durch Drag and Drop das erste Diagramm dem Dashboard
 zuordnen. \(b\) beschreibt den Zustand des Dashboards mit genau einem enthaltenen Diagramm. Von hier aus ist es möglich, das
-neue Diagramm in alle Richtungen einfügen. Dabei teilt das bestehende Diagram den Platz mit dem neuen gleichmäßig
+neue Diagramm in alle Richtungen einfügen. Dabei teilt das bestehende Diagramm den Platz mit dem neuen gleichmäßig
 auf. Bei der mittigen Positionierung wird das vorhandene Diagramm durch das neue ersetzt. \(c\) und \(d\)
 beschreiben den Zustand, bei dem sich mehr als ein Diagramm im Dashboard befindet. Wenn man im Zustand \(b\)
 ein Diagramm oberhalb oder unterhalb einfügt, bilden die beiden Diagramme eine Spalte. Beide dieser Diagramme
-beinhalten nun den Zustand \(c\). Additional zu den Möglichkeiten von Zustand \(b\), kann hier ein Diagramm
+beinhalten nun den Zustand \(c\). Zusätzlich zu den Möglichkeiten von Zustand \(b\), kann hier ein Diagramm
 auch dazwischen gefügt werden. Es teilt sich dann den Platz mit den anderen Diagrammen in der Spalte.
 Fügt man bei Zustand \(b\) ein Diagramm links oder rechts ein, bilden die beiden Diagramme eine Reihe.
-Beide dieser Diagramme befinden sich nun in Zustand \(d\). Additional zu Zustand \(b\) können hier nun
+Beide dieser Diagramme befinden sich nun in Zustand \(d\). Additiv zu Zustand \(b\) können hier nun
 auch neue Diagramme in der gleichen Reihe positioniert werden. Diese Reihen und Spalten können sich
 immer weiter verschachteln. Somit kann der Benutzer mit einem ziemlich einfachen, intuitiven Verfahren
 das Dashboard mit Diagrammen füllen. Durch einen Button in der Ecke rechts oben im Diagramm-Fenster
@@ -235,17 +235,17 @@ die Diagramme im Dashboard ziehen. Daraufhin öffnet sich ein Dialogfenster mit 
 die einem ermöglicht, eine Datenquelle zu suchen und auszuwählen. Diagramme, die bereits eine
 Datenquelle zugewiesen haben, sollen diese im Fall einer Neuzuweisung mit den neuen Datenquellen
 ersetzen. Anders als bei dem Diagrammanordnungsverfahren gibt es bei der Datenquellenzuweisung
-nur eine mögliche Zuweisungsoption innerhalb des Diagramms. Das tauschen der X- und Y-Achse kann
+nur eine mögliche Zuweisungsoption innerhalb des Diagramms. Das Tauschen der X- und Y-Achse kann
 entweder über die Änderungen des Datenausgangs in einer Datenquelle, in der Werkzeugleiste über
 dem jeweiligen Plugin oder innerhalb des Plugins selbst ermöglicht werden.
 
 \section{Darstellung}
 \label{sec:darstellung}
-Das Konzept der Darstellung der Frontend-Anwendung ist in zwei Abschnitte untergliedert.
+Das Konzept zur Darstellung der Frontend-Anwendung ist in zwei Abschnitte untergliedert.
 In \Cref{subsec:zentralisierungderindividualisierbarkeit} wird ein Konzept für die
-zentralisierte Anpassung der Benutzeroberfläche erarbeitet. In \Cref{subsec:pluginverfahren}
-geht es um die Ausgliederung der Gestaltung der einzelnen Diagramme aus der Frontend-Anwendung.
-Somit soll mehr Flexibilität für die Umsetzung der einzelnen Diagramme geschaffen werden.
+zentralisierte Anpassung der Benutzeroberfläche erarbeitet. Die Ausgliederung der einzelnen
+Diagramme aus der Frontend-Anwendung wird in \Cref{subsec:pluginverfahren} behandelt,
+Mit der Ausgliederung soll mehr Flexibilität für die Umsetzung der einzelnen Diagramme geschaffen werden.
 Gleichermaßen soll die Komplexität der Frontend-Anwendung gering gehalten werden.
 
 \subsection{Zentralisierung der Individualisierbarkeit}
@@ -261,8 +261,6 @@ aus SASS zu exportieren und daraufhin in JS zu importieren \cite{ShareSCSSwithJS
 
 \subsection{Pluginverfahren}
 \label{subsec:pluginverfahren}
-% Bündelung der Bibliotheken
-
 In dieser Arbeit wird auch für das Frontend ein Microservice-Ansatz verfolgt. Man spricht hier von einem
 Microfrontend. Michael Geers schreibt dazu in einem Artikel auf Digital Pioneers Folgendes:
 
