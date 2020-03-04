@@ -307,16 +307,16 @@ Essentiell für die Überwachung der Services ist eine solide Protokollierung.
 Für die in der Arbeit zu entwickelnde Software werden folgende
 Protokollebenen verwendet: "Error", "Info" und "Debug".
 "Error" ist die tiefste Ebene. Hier werden die während der Laufzeit des Programms
-stattgefundenen Fehler protokolliert. Auf der Info-Protokollebene sieht man
+stattgefundenen Fehler protokolliert. Auf der "Info"-Protokollebene sieht man
 aufschlussreiche Informationen über den Service. Hier wird beispielsweise
-der HTTP-Verkehr aufgezeichnet. Die "Error-Protokollebene" ist in der "Info-Protokollebene"
-enthalten. In der "Debug-Ebene" erscheinen die beiden zuvor erwähnten Ebenen. Diese
+der HTTP-Verkehr aufgezeichnet. Die "Error"-Protokollebene ist in der "Info"-Protokollebene
+enthalten. In der "Debug"-Ebene erscheinen die beiden zuvor erwähnten Ebenen. Diese
 werden mit Informationen angereichert, die nur für das Debugging relevant sind.
 Ein Logeintrag besteht aus einem Zeitstempel, der Protokollebene sowie der Protokollnachricht.
 Kundenspezifische Informationen werden nicht offengelegt. Verweise auf Nutzer finden nur
-mithilfe der Identifikationsnummer des Datenbankeintrags statt. Die "Info-Protokollebene"
-wird über den \code{stdout} gelenkt. Die "Error-Protokollebene" wird des Weiteren in einer
-Logdatei persistiert. Für das Debugging muss die "Debug-Protokollebene" aktiviert werden.
+mithilfe der Identifikationsnummer des Datenbankeintrags statt. Die "Info"-Protokollebene
+wird über den \code{stdout} gelenkt. Die "Error"-Protokollebene wird des Weiteren in einer
+Logdatei persistiert. Für das Debugging muss die "Debug"-Protokollebene aktiviert werden.
 Als Logging-Bibliothek für den "Resource Management Service" verwendet die Arbeit den Winston
 Logger. Der HTTP-Verkehr wird mithilfe des Koa-Loggers\footnote{Koa ist ein HTTP Middleware Framework für Node.js.} protokolliert und an den Winston
 Logger weitergereicht. Datenbankverbinder sowie Logger werden mithilfe des Singleton-Pattern
