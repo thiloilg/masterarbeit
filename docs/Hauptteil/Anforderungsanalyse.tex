@@ -246,20 +246,20 @@ Eine \(N:M\)-Beziehungen ist durch Verweise auf einzigartige Identifikatoren inn
 Des Weiteren können mehrere Abfragen untereinander \(N:M\)-Beziehungen beinhalten. Bei der Konzipierung
 einer flexiblen Anwendung müssen daher mögliche \(N:M\)-Beziehungen berücksichtigt werden.
 
-Bei einer Anfrage an einen Endpunkt der API, kann das zurückgelieferte JSON-Objekt verschiedene Tiefen aufweisen. 
+Bei einer Anfrage an einen Endpunkt der API kann das zurückgelieferte JSON-Objekt verschiedene Tiefen aufweisen. 
 Um die Anforderung an die Flexibilität der Software in Bezug auf die Tiefe der zu verarbeitenden JSON-Objekte zu
 erörtern, muss die maximale Tiefe herausgefunden werden. Bei der bereitgestellten REST API beträgt die tiefste
-Hierarchie zwei Stufen. Ein ummantelndes Array, was mehrere Objekte beinhaltet, die wiederum ein Array mit Objekten
+Hierarchie zwei Stufen. Ein ummantelndes Array, welches mehrere Objekte beinhaltet, die wiederum ein Array mit Objekten
 beinhalten. Es ist auch hier davon auszugehen, dass sich die maximale Tiefe der Datenstruktur verändern kann.
 Die Software ist so flexibel zu gestalten, dass diese auch mit variablen Tiefen der JSON-Objekte umgehen kann.
 
-Als Nächstes werfen wir einen Blick auf die Flexibilität in Bezug auf die Visualisierung der Daten. Wie flexibel
-muss die Visualisierung der Daten sein? Mit was für einer Vielfalt an Diagrammen ist zu rechnen? Wie sieht es
-mit dem stetigen Hinzufügen neuer Diagramme aus? In dem von Gbo ausgehändigten Informationsblatt
-werden einige Datenvisualisierungen aufgezeigt. Zu den bedeutsamsten Diagrammen gehören Balkendiagramme,
+Als nächstes wird die Flexibilität in Bezug auf die Visualisierung der Daten betrachtet.
+Gbo stellt einige Visualisierungsbeispiele bereit. Zu den Diagrammen gehören Balkendiagramme,
 Säulendiagramme, Liniendiagramme, Kreisdiagramme, Ringdiagramme sowie additive Diagramme. Außerdem werden
 einzelne KPIs mit verschiedenen Visualisierungen dargestellt. So ändert sich die Farbe der OEE je nach
-Wert von grün über gelb bis hin zu rot. Aktuell verwendet Gbo für die Datenvisualisierung unter
+Wert von grün über gelb bis hin zu rot.
+
+Aktuell verwendet Gbo für die Datenvisualisierung unter
 anderem Grafana \footnote{https://grafana.com/}, eine in Golang geschriebene Open Source Software, die zur Analyse
 und Überwachung von Daten verwendet werden kann. Gerade bei der Individualisierbarkeit der Visualisierung
 von Daten sind bei Grafana kaum Grenzen gesetzt. Versetzt man sich in die Sicht des Kunden, sind \mbox{Feinjustierungen}
@@ -269,7 +269,7 @@ der unterschiedlichen Diagramme zu gewährleisten, reicht ein robustes, selbster
 Genau das ist auch ein entscheidender Vorteil von Grafana. Gerade durch die
 Individualisierbarkeit in vielen Bereichen der Funktionalität der Software, müssen Veränderungen nicht
 direkt in der Codebasis vorgenommen werden. Die Flexibilität dieser Arbeit soll sich jedoch auf die
-Erstellung neuer Diagramme konzentrieren. Grafana entkapselt bestimmte Teile der Logik der Software
+Erstellung neuer Diagramme konzentrieren. Grafana entkapselt bestimmte Teile der Softwarelogik
 in ausgegliederte Plugins.\cite{GrafanaDeveloperGuide} Die Kosten für zukünftige Änderungen werden
 somit gering gehalten. Dieses Qualitätsmerkmal ist ausschlaggebend für eine langlebige Softwarelösung.
 
@@ -277,32 +277,26 @@ Was können wir aus dem Fallbeispiel Grafana lernen? Eigene Logik sollte in aust
 ausgelagert werden. Konkret heißt das; die Datenvisualisierung muss von der Grundanwendung abstrahiert
 werden.
 
-In der Regel wird der Kunde lieber aus einer großen Auswahl an Diagrammen ein passendes aussuchen wollen,
-als sich sein eigenes Diagramm zu gestalten. Das Ziel sollte sein, dem Kunden so viel Arbeit wie möglich abzunehmen.
-Dabei ist der Auslieferungsprozess von großer Bedeutung. Einzelne Diagramme müssen unabhängig von der Version der
-Gesamtanwendung auslieferbar sein. Somit kann auf Kundenwünsche schnell reagiert werden.
-
 \subsection{Codebasis}
 \label{subsec:codebasis}
 Die Analyse der Anforderungen an die Codebasis ist für die Langlebigkeit der Software bedeutsam.
 Dabei soll es um die Anforderungen an die Tests, die stetige Auslieferung,
 den Einstieg und die Weiterverwendbarkeit, die Erweiterbarkeit und die Wartbarkeit der Software gehen. 
 
-Um die Anforderungen an die Tests zu erschließen, muss zuerst die Anforderung an die verschiedenen
-Arten von Tests gestellt werden. Dabei gibt es verschiedene Sichtweisen. Zum einen ist es möglich aus Sicht
+Um die Anforderungen an die Tests zu erschließen, muss zuerst die Anforderung an die Testarten
+gestellt werden. Dabei gibt es unterschiedliche Sichtweisen. Zum einen ist es möglich aus Sicht
 des Benutzers zu testen; des Weiteren aus Perspektive der softwaretechnischen Zusammenhänge; zuletzt können auch
 Qualitätsmerkmale als Ausgangspunkt für Tests verwendet werden.\cite{WikiSoftwaretest} Zum besseren Verständnis hier ein
 paar Beispiele: Tests aus Sicht des Benutzers sind End-To-End-Tests, die User Stories nachahmen.
-So können mit Cypress, einem JavaScript-Framework für End-To-End-Tests, GUI-Interaktionen getestet werden.
+So können mit Cypress\footnote{https://www.cypress.io/}, einem JavaScript-Framework für End-To-End-Tests, GUI-Interaktionen getestet werden.
 Tests aus softwaretechnischer Sicht sind meistens Modul- und Integrationstests. Somit kann die reibungslose
 Kommunikation zwischen verschiedenen Teilen der Softwarearchitektur sichergestellt werden. Qualitätsmerkmale
 von Webseiten können mit Lighthouse, einem Open-Source Werkzeug von Google, getestet werden. \footnote{https://developers.google.com/web/tools/lighthouse}
 Lighthouse testet Performanz, Zugänglichkeit, optimale Vorgehensweisen, SEO und die Unterstützung
 des Funktionsumfangs von PWAs.
 
-Wo sind Tests zwingend erforderlich und wo sind sie überflüssig? Um diese Fragen zu beantworten, muss
-man die Vor- und Nachteile, die Tests mit sich bringen, abwägen. Was sind diese Vor- und Nachteile?
-Tests sind von Grund auf essentiell für die Qualitätssicherung der Software. Allerdings bringen sie auch
+Wo sind Tests zwingend erforderlich und wo sind sie überflüssig? Tests sind von Grund auf essentiell
+für die Qualitätssicherung der Software. Allerdings bringen sie auch
 einen Implementierungsaufwand mit sich. Dieser ist bei dem Lösen von komplexen Problemen um einiges kleiner
 als das Lösen des Problems selbst. Ein testgetriebener Ansatz kann sogar den Lösungsvorgang beschleunigen,
 da man sich die benötigte Funktionalität bei der Implementierung der Tests verdeutlicht.
