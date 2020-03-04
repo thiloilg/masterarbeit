@@ -317,10 +317,10 @@ Kundenspezifische Informationen werden nicht offengelegt. Verweise auf Nutzer fi
 mithilfe der Identifikationsnummer des Datenbankeintrags statt. Die "Info"-Protokollebene
 wird über den \code{stdout} gelenkt. Die "Error"-Protokollebene wird des Weiteren in einer
 Logdatei persistiert. Für das Debugging muss die "Debug"-Protokollebene aktiviert werden.
-Als Logging-Bibliothek für den "Resource Management Service" verwendet die Arbeit den Winston
-Logger\footnote{https://github.com/winstonjs/winston}. Der HTTP-Verkehr wird mithilfe des Koa-Loggers\footnote{Koa ist ein HTTP Middleware Framework für Node.js.} protokolliert und an den Winston
+Als Logging-Bibliothek für den "Resource Management Service" wird der Winston
+Logger\footnote{https://github.com/winstonjs/winston} verwendet. Der HTTP-Verkehr wird mithilfe des Koa-Loggers\footnote{Koa ist ein HTTP Middleware Framework für Node.js.} protokolliert und an den Winston
 Logger weitergereicht. Datenbankverbinder sowie Logger werden mithilfe des Singleton-Pattern
-implementiert, um das ständige herunterreichen von Instanzen zu vermeiden. Der praktischste
+implementiert, um das ständige Herunterreichen von Instanzen zu vermeiden. Der praktischste
 Weg in JavaScript ein Singleton zu erstellen, ist, indem man ein Objekt exportiert. JavaScript-Objekte
 werden beim initialen Ladevorgang in den Cache gesetzt. JavaScript sorgt dafür,
 dass bei allen weiteren Zugriffen auf das Objekt, die selbe Instanz zurückgegeben wird \cite{NodeJsCaching}.
