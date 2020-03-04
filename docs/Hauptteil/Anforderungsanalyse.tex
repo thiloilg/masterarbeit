@@ -30,7 +30,7 @@ Wer wird das Dashboardingtool zur Datenauswertung benutzen? Dies kann sich je na
 Managementebene aus über den Produktionsleiter bis hin zum Schichtarbeiter Benutzer mit dem
 Dashboard. Eines der Dashboards könnte an einem speziell für die Softwarelösung
 installierten Bildschirm in einer Produktionshalle angezeigt werden. Anderenfalls könnte aber
-auch der Produktionsleiter in der Mittagspause mit seinem Smartphone die aktuellen Leistungskennzahlen 
+auch der Produktionsleiter in der Mittagspause mit seinem Smartphone die aktuellen "Key Performance Indicators" 
 (KPIs) abrufen. Viele Produktionshallen besitzen alte Windows-Rechner, die nicht
 mit den neusten Browsern ausgestattet sind. Andere Betriebe besitzen Endgeräte mit Touchscreens.
 Fassen wir all diese möglichen Szenarien zusammen, wird uns eines sehr deutlich: Von der
@@ -39,15 +39,17 @@ Softwarelösung wird eine gewisse Flexibilität abverlangt, die nicht zu untersc
 \section{Funktionale Anforderungen}
 \label{sec:funktionaleanforderungen}
 In diesem Abschnitt werden die Anforderungen an die Funktionalität der Software analysiert.
-Die erste und bedeutsamste Funktionalität ist
-die möglichst agile Erstellung eines Dashboards. Die Aufgabe des Dashboards ist es, Daten
-zu visualisieren. Um dies zu ermöglichen, benötigt das Dashboard Daten. Diese Daten
+Die erste und bedeutsamste Funktionalität ist die Darstellung der Daten in einem Dashboard.
+Um dies zu ermöglichen, benötigt das Dashboard Daten. Diese
 müssen aus einer Datenquelle geladen werden. Gbo stellt hierfür eine REST API
-zur Verfügung. Für eine Datenquelle ist somit gesorgt. Um die Daten innerhalb der Anwendung
-einem Dashboard zur Verfügung zu stellen, müssen die Daten zu einem passenden Format verarbeitet werden.
-Überdies muss noch definiert werden, welche Daten in welchem Dashboard verwendet
-werden. Diese vier Funktionalitäten sind der Kern der Anwendung. In diesem Abschnitt
-werden zuerst die Anforderungen der Kernfunktionalitäten analysiert. Daraufhin werden die Anforderungen
+zur Verfügung. Um die Daten innerhalb der Anwendung
+einem Dashboard zur Verfügung zu stellen, müssen diese in ein für die Visualisierungsbibliotheken passendes Format umgewandelt und verarbeitet werden.
+Überdies muss der Benutzer die Daten den Diagrammen eines Dashboards zuweisen können.
+Die für die Anwendung bedeutsamsten Funktionalitäten sind also Folgende: die Beschaffung,
+Verarbeitung, Zuweisung und Darstellung der Daten.
+
+In diesem Abschnitt werden zuerst die Anforderungen der
+Kernfunktionalitäten analysiert. Daraufhin werden die Anforderungen
 für die Authentifizierung der Benutzer, die Rechteverwaltung, die Auswahl der Sprache,
 die Navigation durch die Software, die Suche nach Ressourcen in der Anwendungen,
 die Filterung der darzustellenden Daten im Dashboard sowie die Möglichkeit,
