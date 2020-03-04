@@ -744,7 +744,7 @@ einen leichtgewichtigen, von der Golang Laufzeit verwalteten, Thread zu starten.
 wird der Syntax-Befehl \code{go}, gefolgt von einer zu parallelisierenden Funktion, benutzt.\cite{GoroutinesExample}}
 Der "Data Delivery Service" verwendet zur Authentifizierung den gleichen JWT wie der "Resource Management Service".
 Der Token wird bei dem Handshake zum Verbindungsaufbau des WebSocket-Protokolls übergeben. Die Authentifizierung
-sowie das Logging ist in einer Middleware untergebracht. Zum hosten der Dokumentation sowie dem HTTP-Upgrade
+sowie das Logging ist in einer Middleware untergebracht. Zum Hosten der Dokumentation sowie dem HTTP-Upgrade
 wird der Golang interne HTTP-Server des \code{net/http} Programmpakets verwendet. Der "Data Delivery Service"
 nimmt Anfragen, falls vorhanden, immer zuerst aus dem Cache. Daraufhin wird die Anfrage mit aktuellen Daten
 verarbeitet und ein Update an das Frontend gesendet. Um die Verbindung nicht zu blockieren, werden aufwendige
