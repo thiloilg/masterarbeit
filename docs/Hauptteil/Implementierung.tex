@@ -126,20 +126,19 @@ ausgeführt. Die Worker-Server werden daraufhin mit dem Manager-Server verbunden
 Die restlichen Schritte sind alle von der Pipeline aus automatisiert. Die Pipeline
 kopiert mithilfe von SCP die \code{docker-compose.yml} Datei auf den Manager-Server,
 loggt sich in die Docker Registry ein, zieht die neuen Images und startet das Cluster.
-Mehr dazu in \Cref{sec:pipeline}.
 
 \section{Gesamtsystem}
 \label{sec:gesamtsysten}
-In diesem Abschnitt wird aus dem Konzept ein komplettes System
-entwickelt. Der Abschnitt fokussiert sich auf die Merkmale der Komponenten,
-die für das Gesamtsystem relevant sind. In \Cref{subsec:systemuebersicht} wird
-ein grober Überblick über das System gegeben. Anhand einer Grafik wird das Zusammenspiel
-der einzelnen Komponenten erläutert. In  \Cref{subsec:reverseproxyundloadbalancer}
-wird der Reverse Proxy und der Load Balancer behandelt. In \Cref{subsec:inhaltsauslieferung} wird
-die Inhaltsauslieferung vorgestellt. Dabei stellt sich die Frage,
-wie die Ressourcen möglichst performant an die Clients transportiert
-werden können. In \Cref{subsec:wahlderdatenbankarten} geht es um die Wahl
-der Datenbankart der einzelnen Services. Abschließend setzt sich die Arbeit
+Dieser Abschnitt fokussiert sich auf die Merkmale des Systems und dessen
+Komponenten. \Cref{subsec:systemuebersicht} gibt einen groben Überblick über
+das Gesamtsystem. Anhand einer Grafik wird das Zusammenspiel
+der einzelnen Komponenten erläutert. Der Reverse Proxy und der Load Balancer
+werden in \Cref{subsec:reverseproxyundloadbalancer} behandelt. In
+\Cref{subsec:inhaltsauslieferung} wird die Inhaltsauslieferung
+vorgestellt. Dabei stellt sich die Frage, wie die Ressourcen
+möglichst performant an die Clients transportiert werden können.
+\Cref{subsec:wahlderdatenbankarten} befasst sich mit der für die einzelnen
+Services benötigten Datenbankart. Abschließend setzt sich die Arbeit
 in \Cref{subsec:ueberwachungundwartung} mit der Überwachung und Wartung
 des Systems auseinander.
 
