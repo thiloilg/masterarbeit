@@ -121,8 +121,8 @@ in verwendbare Ausgabedaten transformieren.
 Das Konzept der Zulieferung der Daten ist in drei Abschnitte
 unterteilt. In \Cref{subsec:datenuebermittlungskonzept} wird das Datenübermittlungskonzept
 zwischen dem Client und dem \code{Data Delivery Service} vorgestellt.
-In \Cref{subsec:echtzeitauslieferung} geht es um die Liveübertragung der Daten. In
-\Cref{subsec:caching} wird ein Konzept zur Leistungssteigerung der Datenauslieferung
+Die Liveübertragung wird in \Cref{subsec:echtzeitauslieferung} behandelt. 
+Außerdem wird in \Cref{subsec:caching} ein Konzept zur Leistungssteigerung der Datenauslieferung
 erarbeitet.
 
 \subsection{Datenübermittlungskonzept}
@@ -149,8 +149,10 @@ repräsentieren (Siehe Abbildung \ref{figure:uebersichtderdatenauslieferung}).
 Außerdem wird eine Nachricht an den \code{Data Delivery Service} veröffentlicht,
 indem dieser darüber informiert wird, dass der Client jetzt bereit ist, Daten zu empfangen.
 Je nach angefragtem Interval sendet nun der \code{Data Delivery Service} verarbeitete
-Daten an das Frontend, die in der Frontend-Anwendung angezeigt werden. Um die
-Redundanz im Datenfluss zu verringern, werden die ausgehenden Nachrichten
+Daten an das Frontend, die in der Frontend-Anwendung angezeigt werden. 
+In der Abbildung \ref{figure:uebersichtderdatenauslieferung} wird unter anderem
+das Prinzip der Filterung und Verteilung der Anfragen dargestellt.
+Um die Redundanz im Datenfluss zu verringern, werden die ausgehenden Nachrichten
 so gefiltert, dass für jede Datenquelle nur eine Nachricht versendet wird. Die ankommenden
 Nachrichten werden hingegen so verteilt, dass alle Diagramme mit der passenden Datenquelle
 versorgt werden.
