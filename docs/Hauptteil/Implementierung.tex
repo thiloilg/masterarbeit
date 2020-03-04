@@ -333,24 +333,25 @@ entfernt sowie der Cache entleert.
 
 \section{Projektaufbau}
 \label{sec:projektaufbau}
-Zur Entwicklung der Gesamtanwendung verwendet die Arbeit VS Code. Es werden Git-Hooks
-verwendet um den Quellcode zu Formatierung und nach problematischen Entwurfsmustern
-zu suchen. Hierfür werden die Node.js Packages Prettier und Eslint verwendet.
+Zur Entwicklung der Gesamtanwendung verwendet die Arbeit
+Visual Studio Code (VS Code)\footnote{https://code.visualstudio.com/}. Es werden Git-Hooks
+verwendet, um den Quellcode zu Formatierung, und nach problematischen Entwurfsmustern
+zu suchen. Hierfür werden die Node.js Packages "Prettier" und "Eslint" verwendet.
 Für die Gliederung der Dateien verfolgt die Arbeit innerhalb der Anwendungen zum größten Teil die Herangehensweise des
 Domain-driven Designs (DDD). Um die Redundanz einzelner Funktionalitäten zu verringern, werden \mbox{nichtsdestotrotz} auch Herangehensweisen
 wie die Gliederung nach Dateiart sowie eine Ausgliederung oft benutzer Funktionalitäten in Bibliotheken verfolgt. Während der Entwicklung
-wurde die Gliederung der Order und der beinhalteten Dateien angepasst. Je nach Größe des Projekts wird eine andere Gliederung gefordert.
+wurde die Gliederung der Ordner und der beinhalteten Dateien angepasst. Je nach Größe des Projekts wird eine andere Gliederung gefordert.
 So muss die Gliederung nach Dateiart bei ansteigender Komplexität durch ein DDD ausgetauscht werden.
 
 \subsection{Zentralisierung und Entkapselung}
 \label{subsec:zentralisierungundentkapselung}
 In diesem Abschnitt geht es um die Aufteilung des
 Programmcodes in Repositories. Für die Versionsverwaltung
-wird Git verwendet. Die Arbeit entscheidet sich dazu,
-die einzelnen Microservices in einer Monorepo unterzubringen.
+wird Git verwendet. Im Rahmen der Arbeit wurde sich dazu entschieden,
+die einzelnen Microservices in ein Monorepo unterzubringen.
 Softwareentwickler verstehen unter Monorepo eine Strategie, den Programmcode
 aus mehreren Anwendungen, Services, Bibliotheken und Frameworks
-in einer Repository unterzubringen.\cite{MonorepoTrunkBasedDevelopment}
+in ein Repository unterzubringen.\cite{MonorepoTrunkBasedDevelopment}
 Diese Strategie verringert nicht nur den Aufwand
 des Aufsetzens mehrerer Repositories, sondern gibt den
 Entwicklern auch einen besseren Überblick über die einzelnen
@@ -359,7 +360,7 @@ Ansatz den Vorteil, dass Änderungen in mehreren Services,
 die miteinander verkoppelt sind, in einem Commit in die
 Versionsverwaltung eingecheckt werden können. Dies kann erforderlich sein,
 wenn Tests der Pipeline auf bestimmte Versionen der unterschiedlichen
-Services angewiesen sind. Bei der Veränderung einer API eines Services
+Services angewiesen sind. Bei der Veränderung einer Schnittstelle eines Services
 muss so beispielsweise gleichzeitig das Frontend angepasst werden.
 Die Diagramme eines Dashboards sollen allerdings
 auch extern entwickelbar sein. Um dies zu ermöglichen, verwendet
