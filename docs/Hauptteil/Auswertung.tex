@@ -1,15 +1,15 @@
 \chapter{Auswertung}
 \label{chap:auswertung}
 In diesem Kapitel soll die Software anhand von für die Softwareentwicklung relevanten Qualitätsmerkmalen
-ausgewertet werden.\footnote{Laut Peter Liggesmeyer, dem Autor des Buches "Software-Qualität", sind diese
-Korrektheit, Vollständigkeit, Sicherheit, Zuverlässigkeit, Verfügbarkeit und Robustheit \cite[S. 5]{SoftwareQualitaet}.}
+ausgewertet werden. Laut Peter Liggesmeyer, dem Autor des Buches "Software-Qualität", sind diese
+Korrektheit, Vollständigkeit, Sicherheit, Zuverlässigkeit, Verfügbarkeit und Robustheit \cite[S. 5]{SoftwareQualitaet}.
 
 \section{Korrektheit}
 \label{sec:korrektheit}
 Um die Korrektheit der Gesamtanwendung beurteilen zu können, muss das in der Anforderungsanalyse erwartete
 Verhalten mit dem Verhalten des Istzustands verglichen werden. In der Anforderungsanalyse
-in \Cref{chap:anforderungsanalyse} wurden allerdings hauptsächlich Funktionalitäten und weniger deren 
-Verhalten behandelt. Da das Vorhalten der Software vor der Entwicklung des Konzepts nicht klar definiert wurde,
+in \Cref{chap:anforderungsanalyse} wurden hauptsächlich Funktionalitäten und weniger deren 
+Verhalten behandelt. Da das Verhalten der Software vor der Entwicklung des Konzepts nicht klar definiert wurde,
 ist es schwer, die Korrektheit der Anwendung zu beurteilen. Die in der Konzeptphase erarbeiteten Verfahren
 wurden, wie in dem Konzept entworfen, auch in der Software schlussendlich umgesetzt. So wurden für
 das Diagrammanordnungsverfahren ein vielfaches an Modultests implementiert, um das gewollte Verhalten auch in
@@ -28,30 +28,30 @@ erfüllt werden. Die Authentifizierung, Rechteverwaltung, Sprachauswahl, Suche u
 voll funktionsfähig umgesetzt. Nicht oder nur bedingt wurde die Offline-Funktionalität, die Benachrichtigung
 des Benutzers bei Übertretung eines vordefinierten Schwellwerts sowie die Filterung der Daten in den Diagrammen umgesetzt.
 Die Offline-Funktionalität ist aktuell nur für statische Elemente der Anwendung gegeben. Die über das WebSocket-Protokoll
-übertragenen Daten werden aktuell nicht in der progressiven Webanwendung gespeichert. Dies ist allerdings aus technischer
+übertragenen Daten werden aktuell nicht in der progressiven Webanwendung gespeichert. Dies ist aus technischer
 Sicht auch nur bedingt möglich, da das Speichervolumen von vom Browser bereitgestellten Speichermöglichkeiten
 je nach Browser variiert und gerade auf mobilen Endgeräten oftmals sehr gering ausfällt \cite{HTML5RocksStorage}.
 Die Benachrichtigung der Benutzer bei dem Übertreten eines vordefinierten Schwellwerts wurde noch nicht umgesetzt.
-Die Funktionalität ist allerdings für die Zukunft geplant. Die Filterung der Daten ist bedingt möglich. So kann 
-man, mithilfe der in der Arbeit verwendeten Abfragesprache JMESPath, Daten anhand diverser Kriterien filtern.
+Die Funktionalität ist für die Zukunft geplant. Die Filterung der Daten ist bedingt möglich. So kann 
+man, mithilfe Abfragesprache JMESPath, Daten anhand diverser Kriterien filtern.
 Des Weiteren bietet die Visualisierungsbibliothek Chart.js bedingt Filtermöglichkeiten an. Ein selektives Filtern,
-beispielsweise anhand einer Zeitspanne, ist allerdings nach aktuellem Stand innerhalb der Diagramme noch nicht umgesetzt worden.
-Die Diagramme wurden allerdings so konzipiert, dass das Hinzufügen einer Filterfunktion
+beispielsweise anhand einer Zeitspanne, ist nach aktuellem Stand innerhalb der Diagramme noch nicht umgesetzt worden.
+Die Diagramme wurden so konzipiert, dass das Hinzufügen einer Filterfunktion
 kein Problem darstellen sollte.
 
 \section{Sicherheit}
 \label{sec:sicherheit}
 Auf die Sicherheit der Gesamtanwendung wurde besonders geachtet. So
 wurde, wie bereits in der Implementierung erläutert, neben
-der JWT\hyp{}Authentisierung auch eine TwoZwei\hyp{}Faktor\hyp{}Authentisierung
+der JWT\hyp{}Authentisierung auch eine Zwei\hyp{}Faktor\hyp{}Authentisierung
 implementiert. Außerdem wurden in dem "Resource Management Service"
 der Ein- und Ausgangsverkehr in beide Richtungen mithilfe des Koa Joi Routers validiert. Die Anwendung sowie die dafür benötigten
 Daten werden über HTTPS als auch WSS ausgeliefert. \mbox{Nichtsdestotrotz} beinhaltet die Gesamtanwendung
-noch Schwachstellen, die es zu eliminieren gilt. Die Authentifizierung passiert, wie in der Implementierung beschrieben,
-über einen im HTTP-Header gesetzten JWT. Bei der WebSocket-Verbindung findet die Authentifizierung beim Handshake des
+noch Schwachstellen, die es zu eliminieren gilt. Für das Authentifizierungsverfahren wird, wie in der Implementierung beschrieben,
+ein JWT in den HTTP-Header gesetzt. Bei der WebSocket-Verbindung findet die Authentifizierung beim Handshake des
 Verbindungsaufbaus statt. Die Verbindung wird somit nicht getrennt, wenn der Token abläuft. Die Frontend-Anwendung
 schließt allerdings bei der Abmeldung eines Benutzers die WebSocket-Verbindung automatisch. Es wäre allerdings dennoch möglich,
-dass bei einer erfolgreichen XSS\hyp{}Attacke die WebSocket\hyp{}Verbindung aufrecht gehalten wird, um so Daten zu stehlen.
+dass bei einer erfolgreichen XSS\hyp{}Attacke die WebSocket\hyp{}Verbindung aufrechterhalten wird, um so Daten zu stehlen.
 
 Die Verwendung von \code{dangerouslySetInnerHTML} ist ein weiterer Sachverhalt. Zur Verarbeitung
 der Daten wird ein Syntax-Highlighter verwendet, um die Ein- und
@@ -135,16 +135,16 @@ WSS: Datenverkehr &   \mytilde0,2KB &  \mytilde23,3KB \\
 \label{tab:groessedesdatenverkehrs}
 \end{table}
 
-Die Lasttestresultate der JMeter-Tests sind auf der Abbildung \ref{figure:antwortzeitenueberzeit}
-zu erkennen. Das Diagramm zeigt die Zeit, die benötigt wird um eine bestimmte Anfrage zu beantworten, an.
+Die Lasttestresultate der JMeter-Tests sind auf Abbildung \ref{figure:antwortzeitenueberzeit}
+zu sehen. Das Diagramm zeigt die Zeit, die benötigt wird um eine bestimmte Anfrage zu beantworten, an.
 Die Gesamtanwendung wurde für 10 Minuten getestet.
 Der Test führt folgendes Szenario einmal in der Sekunde aus:
 Als Erstes wird eine HTTPS-Anfrage an die \code{index.html} gesendet.
 Zudem werden die nötigen CSS- und JS-Dateien geladen.
 Daraufhin loggt sich der Benutzer mit seinen Benutzerdaten ein.
-Sobald er eingeloggt ist, läd der Benutzer über den "Resource Management Service"
-eine Liste der \foreignlanguage{english}{Dashboards}. Als Nächstes wird eine WebSocket-Verbindung geöffnet
-und auf eine Datenquelle abonniert. Nach Ankunft der ersten Daten der
+Sobald er eingeloggt ist, lädt der Benutzer über den "Resource Management Service"
+eine Liste der \foreignlanguage{english}{Dashboards}. Als Nächstes wird eine WebSocket-Verbindung hergestellt
+und eine Datenquelle abonniert. Nach Ankunft der ersten Daten der
 Datenquelle, wird die WebSocket-Verbindung wieder geschlossen.
 
 In Tabelle \ref{tab:groessedesdatenverkehrs} wird die Größe der versendeten und empfangenen 
@@ -157,7 +157,7 @@ entweder durch einen Cron-Job des Docker Swarm Clusters ausgelöst wurde oder au
 Einbruch des Datenverkehrs der lokalen Internetverbindung des Testrechners zurückzuführen
 ist.
 
-Interessant ist, dass die Log-In-Anfrage trotz ihrer geringen Datentransfergröße verhältnismaßig
+Interessant ist, dass die Log-In-Anfrage trotz ihrer geringen Datentransfergröße verhältnismäßig
 lange braucht. Bei der Anmeldung wird das Passwort gegen den Passwort-Hash in der Datenbank verglichen,
 ein JWT generiert und als Cookie im Browser gesetzt. Eine Leistungssteigerung durch Verbesserung
 des Log-In-Endpunktes ist denkbar. Die Landing-Page \code{index.html} sowie der Request-Body der
@@ -198,7 +198,7 @@ Anfragen/Sek. & Fehlerrate & min. & max. & durchschn. \\
 \end{table}
 
 In Tabelle \ref{tab:resultatdeslasttestsmitloaderio} sieht man die Resultate
-der Lasttests mit Loader.io. Es wurden sechs Iterationen durchgeführt. Die Laufzeit der
+der Lasttests mit Loader.io. Insgesamt wurden sechs Iterationen durchgeführt. Die Laufzeit der
 Iterationen betrug eine Minute. Die Felder "min.", "max." und "durchschn." beziehen
 sich auf die minimale, maximale und durchschnittliche
 Antwortzeit, die die Server benötigen, um die
@@ -207,13 +207,13 @@ die pro Sekunde abgesendet werden, von initial 100 auf bis zu 5.000 erhöht.
 
 Ab ca. 2.500 Anfragen pro Sekunde fängt das Cluster an, Antworten auf die
 Anfragen erst so spät zu versenden, dass die Antwort, die vom Client
-erwartete Maximalzeit überschreitet. Bei Betrachtung der maximalen Antwortzeit ist zu
+erwartete Maximalzeit überschreitet.\footnote{Der "Timeout" für die ausgeführten Tests betrug 10 Sekunden.} Bei Betrachtung der maximalen Antwortzeit ist zu
 erkennen, dass das Gesamtsystem bereits ab tausend Anfragen pro Sekunde
 überlastet ist. Ein Nutzer sollte keine acht Sekunden auf eine Antwort warten
 müssen. Bei fünfhundert abgehandelten Anfragen in der Sekunde bewegt sich die Durchschnittszeit
 bei unter 100 Millisekunden.
 
-Der Lasttest bestätigen, dass eine solide Robustheit der Gesamtanwendung gegeben ist.
+Der Lasttest bestätigt, dass eine solide Robustheit der Gesamtanwendung gegeben ist.
 Wie viele Benutzer ein solches Cluster mit fünf Servereinheiten
 bedienen kann, ist schwer einzuschätzen. Zum einen verteilt sich die Hauptlast je nach
 Benutzergruppe über mehrere Stunden am Tag, zum anderen sind die in der Arbeit ausgeführten
