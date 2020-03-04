@@ -22,7 +22,7 @@ Für die Performanz sprechen folgende Gründe: Das Endgerät des Clients ist wom
 nicht zur Datenverarbeitung ausgelegt. Das mehrfache Berechnen der gleichen Anfrage
 kann im Backend einfach abgefangen und aus dem Cache genommen werden. Die Verbindung
 des \foreignlanguage{english}{Backendservers} zur externen API ist in der Regel schneller als die Verbindung
-des Clients zum Server. Wenn das Backend die Daten bereits Verarbeitet, wird nur noch
+des Clients zum Server. Wenn das Backend die Daten bereits verarbeitet, wird nur noch
 eine verdichtete Form der Daten an den Client gesendet.\footnote{Es ist davon auszugehen, dass
 die aus der Verarbeitung resultierende Datenmenge geringer als die der initialen Anfrage ist.}
 Für die Flexibilität spricht, dass die Verarbeitung so nicht in neue Frontend-Anwendungen
@@ -49,7 +49,7 @@ Zuletzt wird in \Cref{sec:speicherung} die Speicherung der Dashboards behandelt.
 \label{sec:beschaffung}
 Die Datenbeschaffung selbst behandelt das Verfahren, zu analysierende Daten
 von einer externen API zu dem \code{Data Delivery Service} zu transportieren.
-Hier bieten sich Open Source Message Broker wie RabbitMQ und Apache Kafka an.
+Hier bieten sich Open Source Message Broker wie RabbitMQ\footnote{https://www.rabbitmq.com/} und Apache Kafka\footnote{https://kafka.apache.org/} an.
 Aktuell stellt Gbo hierfür allerdings eine REST-API zur Verfügung.
 Für den Datentransport von der REST-API zu dem \code{Data Delivery Service} reicht somit
 eine GET-Anfrage aus.
@@ -125,7 +125,7 @@ erarbeitet.
 
 \subsection{Datenübermittlungskonzept}
 \label{subsec:datenuebermittlungskonzept}
-Zur Datenübermittlung verwendet die Arbeit das Publish/Subscribe Architekturkonzept.
+Zur Datenübermittlung wird in der Arbeit das Publish/Subscribe Architekturkonzept verwendet.
 Um die bidirektionale Kommunikation zwischen dem Client und dem Server zu ermöglichen,
 wird das WebSocket-Protokoll verwendet. Verglichen mit HTTP ist das WebSocket-Protokoll
 aufgrund der fehlenden Header-Fixkosten performanter. Eine aufrechterhaltene WebSocket-Verbindung
