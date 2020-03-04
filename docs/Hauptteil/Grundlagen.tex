@@ -17,8 +17,9 @@ Service Worker ist ein parallel zu der Hauptanwendung laufender Prozess, der \mb
 auch WebSocket-Anfragen, abfängt, verarbeiten und versenden kann. Somit ist es möglich, trotz fehlender Internetverbindung
 eine Antwort an das Frontend zurückzusenden.\cite{W3ServiceWorker}
 
-Progressive Webanwendungen als Alternative zu einer nativen Umsetzung ermöglichen größere Freiheit gegenüber den
-Plattformanbietern. Sobald die Möglichkeit besteht, PWAs mithilfe einer vom Browser angesteuerten Programmierschnittstelle (API)
+Eine progressive Webanwendungen als Alternative zu einer nativen Umsetzung
+ermöglichen größere Freiheit gegenüber den Plattformanbietern. Sobald die
+Möglichkeit besteht, PWAs mithilfe einer vom Browser angesteuerten Programmierschnittstelle (API)
 auf dem Startbildschirm zu speichern, verliert der Plattformanbieter die Kontrolle,
 bestimmte PWAs zu verbieten. Dies ist bei nativen Anwendungen nicht der Fall. So löschte Apple in der Vergangenheit
 bereits große Mengen an Apps aus dem App Store.\footnote{Laut Heise.de löschte Apple im Oktober
@@ -51,7 +52,7 @@ falsch. Erst wenn Plattformanbieter einen Weg finden, finanziell von PWAs profit
 zu können, werden die Funktionalitäten in einem Maße unterstützt, die ihnen die Möglichkeit
 gibt, mit nativen Apps mithalten zu können. Der Schritt von einer Single-Page-Webanwendung (SPA) zu einer
 PWA ist allerdings ein leichter.\footnote{Wenn man sich auf die Hauptfunktionalitäten beschränkt.}
-Um die PWA auf dem Desktop speichern zu können, muss man ein Web-App-Manifest\footnote{
+Um die PWA auf dem Startbildschirm speichern zu können, muss man ein Web-App-Manifest\footnote{
 Ein Beispiel eines Web-App-Manifests befindet sich unter Weitere Quellcodeausschnitte \ref{lst:webappmanifest}.}
 in das Stammverzeichnis des Webservers legen sowie einen Service Worker registrieren.
 Somit ist die Einstiegsebene für PWAs sehr gering. Gerade für Unternehmen,
@@ -111,7 +112,7 @@ eigentlich unterstützten Funktionsumfang abweichen. Die von Thomas
 Steiner für relevant angesehenen Merkmale sind folgende:
 Offline Capabilities; hierbei wird nach
 einer Unterstützung der Cache API gesucht. Push Notifications;
-ist die Push API unterstützt? Add to Homescreen; ist es möglich, PWAs auf
+ist die Push API unterstützt? Add to Home Screen; ist es möglich, PWAs auf
 dem Startbildschirm zu speichern (A2HS)? Background Sync; ermöglicht eine eventgetriebene Synchronisation
 zwischen dem Service Worker und der Anwendung. Navigation Preload; die Möglichkeit
 Ressourcen bereits während dem Hochfahren des SW vorzuladen
