@@ -114,9 +114,8 @@ ist ein Single Sign-On über bestehende Anmeldedaten von Bestandskunden erwünsc
 Hierfür bietet Gbo zum aktuellen Zeitpunkt allerdings noch keine Schnittstelle an.
 
 Da Gbo ihre Softwarelösungen auch an nicht deutschsprachige Kunden verkauft, ist es notwendig,
-die Anwendung multilingual zu gestalten. Die Funktionalität, die Sprache der Anwendung zu verändern,
-ist somit Teil der Anforderung. Damit der Benutzer nicht bei jedem Besuch die Sprache neu einstellen
-muss, gilt es die Spracheinstellungen im Browser zu persistieren. Gbo merkt an, dass diese
+die Anwendung multilingual zu gestalten. Damit der Benutzer nicht bei jedem Besuch die Sprache neu einstellen
+muss, gilt es die Spracheinstellungen im Browser zu persistieren. Gbo merkt an, dass die Spracheinstellungen
 unabhängig von denen des Browsers gespeichert werden müssen.
 
 Ein Benutzer will ohne großen Aufwand von einen Dashboard zu einem anderen gelangen. Er will seine Profileinstellungen
@@ -125,16 +124,17 @@ Hierfür benötigt die Anwendung eine benutzerfreundliche Navigation. Ist die An
 groß, muss die Anwendung einen automatischen Seitenumbruch einführen. Um die Suche nach speziellen
 Ressourcen zu erleichtern, ist eine zentrale Suche erwünscht.
 
-In der "bisoftMES" Softwarelösung von Gbo, ist es möglich, die für die Anzeige relevanten Daten zu filtern \cite[S. 14]{BisoftMESHandbuch}.
-Es liegt nahe, dass diese Funktionalität auch bei einer webbasierten Anwendung von Benutzern erwartet wird. Die Möglichkeit, Daten
-anhand von Filterkriterien einzuschränken, ist somit Teil der Anforderung an die Funktionalität der Software.
+In der "bisoftMES" Softwarelösung von Gbo, ist es möglich, die für die Anzeige relevanten Daten zu
+filtern \cite[S. 14]{BisoftMESHandbuch}. Die Möglichkeit, Daten anhand von Filterkriterien
+einzuschränken, ist somit Teil der Anforderung an die Funktionalität der Software.
 
-Zuallerletzt gilt es die Anforderungen an die Anwendung im Falle einer fehlenden Netzwerkverbindung
-zu erörtern. Gbo erläutert in ihrem Informationsblatt, dass dem Benutzer
-ermöglicht werden sollte, geladene Daten offline weiterzuverwenden. Dies sollte solang möglich sein,
+Zuletzt gilt es die Anforderungen an die Anwendung im Falle einer fehlenden Netzwerkverbindung
+zu erörtern. Gbo fordert, dass Benutzer bereits geladene Daten auch offline auswerten können. Dies sollte solang möglich sein,
 bis der Benutzer wieder Zugang zum Netzwerk erlangt. Bei Wiedererlangung der Netzwerkverbindung sollen
 die Daten automatisch aktualisiert werden. Das An- und Abmelden muss über die Internetverbindung
-geschehen. Mozilla schreibt über die Obergrenze der Speicherkapazität der IndexedDB im Browser,
+geschehen.
+
+Mozilla schreibt über die Obergrenze der Speicherkapazität der IndexedDB im Browser,
 dass diese dynamisch ist. Die Obergrenze werde durch verschiedene Faktoren wie dem freigegebenen
 Festplattenspeichervolumen und einer Obergrenze je Domain realisiert. Dabei kann die domainspezifische
 Obergrenze von einem Minimum von 10 Megabyte bis zu einem Maximum von aktuell 2 Gigabyte reichen \cite{MozillaStorageLimit}.
@@ -145,9 +145,9 @@ eine Offline-Rückfallseite bereitzustellen.
 \label{sec:nichtfunktionaleanforderungen}
 In diesem Abschnitt werden die nicht-funktionalen Anforderungen analysiert.
 In \Cref{subsec:gestaltung} geht es um die grafische Benutzeroberfläche sowie
-deren Benutzerfreundlichkeit. In \Cref{subsec:flexibilitaet} wird die geforderte
-Flexibilität an die Softwarelösung erörtert. Zuallerletzt werden im \Cref{subsec:codebasis}
-Anforderungen an die Entwicklungsumgebung und den Entwicklungsprozess gestellt.
+deren Benutzerfreundlichkeit. Die geforderte Flexibilität wird in \Cref{subsec:flexibilitaet}
+erörtert. In \Cref{subsec:codebasis} werden Anforderungen an die Entwicklungsumgebung
+und den Entwicklungsprozess gestellt.
 
 \subsection{Gestaltung}
 \label{subsec:gestaltung}
