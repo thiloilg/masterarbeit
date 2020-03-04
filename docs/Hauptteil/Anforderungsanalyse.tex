@@ -85,7 +85,7 @@ wird.
 Welche Anforderungen sind für die Verarbeitung der Daten notwendig? Daten können Fehler oder Lücken
 beinhalten. So kann ein Wert, der das ISO Datumsformat repräsentiert, fälschlicherweise
 ungültig sein oder komplett fehlen. Für ein minimal überlebensfähiges
-Produkt (MVP) sollte es ausreichen, diese Unreinheiten so zu behandeln, dass die Anwendung
+Produkt sollte es ausreichen, diese Unreinheiten so zu behandeln, dass die Anwendung
 eine informationsreiche Fehlerwarnung an den Benutzer überliefert.
 
 Wie werden die Dashboards mit den nötigen Daten versorgt? Grundsätzlich ist davon auszugehen,
@@ -93,23 +93,25 @@ dass die Anwendung einen Zuweisungsmechanismus bereitstellt. Um von einer komple
 Datenstruktur zu einer für die Visualisierung geeigneten Datenstruktur zu kommen, müssen die gewollten
 Daten ausgewählt und zugewiesen werden. Dem Benutzer soll ein, ähnlich wie bei der Erstellung
 des Dashboards, agiler Prozess zur Zuweisung der Daten ermöglicht werden. Ein Benutzer will auf einem
-Dashboard unterschiedliche Quellen von Daten vergleichen. Somit muss die Möglichkeit bestehen,
+Dashboard Daten aus unterschiedlichen Quellen vergleichen.\footnote{Mit Quelle ist ein Endpunkt einer Programmierschnittstelle gemeint.} Somit muss die Möglichkeit bestehen,
 unterschiedliche Zuweisungen für die Diagramme eines Dashboards zu tätigen.
 
 Anschließend werden die Anforderungen für die Benutzerauthentifizierung und die Rechteverwaltung erörtert.
 Sicherheit muss in jeder Anwendung, die mit Kundendaten interagiert, von großer Bedeutung sein.
 Somit ist es naheliegend, dass für die heutigen IT-Sicherheitsstandards gesorgt wird. Progressive
-Web Apps sind per Definition außerhalb der Entwicklung nur über HTTPS zu übertragen \cite[S. 16]{KevinFrankPWAMasterarbeit}.
+Webanwendungen sind per Definition außerhalb der Entwicklung nur über HTTPS zu übertragen \cite[S. 16]{KevinFrankPWAMasterarbeit}.
 OWASP (Open Web Application Security Project) veröffentlichte 2017 einen Bericht über die zehn
 bedeutsamsten Sicherheitsrisiken von Webanwendungen. Darunter sind unter anderem die Einschleusung
 eines schädlichen Quellcodes durch mangelnde Maskierung, fehlerhafte Authentifizierungsverfahren, Preisgabe von sensiblen Daten,
 XSS-Attacken und Fehlkonfigurationen von Sicherheitseinstellungen zu finden.\cite[S. 4]{OWASPTopTen}
 Um die Kundendaten vor Angriffen zu schützen, ist es bedeutsam, dass diese Sicherheitsrisiken bei der
-Entwicklung der Anwendung beachtet werden. Zum Funktionsumfang gehört dazu,
-dass ein Benutzer in einem sicheren Verfahren ein Konto anlegen,
-sich anmelden, abmelden und sein Konto auch wieder
-löschen kann. Die Rechteverwaltung konzentriert sich laut Gbo vorerst auf die elementaren
-Grundeigenschaften.
+Entwicklung der Anwendung beachtet werden.
+
+Zum Funktionsumfang gehört dazu, dass ein Benutzer in einem sicheren Verfahren ein Konto anlegen,
+sich anmelden, abmelden und sein Konto auch wieder löschen kann. Die Rechteverwaltung
+konzentriert sich laut Gbo vorerst auf die elementaren Grundeigenschaften. Aus Sicht von Gbo
+ist ein Single Sign-On über bestehende Anmeldedaten von Bestandskunden erwünscht.
+Hierfür bietet Gbo zum aktuellen Zeitpunkt allerdings noch keine Schnittstelle an.
 
 Da Gbo ihre Softwarelösungen auch an nicht deutschsprachige Kunden verkauft, ist es notwendig,
 die Anwendung multilingual zu gestalten. Die Funktionalität, die Sprache der Anwendung zu verändern,
