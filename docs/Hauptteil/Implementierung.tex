@@ -468,14 +468,16 @@ der Tests die benötigten Services funktionsbereit sind.
 Die Frontend-Anwendung ist mit dem Frontend-Framework React\footnote{https://reactjs.org/} geschrieben.
 React ist eine JavaScript-Bibliothek zur Erstellung von Benutzeroberflächen.
 Zur Visualisierung der GUI-Komponenten wird, wie bereits in \Cref{subsec:zentralisierungderindividualisierbarkeit}
-erwähnt, das CSS-Framework Bootstrap verwendet. Die Arbeit hat sich bewusst gegen
+erwähnt, das CSS-Framework Bootstrap verwendet. Im Rahmen der Arbeit wurde sich bewusst gegen
 eine React-Bootstrap-Bibliothek entschieden, um ein schnelleres Auswechseln von CSS-Frameworks
 zu ermöglichen. Bei einer React-Bootstrap-Bibliothek werden für die Komponenten ganze Klassen importiert,
 die man dann ersetzen müsste. CSS-Tags hingegen lassen sich schneller überschreiben oder austauschen.
 Bis auf die Bibliotheken \code{jmespath.js} und \code{qrcode} wurde die komplette Funktionalität der Frontend-Anwendung
 selbst implementiert. Die Zustandsverwaltung wurde mit der Context API von React realisiert.
-Immer wieder vorkommende Funktionalitäten wurden in React-Hooks ausgelagert. Diese Hooks werden in einem
-\code{common} Ordner zusammen mit oft benutzten React-Komponenten ausgelagert. Die Routen der Frontend-Anwendung
+Immer wieder vorkommende Funktionalitäten wurden in React-Hooks\footnote{React-Hooks bieten die Möglichkeit,
+Zustand in funktionalen Komponenten zu Verwalten, was bis Ende Oktober 2018 nur bei Klassenkomponenten möglich war.\cite{MothershipFunctionalComponents}}
+ausgelagert. Diese Hooks werden in einem \code{common} Ordner zusammen mit
+oft benutzten React-Komponenten ausgelagert. Die Routen der Frontend-Anwendung
 besitzten nur für die Seiten, die Ressourcen Anzeigen, den von REST bekannten Aufbau der URL-Pfade. Die Pfade
 wurden möglichst benutzerfreundlich benannt. So ist der URL-Pfad der Loginseite beispielsweise \code{/login}.
 Aus SEO-Gründen und der Benutzerfreundlichkeit wegen verändert sich der Titel sowie die Beschreibung je nach
