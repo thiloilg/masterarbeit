@@ -199,7 +199,7 @@ da der Reverse Proxy einen automatisierten Vorgang bereitstellt, indem die EV-TL
 kurz vor dem Ablaufdatum über den von "Let's Encrypt" bereitgestellten Service aktualisiert werden.
 
 Das Orchestrierungssystem Docker Swarm (Swarm) übernimmt die Aufgabe des Load Balancers. Swarm verwendet
-als Lastverteilungsverfahren Round-Robin, eine rotierende Verteilung der eingehenden Anfragen auf
+als Lastverteilungsverfahren Round\hyp{}Robin, eine rotierende Verteilung der eingehenden Anfragen auf
 die unterschiedlichen Instanzen eines Services.\cite{CloudflareRoundRobinDNS}
 Da die Aufrechterhaltung der WebSocket-Verbindungen des "Data Delivery Services" gegenüber
 den Clients allerdings nicht linear verläuft,\footnote{Manche Benutzer beenden die Anwendung sofort, andere lassen Sie über Tage laufen.}
@@ -212,7 +212,7 @@ Auslastung der Instanzen bereitstellen, anhand derer dann die Last gleichmäßig
 Die Inhaltsauslieferung ist dafür zuständig, statische Inhalte der Frontend-Anwendung
 an den Client auszuliefern. Die statischen Inhalte sind unter anderem
 HTML-, CSS- und JS-Dateien, JSON-Dateien, wie das Web App Manifest, sowie Bilddateien.
-Die Arbeit verwendet als zur Inhaltsauslieferung den Webserver Nginx.
+Zur Inhaltsauslieferung wird der Webserver Nginx verwendet.
 
 Um die Relevanz der Kompression von Daten zu verdeutlichen, wird in der Arbeit ein
 Vergleichstest des initialen Ladevorgangs der Frontend-Anwendung,
@@ -495,10 +495,11 @@ wurden so erweitert, dass ganze JavaScript-Objekte gespeichert werden können. A
 der Anwendung und der Web Storage API synchronisiert. Verändert der Nutzer die Sprache in einem
 Browser-Tab, wird diese auch in allen anderen Browser-Tabs geändert.
 
-Zum Zeichnen der farbigen Bereiche, die beim Ziehen der Typen "Chart" oder "Data Source" erscheinen,
-wird ein HTML-Canvas, der über dem jeweiligen Plugin positioniert wird, verwendet.
+Zum Zeichnen der farbigen Bereiche, die beim Ziehen der
+Typen "Chart" oder "Data Source" erscheinen,
+wird ein HTML\hyp{}Canvas, der über dem jeweiligen Plugin positioniert wird, verwendet.
 Hierfür wird der \code{useDrawQuad} Hook verwendet. Zur Errechnung der Position, über die der Typ
-losgelassen wurde, werden die Canvas-Eckpunkte verwendet, um den zuletzt fokussierten Bereich zu bestimmen.
+losgelassen wurde, werden die Canvas\hyp{}Eckpunkte verwendet, um den zuletzt fokussierten Bereich zu bestimmen.
 Dies geschieht mithilfe des \code{useSelectAction} Hooks. Die Umsetzung orientiert sich an dem
 in \Cref{subsec:diagrammanordnungsverfahren} beschriebenen Verfahren. Der komplexeste Hook ist der
 \code{useArrangement} Hook. Anhand der aus dem \code{useSelectAction} Hook resultierenden Aktion wird
@@ -686,18 +687,18 @@ Der "Resource Management Service" wurde komplett testgetrieben entwickelt und be
 für jeden HTTP-Statuscode jeder REST-Route mindestens einen Integrationstest.\footnote{Abgesehen von 5xx Serverfehlern}
 Die Dokumentation der REST-API des Services basiert auf der OpenAPI 3.0
 Spezifikation\footnote{http://spec.openapis.org/oas/v3.0.0/}. Für die Umsetzung des "Resource Management Services"
-wurde die Laufzeitumgebung Node.js verwendet. Als Programmiergerüst verwendet die Arbeit Koa.js, den Nachfolger
-von Express.js.\footnote{https://koajs.com/} Verglichen zu Express.js ist Koa.js eher als eine Ansammlung
+wurde die Laufzeitumgebung Node.js verwendet. Als Programmiergerüst wird in der Arbeit Koa.js, der Nachfolger
+von Express.js, verwendet.\footnote{https://koajs.com/} Verglichen zu Express.js ist Koa.js eher als eine Ansammlung
 an Middleware-Funktionalitäten zu betrachten\cite[2. Absatz]{ExpressVsKoa}. Aufgrund der daraus resultierenden
 Flexibilität sowie der Tatsache, dass Koa.js, verglichen zu anderen Frameworks wie Hapi und Express.js,
 mehr Anfragen pro Sekunde verarbeiten kann,\cite{ExpressVsKoaVsHapiPerformance}
-entscheidet sich die Arbeit für Koa.js. Als Programmiersprache verwendet der "Resource Management Service"
-TypeScript.
+wurde sich im Rahmen der Arbeit für Koa.js entschieden. Als Programmiersprache verwendet
+der "Resource Management Service" TypeScript.
 
 Die eingehenden Anfragen werden dem jeweiligen Router zugewiesen.\footnote{Die vorhandenen CRUD-Operationen der Routen sind
 unter "Weitere Quellcodeausschnitte" im Anhang aufgelistet.} Die Grundstruktur der Verarbeitung ist in den im Router
 zugewiesenen Kontrollern definiert. Die Kommunikation mit der Datenbank übernehmen die in den Kontrollern aufgerufenen
-Services. Als Objektrelationale Abbildung (ORM) wird TypeORM verwendet. Oft vorkommende Transaktionen, wie beispielsweise
+Services. Als objektrelationale Abbildung (ORM) wird TypeORM verwendet. Oft vorkommende Transaktionen, wie beispielsweise
 die Abfrage eines zu einer E-Mail gehöhrenden Benutzers, sind indiziert. Es werden keine Passwörter in der Datenbank gespeichert.
 Die Hashes, die die Passwörter repräsentieren, werden mithilfe der Bibliothek \code{bcryptjs} generiert.
 Geheime Felder wie die Hashes der Passwörter, sind vor einfachen Select-Statements versteckt und werden nur bei
@@ -708,7 +709,7 @@ anhand der CRUD-Operationen in mehrere Dateien unterteilt.
 
 \subsection{Authentifizierungsverfahren und Rechteverwaltung}
 \label{subsec:authentifizierungsverfahrenundrechteverwaltung}
-Für das Authentifizierungsverfahren verwendet die Arbeit JSON Web Token (JWT). Das Entscheidungskriterium hierfür war,
+Für das Authentifizierungsverfahren werden JSON Web Token (JWT) verwendet. Das Entscheidungskriterium hierfür war,
 dass der "Resource Management Service" einfach skalierbar und somit zustandslos sein sollte. Das JWT wird auf der Clientseite
 in den Cookies mit den Flags \code{samesite=strict},\footnote{Als Schutz gegen CSRF-Attacken} \code{secure} und \code{httponly}
 gespeichert. Der Zeitstempel, der den Fälligkeitstermin repräsentiert, ist auf 15 Minuten gesetzt. Durch einen im LocalStorage
@@ -736,8 +737,8 @@ auf eine Minute gesetzt.
 Der "Data Delivery Service" wurde in der Programmiersprache Golang geschrieben und kümmert sich um die Datenbeschaffung,
 die serverseitige Datenverarbeitung sowie die Auslieferung der Daten. Zur Kommunikation über das WebSocket-Protokoll
 verwendet der Service die Gorilla WebSocket Bibliothek,\footnote{https://github.com/gorilla/websocket} zur Verarbeitung
-der Daten Go-JMESPath.\footnote{https://github.com/jmespath/go-jmespath} Die Arbeit hat sich im Falle des
-"Data Delivery Services" für Golang entschieden, da bereits bei der Gestaltung der Programmiersprache Wert auf
+der Daten Go-JMESPath.\footnote{https://github.com/jmespath/go-jmespath} Im "Data Delivery Services"
+wird Golang verwendet, da bereits bei der Gestaltung der Programmiersprache Wert auf
 das parallele Arbeiten mehrerer Prozesse gelegt wurde. So ist es mithilfe einer sogenannten Goroutine möglich,
 einen leichtgewichtigen, von der Golang Laufzeit verwalteten, Thread zu starten.\footnote{Hierfür
 wird der Syntax-Befehl \code{go}, gefolgt von einer zu parallelisierenden Funktion, benutzt.\cite{GoroutinesExample}}
