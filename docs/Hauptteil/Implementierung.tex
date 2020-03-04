@@ -47,9 +47,10 @@ Regeln definiert, die festlegen, dass die Datenbanken immer auf dem Manager-Serv
 Die für die Speicherung der Daten relevanten Ordner der Datenbanken werden auf dem Volumen abgebildet.
 Dadurch wird sichergestellt, dass die Daten auch nach dem Herunterfahren des Docker-Clusters noch bestehen.
 
-In Abbildung \ref{figure:dockerswarmcluster} ist das Docker Swarm Cluster zu sehen. Die Schlösser
-repräsentieren die Regeln, nach denen sich bestimmte Instanzen auf bestimmten Nodes befinden müssen.
-Alle weiteren Instanzen werden nach Auslastung auf die Nodes verteilt. Die Content Delivery (Nginx)
+In Abbildung \ref{figure:dockerswarmcluster} ist das Docker Swarm Cluster zu sehen, welches im Rahmen
+dieser Arbeit aufgesetzt wurde. Die Schlösser repräsentieren die Regeln, nach denen sich
+bestimmte Instanzen auf bestimmten Nodes befinden müssen. Alle weiteren Instanzen
+werden nach Auslastung auf die Nodes verteilt. Die Content Delivery (Nginx)
 und der Resource Management Service (API) sind auf zwei Instanzen skaliert. Vier Instanzen repräsentieren
 den Data Delivery Service (Delivery).
 
