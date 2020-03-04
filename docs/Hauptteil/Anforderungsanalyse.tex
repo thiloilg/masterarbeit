@@ -304,17 +304,12 @@ Bei kleinen Problemen ist die Implementierung der Tests allerdings komplexer als
 Hier können Tests den Entwicklungsvorgang bremsen. Dies trifft speziell auf schnelllebige Teile der 
 Software zu. So ergibt es keinen Sinn, im Frontend eine GUI-Komponente zu testen, bei der man sich nicht sicher ist,
 ob man diese nicht innerhalb kürzester Zeit wieder verwirft. In Bezug
-auf die Anforderung an die Testabdeckung dieser Arbeit bedeutet das Folgendes:
+auf die Anforderung an die Testabdeckung dieser Arbeit bedeutet dies Folgendes:
 Im Frontend sollten vorerst nur komplexe Problemstellungen getestet werden. Auf Integrationstests und Tests
-zu Qualitätsmerkmalen der Anwendung sollte großen Wert gelegt werden. Um die Softwarequalität kontinuierlich
+zu Qualitätsmerkmalen der Anwendung muss großer Wert gelegt werden. Um die Softwarequalität kontinuierlich
 zu sichern, müssen die Tests in den automatisierten Softwareauslieferungsprozess eingebunden werden. 
-So sollte kein Merge auf den Master möglich sein, wenn nicht die CI-Pipeline fehlerfrei durchlaufen wurde.
-Zu den zuvor als relevant definierten Testarten gilt die Aussage aus dem Buch "Clean Code" von Robert C. Martin:
-"Die Tests sind solange unzureichend, wie es Bedingungen gibt, die nicht von den Tests geprüft werden,
-oder Brechnungen, die nicht validiert werden."\cite[S. 370]{CleanCode}
 
-Um die Anwendung in einer realen Umgebung zu testen, benötigt es die Methoden CI/CD
-zu praktizieren. Somit ist es möglich eine Phase der Pipeline, der Qualitätssicherung zu widmen.
+Eine Stage der Pipeline sollte der Qualitätssicherung gewidmet sein.
 So können Product Owner die Software vor der Auslieferung noch einmal überprüfen. Außerdem
 entlastet CI/CD den Rechner der Entwickler, da so die Tests automatisiert auf einem Server
 ausgeführt werden. Natürlich werden bestimmte Tests, wie beispielsweise Modultests, auch 
@@ -328,12 +323,12 @@ wie möglich die Entwicklungsumgebung zum Laufen gebracht werden kann.
 
 Die Erweiterbarkeit der Software ist nur durch eine gut durchdachte Softwarearchitektur erreichbar.
 So muss die Logik der Gesamtanwendung klar getrennt und Schnittstellen klar definiert werden. Es sollte
-immer damit zu rechnen sein, dass die einzelnen Komponenten, die die Gesamtsoftware bilden, jederzeit
+immer damit zu rechnen sein, dass die einzelnen Komponenten, welche die Gesamtsoftware bilden, jederzeit
 ausgetauscht werden können. Wird eine einzelne Komponente zu groß, muss diese anhand ihrer Logik in weitere
 Komponenten aufgeteilt werden. Es muss stetig damit gerechnet werden, dass neue Funktionalitäten im
 Laufe der Zeit hinzugefügt werden können.
 
-Für die Wartbarkeit der Software ist ein aussagekräftiges Logging in alle Services aufzunehmen.
+Für die Wartbarkeit der Software ist ein aussagekräftiges Logging in alle Dienste aufzunehmen.
 Damit die Entwickler bei auftauchenden Problemen schnell und effizient über die Ursache informiert werden,
 müssen mehrere Loglevel implementiert werden. Im Falle einer Microservice-Infrastruktur sollte ein Überwachungssystem
 integriert werden, mithilfe dessen die einzelnen Services kontrolliert werden können.
