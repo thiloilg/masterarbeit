@@ -181,13 +181,12 @@ Produktpalette verwenden. Eine Unterstützung von Browsern wie Internet Explorer
 wäre daher wünschenswert.
 
 Die Anwendung sollte als Whitelabel Produkt eingesetzt werden können. Dies bedeutet soviel wie,
-dass die GUI der Anwendung mit geringem Aufwand an das Erscheinungsbild eines Unternehmens angepasst
-werden kann. Beispiele dafür gibt es in der Softwareindustrie häufig. So bietet die Community
+dass die grafische Benutzeroberfläche der Anwendung mit geringem Aufwand an das Erscheinungsbild eines Unternehmens angepasst
+werden kann.\footnote{Beispiele dafür gibt es in der Softwareindustrie häufig. So bietet die Community
 Edition von Gitlab in den Einstellungen die Möglichkeit an, das Logo sowie das Farbschema der Anwendung
-zu individualisieren.\cite{GitlabDocs}
+zu individualisieren.\cite{GitlabDocs}}
 
-Gbo beschreibt in den Anforderungen des zu Beginn der Arbeit überreichten
-Informationsblattes konkret, dass die Benutzbarkeit der Software ohne großen Schulungsaufwand möglich sein soll.
+Gbo fordert, dass die Benutzbarkeit der Software ohne großen Schulungsaufwand möglich sein soll.
 Dies steht im klaren Kontrast zu konkurrierenden Softwarelösungen im BI Sektor.
 So bietet QlikTech, ein führendes Unternehmen im Bereich Business Intelligence,
 weltweit Kurse für ihr Softwareprodukt Qlik Sense an. Die Kurse haben in der
@@ -226,41 +225,19 @@ in Bezug auf diesen Arbeitsplatz zu erlangen. Um bestimmte Daten zu erhalten, be
 Aufrufe gegen die API. Diese Aufrufe sind voneinander abhängig. Diese Erkenntnis ist für den späteren Gestaltungsprozess
 der Datenbeschaffung von großer Bedeutung.
 
-In einem Gespräch mit Gbo stellte sich Folgendes heraus. Gbo liefert unterschiedliche Versionen ihrer
-Softwarelösungen an unterschiedliche Kunden aus. Dabei variiert auch die Datenstruktur und somit die Beschaffenheit der
+Gbo liefert unterschiedliche Versionen ihrer Softwarelösungen an unterschiedliche
+Kunden aus. Dabei variiert auch die Datenstruktur und somit die Beschaffenheit der
 Schnittstelle. Diese Beschaffenheit ist essentiell für die Softwarearchitektur dieser Arbeit. Es ist davon auszugehen,
 dass Gbo ihre Softwarelösungen über die nächsten Jahre hinweg immer weiter verändern und anpassen wird.
-Es ist gut möglich, dass Gbo Softwarelösungen in Zukunft komplett austauschen wird. Anzunehmen,
-dass die Beschaffenheit der Schnittstelle unverändert bleibt, ist somit ein fataler Fehler. Nun gibt es zwei Optionen.
-Erstens: Man entwickelt für jede Änderung der Schnittstelle eine neue Version seiner Software. Zweitens:
-Die Information über die Beschaffenheit der Schnittstelle kommt in die Datenbank und nicht in den
-Quellcode.
 
-Vergleicht man die zwei im vorherigen Absatz genannten Optionen anhand des Implementierungsaufwandes,
-ergibt sich folgendes Resultat: Auf kurze Sicht gewinnt die erste Option. Sie ist einfach zu implementieren.
-Man programmiert die benötigten Aufrufe der Datenquellen in der angeforderten Reihenfolge in den Quellcode.
-Möglicherweise fehlt noch ein bestimmter Aufruf, also fügt man diesen hinzu.
-Option zwei ist um einiges schwerer zu implementieren. So muss man die Beschaffenheit sowie die Reihenfolge der Anfragen
-gegen die API in der Datenbank persistieren, diese auslesen und ausführen. Es ist möglich, dass die Daten zwischen den
-Anfragen verarbeitet werden müssen. Dieser Lösungsansatz fordert eine durchdachte Softwarearchitektur. Wie sieht es mit den
-zwei Optionen auf lange Sicht aus? Option zwei ist mit der Implementierung fertig. Die Softwarearchitektur
-benötigt für folgende Änderungen der Schnittstelle nur einen neuen Datenbankeintrag. Im Kontrast dazu steht Option eins:
-Hier muss für jede Änderung der Schnittstelle der Quellcode angepasst werden. Dies ist ein niemals endender Prozess.
-Der Implementierungsaufwand ist also unendlich.
+Um die Software auf Veränderungen vorzubereiten, ist es bedeutsam, dass die Informationen über die
+Beschaffenheit der Schnittstellen in der Datenbank gespeichert wird. Des Weiteren dürfen keine 
+Spezifikationen von externen Schnittstellen im Quellcode enthalten sein. Nur so kann sichergestellt werden,
+dass auf zukünftige Änderungen flexibel reagiert werden kann.
 
-Eins gilt es bei dem zuvor durchgeführten Vergleich allerdings zu beachten. Beide Optionen haben ihre Daseinsberechtigung
-und ergeben je nach Situation auch durchaus Sinn. Es wäre falsch zu sagen, dass eine dieser beiden Optionen die richtige ist. Für einen
-Machbarkeitsnachweis \footnote{In der Businesswelt spricht man hier oftmals von einem POC (Proof of Concept).}
-ist Option eins eine gültige Lösung. Wenn der Änderungsaufwand im Quellcode sehr gering ausfällt, oder sich
-die Beschaffenheit der Schnittstelle nur sehr selten ändert, ist Option eins plausibel und eventuell kostengünstiger.
-Aufgrund der oben genannte Fakten, ist davon auszugehen, dass die Softwarelösung mit unterschiedlichen Schnittstellen arbeiten muss.
-Die Beschaffenheit der Schnittstellen kann sich stetig anpassen. Um diese Anforderung an die Flexibilität
-der Software bereitzustellen, verfolgt diese Arbeit den Ansatz aus Option zwei.
-
-Die Anforderungen an die Flexibilität der Software in Bezug auf die Kommunikation mit Schnittstellen wurde
-ausführlich diskutiert. Wie sieht es aber mit der Anforderung an die Flexibilität der Daten selbst aus?
-Die von Gbo bereitgestellte REST API ist mit einer Swagger Dokumentation, basierend auf der
-OpenAPI-Specification 3.0, ausgestattet. Die Hierarchie einer Anfrage an eine Ressource kann mehrere Stufen von Objekten beinhalten.
+Wie sieht es mit der Anforderung an die Flexibilität der Daten selbst aus?
+Die von Gbo bereitgestellte REST API ist mit dem Open Source Framework Swagger dokumentiert.
+Die Hierarchie einer Anfrage an eine Ressource kann mehrere Stufen von Objekten beinhalten.
 Bei der Anfrage an die OEE muss der Arbeitsplatz sowie eine Zeitspanne angegeben werden. Als Resultat bekommt man eine 
 in JSON formatierte Antwort. Auf der äußeren Ebene befindet sich ein Array, welches Objekte beinhaltet, die wieder ein
 Array und Objekte beinhalten. Analysiert man die Antworten aller abzufragenden Routen der bereitgestellten REST API anhand der Kardinalität,
