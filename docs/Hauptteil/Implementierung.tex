@@ -414,7 +414,8 @@ benötigte Cluster erstellt. Die Durchführungsphase ist in zwei parallellaufend
 unterteilt. Dies ist nötig, da die Integrationstests für den "Resource Management Service"
 eine Node.js-Umgebung und den "Data Delivery Service" eine Golang-Umgebung benötigen.
 
-Die Arbeit lagert öfter auftretende Funktionalitäten der Gitlab-CI-Pipeline in eigene Skripts aus.
+Im Rahmen der Arbeit werden öfter auftretende Funktionalitäten
+der Gitlab-CI-Pipeline in eigene Skripte ausgelagert.
 So wird redundanter Quellcode in der Pipeline verhindert. Ein Beispiel hierfür
 ist Quellcode \ref{lst:wiederverwendbarescriptsdergitlabci}. Das erste ausgelagerte
 Skript ermöglicht die Verwendung von SSH innerhalb der Pipeline. Somit kann sich
@@ -425,7 +426,7 @@ in die Registry zu speichern und diese später vom Server aus wieder abzufragen.
 
 \begin{listing}
     \inputminted{yaml}{snippets/yml/reusable_scripts.yml}
-    \caption{Wiederverwendbare Skripts der Gitlab-CI}
+    \caption{Wiederverwendbare Skripte der Gitlab-CI}
     \label{lst:wiederverwendbarescriptsdergitlabci}
 \end{listing}
 
